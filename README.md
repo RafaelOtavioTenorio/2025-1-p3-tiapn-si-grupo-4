@@ -6,7 +6,7 @@
 
 `3° Semestre/2025`
 
-Escreva um ou dois parágrafos resumindo o objetivo do seu projeto.
+Uma plataforma de healthcare para todas as pessoas portadoras da doença Diabetes Mellitus , tipo 1 e tipo 2. Com ferramentas para contagem de carboidratos e informações para melhoria da qualidade de vida do diabético e daqueles que buscam se prevenir e garantir a qualidade de vida.
 
 ## Integrantes
 
