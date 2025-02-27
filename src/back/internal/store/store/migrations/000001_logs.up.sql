@@ -1,0 +1,9 @@
+CREATE TABLE logs (
+    id VARCHAR(36) NOT NULL,
+    servertime TIMESTAMP NOT NULL,
+    log TEXT NOT NULL,
+    level VARCHAR(10) NOT NULL,
+    source VARCHAR(255),
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id)
+);

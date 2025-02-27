@@ -1,0 +1,15 @@
+FROM golang:1.23.4
+
+WORKDIR /app
+
+# Copie os arquivos necessários
+COPY go.mod go.sum ./
+
+COPY . .
+
+# Instale o migrate
+RUN go install -tags 'mysql' github.com/golang-migrate/migrate/v4/cmd/migrate@latest
+
+RUN sleep 2
+
+ENTRYPOINT [ "migrate" ]
