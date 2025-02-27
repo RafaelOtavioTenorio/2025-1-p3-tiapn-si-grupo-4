@@ -49,6 +49,15 @@ services:
         container_name: app
         volumes:
             - .:/app
+        develop:
+            watch:
+                - action: sync
+                  path: ./
+                  target: /app
+                  ignore:
+                    - data/
+                
+        
         depends_on:
             - migrate
         networks:
@@ -59,6 +68,8 @@ services:
             DATABASE_PASSWORD: ${DATABASE_PASSWORD}
             DATABASE_NAME: ${DATABASE_NAME}
             DATABASE_HOST: db # Alterado para db, o nome do container do banco.
+        
+
 
     mysqladmin:
         image: phpmyadmin/phpmyadmin:latest

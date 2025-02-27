@@ -8,6 +8,7 @@ import (
 	"github.com/ICEI-PUC-Minas-PCO-SI/2025-1-p3-tiapn-si-grupo-4/internal/impl/repositories"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
+	ginlogrus "github.com/toorop/gin-logrus"
 )
 
 type app struct {
@@ -29,7 +30,7 @@ func NewApp(httpServer *http.Server) *app {
 	}
 
 	return &app{
-		s: httpServer,
+		s:            httpServer,
 		helloHandler: handlers.NewHelloHandler(helloUsecase),
 	}
 }
@@ -38,8 +39,13 @@ func (a *app) Run(port string) error {
 
 	router := gin.New()
 
-	router.GET("/hello", a.helloHandler.Get)
+	router.Use(
+		ginlogrus.Logger(logrus.StandardLogger()),
+		gin.Recovery(),
+		gin.Logger(),
+	)
 
+	router.GET("/hello", a.helloHandler.Get)
 
 	a.s.Addr = ":" + port
 	a.s.Handler = router
