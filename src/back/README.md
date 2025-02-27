@@ -61,6 +61,8 @@ go mod tidy
 go install -tags 'mysql' github.com/golang-migrate/migrate/v4/cmd/migrate@latest
 ```
 
+
+
 - **sqlc**
 ```shell
 go install github.com/sqlc-dev/sqlc/cmd/sqlc@latest
