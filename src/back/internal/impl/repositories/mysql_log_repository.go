@@ -1,28 +1,29 @@
 package repositories
 
 import (
-	"database/sql"
+	"context"
 
-	"github.com/ICEI-PUC-Minas-PCO-SI/2025-1-p3-tiapn-si-grupo-4/domain/app/repositories"
+	"github.com/ICEI-PUC-Minas-PCO-SI/2025-1-p3-tiapn-si-grupo-4/internal/store/store"
 )
 
 type MySQLLogRepository struct {
-	db *sql.DB
+	q *store.Queries
 }
 
-// Log implements repositories.ILogRepository.
-func (r *MySQLLogRepository) Log(log string) {
-
-}
-
-func NewMysqlLogRepository(db *sql.DB) *MySQLLogRepository {
+func NewMysqlLogRepository(q *store.Queries)* MySQLLogRepository {
 	return &MySQLLogRepository{
-		db: db,
+		q: q,
 	}
 }
 
-func (r *MySQLLogRepository) GetLogs() []byte {
-	return []byte("hello world air rebuild")
-}
+func (r *MySQLLogRepository) GetLogs(ctx context.Context) []store.Log {
+	logs, err := r.q.GetLogs(ctx)
+	if err != nil {
+		return []store.Log{}
+	}
 
-var _ repositories.ILogRepository = &MySQLLogRepository{}
+	return logs
+}
+func (r *MySQLLogRepository) Log(ctx context.Context, log store.Log) (store.Log, error) {
+	return store.Log{}, nil
+}

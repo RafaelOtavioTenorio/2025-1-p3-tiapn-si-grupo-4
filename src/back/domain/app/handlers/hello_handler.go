@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"net/http"
+	"time"
 
 	"github.com/ICEI-PUC-Minas-PCO-SI/2025-1-p3-tiapn-si-grupo-4/domain/app/usecases"
 	"github.com/ICEI-PUC-Minas-PCO-SI/2025-1-p3-tiapn-si-grupo-4/domain/shared/responses"
@@ -9,35 +10,60 @@ import (
 )
 
 type HelloHandler struct {
-	heloUsecase usecases.IHelloUsecase
+	helloUsecase usecases.IHelloUsecase
 }
 
 func NewHelloHandler(helloUsecase *usecases.HttpHelloUsecase) *HelloHandler {
 	return &HelloHandler{
-		heloUsecase: helloUsecase,
+		helloUsecase: helloUsecase,
 	}
 }
 
-// / Get godoc
-// / @Sumary Hello
-// @Description  Get Hello Message
+type logResponse struct {
+	ID         string    `json:"id"`
+	Servertime time.Time `json:"time"`
+	Log        string    `json:"log"`
+	Level      string    `json:"level"`
+	Source     *string   `json:"source,omitempty"`
+	CreatedAt  time.Time `json:"created_at"`
+}
+
+// Get godoc
+// @Summary Hello
+// @Description Get Hello Message
 // @Tags
 // @Accept       *
-// @Produce      text
-// @Param 		 *
-// @Success      200
+// @Produce      json
+// @Success      200 {object} responses.DefaultResponse[[]logResponse]
 // @Failure      400
 // @Failure      404
 // @Failure      500
 // @Router       / [get]
 func (h *HelloHandler) Get(c *gin.Context) {
+	// Obtém os logs do usecase
+	logs := h.helloUsecase.Run(c)
 
-	message := h.heloUsecase.Run()
+	// Converte de store.Log para logResponse
+	var responseLogs []logResponse
+	for _, log := range logs {
+		var source *string
+		if log.Source.Valid {
+			source = &log.Source.String
+		}
 
-	c.JSON(http.StatusOK, &responses.DefaultResponse[string]{
-		Message: message,
-		Data:    message,
+		responseLogs = append(responseLogs, logResponse{
+			ID:         log.ID,
+			Servertime: log.Servertime,
+			Log:        log.Log,
+			Level:      log.Level,
+			Source:     source,
+			CreatedAt:  log.CreatedAt,
+		})
+	}
+
+	// Retorna a resposta JSON
+	c.JSON(http.StatusOK, &responses.DefaultResponse[[]logResponse]{
+		Message: "Logs recuperados com sucesso",
+		Data:    responseLogs,
 	})
-
-	return
 }

@@ -1,6 +1,3 @@
---- :name GetUsuario
+-- name: GetLogs :many
 
-select * from users returning (id);
-
--- GetReceitas
-select * from receitas
+select * from logs;
