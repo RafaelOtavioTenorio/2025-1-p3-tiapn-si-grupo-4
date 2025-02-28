@@ -13,7 +13,7 @@ Uma plataforma de healthcare para todas as pessoas portadoras da doença Diabete
 * Bernardo Garcia Marques
 * Felipe Claver Diniz
 * Ivo Augusto Neves Dalcin
-* João Pedro Rafael Santos Silva
+* João Pedro Rafael Santos Silva 
 * Rafael Otavio Tenorio
 * Yuri Zocoli Silva
 
