@@ -8,19 +8,17 @@ Apresente uma visão geral do que será abordado nesta parte do documento, enume
 
 ## Personas
 
-Exemplo: _Pedro Paulo tem 26 anos, é arquiteto recém-formado e autônomo. Pensa em se desenvolver profissionalmente por meio de um mestrado fora do país, pois adora viajar, é solteiro e sempre quis fazer um intercâmbio. Está buscando uma agência que o ajude a encontrar universidades na Europa que aceitem alunos estrangeiros._
+#1: Giovanna tem 19 anos , trabalha como técnica de farmácia e cursa fisioterapia. Portadora de diabetes tipo 1 (insulinódependant) desde 8 anos de idade. Busca melhorar seus hábitos de vida, aprendendo melhor quanto de insulina reguladora aplicar antes de comer. E precisa de uma plataforma para isto.
 
-Enumere e detalhe as personas da sua solução. Para tanto, baseie-se tanto nos documentos disponibilizados na disciplina e/ou nos seguintes links:
+#2: Isabelle, de 19 anos, é atendente de supermercado e filha única. Ela possui casos de diabetes tipo 2 na família, tanto por parte do pai quanto por parte da mãe, e eles não a têm. Isabelle se preocupa e tem dúvidas se está predisposta a ter diabetes e quais cuidados deve tomar para não adquiri-la. Ela faz o que pode para contribuir com a renda em casa, evita ao máximo ficar doente para não trazer muitos gastos e, como ficou sabendo do caso na família, está em busca de auxílio.
 
-> **Links úteis**:
-> - [Rock content](https://rockcontent.com/blog/personas/)
-> - [Hotmart](https://blog.hotmart.com/pt-br/como-criar-persona-negocio/)
-> - [O que é persona?](https://resultadosdigitais.com.br/blog/persona-o-que-e/)
-> - [Persona x público-alvo](https://flammo.com.br/blog/persona-e-publico-alvo-qual-a-diferenca/)
-> - [Mapa de empatia](https://resultadosdigitais.com.br/blog/mapa-da-empatia/)
-> - [Mapa de stalkeholders](https://www.racecomunicacao.com.br/blog/como-fazer-o-mapeamento-de-stakeholders/)
->
-Lembre-se que você deve ser enumerar e descrever precisamente e personalizada todos os clientes ideais que sua solução almeja.
+#3: Ana, 38 anos, Profissão: Nutricionista, portadora de Diabetes Tipo 2, é uma pessoa ativa. Ela trabalha em um consultório de nutrição, gosta de cozinhar refeições saudáveis em casa e pratica pilates regularmente. Procura gerenciar sua ingestão de carboidratos de forma eficaz para manter níveis estáveis de glicose no sangue e melhorar sua saúde a longo prazo.
+
+#4: Augusto, 23 anos, estudante de engenharia e irmão do Lucas, uma criança de 12 anos que sofre com sobrepeso e diabetes tipo 2. Augusto é o responsável pelo irmão em grande parte do tempo e está sempre em busca de auxiliar a mãe no máximo possível cuidando do pequeno. Se preocupa em levar o irmão ao médico uma vez por mês, preparar suas refeições e monitorar as atividades físicas do irmão, Augusto está sempre atrás de dicas e artigos para executar corretamente o controle glicemico e hormonal do irmão, além de zelar pela nutrição e perda de peso, já que se tratado corretamente, o caso de Lucas pode regredir bastante.
+
+#5: Rafael, 25 anos, estudante de medicina da USP, buscava um tema relevante para seu trabalho final da faculdade. Tendo sempre muito interesse na área de endocrinologia e suas complexidades, deu ênfase ao estudo da diabetes.
+
+#6: Luciano 50 anos tem dificuldades de relacionar apesar da rotina com a diabete tem no caso e de variação de glicemia constantes Luciano precisa se organizar para criar uma rotina de cuidados com a diabete, na sua alimentação e na aplicação da insulina.
 
 ## Histórias de usuários
 
