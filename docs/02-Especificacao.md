@@ -24,51 +24,35 @@ Com base na análise das personas, foram identificadas as seguintes histórias d
 |Augusto|Encontrar dicas e artigos para controle glicêmico e hormonal do meu irmão|Auxiliar nos cuidados com ele, garantindo nutrição e controle do peso para reverter a condição|
 |Rafael|Pesquisar sobre diabetes para meu trabalho final de faculdade|Aprofundar meus conhecimentos na área de endocrinologia e suas complexidades|
 
-
-Apresente aqui as histórias de usuários que são relevantes para o projeto da sua solução. As histórias de usuários consistem em uma ferramenta poderosa para a compreensão e elicitação dos requisitos funcionais e não funcionais da sua aplicação. Se possível, agrupe as histórias de usuários por contexto, para facilitar consultas recorrentes a esta parte do documento.
-
-> **Links úteis**:
-> - [Histórias de usuários com exemplos e template](https://www.atlassian.com/br/agile/project-management/user-stories)
-> - [Como escrever boas histórias de usuário (user stories)](https://medium.com/vertice/como-escrever-boas-users-stories-hist%C3%B3rias-de-usu%C3%A1rios-b29c75043fac)
-> - [User stories: requisitos que humanos entendem](https://www.luiztools.com.br/post/user-stories-descricao-de-requisitos-que-humanos-entendem/)
-> - [Histórias de usuários: mais exemplos](https://www.reqview.com/doc/user-stories-example.html)
-> - [9 common user story mistakes](https://airfocus.com/blog/user-story-mistakes/)
-
 ## Requisitos
 
-As tabelas a seguir apresentam os requisitos funcionais e não funcionais que detalham o escopo do projeto. Para determinar a prioridade dos requisitos, aplique uma técnica de priorização e detalhe como essa técnica foi aplicada.
+As tabelas que se seguem apresentam os requisitos funcionais e não funcionais que detalham o escopo do projeto.
 
-### Requisitos funcionais
+### Requisitos Funcionais
 
-|ID    | Descrição do Requisito  | Prioridade |
-|------|-----------------------------------------|----|
-|RF-001| Permitir que o usuário cadastre tarefas | ALTA | 
-|RF-002| Emitir um relatório de tarefas no mês   | MÉDIA |
+|ID    | Descrição do Requisito  | Prioridade | 
+|------|-----------------------------------------|----| ----|
+|RF-001| Permitir que o usuário se cadastre no site | ALTA | 
+|RF-002| Permitir que o usuário faça login na plataforma   | ALTA | 
+|RF-003| Os usuários podem registrar suas refeições, incluindo alimentos consumidos, quantidade e horário   | ALTA | 
+|RF-004| Alterar, Adicionar e Remover alimentos de sua refeição | ALTA | 
+|RF-005| Cálculo de bolus alimentar e bolus de correção e sua somatória | ALTA |
+|RF-006| A aplicação fornece dicas personalizadas com base nas informações do usuário | MÉDIA |
+|RF-007| Pesquisar alimentos do site/app | ALTA |Bernardo Garcia e Felipe claver  |
+|RF-008| Interação entre os usuários do site | ALTA |
+|RF-009| Avaliação entre os usuários do site | ALTA |
+|RF-010| Opiniões entre os usuários do site | ALTA |
 
-### Requisitos não funcionais
+
+### Requisitos não Funcionais
 
 |ID     | Descrição do Requisito  |Prioridade |
 |-------|-------------------------|----|
-|RNF-001| O sistema deve ser responsivo para rodar em dispositivos móveis | MÉDIA | 
-|RNF-002| Deve processar as requisições do usuário em no máximo 3 segundos |  BAIXA | 
-
-Com base nas histórias de usuários, enumere os requisitos da sua solução. Classifique esses requisitos em dois grupos:
-
-- [Requisitos funcionais
- (RF)](https://pt.wikipedia.org/wiki/Requisito_funcional):
- correspondem a uma funcionalidade que deve estar presente na
-  plataforma (ex: cadastro de usuário).
-- [Requisitos não funcionais
-  (RNF)](https://pt.wikipedia.org/wiki/Requisito_n%C3%A3o_funcional):
-  correspondem a uma característica técnica, seja de usabilidade,
-  desempenho, confiabilidade, segurança ou outro (ex: suporte a
-  dispositivos iOS e Android).
-
-Lembre-se de que cada requisito deve corresponder a uma e somente uma característica-alvo da sua solução. Além disso, certifique-se de que todos os aspectos capturados nas histórias de usuários foram cobertos.
-
-> **Links úteis**:
-> - [O que são requisitos funcionais e requisitos não funcionais?](https://codificar.com.br/requisitos-funcionais-nao-funcionais/)
-> - [Entenda o que são requisitos de software, a diferença entre requisito funcional e não funcional, e como identificar e documentar cada um deles](https://analisederequisitos.com.br/requisitos-funcionais-e-requisitos-nao-funcionais-o-que-sao/)
+|RNF-001| A Aplicação vai rodar o tempo todo | ALTA |
+|RNF-002| Deve processar requisições do usuário em no máximo 3s |  BAIXA |
+|RNF-003| Vai armazenar os dados do usuário | ALTA |
+|RNF-004| Exibir os conteúdos a partir dos dados do usuário | ALTA |
+|RNF-005| Carregar tela de aplicação no menor tempo possível | ALTA |
 
 ## Restrições
 
