@@ -21,7 +21,7 @@ Com base na análise das personas, foram identificadas as seguintes histórias d
 |EU COMO |PRECISO |PARA |
 |--------------------|-------------------------------------|----------------------------------------|
 |Giovanna|Aprender quanto de insulina reguladora aplicar antes de comer|Melhorar seus hábitos de vida e manter um melhor controle glicêmico|
-|Augusto|encontrar dicas e artigos para controle glicêmico e hormonal do meu irmão|Auxiliar nos cuidados com ele, garantindo nutrição e controle do peso para reverter a condição|
+|Augusto|Encontrar dicas e artigos para controle glicêmico e hormonal do meu irmão|Auxiliar nos cuidados com ele, garantindo nutrição e controle do peso para reverter a condição|
 |Rafael|Pesquisar sobre diabetes para meu trabalho final de faculdade|Aprofundar meus conhecimentos na área de endocrinologia e suas complexidades|
 
 
