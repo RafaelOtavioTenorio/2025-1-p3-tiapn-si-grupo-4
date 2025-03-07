@@ -24,10 +24,10 @@ Apresente uma visão geral do que será abordado nesta parte do documento, enume
 
 Com base na análise das personas, foram identificadas as seguintes histórias de usuários:
 
-|EU COMO... `PERSONA`| QUERO/PRECISO ... `FUNCIONALIDADE` |PARA ... `MOTIVO/VALOR`                 |
-|--------------------|------------------------------------|----------------------------------------|
-|Usuário do sistema  | Registrar minhas tarefas           | Não esquecer de fazê-las               |
-|Administrador       | Alterar permissões                 | Permitir que possam administrar contas |
+|EU COMO |PRECISO |PARA |
+|--------------------|-------------------------------------|----------------------------------------|
+|Estudante   | Registrar minhas tarefas            | Não esquecer de fazê-las               |
+|Portadora de diabtes          | Alterar permissões                  | Permitir que possam administrar contas |
 
 Apresente aqui as histórias de usuários que são relevantes para o projeto da sua solução. As histórias de usuários consistem em uma ferramenta poderosa para a compreensão e elicitação dos requisitos funcionais e não funcionais da sua aplicação. Se possível, agrupe as histórias de usuários por contexto, para facilitar consultas recorrentes a esta parte do documento.
 
