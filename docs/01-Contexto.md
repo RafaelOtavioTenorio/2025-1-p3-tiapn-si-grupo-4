@@ -9,10 +9,6 @@ O nosso propósito é disponibilizar aos usuários do sistema ferramentas para a
 informações essenciais sobre o assunto, permitindo também o cálculo dos níveis ideais de glicose a serem mantidos.
 
 ## Cliente 
-Nesta seção, devem ser apresentadas informações essenciais sobre o cliente (parceiro) para garantir um entendimento mais preciso do projeto como uma iniciativa extensionista.  
-
-Recomenda-se incluir dados como missão, visão e valores da organização, além de seu ramo de atuação, porte, nicho de mercado e principais desafios enfrentados. Também é relevante fornecer informações sobre sua localização, histórico, impacto social e possíveis demandas específicas. Quanto mais detalhadas forem essas informações, mais embasada será a análise do contexto, permitindo uma abordagem estratégica e alinhada às necessidades do cliente.
-
 O Hospital das Clínicas da UFMG, administrado pela Empresa Brasileira de Serviços Hospitalares (EBSERH), é um hospital universitário, público e geral que realiza atividades de ensino, pesquisa e assistência em saúde. Integrado ao SUS, é referência estadual no atendimento a patologias de média e alta complexidade. Tem como visão "Consolidar-se como Hospital Universitário Público Federal de excelência em assistência à saúde, ensino, pesquisa e inovação, a serviço dos usuários do SUS", e como visão "Saúde, ensino, pesquisa e inovação a serviço da vida e do SUS".
 
 ## Problema
