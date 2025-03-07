@@ -42,7 +42,7 @@ Com base na análise das personas, foram identificadas as seguintes histórias d
 
 |EU COMO |PRECISO |PARA |
 |--------------------|-------------------------------------|----------------------------------------|
-|Rafael|Pesquisar sobre diabetes para meu trabalho final de faculdade|aprofundar meus conhecimentos na área de endocrinologia e suas complexidades|
+|Rafael|Pesquisar sobre diabetes para meu trabalho final de faculdade|Aprofundar meus conhecimentos na área de endocrinologia e suas complexidades|
 
 |EU COMO |PRECISO |PARA |
 |--------------------|-------------------------------------|----------------------------------------|
