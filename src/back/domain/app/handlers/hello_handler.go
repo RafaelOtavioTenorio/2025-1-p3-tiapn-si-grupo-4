@@ -63,7 +63,7 @@ func (h *HelloHandler) Get(c *gin.Context) {
 
 	// Retorna a resposta JSON
 	c.JSON(http.StatusOK, &responses.DefaultResponse[[]logResponse]{
-		Message: "Logs recuperados com sucesso",
+		Message: "Logs recuperados com sucesso!",
 		Data:    responseLogs,
 	})
 }

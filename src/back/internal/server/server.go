@@ -16,14 +16,14 @@ import (
 	ginlogrus "github.com/toorop/gin-logrus"
 )
 
-type app struct {
+type App struct {
 	s *http.Server
 	q *store.Queries
 	//handlers
 	helloHandler *handlers.HelloHandler
 }
 
-func NewApp(httpServer *http.Server) *app {
+func NewApp(httpServer *http.Server) *App {
 
 	user := os.Getenv("DATABASE_USER")
 	pass := os.Getenv("DATABASE_PASSWORD")
@@ -58,14 +58,14 @@ func NewApp(httpServer *http.Server) *app {
 		LogRepository: logRepository,
 	}
 
-	return &app{
+	return &App{
 		s:            httpServer,
 		helloHandler: handlers.NewHelloHandler(helloUsecase),
 		q:            queries,
 	}
 }
 
-func (a *app) Run(port string) error {
+func (a *App) Run(port string) error {
 
 	router := gin.New()
 
@@ -77,6 +77,8 @@ func (a *app) Run(port string) error {
 
 	//setuphandlers
 	router.GET("/hello", a.helloHandler.Get)
+
+	//setup server
 
 	a.s.Addr = ":" + port
 	a.s.Handler = router

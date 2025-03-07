@@ -25,5 +25,5 @@ func (r *MySQLLogRepository) GetLogs(ctx context.Context) []store.Log {
 	return logs
 }
 func (r *MySQLLogRepository) Log(ctx context.Context, log store.Log) (store.Log, error) {
-	return store.Log{}, nil
+	
 }
