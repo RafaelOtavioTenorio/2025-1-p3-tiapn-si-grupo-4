@@ -27,25 +27,10 @@ Com base na análise das personas, foram identificadas as seguintes histórias d
 |EU COMO |PRECISO |PARA |
 |--------------------|-------------------------------------|----------------------------------------|
 |Giovanna|Aprender quanto de insulina reguladora aplicar antes de comer|Melhorar seus hábitos de vida e manter um melhor controle glicêmico|
-
-|EU COMO |PRECISO |PARA |
-|--------------------|-------------------------------------|----------------------------------------|
 |Isabelle|Descobrir se estou predisposta a ter diabetes tipo 2 e quais cuidados devo tomar|Evitar desenvolver a doença e minimizar impactos financeiros na família|
-
-|EU COMO |PRECISO |PARA |
-|--------------------|-------------------------------------|----------------------------------------|
 |Ana|Gerenciar melhor minha ingestão de carboidratos|Manter níveis estáveis de glicose no sangue e melhorar minha saúde a longo prazo|
-
-|EU COMO |PRECISO |PARA |
-|--------------------|-------------------------------------|----------------------------------------|
 |Augusto|Encontrar dicas e artigos para controle glicêmico e hormonal do meu irmão|Auxiliar nos cuidados com ele, garantindo nutrição e controle do peso para reverter a condição|
-
-|EU COMO |PRECISO |PARA |
-|--------------------|-------------------------------------|----------------------------------------|
 |Rafael|Pesquisar sobre diabetes para meu trabalho final de faculdade|Aprofundar meus conhecimentos na área de endocrinologia e suas complexidades|
-
-|EU COMO |PRECISO |PARA |
-|--------------------|-------------------------------------|----------------------------------------|
 |Luciano|Criar uma rotina de cuidados com a diabetes, alimentação e aplicação de insulina|Melhorar minha qualidade de vida e estabilizar meus níveis glicêmicos|
 
 
