@@ -10,7 +10,7 @@ Apresente uma visão geral do que será abordado nesta parte do documento, enume
 
 #1: Giovanna tem 19 anos , trabalha como técnica de farmácia e cursa fisioterapia. Portadora de diabetes tipo 1 (insulinódependant) desde 8 anos de idade. Busca melhorar seus hábitos de vida, aprendendo melhor quanto de insulina reguladora aplicar antes de comer. E precisa de uma plataforma para isto.
 
-#2: Ana, 38 anos, Profissão: Nutricionista, portadora de Diabetes Tipo 2, é uma pessoa ativa. Ela trabalha em um consultório de nutrição, gosta de cozinhar refeições saudáveis em casa e pratica pilates regularmente. Procura gerenciar sua ingestão de carboidratos de forma eficaz para manter níveis estáveis de glicose no sangue e melhorar sua saúde a longo prazo.
+#2: Augusto, 23 anos, estudante de engenharia e irmão do Lucas, uma criança de 12 anos que sofre com sobrepeso e diabetes tipo 2. Augusto é o responsável pelo irmão em grande parte do tempo e está sempre em busca de auxiliar a mãe no máximo possível cuidando do pequeno. Se preocupa em levar o irmão ao médico uma vez por mês, preparar suas refeições e monitorar as atividades físicas do irmão, Augusto está sempre atrás de dicas e artigos para executar corretamente o controle glicemico e hormonal do irmão, além de zelar pela nutrição e perda de peso, já que se tratado corretamente, o caso de Lucas pode regredir bastante.
 
 #3: Rafael, 25 anos, estudante de medicina da USP, buscava um tema relevante para seu trabalho final da faculdade. Tendo sempre muito interesse na área de endocrinologia e suas complexidades, deu ênfase ao estudo da diabetes.
 
@@ -21,7 +21,7 @@ Com base na análise das personas, foram identificadas as seguintes histórias d
 |EU COMO |PRECISO |PARA |
 |--------------------|-------------------------------------|----------------------------------------|
 |Giovanna|Aprender quanto de insulina reguladora aplicar antes de comer|Melhorar seus hábitos de vida e manter um melhor controle glicêmico|
-|Ana|Gerenciar melhor minha ingestão de carboidratos|Manter níveis estáveis de glicose no sangue e melhorar minha saúde a longo prazo|
+|Augusto|encontrar dicas e artigos para controle glicêmico e hormonal do meu irmão|Auxiliar nos cuidados com ele, garantindo nutrição e controle do peso para reverter a condição|
 |Rafael|Pesquisar sobre diabetes para meu trabalho final de faculdade|Aprofundar meus conhecimentos na área de endocrinologia e suas complexidades|
 
 
