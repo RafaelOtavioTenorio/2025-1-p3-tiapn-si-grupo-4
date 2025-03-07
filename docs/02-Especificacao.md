@@ -10,15 +10,9 @@ Apresente uma visão geral do que será abordado nesta parte do documento, enume
 
 #1: Giovanna tem 19 anos , trabalha como técnica de farmácia e cursa fisioterapia. Portadora de diabetes tipo 1 (insulinódependant) desde 8 anos de idade. Busca melhorar seus hábitos de vida, aprendendo melhor quanto de insulina reguladora aplicar antes de comer. E precisa de uma plataforma para isto.
 
-#2: Isabelle, de 19 anos, é atendente de supermercado e filha única. Ela possui casos de diabetes tipo 2 na família, tanto por parte do pai quanto por parte da mãe, e eles não a têm. Isabelle se preocupa e tem dúvidas se está predisposta a ter diabetes e quais cuidados deve tomar para não adquiri-la. Ela faz o que pode para contribuir com a renda em casa, evita ao máximo ficar doente para não trazer muitos gastos e, como ficou sabendo do caso na família, está em busca de auxílio.
+#2: Ana, 38 anos, Profissão: Nutricionista, portadora de Diabetes Tipo 2, é uma pessoa ativa. Ela trabalha em um consultório de nutrição, gosta de cozinhar refeições saudáveis em casa e pratica pilates regularmente. Procura gerenciar sua ingestão de carboidratos de forma eficaz para manter níveis estáveis de glicose no sangue e melhorar sua saúde a longo prazo.
 
-#3: Ana, 38 anos, Profissão: Nutricionista, portadora de Diabetes Tipo 2, é uma pessoa ativa. Ela trabalha em um consultório de nutrição, gosta de cozinhar refeições saudáveis em casa e pratica pilates regularmente. Procura gerenciar sua ingestão de carboidratos de forma eficaz para manter níveis estáveis de glicose no sangue e melhorar sua saúde a longo prazo.
-
-#4: Augusto, 23 anos, estudante de engenharia e irmão do Lucas, uma criança de 12 anos que sofre com sobrepeso e diabetes tipo 2. Augusto é o responsável pelo irmão em grande parte do tempo e está sempre em busca de auxiliar a mãe no máximo possível cuidando do pequeno. Se preocupa em levar o irmão ao médico uma vez por mês, preparar suas refeições e monitorar as atividades físicas do irmão, Augusto está sempre atrás de dicas e artigos para executar corretamente o controle glicemico e hormonal do irmão, além de zelar pela nutrição e perda de peso, já que se tratado corretamente, o caso de Lucas pode regredir bastante.
-
-#5: Rafael, 25 anos, estudante de medicina da USP, buscava um tema relevante para seu trabalho final da faculdade. Tendo sempre muito interesse na área de endocrinologia e suas complexidades, deu ênfase ao estudo da diabetes.
-
-#6: Luciano 50 anos tem dificuldades de relacionar apesar da rotina com a diabete tem no caso e de variação de glicemia constantes Luciano precisa se organizar para criar uma rotina de cuidados com a diabete, na sua alimentação e na aplicação da insulina.
+#3: Rafael, 25 anos, estudante de medicina da USP, buscava um tema relevante para seu trabalho final da faculdade. Tendo sempre muito interesse na área de endocrinologia e suas complexidades, deu ênfase ao estudo da diabetes.
 
 ## Histórias de usuários
 
@@ -27,11 +21,8 @@ Com base na análise das personas, foram identificadas as seguintes histórias d
 |EU COMO |PRECISO |PARA |
 |--------------------|-------------------------------------|----------------------------------------|
 |Giovanna|Aprender quanto de insulina reguladora aplicar antes de comer|Melhorar seus hábitos de vida e manter um melhor controle glicêmico|
-|Isabelle|Descobrir se estou predisposta a ter diabetes tipo 2 e quais cuidados devo tomar|Evitar desenvolver a doença e minimizar impactos financeiros na família|
 |Ana|Gerenciar melhor minha ingestão de carboidratos|Manter níveis estáveis de glicose no sangue e melhorar minha saúde a longo prazo|
-|Augusto|Encontrar dicas e artigos para controle glicêmico e hormonal do meu irmão|Auxiliar nos cuidados com ele, garantindo nutrição e controle do peso para reverter a condição|
 |Rafael|Pesquisar sobre diabetes para meu trabalho final de faculdade|Aprofundar meus conhecimentos na área de endocrinologia e suas complexidades|
-|Luciano|Criar uma rotina de cuidados com a diabetes, alimentação e aplicação de insulina|Melhorar minha qualidade de vida e estabilizar meus níveis glicêmicos|
 
 
 Apresente aqui as histórias de usuários que são relevantes para o projeto da sua solução. As histórias de usuários consistem em uma ferramenta poderosa para a compreensão e elicitação dos requisitos funcionais e não funcionais da sua aplicação. Se possível, agrupe as histórias de usuários por contexto, para facilitar consultas recorrentes a esta parte do documento.
