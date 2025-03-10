@@ -35,6 +35,9 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 | RF-005  | Cálculo de bolus alimentar e bolus de correção e sua somatória | ALTA |
 | RF-006  | A aplicação fornece dicas personalizadas com base nas informações do usuário | MÉDIA |
 | RF-007  | Pesquisar alimentos do site/app | ALTA |
+| RF-008  | Interação entre os usuários do site | BAIXA |
+| RF-009  | Avaliação entre os usuários do site | BAIXA |
+| RF-010  | Opiniões entre os usuários do site | BAIXA |
 
 
 ### Requisitos não Funcionais
