@@ -36,8 +36,6 @@ Discuta como a configuração do projeto foi feita na ferramenta de versionament
 
 ###  Divisão de papéis
 
-> Apresente a divisão de papéis entre os membros do grupo em cada Sprint. O desejável é que, em cada Sprint, o aluno assuma papéis diferentes na equipe. Siga o modelo do exemplo abaixo:
-
 #### Sprint 1
 - _Scrum master_: AlunaX
 - Protótipos: AlunoY
@@ -52,18 +50,22 @@ Discuta como a configuração do projeto foi feita na ferramenta de versionament
 
 ###  Quadro de tarefas
 
-> Apresente a divisão de tarefas entre os membros do grupo e o acompanhamento da execução, conforme o exemplo abaixo.
-
 #### Sprint 1
 
-Atualizado em: 21/04/2024
+Atualizado em: 10/03/2025
 
 | Responsável   | Tarefa/Requisito | Iniciado em    | Prazo      | Status | Terminado em    |
 | :----         |    :----         |      :----:    | :----:     | :----: | :----:          |
-| AlunaX        | Introdução | 01/02/2024     | 07/02/2024 | ✔️    | 05/02/2024      |
-| AlunaZ        | Objetivos    | 03/02/2024     | 10/02/2024 | 📝    |                 |
-| AlunoY        | Histórias de usuário  | 01/01/2024     | 07/01/2005 | ⌛     |                 |
-| AlunoK        | Personas 1  |    01/01/2024        | 12/02/2005 | ❌    |       |
+| Felipe     | Contexto GitHub | 14/02/2025     | 13/03/2025 | ✔️    | 07/03/2025      |
+| Yuri       | Tópico Cliente do Contexto GitHub   | 14/02/2025     | 13/03/2025 | ✔️    |  07/03/2025               |
+| Bernardo     | Histórias de usuário  | 14/02/2025     | 07/02/2025 |  ✔️  |       07/03/2025          |
+| Bernardo     | Personas |    14/02/2025        | 13/03/2025 | ✔️   |  07/03/2025     |
+| Bernardo     | Requisitos funcionais |    14/02/2025        | 13/03/2025 | ✔️   |  07/03/2025     |
+| Bernardo     | Requisitos não-funcionais |    14/02/2025        | 13/03/2025 | ✔️   |  07/03/2025     |
+| Yuri     | Diagrama de casos de uso |    14/02/2025        | 13/03/2025 | ⌛    |       |
+
+
+❌  ⌛   📝 
 
 #### Sprint 2
 
