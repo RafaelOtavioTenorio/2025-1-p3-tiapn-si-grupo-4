@@ -58,7 +58,7 @@ Atualizado em: 10/03/2025
 | :----         |    :----         |      :----:    | :----:     | :----: | :----:          |
 | Felipe     | Contexto GitHub | 14/02/2025     | 13/03/2025 | ✔️    | 07/03/2025      |
 | Yuri       | Tópico Cliente do Contexto GitHub   | 14/02/2025     | 13/03/2025 | ✔️    |  07/03/2025               |
-| Bernardo     | Histórias de usuário  | 14/02/2025     | 07/02/2025 |  ✔️  |       07/03/2025          |
+| Bernardo     | Histórias de usuário  | 14/02/2025     | 13/03/2025 |  ✔️  |       07/03/2025          |
 | Bernardo     | Personas |    14/02/2025        | 13/03/2025 | ✔️   |  07/03/2025     |
 | Bernardo     | Requisitos funcionais |    14/02/2025        | 13/03/2025 | ✔️   |  07/03/2025     |
 | Bernardo     | Requisitos não-funcionais |    14/02/2025        | 13/03/2025 | ✔️   |  07/03/2025     |
