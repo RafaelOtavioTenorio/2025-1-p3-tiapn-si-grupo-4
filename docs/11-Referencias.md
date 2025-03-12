@@ -11,3 +11,7 @@
 - [https://Drauzio Varella Website](https://drauziovarella.uol.com.br).
 
 -  [https://Como calcular a dose de insulina](https://youtu.be/Dwu-wkg9crc?si=f7MAYRS-CIi7kqJO).
+
+- Knuth, D. E. (1984). The TEX Book. Addison-Wesley, 15th edition.
+
+- Smith, A. and Jones, B. (1999). On the complexity of computing. In Smith-Jones, A. B., editor, Advances in Computer Science, pages 555–566. Publishing Press.
