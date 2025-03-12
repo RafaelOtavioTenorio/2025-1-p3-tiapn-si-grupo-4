@@ -37,10 +37,12 @@ Discuta como a configuração do projeto foi feita na ferramenta de versionament
 ###  Divisão de papéis
 
 #### Sprint 1
-- _Scrum master_: AlunaX
-- Protótipos: AlunoY
-- Testes: AlunoK
-- Documentação: AlunaZ
+- _Scrum master_: Bernardo Garcia
+- Protótipos: Felipe
+- Testes: Ivo
+- Documentação: Yuri
+- Desenvolvedor _front-end_: Rafael
+- Desenvolvedor _back-end_: João Pedro
 
 #### Sprint 2
 - _Scrum master_: AlunaY
@@ -57,12 +59,15 @@ Atualizado em: 10/03/2025
 | Responsável   | Tarefa/Requisito | Iniciado em    | Prazo      | Status | Terminado em    |
 | :----         |    :----         |      :----:    | :----:     | :----: | :----:          |
 | Felipe     | Contexto GitHub | 14/02/2025     | 13/03/2025 | ✔️    | 07/03/2025      |
+| Felipe     | Relatório | 14/02/2025     | 13/03/2025 | 📝    |     |
 | Yuri       | Tópico Cliente do Contexto GitHub   | 14/02/2025     | 13/03/2025 | ✔️    |  07/03/2025               |
 | Bernardo     | Histórias de usuário  | 14/02/2025     | 13/03/2025 |  ✔️  |       07/03/2025          |
 | Bernardo     | Personas |    14/02/2025        | 13/03/2025 | ✔️   |  07/03/2025     |
 | Bernardo     | Requisitos funcionais |    14/02/2025        | 13/03/2025 | ✔️   |  07/03/2025     |
 | Bernardo     | Requisitos não-funcionais |    14/02/2025        | 13/03/2025 | ✔️   |  07/03/2025     |
 | Yuri     | Diagrama de casos de uso |    14/02/2025        | 13/03/2025 | 📝  |       |
+| Ivo     | Apresntação de slides |    14/02/2025        | 13/03/2025 | 📝  |       |
+| Rafael   | Setup Front-end |    14/02/2025        |    | 📝  |       |
 
 #### Sprint 2
 
