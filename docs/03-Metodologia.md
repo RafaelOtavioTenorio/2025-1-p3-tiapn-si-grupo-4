@@ -54,7 +54,7 @@ Discuta como a configuração do projeto foi feita na ferramenta de versionament
 
 #### Sprint 1
 
-Atualizado em: 10/03/2025
+Atualizado em: 12/03/2025
 
 | Responsável   | Tarefa/Requisito | Iniciado em    | Prazo      | Status | Terminado em    |
 | :----         |    :----         |      :----:    | :----:     | :----: | :----:          |
@@ -67,7 +67,9 @@ Atualizado em: 10/03/2025
 | Bernardo     | Requisitos não-funcionais |    14/02/2025        | 13/03/2025 | ✔️   |  07/03/2025     |
 | Yuri     | Diagrama de casos de uso |    14/02/2025        | 13/03/2025 | 📝  |       |
 | Ivo     | Apresntação de slides |    14/02/2025        | 13/03/2025 | 📝  |       |
-| Rafael   | Setup Front-end |    14/02/2025        |    | 📝  |       |
+| João   | Organização do Kanban |    14/02/2025        |  13/03/2025  | ✔️  |    07/03/2025    |
+| Rafael   | Preencheu as referências |    14/02/2025        |  13/03/2025  | ✔️  |    07/03/2025    |
+
 
 #### Sprint 2
 
@@ -116,8 +118,8 @@ Exemplo: os artefatos do projeto são desenvolvidos a partir de diversas platafo
 
 | Ambiente                            | Plataforma                         | Link de acesso                         |
 |-------------------------------------|------------------------------------|----------------------------------------|
-| Repositório de código fonte         | GitHub                             | http://....                            |
-| Documentos do projeto               | GitHub                             | http://....                            |
+| Repositório de código fonte         | GitHub                             | [http://2025-1-p3-tiapn-si-grupo-4](https://github.com/ICEI-PUC-Minas-PCO-SI/2025-1-p3-tiapn-si-grupo-4)|
+| Documentos do projeto               | GitHub                             | [http://2025-1-p3-tiapn-si-grupo-4/docs](https://github.com/ICEI-PUC-Minas-PCO-SI/2025-1-p3-tiapn-si-grupo-4/tree/main/docs)|
 | Projeto de interface                | Figma                              | http://....                            |
-| Gerenciamento do projeto            | GitHub Projects                    | http://....                            |
+| Gerenciamento do projeto            | GitHub Projects                    | [http://Kanban](https://github.com/orgs/ICEI-PUC-Minas-PCO-SI/projects/81/views/1)   |
 | Hospedagem                          | Vercel                             | http://....                            |
