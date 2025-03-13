@@ -1,51 +1,35 @@
 # Introdução
 
-Texto descritivo com a visão geral do projeto abordado. Inclui o contexto, o problema, os objetivos, a justificativa e o público-alvo do projeto. Visando contextualizar melhor o projeto e destacar sua importância para a disciplina, que é **extensionista**, acrescente todas as informações relevantes que julgar necessárias.
+Atualmente, o Brasil ocupa a quinta posição no ranking de países com maior incidência de diabetes no mundo, com 
+16,8 milhões de adultos afetados, ficando atrás apenas da China, Índia, Estados Unidos e Paquistão. A estimativa 
+aponta para um aumento na incidência da doença, que poderá atingir 21,5 milhões de casos até 2030, conforme dados 
+do Atlas do Diabetes da Federação Internacional de Diabetes (IDF).
+
+O nosso propósito é disponibilizar aos usuários do sistema ferramentas para a contagem de carboidratos, juntamente com 
+informações essenciais sobre o assunto, permitindo também o cálculo dos níveis ideais de glicose a serem mantidos.
 
 ## Cliente 
-Nesta seção, devem ser apresentadas informações essenciais sobre o cliente (parceiro) para garantir um entendimento mais preciso do projeto como uma iniciativa extensionista.  
-
-Recomenda-se incluir dados como missão, visão e valores da organização, além de seu ramo de atuação, porte, nicho de mercado e principais desafios enfrentados. Também é relevante fornecer informações sobre sua localização, histórico, impacto social e possíveis demandas específicas. Quanto mais detalhadas forem essas informações, mais embasada será a análise do contexto, permitindo uma abordagem estratégica e alinhada às necessidades do cliente.
+O Hospital das Clínicas da UFMG, administrado pela Empresa Brasileira de Serviços Hospitalares (EBSERH), é um hospital universitário, público e geral que realiza atividades de ensino, pesquisa e assistência em saúde. Integrado ao SUS, é referência estadual no atendimento a patologias de média e alta complexidade. Tem como visão "Consolidar-se como Hospital Universitário Público Federal de excelência em assistência à saúde, ensino, pesquisa e inovação, a serviço dos usuários do SUS", e como propósito "Saúde, ensino, pesquisa e inovação a serviço da vida e do SUS".
 
 ## Problema
-Aqui, a equipe deve fornecer uma descrição detalhada do problema a ser resolvido. Não é o momento adequado para abordar questões técnicas relacionadas ao desenvolvimento da aplicação. O objetivo é compreender e comunicar de maneira precisa qual é o desafio ou necessidade que motiva a criação da aplicação.
+A SBD (Sociedade Brasileira de Diabetes) e a comunidade médica responsável - endocrinologistas e pesquisadores - apontam o diagnóstico tardio e o tratamento inadequado como os principais impecilhos para melhoria do quadro da diabetes no país, e que estes problemas são oriundos da falta de informação por parte do enfermo e de seus familiares, bem como da sobrecarga da infraestrutura pública de saúde.
 
-Descreva também o contexto em que essa aplicação será usada, se  houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de fato existir, pois ainda não é a hora de apresentar requisitos detalhados ou projetos.
+Tais fatores corroboram para que os diabéticos não sejam bem acessorados nesta jornada e acabem adotando doses indiscriminadas de insulina, auto-medicação e a não-prática de hábitos cruciais ao diabético, como a atividade física, alimentação adequada e a realização recorrente de exames.
 
-O grupo pode optar por fazer uso de ferramentas como Design Thinking, que permite uma visão completa do problema.
-
-> **Links úteis**:
-> - [Objetivos, problema de pesquisa e justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
-> - [Matriz certezas, suposições e dúvidas](https://medium.com/educa%C3%A7%C3%A3o-fora-da-caixa/matriz-certezas-suposi%C3%A7%C3%B5es-e-d%C3%BAvidas-fa2263633655)
-> - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
+Nesta ótica, faz-se necessário a o fornecimento de apoio médico e informacional para promover maior conscientização sobre o tratamento, prevenção e diagnóstico da Diabetes, afim de reduzir os números da doença no país e incentivar a melhoria da qualidade de vida.
 
 ## Objetivos
 
-Aqui, você deve descrever os objetivos do trabalho, indicando que o objetivo geral é desenvolver um software para solucionar o problema apresentado acima.
-
-Além disso, apresente alguns (pelo menos 3) objetivos específicos, dependendo de onde você pretende concentrar sua prática investigativa ou como deseja aprofundar seu trabalho.
- 
-> **Links úteis**:
-> - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
+O propósito da organização consiste em prestar assistência às pessoas que necessitam exercer controle sobre sua taxa de insulina, visando a um gerenciamento mais abrangente e a minimização de potenciais crises iminentes. Almeja-se proporcionar um maior conforto ao indivíduo, permitindo que ele se concentre integralmente em sua qualidade de vida. Adicionalmente, percebe-se a necessidade e a responsabilidade de educar indivíduos acerca deste tema de extrema gravidade, o diabetes mellitus, adotando medidas preventivas e proativas para o eficaz manejo desta condição.
 
 ## Justificativa
 
-Descreva a importância ou a motivação para trabalhar com esta aplicação que você escolheu. Indique as razões pelas quais você escolheu seus objetivos específicos ou as razões para aprofundar em certos aspectos do software.
+O projeto nasceu com a análise de um problema simples, porem de demasiada importância, a dificuldade do diabético de calcular quanto de carboidratos tem em cada alimento para a aplicação equivalente de insulina para o equilíbrio da glicose, além do combate da desinformação sobre o assunto.
 
-O grupo de trabalho pode fazer uso de questionários, entrevistas e dados estatísticos, que podem ser apresentados, com o objetivo de esclarecer detalhes do problema que será abordado pelo grupo.
+A aplicação permitira o cálculo em tempo real de carboidratos em cada alimento e não só isso, ela entregara usuário informações e procedimentos que contribuam e facilitam a vida do diabético.
 
-> **Links úteis**:
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
+## Público-Alvo
 
-## Público-alvo
+Indivíduos portadores de Diabetes tipo 1 e tipo 2, de todas as idades, assim como aqueles que têm familiares e amigos com Diabetes, encontram neste conteúdo um recurso valioso. Incluem-se aqui pessoas que buscam melhorar sua qualidade de vida através do cálculo para aplicação de insulina e que desejam obter dicas para aprimorar seus níveis glicêmicos. Não obstante, esta aplicação é relevante para pessoas não diabéticas que almejam otimizar seus níveis glicêmicos, visando evitar o desenvolvimento futuro da doença.
 
-Descreva quem serão as pessoas que usarão a sua aplicação indicando os diferentes perfis. O objetivo aqui não é definir quem serão os clientes ou quais serão os papéis dos usuários na aplicação. A ideia é, dentro do possível, conhecer um pouco mais sobre o perfil dos usuários: conhecimentos prévios, relação com a tecnologia, relações
-hierárquicas, etc.
-
-Adicione informações sobre o público-alvo por meio de uma descrição textual, diagramas de personas e mapa de stakeholders.
-
-> **Links úteis**:
-> - [Público-alvo](https://blog.hotmart.com/pt-br/publico-alvo/)
-> - [Como definir o público-alvo](https://exame.com/pme/5-dicas-essenciais-para-definir-o-publico-alvo-do-seu-negocio/)
-> - [Público-alvo: o que é, tipos, como definir seu público e exemplos](https://klickpages.com.br/blog/publico-alvo-o-que-e/)
-> - [Qual a diferença entre público-alvo e persona?](https://rockcontent.com/blog/diferenca-publico-alvo-e-persona/)
+Também abrange estudantes e acadêmicos da área de saúde, bem como qualquer indivíduo que busque informações complementares sobre a Diabetes por meio de texto ou vídeo. Seja por curiosidade ou com fins didáticos, essa fonte é uma ferramenta útil para orientar-se sobre o assunto. Assim, estudantes e acadêmicos da área da saúde encontram aqui um recurso para aprofundar sua compreensão sobre o tema.
