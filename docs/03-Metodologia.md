@@ -54,21 +54,21 @@ Discuta como a configuração do projeto foi feita na ferramenta de versionament
 
 #### Sprint 1
 
-Atualizado em: 12/03/2025
+Atualizado em: 13/03/2025
 
 | Responsável   | Tarefa/Requisito | Iniciado em    | Prazo      | Status | Terminado em    |
 | :----         |    :----         |      :----:    | :----:     | :----: | :----:          |
 | Felipe     | Contexto GitHub | 14/02/2025     | 13/03/2025 | ✔️    | 07/03/2025      |
-| Felipe     | Relatório | 14/02/2025     | 13/03/2025 | 📝    |     |
+| Felipe     | Relatório | 14/02/2025     | 13/03/2025 | ✔️    |     | 13/03/2025 
 | Yuri       | Tópico Cliente do Contexto GitHub   | 14/02/2025     | 13/03/2025 | ✔️    |  07/03/2025               |
 | Bernardo     | Histórias de usuário  | 14/02/2025     | 13/03/2025 |  ✔️  |       07/03/2025          |
 | Bernardo     | Personas |    14/02/2025        | 13/03/2025 | ✔️   |  07/03/2025     |
 | Bernardo     | Requisitos funcionais |    14/02/2025        | 13/03/2025 | ✔️   |  07/03/2025     |
 | Bernardo     | Requisitos não-funcionais |    14/02/2025        | 13/03/2025 | ✔️   |  07/03/2025     |
-| Yuri     | Diagrama de casos de uso |    14/02/2025        | 13/03/2025 | 📝  |       |
-| Ivo     | Apresntação de slides |    14/02/2025        | 13/03/2025 | 📝  |       |
+| Yuri     | Diagrama de casos de uso |    14/02/2025        | 13/03/2025 | ✔️  |  13/03/2025      |
+| Ivo     | Apresntação de slides |    14/02/2025        | 13/03/2025 | ✔️  |  13/03/2025      |
 | João   | Organização do Kanban |    14/02/2025        |  13/03/2025  | ✔️  |    07/03/2025    |
-| Rafael   | Preencheu as referências |    14/02/2025        |  13/03/2025  | ✔️  |    07/03/2025    |
+| Rafael   | Preencheu as referências |    14/02/2025        |  13/03/2025  | ✔️  |    12/03/2025    |
 
 
 #### Sprint 2
