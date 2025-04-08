@@ -60,8 +60,8 @@ Com base na análise das personas, foram identificadas as seguintes histórias d
 |--------------------|-------------------------------------|----------------------------------------|
 |Gestora de Produção|criar e acompanhar rotinas de produção com subtarefas e insumos|garantir que minha equipe siga os procedimentos corretamente e não falte materiais.|
 |Técnico de manutenção|ter acesso às rotinas com seus passos e insumos listados|não atrasar a execução das tarefas e garantir que tudo esteja disponível quando eu começar|
-|Analista de Qualidade|acessar o histórico das execuções de rotinas|Aprofundar meus conhecimentos na área de endocrinologia e suas complexidades|
-|Gerente de TI|Cadastrar rotinas com frequência definida (diária, semanal, etc.)|validar se os processos foram cumpridos conforme o padrão e gerar relatórios para auditoria|
+|Analista de Qualidade|acessar o histórico das execuções de rotinas|aprofundar meus conhecimentos na área de endocrinologia e suas complexidades|
+|Gerente de TI|cadastrar rotinas com frequência definida (diária, semanal, etc.)|validar se os processos foram cumpridos conforme o padrão e gerar relatórios para auditoria|
 |Assistente administrativa|acompanhar várias instâncias da mesma rotina (como “fechamento financeiro mensal”)|manter tudo organizado e saber o que já foi feito em cada mês|
 |Diretor de operações|visualizar o status das rotinas em andamento com filtros por responsáveis e categorias|identificar problemas operacionais rapidamente e agir de forma estratégica|
 
