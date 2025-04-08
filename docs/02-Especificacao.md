@@ -11,10 +11,46 @@ As personas representam perfis fictícios baseados em usuários reais que podem 
     Ocupação: Coordenadora de produção em uma indústria têxtil
 
     Contexto: Paula coordena uma equipe de 30 operadores e precisa garantir que todas as rotinas de produção ocorram no prazo e sem erros.
+   
+ 2. Lucas – Técnico de Manutenção
 
-#2: Augusto, 23 anos, estudante de engenharia e irmão do Lucas, uma criança de 12 anos que sofre com sobrepeso e diabetes tipo 2. Augusto é o responsável pelo irmão em grande parte do tempo e está sempre em busca de auxiliar a mãe no máximo possível cuidando do pequeno. Se preocupa em levar o irmão ao médico uma vez por mês, preparar suas refeições e monitorar as atividades físicas do irmão, Augusto está sempre atrás de dicas e artigos para executar corretamente o controle glicemico e hormonal do irmão, além de zelar pela nutrição e perda de peso, já que se tratado corretamente, o caso de Lucas pode regredir bastante.
+    Idade: 28 anos
 
-#3: Rafael, 25 anos, estudante de medicina da USP, buscava um tema relevante para seu trabalho final da faculdade. Tendo sempre muito interesse na área de endocrinologia e suas complexidades, deu ênfase ao estudo da diabetes.
+    Ocupação: Técnico de manutenção em uma fábrica de alimentos
+
+    Contexto: Lucas executa manutenções programadas e precisa seguir checklists rigorosos. Ele reclama que perde tempo buscando insumos no almoxarifado.
+
+3. Fernanda – Analista de Qualidade
+
+    Idade: 35 anos
+
+    Ocupação: Responsável por auditorias e controle de qualidade
+
+    Contexto: Fernanda precisa garantir que todas as etapas das rotinas estejam sendo seguidas e documentadas corretamente para fins de certificação.
+
+4. Bruno – Gerente de TI
+
+    Idade: 39 anos
+
+    Ocupação: Gerente de tecnologia de uma empresa de logística
+
+    Contexto: Bruno quer automatizar tarefas repetitivas e padronizar processos da equipe técnica com rotinas digitais.
+
+5. Camila – Assistente Administrativa
+
+    Idade: 25 anos
+
+    Ocupação: Auxiliar administrativa em escritório de engenharia
+
+    Contexto: Camila organiza a rotina de pagamentos, agendamento de reuniões e controle de insumos para o escritório, mas não tem uma ferramenta centralizada.
+
+6. Rafael – Diretor de Operações
+
+    Idade: 50 anos
+
+    Ocupação: Diretor de operações em uma rede de franquias
+
+    Contexto: Rafael quer acompanhar, de forma macro, a execução das rotinas nas unidades franqueadas e verificar onde há gargalos.
 
 ## Histórias de usuários
 
@@ -23,8 +59,11 @@ Com base na análise das personas, foram identificadas as seguintes histórias d
 |EU COMO |PRECISO |PARA |
 |--------------------|-------------------------------------|----------------------------------------|
 |Gestora de Produção|criar e acompanhar rotinas de produção com subtarefas e insumos|garantir que minha equipe siga os procedimentos corretamente e não falte materiais.|
-|Augusto|Encontrar dicas e artigos para controle glicêmico e hormonal do meu irmão|Auxiliar nos cuidados com ele, garantindo nutrição e controle do peso para reverter a condição|
-|Rafael|Pesquisar sobre diabetes para meu trabalho final de faculdade|Aprofundar meus conhecimentos na área de endocrinologia e suas complexidades|
+|Técnico de manutenção|ter acesso às rotinas com seus passos e insumos listados|não atrasar a execução das tarefas e garantir que tudo esteja disponível quando eu começar|
+|Analista de Qualidade|acessar o histórico das execuções de rotinas|Aprofundar meus conhecimentos na área de endocrinologia e suas complexidades|
+|Gerente de TI|Cadastrar rotinas com frequência definida (diária, semanal, etc.)|validar se os processos foram cumpridos conforme o padrão e gerar relatórios para auditoria|
+|Assistente administrativa|acompanhar várias instâncias da mesma rotina (como “fechamento financeiro mensal”)|manter tudo organizado e saber o que já foi feito em cada mês|
+|Diretor de operações|visualizar o status das rotinas em andamento com filtros por responsáveis e categorias|identificar problemas operacionais rapidamente e agir de forma estratégica|
 
 ## Requisitos
 
