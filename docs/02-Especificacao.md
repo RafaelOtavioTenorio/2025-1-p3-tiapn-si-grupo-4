@@ -91,27 +91,27 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 | ID      | Descrição do Requisito | Prioridade |
 |---------|------------------------|------------|
-| RF-001  | Permitir que o usuário se cadastre no site | ALTA |
+| RF-001  | Permitir que o usuário se cadastre no sistema| ALTA |
 | RF-002  | Permitir que o usuário faça login na plataforma | ALTA |
-| RF-003  | Os usuários podem registrar suas refeições, incluindo alimentos consumidos, quantidade e horário | ALTA |
-| RF-004  | Alterar, Adicionar e Remover alimentos de sua refeição | ALTA |
-| RF-005  | Cálculo de bolus alimentar e bolus de correção e sua somatória | ALTA |
-| RF-006  | A aplicação fornece dicas personalizadas com base nas informações do usuário | MÉDIA |
-| RF-007  | Pesquisar alimentos do site/app | ALTA |
-| RF-008  | Interação entre os usuários do site | BAIXA |
-| RF-009  | Avaliação entre os usuários do site | BAIXA |
-| RF-010  | Opiniões entre os usuários do site | BAIXA |
+| RF-003  | Permitir o cadastro de rotinas com nome, descrição, frequência e categorias | ALTA |
+| RF-004  | Permitir a instanciação de múltiplas execuções de uma mesma rotina | ALTA |
+| RF-005  | Permitir a criação e organização de passos/subrotinas dentro de uma rotina | ALTA |
+| RF-006  | Permitir que cada passo tenha checklists e status individual (pendente, em andamento, concluído) | MÉDIA |
+| RF-007  | Associar insumos a passos e verificar sua disponibilidade em estoque | BAIXA |
+| RF-008  | Permitir solicitação de insumos automaticamente ao setor responsável quando não houver disponibilidade | BAIXA |
+| RF-009  | Visualizar rotinas em execução com filtros por responsável, status, tipo e datas| BAIXA |
+| RF-010  | Gerar histórico de execuções e relatórios de tempo e insumos utilizados | MÉDIA |
 
 
 ### Requisitos não Funcionais
 
 |ID     | Descrição do Requisito  |Prioridade |
 |-------|-------------------------|----|
-|RNF-001| A Aplicação vai rodar o tempo todo | ALTA |
+|RNF-001| A aplicação deve estar disponível 24 horas por dia | ALTA |
 |RNF-002| Deve processar requisições do usuário em no máximo 3s |  BAIXA |
-|RNF-003| Vai armazenar os dados do usuário | ALTA |
-|RNF-004| Exibir os conteúdos a partir dos dados do usuário | ALTA |
-|RNF-005| Carregar tela de aplicação no menor tempo possível | ALTA |
+|RNF-003| O sistema deve armazenar dados do usuário | ALTA |
+|RNF-004| O sistema deve exibir o conteúdo com base nas permissões e papéis dos usuários | ALTA |
+|RNF-005| O sistema deve ser responsivo e funcionar em dispositivos móveis e desktops | ALTA |
 
 ## Restrições
 
