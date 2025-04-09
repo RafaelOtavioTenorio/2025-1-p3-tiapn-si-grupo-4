@@ -1,44 +1,59 @@
-
 # Introdução
 
-Empresas de diversos setores enfrentam desafios diários na organização de suas tarefas, alocação de recursos e acompanhamento do progresso das atividades. A ausência de ferramentas adequadas para a gestão de rotinas pode resultar em desperdício de tempo, falhas de comunicação e baixa produtividade. 
+Empresas de todos os portes enfrentam desafios relacionados à organização de tarefas, repetição de processos, controle de insumos e padronização de procedimentos internos. Em muitos casos, essas rotinas são geridas manualmente ou de forma descentralizada, gerando retrabalho, desperdício de tempo e baixa produtividade.
 
-Pensando nisso, este projeto tem como objetivo oferecer uma solução tecnológica para o gerenciamento eficiente de rotinas empresariais. A aplicação proposta permitirá a criação de rotinas personalizadas, acompanhamento de tarefas, gerenciamento de insumos e reutilização de modelos de processos, promovendo agilidade e controle nos fluxos de trabalho organizacionais.
+O projeto aqui proposto visa à criação de um sistema de **gerenciamento de rotinas e tarefas**, permitindo que as empresas modelem seus processos por meio de rotinas reutilizáveis, subdivididas em etapas (ou subrotinas), com controle sobre insumos, execução simultânea de múltiplas instâncias e acompanhamento visual de progresso.
 
-## Cliente 
+## Cliente
 
-O sistema será desenvolvido inicialmente para pequenas e médias empresas que necessitam organizar processos internos, melhorar a comunicação entre os colaboradores e garantir o acompanhamento de tarefas em tempo real. Futuramente, poderá ser adaptado para empresas de grande porte ou instituições públicas.
+O público-alvo direto deste sistema são **empresas de pequeno e médio porte**, especialmente aquelas que precisam organizar atividades recorrentes, controlar insumos, monitorar execuções simultâneas de processos e manter um histórico de execução com rastreabilidade. Futuramente, a aplicação poderá ser expandida para atender grandes empresas e setores específicos, como manutenção, logística, produção ou serviços.
 
 ## Problema
 
-No cotidiano das empresas, gestores e funcionários enfrentam dificuldades na padronização e no monitoramento de processos repetitivos. A falta de um sistema que centralize as informações de rotina leva à perda de prazos, má utilização de recursos e retrabalho.
+Muitas empresas hoje dependem de planilhas, anotações manuais e comunicação verbal para controlar rotinas repetitivas. Essa abordagem é falha por natureza: não há padronização, não se mede produtividade, perde-se histórico e decisões são tomadas sem dados confiáveis.
 
-Além disso, muitas empresas utilizam ferramentas dispersas como planilhas, anotações manuais e e-mails, o que dificulta a integração e o acompanhamento do progresso das atividades, prejudicando a tomada de decisões e o desempenho das equipes.
+Além disso, quando um mesmo processo precisa ser executado por várias equipes ao mesmo tempo, a desorganização é ainda maior. Falta visibilidade sobre o que está em andamento, o que está parado e o que foi concluído. Outro gargalo comum é o controle de insumos: tarefas ficam pendentes por falta de material ou ferramentas, e não há integração com o estoque ou alertas automáticos.
 
 ## Objetivos
 
-O principal objetivo da aplicação é **automatizar e organizar rotinas empresariais**, oferecendo funcionalidades como:
+O objetivo central deste projeto é desenvolver um **sistema para criação e execução de rotinas empresariais**, com as seguintes metas específicas:
 
-- Criação e reutilização de modelos de rotina (templates);
-- Cadastro e atribuição de tarefas;
-- Gerenciamento de insumos utilizados em tarefas;
-- Monitoramento de progresso em tempo real;
-- Permissões de acesso baseadas no perfil do usuário.
+- Permitir o **cadastro de rotinas base (templates)** reutilizáveis;
+    
+- Permitir a **instanciação simultânea** de múltiplas execuções de uma rotina;
+    
+- Estruturar as rotinas em **passos, subrotinas e checklists**;
+    
+- Acompanhar o **progresso em tempo real** de cada rotina;
+    
+- Gerenciar os **insumos necessários** para cada tarefa;
+    
+- Disponibilizar **relatórios e histórico** de execuções.
+    
 
-Com isso, pretende-se aumentar a produtividade, reduzir falhas operacionais e proporcionar uma visão clara e centralizada dos processos internos da empresa.
+A proposta visa digitalizar e padronizar o gerenciamento de processos internos, otimizando tempo, recursos e aumentando a confiabilidade operacional da empresa.
 
 ## Justificativa
 
-A iniciativa surge da necessidade de oferecer uma ferramenta prática, eficiente e personalizável para empresas que desejam profissionalizar sua gestão de rotinas. 
+Este projeto nasce da análise de um problema recorrente em empresas que realizam tarefas rotineiras: a **falta de uma ferramenta flexível, clara e funcional** para controlar o que está sendo feito, por quem, com quais recursos e em que prazo.
 
-O projeto visa **substituir métodos manuais e fragmentados** por um sistema digital integrado, promovendo economia de tempo, melhor distribuição de tarefas e otimização do uso de recursos. A centralização das informações e a facilidade de acompanhamento são pontos chave que justificam o desenvolvimento do sistema.
+A proposta vai além de um simples checklist. Trata-se de uma plataforma que combina **modelagem de processos**, **gerenciamento de execução**, **controle de insumos** e **histórico de produtividade**.
+
+A aplicação terá papel estratégico para empresas que precisam repetir rotinas com consistência e qualidade, oferecendo visibilidade e controle operacional em tempo real.
 
 ## Público-Alvo
 
-O público-alvo da aplicação inclui:
+O sistema é voltado para:
 
-- **Gestores e líderes de equipes**: responsáveis pela criação de rotinas, delegação de tarefas e acompanhamento do desempenho.
-- **Funcionários operacionais**: encarregados da execução das tarefas e atualização de status.
-- **Administradores de sistema**: responsáveis pela manutenção da plataforma, gerenciamento de usuários e definição de permissões de acesso.
-- **Empresas de pequeno e médio porte** que ainda não possuem ferramentas sofisticadas para organização de processos internos, mas que buscam melhorar sua produtividade e eficiência.
+- **Gestores operacionais** que precisam modelar rotinas, monitorar sua execução e distribuir tarefas.
+    
+- **Funcionários de linha de frente**, que executam atividades e atualizam o status de cada etapa.
+    
+- **Administradores de sistema**, responsáveis por controlar o acesso, permissões e integridade dos dados.
+    
+- Empresas dos setores de manutenção, limpeza, serviços, produção ou qualquer outro que dependa de **execução padronizada e recorrente de tarefas**.
+    
+- Equipes que trabalham com **processos internos complexos**, que exigem acompanhamento, controle de insumos e capacidade de repetir rotinas em diferentes contextos simultaneamente.
+    
 
+---
