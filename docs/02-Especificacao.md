@@ -51,6 +51,21 @@ As personas representam perfis fictícios baseados em usuários reais que podem 
     Ocupação: Diretor de operações em uma rede de franquias
 
     Contexto: Rafael quer acompanhar, de forma macro, a execução das rotinas nas unidades franqueadas e verificar onde há gargalos.
+7. Tatiane – Consultora de Processos
+
+    Idade: 46 anos
+
+    Ocupação: Consultora externa de melhoria de processos
+
+    Contexto: Tatiane presta serviço de auditoria e melhoria de processos em diversas empresas. Ela frequentemente mapeia fluxos em ferramentas como BPMN e precisa de uma solução que permita não apenas documentar, mas testar e acompanhar esses fluxos em tempo real nas empresas-clientes.
+
+ 8. Igor – Estagiário de Engenharia
+
+    Idade: 21 anos
+
+    Ocupação: Estagiário de engenharia em uma metalúrgica
+
+    Contexto: Igor está aprendendo sobre processos internos e é constantemente encarregado de tarefas simples dentro de rotinas maiores. Ele precisa de clareza sobre o que deve fazer, prazos e como cada passo se encaixa no todo.
 
 ## Histórias de usuários
 
@@ -64,6 +79,9 @@ Com base na análise das personas, foram identificadas as seguintes histórias d
 |Gerente de TI|cadastrar rotinas com frequência definida (diária, semanal, etc.)|validar se os processos foram cumpridos conforme o padrão e gerar relatórios para auditoria|
 |Assistente administrativa|acompanhar várias instâncias da mesma rotina (como “fechamento financeiro mensal”)|manter tudo organizado e saber o que já foi feito em cada mês|
 |Diretor de operações|visualizar o status das rotinas em andamento com filtros por responsáveis e categorias|identificar problemas operacionais rapidamente e agir de forma estratégica|
+|Consultora de processos|modelar rotinas como templates reutilizáveis e acompanhar sua execução|aplicar melhorias e padronizações nas empresas onde atuo com base em dados reais|
+|Estagiário de engenharia| visualizar apenas os passos e tarefas que me foram atribuídos dentro das rotinas|executar corretamente minhas atividades sem confusão, mesmo sem experiência prévia|
+
 
 ## Requisitos
 
