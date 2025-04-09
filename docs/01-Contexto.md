@@ -1,35 +1,44 @@
+
 # Introdução
 
-Atualmente, o Brasil ocupa a quinta posição no ranking de países com maior incidência de diabetes no mundo, com 
-16,8 milhões de adultos afetados, ficando atrás apenas da China, Índia, Estados Unidos e Paquistão. A estimativa 
-aponta para um aumento na incidência da doença, que poderá atingir 21,5 milhões de casos até 2030, conforme dados 
-do Atlas do Diabetes da Federação Internacional de Diabetes (IDF).
+Empresas de diversos setores enfrentam desafios diários na organização de suas tarefas, alocação de recursos e acompanhamento do progresso das atividades. A ausência de ferramentas adequadas para a gestão de rotinas pode resultar em desperdício de tempo, falhas de comunicação e baixa produtividade. 
 
-O nosso propósito é disponibilizar aos usuários do sistema ferramentas para a contagem de carboidratos, juntamente com 
-informações essenciais sobre o assunto, permitindo também o cálculo dos níveis ideais de glicose a serem mantidos.
+Pensando nisso, este projeto tem como objetivo oferecer uma solução tecnológica para o gerenciamento eficiente de rotinas empresariais. A aplicação proposta permitirá a criação de rotinas personalizadas, acompanhamento de tarefas, gerenciamento de insumos e reutilização de modelos de processos, promovendo agilidade e controle nos fluxos de trabalho organizacionais.
 
 ## Cliente 
-O Hospital das Clínicas da UFMG, administrado pela Empresa Brasileira de Serviços Hospitalares (EBSERH), é um hospital universitário, público e geral que realiza atividades de ensino, pesquisa e assistência em saúde. Integrado ao SUS, é referência estadual no atendimento a patologias de média e alta complexidade. Tem como visão "Consolidar-se como Hospital Universitário Público Federal de excelência em assistência à saúde, ensino, pesquisa e inovação, a serviço dos usuários do SUS", e como propósito "Saúde, ensino, pesquisa e inovação a serviço da vida e do SUS".
+
+O sistema será desenvolvido inicialmente para pequenas e médias empresas que necessitam organizar processos internos, melhorar a comunicação entre os colaboradores e garantir o acompanhamento de tarefas em tempo real. Futuramente, poderá ser adaptado para empresas de grande porte ou instituições públicas.
 
 ## Problema
-A SBD (Sociedade Brasileira de Diabetes) e a comunidade médica responsável - endocrinologistas e pesquisadores - apontam o diagnóstico tardio e o tratamento inadequado como os principais impecilhos para melhoria do quadro da diabetes no país, e que estes problemas são oriundos da falta de informação por parte do enfermo e de seus familiares, bem como da sobrecarga da infraestrutura pública de saúde.
 
-Tais fatores corroboram para que os diabéticos não sejam bem acessorados nesta jornada e acabem adotando doses indiscriminadas de insulina, auto-medicação e a não-prática de hábitos cruciais ao diabético, como a atividade física, alimentação adequada e a realização recorrente de exames.
+No cotidiano das empresas, gestores e funcionários enfrentam dificuldades na padronização e no monitoramento de processos repetitivos. A falta de um sistema que centralize as informações de rotina leva à perda de prazos, má utilização de recursos e retrabalho.
 
-Nesta ótica, faz-se necessário a o fornecimento de apoio médico e informacional para promover maior conscientização sobre o tratamento, prevenção e diagnóstico da Diabetes, afim de reduzir os números da doença no país e incentivar a melhoria da qualidade de vida.
+Além disso, muitas empresas utilizam ferramentas dispersas como planilhas, anotações manuais e e-mails, o que dificulta a integração e o acompanhamento do progresso das atividades, prejudicando a tomada de decisões e o desempenho das equipes.
 
 ## Objetivos
 
-O propósito da organização consiste em prestar assistência às pessoas que necessitam exercer controle sobre sua taxa de insulina, visando a um gerenciamento mais abrangente e a minimização de potenciais crises iminentes. Almeja-se proporcionar um maior conforto ao indivíduo, permitindo que ele se concentre integralmente em sua qualidade de vida. Adicionalmente, percebe-se a necessidade e a responsabilidade de educar indivíduos acerca deste tema de extrema gravidade, o diabetes mellitus, adotando medidas preventivas e proativas para o eficaz manejo desta condição.
+O principal objetivo da aplicação é **automatizar e organizar rotinas empresariais**, oferecendo funcionalidades como:
+
+- Criação e reutilização de modelos de rotina (templates);
+- Cadastro e atribuição de tarefas;
+- Gerenciamento de insumos utilizados em tarefas;
+- Monitoramento de progresso em tempo real;
+- Permissões de acesso baseadas no perfil do usuário.
+
+Com isso, pretende-se aumentar a produtividade, reduzir falhas operacionais e proporcionar uma visão clara e centralizada dos processos internos da empresa.
 
 ## Justificativa
 
-O projeto nasceu com a análise de um problema simples, porem de demasiada importância, a dificuldade do diabético de calcular quanto de carboidratos tem em cada alimento para a aplicação equivalente de insulina para o equilíbrio da glicose, além do combate da desinformação sobre o assunto.
+A iniciativa surge da necessidade de oferecer uma ferramenta prática, eficiente e personalizável para empresas que desejam profissionalizar sua gestão de rotinas. 
 
-A aplicação permitira o cálculo em tempo real de carboidratos em cada alimento e não só isso, ela entregara usuário informações e procedimentos que contribuam e facilitam a vida do diabético.
+O projeto visa **substituir métodos manuais e fragmentados** por um sistema digital integrado, promovendo economia de tempo, melhor distribuição de tarefas e otimização do uso de recursos. A centralização das informações e a facilidade de acompanhamento são pontos chave que justificam o desenvolvimento do sistema.
 
 ## Público-Alvo
 
-Indivíduos portadores de Diabetes tipo 1 e tipo 2, de todas as idades, assim como aqueles que têm familiares e amigos com Diabetes, encontram neste conteúdo um recurso valioso. Incluem-se aqui pessoas que buscam melhorar sua qualidade de vida através do cálculo para aplicação de insulina e que desejam obter dicas para aprimorar seus níveis glicêmicos. Não obstante, esta aplicação é relevante para pessoas não diabéticas que almejam otimizar seus níveis glicêmicos, visando evitar o desenvolvimento futuro da doença.
+O público-alvo da aplicação inclui:
 
-Também abrange estudantes e acadêmicos da área de saúde, bem como qualquer indivíduo que busque informações complementares sobre a Diabetes por meio de texto ou vídeo. Seja por curiosidade ou com fins didáticos, essa fonte é uma ferramenta útil para orientar-se sobre o assunto. Assim, estudantes e acadêmicos da área da saúde encontram aqui um recurso para aprofundar sua compreensão sobre o tema.
+- **Gestores e líderes de equipes**: responsáveis pela criação de rotinas, delegação de tarefas e acompanhamento do desempenho.
+- **Funcionários operacionais**: encarregados da execução das tarefas e atualização de status.
+- **Administradores de sistema**: responsáveis pela manutenção da plataforma, gerenciamento de usuários e definição de permissões de acesso.
+- **Empresas de pequeno e médio porte** que ainda não possuem ferramentas sofisticadas para organização de processos internos, mas que buscam melhorar sua produtividade e eficiência.
+
