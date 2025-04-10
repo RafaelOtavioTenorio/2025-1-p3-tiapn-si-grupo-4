@@ -126,5 +126,5 @@ O projeto está restrito aos itens apresentados na tabela a seguir.
 
 ## Diagrama de casos de uso
 
-![image](https://github.com/user-attachments/assets/46026b82-b7f7-4a6c-8955-5ef64fcd9a96)
+![image](docs/images/Routix.drawio(5).png)
 
