@@ -4,11 +4,68 @@ As personas representam perfis fictícios baseados em usuários reais que podem 
 
 ## Personas
 
-#1: Giovanna tem 19 anos , trabalha como técnica de farmácia e cursa fisioterapia. Portadora de diabetes tipo 1 (insulinódependant) desde 8 anos de idade. Busca melhorar seus hábitos de vida, aprendendo melhor quanto de insulina reguladora aplicar antes de comer. E precisa de uma plataforma para isto.
+1. Paula – Gestora de Produção
 
-#2: Augusto, 23 anos, estudante de engenharia e irmão do Lucas, uma criança de 12 anos que sofre com sobrepeso e diabetes tipo 2. Augusto é o responsável pelo irmão em grande parte do tempo e está sempre em busca de auxiliar a mãe no máximo possível cuidando do pequeno. Se preocupa em levar o irmão ao médico uma vez por mês, preparar suas refeições e monitorar as atividades físicas do irmão, Augusto está sempre atrás de dicas e artigos para executar corretamente o controle glicemico e hormonal do irmão, além de zelar pela nutrição e perda de peso, já que se tratado corretamente, o caso de Lucas pode regredir bastante.
+    Idade: 42 anos
 
-#3: Rafael, 25 anos, estudante de medicina da USP, buscava um tema relevante para seu trabalho final da faculdade. Tendo sempre muito interesse na área de endocrinologia e suas complexidades, deu ênfase ao estudo da diabetes.
+    Ocupação: Coordenadora de produção em uma indústria têxtil
+
+    Contexto: Paula coordena uma equipe de 30 operadores e precisa garantir que todas as rotinas de produção ocorram no prazo e sem erros.
+   
+ 2. Lucas – Técnico de Manutenção
+
+    Idade: 28 anos
+
+    Ocupação: Técnico de manutenção em uma fábrica de alimentos
+
+    Contexto: Lucas executa manutenções programadas e precisa seguir checklists rigorosos. Ele reclama que perde tempo buscando insumos no almoxarifado.
+
+3. Fernanda – Analista de Qualidade
+
+    Idade: 35 anos
+
+    Ocupação: Responsável por auditorias e controle de qualidade
+
+    Contexto: Fernanda precisa garantir que todas as etapas das rotinas estejam sendo seguidas e documentadas corretamente para fins de certificação.
+
+4. Bruno – Gerente de TI
+
+    Idade: 39 anos
+
+    Ocupação: Gerente de tecnologia de uma empresa de logística
+
+    Contexto: Bruno quer automatizar tarefas repetitivas e padronizar processos da equipe técnica com rotinas digitais.
+
+5. Camila – Assistente Administrativa
+
+    Idade: 25 anos
+
+    Ocupação: Auxiliar administrativa em escritório de engenharia
+
+    Contexto: Camila organiza a rotina de pagamentos, agendamento de reuniões e controle de insumos para o escritório, mas não tem uma ferramenta centralizada.
+
+6. Rafael – Diretor de Operações
+
+    Idade: 50 anos
+
+    Ocupação: Diretor de operações em uma rede de franquias
+
+    Contexto: Rafael quer acompanhar, de forma macro, a execução das rotinas nas unidades franqueadas e verificar onde há gargalos.
+7. Tatiane – Consultora de Processos
+
+    Idade: 46 anos
+
+    Ocupação: Consultora externa de melhoria de processos
+
+    Contexto: Tatiane presta serviço de auditoria e melhoria de processos em diversas empresas. Ela frequentemente mapeia fluxos em ferramentas como BPMN e precisa de uma solução que permita não apenas documentar, mas testar e acompanhar esses fluxos em tempo real nas empresas-clientes.
+
+ 8. Igor – Estagiário de Engenharia
+
+    Idade: 21 anos
+
+    Ocupação: Estagiário de engenharia em uma metalúrgica
+
+    Contexto: Igor está aprendendo sobre processos internos e é constantemente encarregado de tarefas simples dentro de rotinas maiores. Ele precisa de clareza sobre o que deve fazer, prazos e como cada passo se encaixa no todo.
 
 ## Histórias de usuários
 
@@ -16,9 +73,15 @@ Com base na análise das personas, foram identificadas as seguintes histórias d
 
 |EU COMO |PRECISO |PARA |
 |--------------------|-------------------------------------|----------------------------------------|
-|Giovanna|Aprender quanto de insulina reguladora aplicar antes de comer|Melhorar seus hábitos de vida e manter um melhor controle glicêmico|
-|Augusto|Encontrar dicas e artigos para controle glicêmico e hormonal do meu irmão|Auxiliar nos cuidados com ele, garantindo nutrição e controle do peso para reverter a condição|
-|Rafael|Pesquisar sobre diabetes para meu trabalho final de faculdade|Aprofundar meus conhecimentos na área de endocrinologia e suas complexidades|
+|Gestora de Produção|criar e acompanhar rotinas de produção com subtarefas e insumos|garantir que minha equipe siga os procedimentos corretamente e não falte materiais.|
+|Técnico de manutenção|ter acesso às rotinas com seus passos e insumos listados|não atrasar a execução das tarefas e garantir que tudo esteja disponível quando eu começar|
+|Analista de Qualidade|acessar o histórico das execuções de rotinas|aprofundar meus conhecimentos na área de endocrinologia e suas complexidades|
+|Gerente de TI|cadastrar rotinas com frequência definida (diária, semanal, etc.)|validar se os processos foram cumpridos conforme o padrão e gerar relatórios para auditoria|
+|Assistente administrativa|acompanhar várias instâncias da mesma rotina (como “fechamento financeiro mensal”)|manter tudo organizado e saber o que já foi feito em cada mês|
+|Diretor de operações|visualizar o status das rotinas em andamento com filtros por responsáveis e categorias|identificar problemas operacionais rapidamente e agir de forma estratégica|
+|Consultora de processos|modelar rotinas como templates reutilizáveis e acompanhar sua execução|aplicar melhorias e padronizações nas empresas onde atuo com base em dados reais|
+|Estagiário de engenharia| visualizar apenas os passos e tarefas que me foram atribuídos dentro das rotinas|executar corretamente minhas atividades sem confusão, mesmo sem experiência prévia|
+
 
 ## Requisitos
 
@@ -28,27 +91,37 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 | ID      | Descrição do Requisito | Prioridade |
 |---------|------------------------|------------|
-| RF-001  | Permitir que o usuário se cadastre no site | ALTA |
+| RF-001  | Permitir que o usuário se cadastre na plataforma | ALTA |
 | RF-002  | Permitir que o usuário faça login na plataforma | ALTA |
-| RF-003  | Os usuários podem registrar suas refeições, incluindo alimentos consumidos, quantidade e horário | ALTA |
-| RF-004  | Alterar, Adicionar e Remover alimentos de sua refeição | ALTA |
-| RF-005  | Cálculo de bolus alimentar e bolus de correção e sua somatória | ALTA |
-| RF-006  | A aplicação fornece dicas personalizadas com base nas informações do usuário | MÉDIA |
-| RF-007  | Pesquisar alimentos do site/app | ALTA |
-| RF-008  | Interação entre os usuários do site | BAIXA |
-| RF-009  | Avaliação entre os usuários do site | BAIXA |
-| RF-010  | Opiniões entre os usuários do site | BAIXA |
-
+| RF-003  | Os usuários podem cadastrar uma rotina ou processo | ALTA |
+| RF-004  | Alterar, Adicionar e Remover tarefas de sua rotina ou processo | ALTA |
+| RF-005  | Alterar, Adicionar e Remover sub-rotinas/sub-provessos a sua rotina ou processo | MÉDIA |
+| RF-006  | Iniciar uma rotina ou processo cadastrado | ALTA |
+| RF-007  | Alterar uma rotina ou processo em adamento | ALTA |
+| RF-008  | Adicionar comentarios a tarefas e a sub-rotinas/sub-processos | MÉDIA |
+| RF-009  | Visualizar o historico de uma rotina ou processo em adamento | MÉDIA |
+| RF-010  | Visualizar o historico de rotinas e processos finalizados | ALTA |
+| RF-011  | Alterar, Adicionar e Remover uma tarefa de uma rotina ou processo em andamento | MÉDIA |
+| RF-012  | Alterar, Adicionar e Remover uma sub-rotina/sub-processo de uma rotina ou processo em andamento | MÉDIA |
+| RF-013  | Adicionar e Remover recursos a uma tarefa de uma rotina ou processo | MÉDIA |
+| RF-014  | Adicionar e Remover recursos a uma tarefa de uma rotina ou processo em andamento | MÉDIA |
+| RF-015  | Alterar, Adicionar e Remover recursos/insumos | BAIXA |
+| RF-016  | Alterar quantidade de recursos/insumos disponiveis ao iniciar uma tarefa | BAIXA |
+| RF-017  | Alterar quantidade de recursos/insumos disponiveis ao finalizar uma tarefa | BAIXA |
+| RF-018  | Bloquear tarefa por falta de recursos/insumos | BAIXA |
+| RF-019  | Visualizar rotinas em execução com filtros por responsável, status, tipo e datas | BAIXA |
+| RF-020  | Gerar relatório de tempo | BAIXA |
+| RF-021  | Gerar relatório de insumos | BAIXA |
 
 ### Requisitos não Funcionais
 
 |ID     | Descrição do Requisito  |Prioridade |
 |-------|-------------------------|----|
-|RNF-001| A Aplicação vai rodar o tempo todo | ALTA |
+|RNF-001| A aplicação deve estar disponível 24 horas por dia | ALTA |
 |RNF-002| Deve processar requisições do usuário em no máximo 3s |  BAIXA |
-|RNF-003| Vai armazenar os dados do usuário | ALTA |
-|RNF-004| Exibir os conteúdos a partir dos dados do usuário | ALTA |
-|RNF-005| Carregar tela de aplicação no menor tempo possível | ALTA |
+|RNF-003| O sistema deve armazenar dados do usuário | ALTA |
+|RNF-004| O sistema deve exibir o conteúdo com base nas permissões e papéis dos usuários | ALTA |
+|RNF-005| O sistema deve ser responsivo e funcionar em dispositivos móveis e desktops | ALTA |
 
 ## Restrições
 
@@ -63,5 +136,5 @@ O projeto está restrito aos itens apresentados na tabela a seguir.
 
 ## Diagrama de casos de uso
 
-![image](https://github.com/user-attachments/assets/46026b82-b7f7-4a6c-8955-5ef64fcd9a96)
+![image](../docs/images/RoutixDiagrama.png)
 

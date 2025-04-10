@@ -1,35 +1,61 @@
 # Introdução
 
-Atualmente, o Brasil ocupa a quinta posição no ranking de países com maior incidência de diabetes no mundo, com 
-16,8 milhões de adultos afetados, ficando atrás apenas da China, Índia, Estados Unidos e Paquistão. A estimativa 
-aponta para um aumento na incidência da doença, que poderá atingir 21,5 milhões de casos até 2030, conforme dados 
-do Atlas do Diabetes da Federação Internacional de Diabetes (IDF).
+Empresas de todos os portes enfrentam desafios relacionados à organização de tarefas, repetição de processos, controle de insumos e padronização de procedimentos internos. Em muitos casos, essas rotinas são geridas manualmente ou de forma descentralizada, gerando retrabalho, desperdício de tempo e baixa produtividade.
 
-O nosso propósito é disponibilizar aos usuários do sistema ferramentas para a contagem de carboidratos, juntamente com 
-informações essenciais sobre o assunto, permitindo também o cálculo dos níveis ideais de glicose a serem mantidos.
+O projeto aqui proposto visa à criação de um sistema de **gerenciamento de rotinas e tarefas**, permitindo que as empresas modelem seus processos por meio de rotinas reutilizáveis, subdivididas em etapas (ou subrotinas), com controle sobre insumos, execução simultânea de múltiplas instâncias e acompanhamento visual de progresso.
 
-## Cliente 
-O Hospital das Clínicas da UFMG, administrado pela Empresa Brasileira de Serviços Hospitalares (EBSERH), é um hospital universitário, público e geral que realiza atividades de ensino, pesquisa e assistência em saúde. Integrado ao SUS, é referência estadual no atendimento a patologias de média e alta complexidade. Tem como visão "Consolidar-se como Hospital Universitário Público Federal de excelência em assistência à saúde, ensino, pesquisa e inovação, a serviço dos usuários do SUS", e como propósito "Saúde, ensino, pesquisa e inovação a serviço da vida e do SUS".
+## Cliente
+
+O público-alvo direto deste sistema são **empresas de pequeno e médio porte**, especialmente aquelas que precisam organizar atividades recorrentes, controlar insumos, monitorar execuções simultâneas de processos e manter um histórico de execução com rastreabilidade. Futuramente, a aplicação poderá ser expandida para atender grandes empresas e setores específicos, como manutenção, logística, produção ou serviços.
 
 ## Problema
-A SBD (Sociedade Brasileira de Diabetes) e a comunidade médica responsável - endocrinologistas e pesquisadores - apontam o diagnóstico tardio e o tratamento inadequado como os principais impecilhos para melhoria do quadro da diabetes no país, e que estes problemas são oriundos da falta de informação por parte do enfermo e de seus familiares, bem como da sobrecarga da infraestrutura pública de saúde.
 
-Tais fatores corroboram para que os diabéticos não sejam bem acessorados nesta jornada e acabem adotando doses indiscriminadas de insulina, auto-medicação e a não-prática de hábitos cruciais ao diabético, como a atividade física, alimentação adequada e a realização recorrente de exames.
+Muitas empresas hoje dependem de planilhas, anotações manuais e comunicação verbal para controlar rotinas repetitivas. Essa abordagem é falha por natureza: não há padronização, não se mede produtividade, perde-se histórico e decisões são tomadas sem dados confiáveis.
 
-Nesta ótica, faz-se necessário a o fornecimento de apoio médico e informacional para promover maior conscientização sobre o tratamento, prevenção e diagnóstico da Diabetes, afim de reduzir os números da doença no país e incentivar a melhoria da qualidade de vida.
+Além disso, quando um mesmo processo precisa ser executado por várias equipes ao mesmo tempo, a desorganização é ainda maior. Falta visibilidade sobre o que está em andamento, o que está parado e o que foi concluído. Outro gargalo comum é o controle de insumos: tarefas ficam pendentes por falta de material ou ferramentas, e não há integração com o estoque ou alertas automáticos.
 
 ## Objetivos
 
-O propósito da organização consiste em prestar assistência às pessoas que necessitam exercer controle sobre sua taxa de insulina, visando a um gerenciamento mais abrangente e a minimização de potenciais crises iminentes. Almeja-se proporcionar um maior conforto ao indivíduo, permitindo que ele se concentre integralmente em sua qualidade de vida. Adicionalmente, percebe-se a necessidade e a responsabilidade de educar indivíduos acerca deste tema de extrema gravidade, o diabetes mellitus, adotando medidas preventivas e proativas para o eficaz manejo desta condição.
+O objetivo consiste em prestar assistência a empresas que necessitam exercer controle sobre varios processos e rotinas iguais ou similares ocorrendo ao mesmo tempo, visando a um gerenciamento mais abrangente e a minimização de potenciais crises iminentes.
+
+Almeja-se otimizar o gerenciamento de rotinas executadas simultaneamente, garantindo a alocação eficiente de recursos, evitando conflitos e duplicações, proporcionando coordenação em tempo real para operadores e proporcionando uma facil contextualização. Com isso objetivo central deste projeto é desenvolver um **sistema para criação e execução de rotinas empresariais**, com as seguintes metas específicas:
+ 
+ - Permitir o **cadastro de rotinas base (templates)** reutilizáveis;
+     
+ - Permitir a **instanciação simultânea** de múltiplas execuções de uma rotina;
+     
+ - Estruturar as rotinas em **passos, subrotinas e checklists**;
+     
+ - Acompanhar o **progresso em tempo real** de cada rotina;
+     
+ - Gerenciar os **insumos necessários** para cada tarefa;
+     
+ - Disponibilizar **relatórios e histórico** de execuções.
+     
+ 
+ A proposta visa digitalizar e padronizar o gerenciamento de processos internos, otimizando tempo, recursos e aumentando a confiabilidade operacional da empresa.
 
 ## Justificativa
 
-O projeto nasceu com a análise de um problema simples, porem de demasiada importância, a dificuldade do diabético de calcular quanto de carboidratos tem em cada alimento para a aplicação equivalente de insulina para o equilíbrio da glicose, além do combate da desinformação sobre o assunto.
+Este projeto nasce da análise de um problema recorrente em empresas que realizam tarefas rotineiras: a **falta de uma ferramenta flexível, clara e funcional** para controlar o que está sendo feito, por quem, com quais recursos e em que prazo.
 
-A aplicação permitira o cálculo em tempo real de carboidratos em cada alimento e não só isso, ela entregara usuário informações e procedimentos que contribuam e facilitam a vida do diabético.
+A proposta vai além de um simples checklist. Trata-se de uma plataforma que combina **modelagem de processos**, **gerenciamento de execução**, **controle de insumos** e **histórico de produtividade**.
+
+A aplicação terá papel estratégico para empresas que precisam repetir rotinas com consistência e qualidade, oferecendo visibilidade e controle operacional em tempo real.
 
 ## Público-Alvo
 
-Indivíduos portadores de Diabetes tipo 1 e tipo 2, de todas as idades, assim como aqueles que têm familiares e amigos com Diabetes, encontram neste conteúdo um recurso valioso. Incluem-se aqui pessoas que buscam melhorar sua qualidade de vida através do cálculo para aplicação de insulina e que desejam obter dicas para aprimorar seus níveis glicêmicos. Não obstante, esta aplicação é relevante para pessoas não diabéticas que almejam otimizar seus níveis glicêmicos, visando evitar o desenvolvimento futuro da doença.
+O sistema é voltado para:
 
-Também abrange estudantes e acadêmicos da área de saúde, bem como qualquer indivíduo que busque informações complementares sobre a Diabetes por meio de texto ou vídeo. Seja por curiosidade ou com fins didáticos, essa fonte é uma ferramenta útil para orientar-se sobre o assunto. Assim, estudantes e acadêmicos da área da saúde encontram aqui um recurso para aprofundar sua compreensão sobre o tema.
+- **Gestores operacionais** que precisam modelar rotinas, monitorar sua execução e distribuir tarefas.
+    
+- **Funcionários de linha de frente**, que executam atividades e atualizam o status de cada etapa.
+    
+- **Administradores de sistema**, responsáveis por controlar o acesso, permissões e integridade dos dados.
+    
+- Empresas dos setores de manutenção, limpeza, serviços, produção ou qualquer outro que dependa de **execução padronizada e recorrente de tarefas**.
+    
+- Equipes que trabalham com **processos internos complexos**, que exigem acompanhamento, controle de insumos e capacidade de repetir rotinas em diferentes contextos simultaneamente.
+    
+
+---
