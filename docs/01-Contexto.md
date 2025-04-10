@@ -16,7 +16,22 @@ Além disso, quando um mesmo processo precisa ser executado por várias equipes 
 
 ## Objetivos
 
-O objetivo consiste em prestar assistência a pessoas e empresas que necessitam exercer controle sobre varios processos e rotinas iguais ou similares ocorrendo ao mesmo tempo, visando a um gerenciamento mais abrangente e a minimização de potenciais crises iminentes. Almeja-se otimizar o gerenciamento de rotinas executadas simultaneamente, garantindo a alocação eficiente de recursos, evitando conflitos e duplicações, proporcionando coordenação em tempo real para operadores e proporcionando uma facil contextualização.
+O objetivo consiste em prestar assistência a empresas que necessitam exercer controle sobre varios processos e rotinas iguais ou similares ocorrendo ao mesmo tempo, visando a um gerenciamento mais abrangente e a minimização de potenciais crises iminentes. Almeja-se otimizar o gerenciamento de rotinas executadas simultaneamente, garantindo a alocação eficiente de recursos, evitando conflitos e duplicações, proporcionando coordenação em tempo real para operadores e proporcionando uma facil contextualização. Com isso objetivo central deste projeto é desenvolver um **sistema para criação e execução de rotinas empresariais**, com as seguintes metas específicas:
+ 
+ - Permitir o **cadastro de rotinas base (templates)** reutilizáveis;
+     
+ - Permitir a **instanciação simultânea** de múltiplas execuções de uma rotina;
+     
+ - Estruturar as rotinas em **passos, subrotinas e checklists**;
+     
+ - Acompanhar o **progresso em tempo real** de cada rotina;
+     
+ - Gerenciar os **insumos necessários** para cada tarefa;
+     
+ - Disponibilizar **relatórios e histórico** de execuções.
+     
+ 
+ A proposta visa digitalizar e padronizar o gerenciamento de processos internos, otimizando tempo, recursos e aumentando a confiabilidade operacional da empresa.
 
 ## Justificativa
 
