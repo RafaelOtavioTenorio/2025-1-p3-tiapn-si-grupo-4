@@ -91,17 +91,27 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 | ID      | Descrição do Requisito | Prioridade |
 |---------|------------------------|------------|
-| RF-001  | Permitir que o usuário se cadastre no sistema| ALTA |
+| RF-001  | Permitir que o usuário se cadastre na plataforma | ALTA |
 | RF-002  | Permitir que o usuário faça login na plataforma | ALTA |
-| RF-003  | Permitir o cadastro de rotinas com nome, descrição, frequência e categorias | ALTA |
-| RF-004  | Permitir a instanciação de múltiplas execuções de uma mesma rotina | ALTA |
-| RF-005  | Permitir a criação e organização de passos/subrotinas dentro de uma rotina | ALTA |
-| RF-006  | Permitir que cada passo tenha checklists e status individual (pendente, em andamento, concluído) | MÉDIA |
-| RF-007  | Associar insumos a passos e verificar sua disponibilidade em estoque | BAIXA |
-| RF-008  | Permitir solicitação de insumos automaticamente ao setor responsável quando não houver disponibilidade | BAIXA |
-| RF-009  | Visualizar rotinas em execução com filtros por responsável, status, tipo e datas| BAIXA |
-| RF-010  | Gerar histórico de execuções e relatórios de tempo e insumos utilizados | MÉDIA |
-
+| RF-003  | Os usuários podem cadastrar uma rotina ou processo | ALTA |
+| RF-004  | Alterar, Adicionar e Remover tarefas de sua rotina ou processo | ALTA |
+| RF-005  | Alterar, Adicionar e Remover sub-rotinas/sub-provessos a sua rotina ou processo | MÉDIA |
+| RF-006  | Iniciar uma rotina ou processo cadastrado | ALTA |
+| RF-007  | Alterar uma rotina ou processo em adamento | ALTA |
+| RF-008  | Adicionar comentarios a tarefas e a sub-rotinas/sub-processos | MÉDIA |
+| RF-009  | Visualizar o historico de uma rotina ou processo em adamento | MÉDIA |
+| RF-010  | Visualizar o historico de rotinas e processos finalizados | ALTA |
+| RF-011  | Alterar, Adicionar e Remover uma tarefa de uma rotina ou processo em andamento | MÉDIA |
+| RF-012  | Alterar, Adicionar e Remover uma sub-rotina/sub-processo de uma rotina ou processo em andamento | MÉDIA |
+| RF-013  | Adicionar e Remover recursos a uma tarefa de uma rotina ou processo | MÉDIA |
+| RF-014  | Adicionar e Remover recursos a uma tarefa de uma rotina ou processo em andamento | MÉDIA |
+| RF-015  | Alterar, Adicionar e Remover recursos/insumos | BAIXA |
+| RF-016  | Alterar quantidade de recursos/insumos disponiveis ao iniciar uma tarefa | BAIXA |
+| RF-017  | Alterar quantidade de recursos/insumos disponiveis ao finalizar uma tarefa | BAIXA |
+| RF-018  | Bloquear tarefa por falta de recursos/insumos | BAIXA |
+| RF-019  | Visualizar rotinas em execução com filtros por responsável, status, tipo e datas | BAIXA |
+| RF-020  | Gerar relatório de tempo | BAIXA |
+| RF-021  | Gerar relatório de insumos | BAIXA |
 
 ### Requisitos não Funcionais
 
