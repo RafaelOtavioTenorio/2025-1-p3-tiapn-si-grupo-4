@@ -67,8 +67,8 @@ Use o seguinte modelo:
 | **Indicador** | **Objetivos** | **Descrição** | **Fonte de dados** | **Fórmula de cálculo** |
 | ---           | ---           | ---           | ---             | ---             |
 | Percentual de conclusão geral | Avaliar o progresso geral de todas as rotinas | Percentual do progresso geral considerando todas as rotinas | Tabela de rotinas | (Soma do percentual de conclusão de cada rotina ativa / número total de rotinas ativas) *100 |
-| Taxa de progreção diaria | Melhorar o entendimento da progreção das tarefas | Mede a % de avanço das tarefas no dia | Tabela de rotinas | (número total de tarefas e sub-rotinas comcluidas no dia / quantidade de tarefas e sub-rotinas de rotinas ativas) * 100 |
-| Previsão de conclusão | Previsão empirica de conclusão de rotina | Mede impiricamente o tempo restante para conclusão da rotina | Tabela de tarfas | tempo para comclusão das tarefas já concluidas * quantidade total de tarefas / quantidade de tarefas já concluidas |
+| Taxa de progreção diaria | Melhorar o entendimento da progreção das tarefas | Mede a % de avanço das tarefas no dia | Tabela de rotinas | (número total de tarefas e sub-rotinas concluidas no dia / quantidade de tarefas e sub-rotinas de rotinas ativas) * 100 |
+| Previsão de conclusão | Previsão empirica de conclusão de rotina | Mede impiricamente o tempo restante para conclusão da rotina | Tabela de tarfas | tempo para conclusão das tarefas já concluidas * quantidade total de tarefas / quantidade de tarefas já concluidas |
 
 
 Obs.: todas as informações necessárias para gerar os indicadores devem estar no diagrama de classe a ser apresentado posteriormente.
