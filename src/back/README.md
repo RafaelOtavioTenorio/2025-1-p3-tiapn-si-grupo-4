@@ -3,7 +3,7 @@
 
 ![go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white)![mysql](https://img.shields.io/badge/MySQL-316192?style=for-the-badge&logo=mysql&logoColor=white)
 
-# Mellitus Backend
+# Routix Backend
 
 # Execução 
 
@@ -13,7 +13,7 @@ make up && make logs
 
 # Desenvolvimento
 
-Aplicação backend de uma plataforma de healthcare para todas as pessoas portadoras da doença Diabetes Mellitus , tipo 1 e tipo 2. Com ferramentas para contagem de carboidratos e informações para melhoria da qualidade de vida do diabético e daqueles que buscam se prevenir e garantir a qualidade de vida..
+Aplicação backend de uma plataforma de sistema para criação e execução de rotinas empresariais.
 
 Utiliza `sqlc` para gerar as interfaces das entidades das tabelas dos bancos de dados (não é um ORM) e as queries SQL.
 Utiliza o `tern` para criar e executar as migations.

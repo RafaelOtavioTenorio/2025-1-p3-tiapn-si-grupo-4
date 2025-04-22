@@ -20,7 +20,7 @@ type App struct {
 	s *http.Server
 	q *store.Queries
 	//handlers
-	helloHandler *handlers.HelloHandler
+	logHandler *handlers.LogsHandler
 }
 
 func NewApp(httpServer *http.Server) *App {
@@ -54,14 +54,16 @@ func NewApp(httpServer *http.Server) *App {
 	logRepository := repositories.NewMysqlLogRepository(queries)
 
 	//seutp usecases
-	helloUsecase := &usecases.HttpHelloUsecase{
-		LogRepository: logRepository,
-	}
+	logUsecase := usecases.NewHttpLogUsecase(logRepository)
+
+	// setup handlers
+	logHandler := handlers.NewLogsHandler(logUsecase)
 
 	return &App{
-		s:            httpServer,
-		helloHandler: handlers.NewHelloHandler(helloUsecase),
-		q:            queries,
+		s: httpServer,
+
+		q:          queries,
+		logHandler: logHandler,
 	}
 }
 
@@ -76,7 +78,8 @@ func (a *App) Run(port string) error {
 	)
 
 	//setuphandlers
-	router.GET("/hello", a.helloHandler.Get)
+	router.GET("/logs", a.logHandler.Get)
+	router.POST("/logs", a.logHandler.Post)
 
 	//setup server
 

@@ -30,10 +30,10 @@ func (r *MySQLLogRepository) Log(ctx context.Context, log store.LogParams) (stor
 		Log:        log.Log,
 		Level:      log.Level,
 		Source:     log.Source,
-		
 	})
+
 	if err != nil {
-		return log, err
+		return store.Log{}, err
 	}
 
 	// Pega o ID inserido (só funciona com AUTO_INCREMENT)
@@ -42,7 +42,7 @@ func (r *MySQLLogRepository) Log(ctx context.Context, log store.LogParams) (stor
 	// Busca o registro completo
 	insertedLog, err := r.q.GetLogById(ctx, string(lastID))
 	if err != nil {
-		return log, err
+		return store.Log{}, err
 	}
 
 	return insertedLog, nil
