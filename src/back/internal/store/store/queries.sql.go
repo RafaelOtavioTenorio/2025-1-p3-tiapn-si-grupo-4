@@ -11,6 +11,24 @@ import (
 	"time"
 )
 
+const getLogById = `-- name: GetLogById :one
+select id, servertime, log, level, source, created_at from logs where id = ?
+`
+
+func (q *Queries) GetLogById(ctx context.Context, id string) (Log, error) {
+	row := q.db.QueryRowContext(ctx, getLogById, id)
+	var i Log
+	err := row.Scan(
+		&i.ID,
+		&i.Servertime,
+		&i.Log,
+		&i.Level,
+		&i.Source,
+		&i.CreatedAt,
+	)
+	return i, err
+}
+
 const getLogs = `-- name: GetLogs :many
 select id, servertime, log, level, source, created_at from logs
 `

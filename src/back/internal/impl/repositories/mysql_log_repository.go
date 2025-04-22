@@ -2,7 +2,6 @@ package repositories
 
 import (
 	"context"
-	"time"
 
 	"github.com/ICEI-PUC-Minas-PCO-SI/2025-1-p3-tiapn-si-grupo-4/internal/store/store"
 )
@@ -25,24 +24,27 @@ func (r *MySQLLogRepository) GetLogs(ctx context.Context) []store.Log {
 
 	return logs
 }
-func (r *MySQLLogRepository) Log(ctx context.Context, log store.Log) (store.Log, error) {
+func (r *MySQLLogRepository) Log(ctx context.Context, log store.LogParams) (store.Log, error) {
 	result, err := r.q.Log(ctx, store.LogParams{
-		Servertime: time.Now(),
-		Log:        "Erro de conexão",
-		Level:      "error",
-		Source:     "servidor-01",
+		Servertime: log.Servertime,
+		Log:        log.Log,
+		Level:      log.Level,
+		Source:     log.Source,
+		
 	})
 	if err != nil {
-		return err
+		return log, err
 	}
 
 	// Pega o ID inserido (só funciona com AUTO_INCREMENT)
 	lastID, _ := result.LastInsertId()
 
 	// Busca o registro completo
-	insertedLog, err := q.GetLog(ctx, lastID)
+	insertedLog, err := r.q.GetLogById(ctx, string(lastID))
 	if err != nil {
-		return err
+		return log, err
 	}
+
+	return insertedLog, nil
 
 }

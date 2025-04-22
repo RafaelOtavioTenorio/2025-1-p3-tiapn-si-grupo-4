@@ -8,5 +8,5 @@ import (
 
 type ILogRepository interface {
 	GetLogs(ctx context.Context) []store.Log
-	Log(ctx context.Context, log store.Log) (store.Log, error)
+	Log(ctx context.Context, log store.LogParams) (store.Log, error)
 }

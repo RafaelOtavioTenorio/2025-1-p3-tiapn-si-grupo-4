@@ -3,7 +3,6 @@ select * from logs;
 
 -- name: Log :execresult
 INSERT INTO logs (
-  id,
   servertime,
   log,
   `level`,
@@ -12,4 +11,5 @@ INSERT INTO logs (
   ?, ?, ?, ?, ?
 );
 
--- name 
+-- name: GetLogById :one
+select * from logs where id = ?;
