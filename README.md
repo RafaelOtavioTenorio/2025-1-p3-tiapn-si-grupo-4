@@ -1,19 +1,17 @@
-g# Mellitus
-
+# Routix
 `CURSO: Sistemas de Informação`
 
 `DISCIPLINA: Trabalho Interdisciplinar Aplicações para Processos de Negócios`
 
-`3° Semestre/2025`
+`1° Semestre/2025`
 
-Uma plataforma de healthcare para todas as pessoas portadoras da doença Diabetes Mellitus , tipo 1 e tipo 2. Com ferramentas para contagem de carboidratos e informações para melhoria da qualidade de vida do diabético e daqueles que buscam se prevenir e garantir a qualidade de vida.
-
+Uma plataforma de gerenciamento operacional voltada para empresas que buscam padronizar, controlar e otimizar suas rotinas internas. O sistema permite o cadastro de processos, a criação de tarefas em cadeia com subtarefas e insumos, além do acompanhamento em tempo real das execuções. Com funcionalidades voltadas tanto para gestores quanto para executores, a plataforma promove organização, eficiência e rastreabilidade em ambientes produtivos, administrativos ou logísticos.
 ## Integrantes
 
 * Bernardo Garcia Marques
 * Felipe Claver Diniz
 * Ivo Augusto Neves Dalcin
-* João Pedro Rafael Santos Silva
+* João Pedro Rafael Santos Silva 
 * Rafael Otavio Tenorio
 * Yuri Zocoli Silva
 
@@ -30,7 +28,6 @@ Não deixe de informar o link onde a aplicação estará disponível para acesso
 Se houver usuário de teste, o login e a senha também deverão ser informados aqui (por exemplo: usuário - admin / senha - admin).
 
 O link e o usuário/senha descritos acima são apenas exemplos de como tais informações deverão ser apresentadas.
-
 # Documentação
 
 <ol>
