@@ -1,4 +1,4 @@
-# version: "2"
+
 # sql:
 #   - engine: "mysql"
 #     queries: "./queries"
@@ -19,7 +19,6 @@
 #             go_type:
 #               type: "string"
 
-version: "2"
 sql: 
 - schema: "./migrations"
   queries: "./queries"

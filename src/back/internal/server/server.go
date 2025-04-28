@@ -38,8 +38,10 @@ func NewApp(httpServer *http.Server) *App {
 		port,
 		name,
 	)
+	fmt.Println(connstring)
 	db, err := sql.Open("mysql", connstring)
 	if err != nil {
+		err = fmt.Errorf("erro ao conectar ao banco: %+w", err)
 		logrus.Error(err)
 		panic(err)
 	}
@@ -81,11 +83,16 @@ func (a *App) Run(port string) error {
 	router.GET("/logs", a.logHandler.Get)
 	router.POST("/logs", a.logHandler.Post)
 
+	router.GET("/ping", func(ctx *gin.Context) {
+		ctx.String(200, "PONG")
+	})
+
 	//setup server
 
-	a.s.Addr = ":" + port
+	a.s.Addr += ":" + port
+	fmt.Println(a.s.Addr)
 	a.s.Handler = router
-
+	fmt.Println("Listening and serving...")
 	if err := a.s.ListenAndServe(); err != nil {
 		logrus.Printf("%s", err.Error())
 		return err

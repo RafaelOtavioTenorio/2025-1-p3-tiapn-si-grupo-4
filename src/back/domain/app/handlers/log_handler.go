@@ -3,6 +3,8 @@ package handlers
 import (
 	"database/sql"
 	"encoding/json"
+	"fmt"
+	"io/ioutil"
 	"net/http"
 	"time"
 
@@ -73,11 +75,11 @@ func (h *LogsHandler) Get(c *gin.Context) {
 	})
 }
 
-type createlogRequest struct {
+type CreatelogRequest struct {
 	Log       string    `json:"log"`
 	Level     string    `json:"level"`
 	CreatedAt time.Time `json:"created_at"`
-	Source    *string   `json:"source,omitempty"`
+	Source    *string   `json:"source"`
 }
 
 // Get godoc
@@ -93,8 +95,14 @@ type createlogRequest struct {
 // @Router       /logs [post]
 func (h *LogsHandler) Post(c *gin.Context) {
 
-	var body createlogRequest
-	if err := json.NewDecoder(c.Request.Body).Decode(&body); err != nil {
+	var body CreatelogRequest
+	bodyAsByteArray, err := ioutil.ReadAll(c.Request.Body)
+//	jsonMap := make(map[string]interface{})
+	json.Unmarshal(bodyAsByteArray, &body)
+
+	if err != nil {
+		fmt.Println(err)
+
 		c.JSON(http.StatusBadRequest, &responses.DefaultResponse[any]{
 			Message: "Erro ao criar log",
 		})

@@ -1,1 +1,1 @@
-drop table logs
+drop table logs;

@@ -28,3 +28,7 @@ mysql:
 .PHONY: logs
 logs:
 	docker logs -f app
+
+create_migration:
+	@read -p "Digite o nome da migration: " MIGRATION_NAME; \
+	migrate create -ext sql -dir ./internal/store/store/migrations -seq $$MIGRATION_NAME

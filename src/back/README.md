@@ -60,6 +60,13 @@ go mod tidy
 ```shell
 go install -tags 'mysql' github.com/golang-migrate/migrate/v4/cmd/migrate@latest
 ```
+> Remember
+> 
+> **Add go/bin/ to path**
+>
+> `export PATH="$HOME/go/bin:$PATH"`
+> 
+> Remember to add this command to ./zshrc or .bashrc
 
 
 
@@ -143,7 +150,7 @@ go gen ./...
 
 Criar uma nova migration
 
-```shell
+```shel
 migrate create -ext sql -dir ./internal/store/store/migrations -seq *nome da migration*
 ```
 
