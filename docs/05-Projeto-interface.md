@@ -9,7 +9,8 @@ Visão geral da interação do usuário pelas telas do sistema e protótipo inte
 
  ## User flow
 
-![Userflow](https://github.com/user-attachments/assets/48743940-235a-4db1-9ffa-1d8b74bfedfc)
+![Userflow](https://github.com/user-attachments/assets/bc1cc302-5088-49ae-9206-f7857c3256c0)
+
 
 ### Diagrama de fluxo
 
