@@ -9,7 +9,7 @@ Visão geral da interação do usuário pelas telas do sistema e protótipo inte
 
  ## User flow
 
-![Userflow](https://github.com/user-attachments/assets/bc1cc302-5088-49ae-9206-f7857c3256c0)
+![Userflow Routix](https://github.com/user-attachments/assets/83a44d2a-94c4-4ec1-bd89-3dd31b9bc787)
 
 ### Diagrama de fluxo
 
