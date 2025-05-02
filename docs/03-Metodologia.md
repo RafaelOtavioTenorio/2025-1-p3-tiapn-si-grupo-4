@@ -45,6 +45,14 @@ Discuta como a configuração do projeto foi feita na ferramenta de versionament
 - Desenvolvedor _front-end_: Ivo
 - Desenvolvedor _back-end_: Refael
 
+#### Sprint 3
+- _Scrum master_: Rafael
+- Protótipos: João Pedro
+- Testes: Felipe
+- Documentação: Bernardo Garcia 
+- Desenvolvedor _front-end_: Yuri
+- Desenvolvedor _back-end_: Ivo
+
 ###  Quadro de tarefas
 
 #### Sprint 1
@@ -85,6 +93,25 @@ Atualizado em: 10/04/2025
 | Rafael        | Modelo TO-BE                   | 01/04/2025  | 10/04/2025 | ✔️     | 10/04/2025   |
 | Felipe        | Metodologia do GitHub          | 01/04/2025  | 10/04/2025 | ✔️     | 10/04/2025   |
 
+#### Sprint 3
+
+Atualizado em: 02/05/2025
+
+| Responsável   | Tarefa/Requisito               | Iniciado em | Prazo      | Status | Terminado em |
+| :------------ | :----------------------------- | :---------: | :--------: | :----: | :----------: |
+| João          | Contexto GitHub                | 01/04/2025  | 10/04/2025 | ✔️     | 10/04/2025   |
+| Felipe        | Relatório                      | 01/04/2025  | 10/04/2025 | ✔️     | 10/04/2025   |
+| Yuri          | Modelo AS-IS                   | 01/04/2025  | 10/04/2025 | ✔️     | 10/04/2025   |
+| Bernardo      | Histórias de usuário           | 01/04/2025  | 10/04/2025 | ✔️     | 10/04/2025   |
+| Bernardo      | Personas                       | 01/04/2025  | 10/04/2025 | ✔️     | 10/04/2025   |
+| Bernardo      | Requisitos funcionais          | 01/04/2025  | 10/04/2025 | ✔️     | 10/04/2025   |
+| Bernardo      | Requisitos não-funcionais      | 01/04/2025  | 10/04/2025 | ✔️     | 10/04/2025   |
+| Bernardo      | Diagrama de casos de uso       | 01/04/2025  | 10/04/2025 | ✔️     | 10/04/2025   |
+| Ivo           | Apresentação de slides         | 01/04/2025  | 10/04/2025 | ✔️     | 10/04/2025   |
+| João          | Organização do Kanban          | 01/04/2025  | 10/04/2025 | ✔️     | 10/04/2025   |
+| Rafael        | Modelo TO-BE                   | 01/04/2025  | 10/04/2025 | ✔️     | 10/04/2025   |
+| Felipe        | Metodologia do GitHub          | 01/04/2025  | 10/04/2025 | ✔️     | 10/04/2025   |
+
 Legenda:
 - ✔️: terminado
 - 📝: em execução
@@ -109,6 +136,6 @@ Exemplo: os artefatos do projeto são desenvolvidos a partir de diversas platafo
 |-------------------------------------|------------------------------------|----------------------------------------|
 | Repositório de código fonte         | GitHub                             | [http://2025-1-p3-tiapn-si-grupo-4](https://github.com/ICEI-PUC-Minas-PCO-SI/2025-1-p3-tiapn-si-grupo-4)|
 | Documentos do projeto               | GitHub                             | [http://2025-1-p3-tiapn-si-grupo-4/docs](https://github.com/ICEI-PUC-Minas-PCO-SI/2025-1-p3-tiapn-si-grupo-4/tree/main/docs)|
-| Projeto de interface                | Figma                              | http://....                            |
+| Projeto de interface                | Figma                              | [http://Routix](https://www.figma.com/design/sbwNsvIbSnB5KKWx21rz6X/ROUTIX-Web?node-id=0-1&p=f&t=ImtvVMEpjvRD3)  |
 | Gerenciamento do projeto            | GitHub Projects                    | [http://Kanban](https://github.com/orgs/ICEI-PUC-Minas-PCO-SI/projects/81/views/1)   |
 | Hospedagem                          | Vercel                             | http://....                            |
