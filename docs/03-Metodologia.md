@@ -95,7 +95,7 @@ Atualizado em: 10/04/2025
 
 #### Sprint 3
 
-Atualizado em: 02/05/2025
+Atualizado em: 08/05/2025
 
 | Responsável | Tarefa/Requisito                | Iniciado em | Prazo      | Status | Terminado em |
 |-------------|----------------------------------|-------------|------------|--------|--------------|
