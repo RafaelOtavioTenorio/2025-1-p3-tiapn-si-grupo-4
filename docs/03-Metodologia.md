@@ -97,7 +97,7 @@ Atualizado em: 10/04/2025
 
 Atualizado em: 08/05/2025
 
-| Responsável | Tarefa/Requisito                | Iniciado em | Prazo      | Status | Terminado em |
+| Responsável | Tarefa/Requisito                 | Iniciado em | Prazo      | Status | Terminado em |
 |-------------|----------------------------------|-------------|------------|--------|--------------|
 | João        | Protótipo de telas               | 22/04/2025  | 08/05/2025 | ✔️     | 08/05/2025   |
 | Felipe      | Relatório                        | 22/04/2025  | 08/05/2025 | ✔️     | 08/05/2025   |
@@ -105,8 +105,8 @@ Atualizado em: 08/05/2025
 | Yuri        | DER notação Pé de Galinha        | 22/04/2025  | 08/05/2025 | ✔️     | 08/05/2025   |
 | Bernardo    | Diagrama de classes              | 22/04/2025  | 08/05/2025 | ✔️     | 08/05/2025   |
 | Felipe      | Estrutura diagrama de classes    | 22/04/2025  | 08/05/2025 | ✔️     | 08/05/2025   |
-| Rafael      | User Flow                        | 22/04/2025  | 01/05/2025 | ✔️     | 08/05/2025   |
-| Rafael      | Diagrama de fluxo                | 22/04/2025  | 01/05/2025 | ✔️     | 08/05/2025   |
+| Rafael      | User Flow                        | 22/04/2025  | 08/05/2025 | ✔️     | 01/05/2025   |
+| Rafael      | Diagrama de fluxo                | 22/04/2025  | 08/05/2025 | ✔️     | 01/05/2025   |
 | Ivo         | Apresentação de slides           | 22/04/2025  | 08/05/2025 | ✔️     | 08/05/2025   |
 | Felipe      | Organização do Kanban            | 22/04/2025  | 08/05/2025 | ✔️     | 08/05/2025   |
 | João        | Telas dos processos              | 22/04/2025  | 08/05/2025 | ✔️     | 08/05/2025   |
