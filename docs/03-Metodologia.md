@@ -82,7 +82,7 @@ Atualizado em: 10/04/2025
 | :------------ | :----------------------------- | :---------: | :--------: | :----: | :----------: |
 | João          | Contexto GitHub                | 01/04/2025  | 10/04/2025 | ✔️     | 10/04/2025   |
 | Felipe        | Relatório                      | 01/04/2025  | 10/04/2025 | ✔️     | 10/04/2025   |
-| Yuri          |  Modelo AS-IS                  | 01/04/2025  | 10/04/2025 | ✔️     | 10/04/2025   |
+| Yuri          | Modelo AS-IS                   | 01/04/2025  | 10/04/2025 | ✔️     | 10/04/2025   |
 | Bernardo      | Histórias de usuário           | 01/04/2025  | 10/04/2025 | ✔️     | 10/04/2025   |
 | Bernardo      | Personas                       | 01/04/2025  | 10/04/2025 | ✔️     | 10/04/2025   |
 | Bernardo      | Requisitos funcionais          | 01/04/2025  | 10/04/2025 | ✔️     | 10/04/2025   |
@@ -97,20 +97,20 @@ Atualizado em: 10/04/2025
 
 Atualizado em: 02/05/2025
 
-| Responsável   | Tarefa/Requisito               | Iniciado em | Prazo      | Status | Terminado em |
-| :------------ | :----------------------------- | :---------: | :--------: | :----: | :----------: |
-| João          | Contexto GitHub                | 01/04/2025  | 10/04/2025 | ✔️     | 10/04/2025   |
-| Felipe        | Relatório                      | 01/04/2025  | 10/04/2025 | ✔️     | 10/04/2025   |
-| Yuri          | Modelo AS-IS                   | 01/04/2025  | 10/04/2025 | ✔️     | 10/04/2025   |
-| Bernardo      | Histórias de usuário           | 01/04/2025  | 10/04/2025 | ✔️     | 10/04/2025   |
-| Bernardo      | Personas                       | 01/04/2025  | 10/04/2025 | ✔️     | 10/04/2025   |
-| Bernardo      | Requisitos funcionais          | 01/04/2025  | 10/04/2025 | ✔️     | 10/04/2025   |
-| Bernardo      | Requisitos não-funcionais      | 01/04/2025  | 10/04/2025 | ✔️     | 10/04/2025   |
-| Bernardo      | Diagrama de casos de uso       | 01/04/2025  | 10/04/2025 | ✔️     | 10/04/2025   |
-| Ivo           | Apresentação de slides         | 01/04/2025  | 10/04/2025 | ✔️     | 10/04/2025   |
-| João          | Organização do Kanban          | 01/04/2025  | 10/04/2025 | ✔️     | 10/04/2025   |
-| Rafael        | Modelo TO-BE                   | 01/04/2025  | 10/04/2025 | ✔️     | 10/04/2025   |
-| Felipe        | Metodologia do GitHub          | 01/04/2025  | 10/04/2025 | ✔️     | 10/04/2025   |
+| Responsável | Tarefa/Requisito                | Iniciado em | Prazo      | Status | Terminado em |
+|-------------|----------------------------------|-------------|------------|--------|--------------|
+| João        | Protótipo de telas               | 22/04/2025  | 08/05/2025 | ✔️     | 08/05/2025   |
+| Felipe      | Relatório                        | 22/04/2025  | 08/05/2025 | ✔️     | 08/05/2025   |
+| Yuri        | DER notação Peter Chen           | 22/04/2025  | 08/05/2025 | ✔️     | 08/05/2025   |
+| Yuri        | DER notação Pé de Galinha        | 22/04/2025  | 08/05/2025 | ✔️     | 08/05/2025   |
+| Bernardo    | Diagrama de classes              | 22/04/2025  | 08/05/2025 | ✔️     | 08/05/2025   |
+| Felipe      | Estrutura diagrama de classes    | 22/04/2025  | 08/05/2025 | ✔️     | 08/05/2025   |
+| Rafael      | User Flow                        | 22/04/2025  | 01/05/2025 | ✔️     | 08/05/2025   |
+| Rafael      | Diagrama de fluxo                | 22/04/2025  | 01/05/2025 | ✔️     | 08/05/2025   |
+| Ivo         | Apresentação de slides           | 22/04/2025  | 08/05/2025 | ✔️     | 08/05/2025   |
+| Felipe      | Organização do Kanban            | 22/04/2025  | 08/05/2025 | ✔️     | 08/05/2025   |
+| João        | Telas dos processos              | 22/04/2025  | 08/05/2025 | ✔️     | 08/05/2025   |
+| Felipe      | Metodologia do GitHub            | 22/04/2025  | 08/05/2025 | ✔️     | 08/05/2025   |
 
 Legenda:
 - ✔️: terminado
