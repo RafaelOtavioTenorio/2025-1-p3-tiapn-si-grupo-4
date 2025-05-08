@@ -13,7 +13,7 @@ Visão geral da interação do usuário pelas telas do sistema e protótipo inte
 
 ### Diagrama de fluxo
 
-![Fluxograma Routix](https://github.com/user-attachments/assets/5d9f8bde-c8c7-4d1a-b337-b9f4e1b58719)
+![Fluxograma Routix](https://github.com/user-attachments/assets/62ce439a-c9d6-4105-b065-cc7a066a900e)
 
 ## Wireframes
 
