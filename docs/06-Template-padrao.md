@@ -4,9 +4,21 @@
 
 Layout padrão da aplicação que será utilizado em todas as páginas com a definição de identidade visual, aspectos de responsividade e iconografia.
 
-> **Links úteis**:
->
-> - [CSS website layout (W3Schools)](https://www.w3schools.com/css/css_website_layout.asp)
-> - [Website page layouts](http://www.cellbiol.com/bioinformatics_web_development/chapter-3-your-first-web-page-learning-html-and-css/website-page-layouts/)
-> - [Perfect liquid layout](https://matthewjamestaylor.com/perfect-liquid-layouts)
-> - [How and why icons improve your web design](https://usabilla.com/blog/how-and-why-icons-improve-you-web-design/)
+## Cores
+Nossa paleta de cores foi usada por um padrão de cores usadas na área da saúde e que sinergizam bem umas com as outras
+
+### Paleta de cores da aplicação
+
+![Paleta de cores](/snapshots/paleta_de_cores.png)
+
+## Tipografia
+
+Fontes utilizadas: [Inter](https://fonts.google.com/specimen/Inter?query=inter)
+Achamos uma fonte clássica e boa para o mercado 
+
+## Iconografia
+
+- [SearchIcon](https://mui.com/material-ui/material-icons/?query=search&selected=Search) - Indicar input para pesquisa de artigos e recursos da aplicação
+- [PersonIcon](https://mui.com/material-ui/material-icons/?query=person&selected=Person) - Indicar botão que exibe o menu de usuário
+- [CalculateIcon](https://mui.com/material-ui/material-icons/?query=calcul&selected=Calculate) - Indicar botão para a tela de cálculo de insulina
+- [LocalDiningIcon](https://mui.com/material-ui/material-icons/?query=food&selected=LocalDining) - Indicar botão que exibe o menu de refeições cadastradas do usuário
