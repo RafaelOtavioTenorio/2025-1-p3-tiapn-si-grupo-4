@@ -9,11 +9,11 @@ Visão geral da interação do usuário pelas telas do sistema e protótipo inte
 
  ## User flow
 
-![Userflow Routix](docs/images/Userflow_Routix.png)
+![Userflow Routix](images/Userflow_Routix.png)
 
 ### Diagrama de fluxo
 
-![Fluxograma Routix](docs/images/Fluxograma_Routix.png)
+![Fluxograma Routix](images/Fluxograma_Routix.png)
 
 ## Wireframes
 
