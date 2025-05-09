@@ -49,42 +49,132 @@ Insira aqui o script de criação das tabelas do banco de dados.
 Veja um exemplo:
 
 ```sql
--- Criação da tabela Medico
-CREATE TABLE Medico (
-    MedCodigo INTEGER PRIMARY KEY,
-    MedNome VARCHAR(100)
+CREATE TABLE EMPRESA(
+	ID INT AUTO_INCREMENT PRIMARY KEY,
+	Nome VARCHAR(255) NOT NULL,
+	CNPJ VARCHAR(20),
+	Ativo BOOLEAN DEFAULT TRUE,
+	INDEX idx_empresa_nome (Nome),
+	INDEX idx_empresa_cpnj (CNPJ)
 );
 
--- Criação da tabela Paciente
-CREATE TABLE Paciente (
-    PacCodigo INTEGER PRIMARY KEY,
-    PacNome VARCHAR(100)
+CREATE TABLE TEMPLATE_ROTINA(
+	ID INT AUTO_INCREMENT PRIMARY KEY,
+	Nome VARCHAR(255) NOT NULL,
+	Empresa INT NOT NULL,
+	Prioridade INT,
+	Descricao VARCHAR(255),
+	Ativo BOOLEAN DEFAULT TRUE,
+	FOREIGN KEY (Empresa) REFERENCES EMPRESA(ID),
+	INDEX idx_template_rotina_nome (Nome)
 );
 
--- Criação da tabela Consulta
-CREATE TABLE Consulta (
-    ConCodigo INTEGER PRIMARY KEY,
-    MedCodigo INTEGER,
-    PacCodigo INTEGER,
-    Data DATE,
-    FOREIGN KEY (MedCodigo) REFERENCES Medico(MedCodigo),
-    FOREIGN KEY (PacCodigo) REFERENCES Paciente(PacCodigo)
+CREATE TABLE TEMPLATE_TAREFA(
+	ID INT AUTO_INCREMENT PRIMARY KEY,
+	Nome VARCHAR(255) NOT NULL,
+	Rotina INT NOT NULL,
+	Pai INT,
+	Prioridade INT,
+	Ativo BOOLEAN DEFAULT TRUE,
+	FOREIGN KEY (Rotina) REFERENCES TEMPLATE_ROTINA(ID) ON DELETE CASCADE,
+	FOREIGN KEY (Pai) REFERENCES TEMPLATE_TAREFA(ID) ON DELETE CASCADE,
+	INDEX idx_template_tarefa_nome (Nome)
 );
 
--- Criação da tabela Medicamento
-CREATE TABLE Medicamento (
-    MdcCodigo INTEGER PRIMARY KEY,
-    MdcNome VARCHAR(100)
+CREATE TABLE INSUMO(
+	ID INT AUTO_INCREMENT PRIMARY KEY,
+	Nome VARCHAR(255) NOT NULL,
+	Descricao INT NOT NULL,
+	Tarefa INT NOT NULL,
+	FOREIGN KEY (Tarefa) REFERENCES TEMPLATE_TAREFA(ID) ON DELETE CASCADE,
+	INDEX idx_insumo_nome (Nome)
 );
 
--- Criação da tabela Prescricao
-CREATE TABLE Prescricao (
-    ConCodigo INTEGER,
-    MdcCodigo INTEGER,
-    Posologia VARCHAR(200),
-    PRIMARY KEY (ConCodigo, MdcCodigo),
-    FOREIGN KEY (ConCodigo) REFERENCES Consulta(ConCodigo),
-    FOREIGN KEY (MdcCodigo) REFERENCES Medicamento(MdcCodigo)
+CREATE TABLE TAREFA(
+	ID INT AUTO_INCREMENT PRIMARY KEY,
+	Tarefa INT NOT NULL,
+	Nome VARCHAR(255) NOT NULL,
+	Foi_Executada TINYINT(1),
+	DataInicio DATE,
+	DataFim Date,
+	FOREIGN KEY (Tarefa) REFERENCES TEMPLATE_TAREFA(ID)
+	INDEX idx_tarefa_data_inicio (DataInicio),
+	INDEX idx_tarefa_data_fim (DataFim)
+);
+
+CREATE TABLE ROTINA(
+	ID INT AUTO_INCREMENT PRIMARY KEY,
+	Rotina INT NOT NULL,
+	Nome VARCHAR(255) NOT NULL,
+	Descricao VARCHAR(255),
+	DataInicio DATE,
+	DataFim DATE,
+	FOREIGN KEY (Rotina) REFERENCES TEMPLATE_ROTINA(ID),
+	INDEX idx_rotina_nome (Nome),
+	INDEX idx_rotina_data_inicio (DataInicio),
+	INDEX idx_rotina_data_fim (DataFim)
+);
+
+CREATE TABLE USUARIO(
+	ID INT AUTO_INCREMENT PRIMARY KEY,
+	Nome VARCHAR(255) NOT NULL,
+	Email VARCHAR(255),
+	CPF VARCHAR(20),
+	Celular VARCHAR (20),
+	Nivel_Acesso INT,
+	Ativo BOOLEAN DEFAULT TRUE,
+	INDEX idx_usuarui_nome (Nome),
+	INDEX idx_usuario_email (Email),
+	INDEX idx_usuario_cpf (CPF)
+);
+
+CREATE TABLE LOGIN(
+	ID INT AUTO_INCREMENT PRIMARY KEY,
+	Login VARCHAR(255) NOT NULL,
+	Senha VARCHAR(255) NOT NULL,
+	Usuario INT NOT NULL,
+	FOREIGN KEY (Usuario) REFERENCES USUARIO(ID) ON DELETE CASCADE,
+	INDEX idx_login_login (Login)
+);
+
+CREATE TABLE COMENTARIO(
+	ID INT AUTO_INCREMENT PRIMARY KEY,
+	Rotina INT NOT NULL,
+	Usuario INT NOT NULL,
+	Texto VARCHAR(255) NOT NULL,
+	Pai INT,
+	DataComentario DATE,
+	FOREIGN KEY (Rotina) REFERENCES ROTINA(ID) ON DELETE CASCADE,
+	FOREIGN KEY (Usuario) REFERENCES USUARIO(ID) ON DELETE SET NULL,
+	FOREIGN KEY (Pai) REFERENCES COMENTARIO(ID),
+	INDEX idx_comentario_data (DataComentario)
+);
+
+CREATE TABLE ACAO(
+	ID INT AUTO_INCREMENT PRIMARY KEY,
+	Descricao VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE LOGS(
+	ID INT AUTO_INCREMENT PRIMARY KEY,
+	Tabela VARCHAR(255) NOT NULL,
+	IdItem INT NOT NULL,
+	DataLog DATE NOT NULL,
+	Acao INT NOT NULL,
+	ValorAnterior JSON,
+	ValorPosterior JSON,
+	Usuario INT NOT NULL,
+	FOREIGN KEY (Acao) REFERENCES ACAO(ID),
+	FOREIGN KEY (Usuario) REFERENCES USUARIO(ID),
+	INDEX idx_logs_tabela (Tabela)
+);
+
+CREATE TABLE FUNCIONARIO(
+	ID INT AUTO_INCREMENT PRIMARY KEY,
+	Usuario INT NOT NULL,
+	Empresa INT NOT NULL,
+	FOREIGN KEY (Usuario) REFERENCES USUARIO(ID),
+	FOREIGN KEY (Empresa) REFERENCES EMPRESA(ID)
 );
 ```
 Esse script deverá ser incluído em um arquivo .sql na pasta [de scripts SQL](../src/db).
