@@ -4,7 +4,7 @@
 
 Layout padrão da aplicação que será utilizado em todas as páginas com a definição de identidade visual, aspectos de responsividade e iconografia.
 
-![Template](/images/teamplate_padrao.png)
+![Template](/images/template_padrao.png)
 
 ## Cores
 Nossa paleta de cores foi usada por um padrão de cores usadas na área industrial
