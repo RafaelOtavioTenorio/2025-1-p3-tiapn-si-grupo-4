@@ -1,4 +1,3 @@
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 CREATE TABLE usuarios (
     id VARCHAR(36) NOT NULL,
