@@ -26,6 +26,8 @@ Apresente o modelo de dados por meio de um modelo relacional que contemple todos
 
 O Modelo ER representa, por meio de um diagrama, como as entidades (coisas, objetos) se relacionam entre si na aplicação interativa.
 
+![Modelo Relacional Peter Chen](images/DB_PeterChenPNG.png "ER Peter Chen")
+
 > **Links úteis**:
 > - [Como fazer um diagrama entidade relacionamento](https://www.lucidchart.com/pages/pt/como-fazer-um-diagrama-entidade-relacionamento)
 
@@ -34,7 +36,7 @@ O Modelo ER representa, por meio de um diagrama, como as entidades (coisas, obje
 O Esquema Relacional corresponde à representação dos dados em tabelas juntamente com as restrições de integridade e chave primária.
  
 
-![Exemplo de um modelo relacional](images/modelo_relacional.png "Exemplo de modelo relacional.")
+![Modelo Relacional Pé de Galinha](images/DB_PeDeGalinhaPNG.png "ER Pé de Galinha")
 ---
 
 > **Links úteis**:
