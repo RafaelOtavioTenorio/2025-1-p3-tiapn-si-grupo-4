@@ -9,7 +9,7 @@ Visão geral da interação do usuário pelas telas do sistema e protótipo inte
 
  ## User flow
 
-![Userflow Routix](docs/images/Userflow Routix.png)
+![Userflow Routix](docs/images/UserflowRoutix.png)
 
 ### Diagrama de fluxo
 
