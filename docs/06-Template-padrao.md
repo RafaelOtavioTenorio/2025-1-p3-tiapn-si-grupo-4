@@ -4,12 +4,14 @@
 
 Layout padrão da aplicação que será utilizado em todas as páginas com a definição de identidade visual, aspectos de responsividade e iconografia.
 
+![Template](/images/teamplate_padrao.png)
+
 ## Cores
-Nossa paleta de cores foi usada por um padrão de cores usadas na área da saúde e que sinergizam bem umas com as outras
+Nossa paleta de cores foi usada por um padrão de cores usadas na área industrial
 
 ### Paleta de cores da aplicação
 
-![Paleta de cores](/snapshots/paleta_de_cores.png)
+![Paleta de cores](/images/paletaDeCores.jpeg)
 
 ## Tipografia
 
