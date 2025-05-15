@@ -1,14 +1,14 @@
-import { useState } from 'react'
 import Header from './widgets/header'
+import SidePannel from './widgets/SidePannel'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
       {/* header */}
       <Header />
       {/* side pannel */}
+      <SidePannel />
     </>
   )
 }
