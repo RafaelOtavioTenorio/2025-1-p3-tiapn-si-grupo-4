@@ -4,45 +4,45 @@ import SidePannel from './components/SidePannel'
 import MainPage from './pages/MainPage'
 import { useState } from 'react';
 import CreatePage from './pages/CreatePage';
+import RoutinesPage from './pages/RoutinesPage';
+import HistoricPage from './pages/HistoricPage';
+import GroupsPage from './pages/GroupsPage';
 
 export const Pannels = {
-  CREATE: 'create',
+  CREATE: '',
   ROUTINES: 'routines',
   HISTORIC: 'historic',
   GROUPS: 'groups',
 } as const;
 
-function App() {
+export function App() {
 
   const [activePannel, setActivePannel] = useState(Pannels.CREATE as string);
 
 
   return (
     <>
-      {/* header */}
-      <Header />
-      {/* side pannel */}
-      <div className='flex flex-row'>
-        {/* main content */}
-        <BrowserRouter >
-          <SidePannel activePannel={activePannel} setActivePannel={setActivePannel} />
-          <main className='flex-1 bg-[#F5F5F5] '>
-            <Routes >
-              <Route path='/create' index element={<CreatePage />} />
-              <Route path="/routines" element={<MainPage text="routines" />} />
-              <Route path="/historic" element={<MainPage text="historic" />} />
-              <Route path="/groups" element={<MainPage text="groups" />} />
-            </Routes>
-          </main>
-
-        </BrowserRouter>
+      <div className='h-screen overflow-hidden'>
+        {/* header */}
+        <Header />
+        {/* side pannel */}
+        <div className='flex flex-row h-[calc(100vh-4rem)]'>
+          {/* main content */}
+          <BrowserRouter basename='/' >
+            <SidePannel activePannel={activePannel} setActivePannel={setActivePannel} />
+            <main className='flex-1 bg-[#F5F5F5] '>
+              <Routes  >
+                <Route path="/" index element={<CreatePage />} />
+                <Route path="/routines" element={<RoutinesPage text="routines" />} />
+                <Route path="/historic" element={<HistoricPage />} />
+                <Route path="/groups" element={<GroupsPage />} />
+              </Routes>
+            </main>
+          </BrowserRouter>
+        </div>
       </div>
-
-
-
-
     </>
   )
 }
 
-export default App
+

@@ -76,7 +76,7 @@ go install github.com/sqlc-dev/sqlc/cmd/sqlc@latest
 ```
 
 
-## __Observação__
+## **Observação**
 É necessário criar o arquivo .env na raiz do projeto e na pasta service core com as variáveis de ambiente necessárias
 ex.:
 ```.env
