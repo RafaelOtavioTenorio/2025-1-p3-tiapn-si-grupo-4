@@ -11,7 +11,7 @@ Uma plataforma de gerenciamento operacional voltada para empresas que buscam pad
 * Bernardo Garcia Marques
 * Felipe Claver Diniz
 * Ivo Augusto Neves Dalcin
-* João Pedro Rafael Santos Silva
+* João Pedro Rafael Santos Silva 
 * Rafael Otavio Tenorio
 * Yuri Zocoli Silva
 
