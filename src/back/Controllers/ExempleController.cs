@@ -12,7 +12,7 @@ public static class ExempleController
 
         var rout = app.MapGroup("exemplo");
         
-        app.MapGet("", async (ExempleContext context) =>
+        rout.MapGet("", async (ExempleContext context) =>
         {
             try
             {
@@ -26,7 +26,7 @@ public static class ExempleController
             }
         });
         
-        app.MapPost("", async (ExempleDTO req, ExempleContext context) =>
+        rout.MapPost("", async (ExempleDTO req, ExempleContext context) =>
         {
             try
             {
@@ -42,7 +42,7 @@ public static class ExempleController
             }
         });
         
-        app.MapPut("{id:int}", async (int id, ExempleDTO req, ExempleContext context) =>
+        rout.MapPut("{id:int}", async (int id, ExempleDTO req, ExempleContext context) =>
         {
             try
             {
@@ -60,7 +60,7 @@ public static class ExempleController
             }
         });
         
-        app.MapDelete("{id:int}", async (int id, ExempleDTO req, ExempleContext context) =>
+        rout.MapDelete("{id:int}", async (int id, ExempleContext context) =>
         {
             try
             {

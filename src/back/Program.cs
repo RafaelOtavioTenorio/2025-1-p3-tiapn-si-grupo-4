@@ -20,5 +20,5 @@ if (app.Environment.IsDevelopment())
 
 app.ExempleRoutes();
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.Run();
