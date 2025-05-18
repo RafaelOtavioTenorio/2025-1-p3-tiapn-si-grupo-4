@@ -1,4 +1,5 @@
 using back.Controllers;
+using back.Data;
 using back.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ExempleContext>();
+builder.Services.AddScoped<UsuarioContext>();
 
 var app = builder.Build();
 
@@ -19,6 +21,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.ExempleRoutes();
+app.UsuarioRoutes();
 
 //app.UseHttpsRedirection();
 app.Run();
