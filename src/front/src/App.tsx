@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router'
 import Header from './components/header'
 import SidePannel from './components/SidePannel'
-import MainPage from './pages/MainPage'
 import { useState } from 'react';
 import CreatePage from './pages/CreatePage';
 import RoutinesPage from './pages/RoutinesPage';
