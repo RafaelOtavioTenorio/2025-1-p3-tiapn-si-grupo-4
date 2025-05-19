@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from "react"
 
 interface ButtonProps extends PropsWithChildren {
-    onClick?: () => void 
+    onClick?: () => void
 }
 
 
@@ -9,8 +9,8 @@ export default function DefaultButton(props: ButtonProps) {
 
 
     return (
-        <div className=" mx-auto flex bg-[#0A2C35] w-36 h-16 rounded-md text-amber-50 text-center text-xl font-bold transition-colors hover:bg-amber-50 hover:text-slate-800  ">
-            <button className="mx-auto my-auto" onClick={props.onClick}>
+        <div className="">
+            <button className="bg-[#0A2C35] text-white rounded-lg h-16 w-48 text-xl font-bold transition-colors hover:bg-amber-50 hover:text-slate-800  " onClick={props.onClick}>
                 {props.children}
             </button>
         </div>
