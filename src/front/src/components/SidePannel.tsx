@@ -1,4 +1,10 @@
-import { AccessTime, AddCircleOutlineRounded, ArrowBackIosRounded, Person, ViewKanbanOutlined } from '@mui/icons-material';
+import {
+    AccessTime,
+    AddCircleOutlineRounded,
+    ArrowBackIosRounded,
+    Person,
+    ViewKanbanOutlined
+} from '@mui/icons-material';
 import { useState } from "react";
 import { Pannels } from "../App";
 import { Link } from "react-router";

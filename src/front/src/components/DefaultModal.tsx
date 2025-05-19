@@ -5,6 +5,7 @@ import DefaultButton from "./DefaultButton";
 interface ModalProps extends PropsWithChildren {
     openModal: boolean;
     closeModal: () => void;
+    actions?: React.ReactElement[];
 }
 
 function DefaultModal(props: ModalProps) {
@@ -28,7 +29,10 @@ function DefaultModal(props: ModalProps) {
                 <div className="flex-1 flex items-center justify-center">
                     {props.children}
                 </div>
-                <div className="flex justify-end p-4">
+                <div className="flex w-full p-4 justify-center gap-2">
+                    {props.actions && props.actions.map((action, index) => (
+                        <div key={index}>{action}</div>
+                    ))}
                     <DefaultButton onClick={props.closeModal}>
                         Fechar
                     </DefaultButton>
