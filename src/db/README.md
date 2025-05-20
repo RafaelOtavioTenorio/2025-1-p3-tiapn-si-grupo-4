@@ -21,10 +21,10 @@ Faça o download da imagem do SQL_Server pelo site da propria microsoft [Microso
 ![db_tutorial_1](../../docs/images/db_tutorial_1.png)
 
 <ins>Selecione "**Microsoft SQL Server - Ubuntu based images**"</ins>
-![db_tutorial_2](docs/images/db_tutorial_2.png)
+![db_tutorial_2](../../docs/images/db_tutorial_2.png)
 
 <ins>Em "tags" procure pela release "2022-latest" e copie o comando docker</ins>
-![db_tutorial_3](docs/images/db_tutorial_3.png)
+![db_tutorial_3](../../docs/images/db_tutorial_3.png)
 
 <ins>Rode o comando docker em um terminal</ins>
 
