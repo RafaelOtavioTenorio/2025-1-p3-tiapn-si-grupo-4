@@ -12,7 +12,7 @@ public static class ExempleController
 
         var rout = app.MapGroup("exemplo");
         
-        rout.MapGet("", async (ExempleContext context) =>
+        rout.MapGet("", async (SqlServerContext context) =>
         {
             try
             {
@@ -26,7 +26,7 @@ public static class ExempleController
             }
         });
         
-        rout.MapPost("", async (ExempleDTO req, ExempleContext context) =>
+        rout.MapPost("", async (ExempleDTO req, SqlServerContext context) =>
         {
             try
             {
@@ -42,7 +42,7 @@ public static class ExempleController
             }
         });
         
-        rout.MapPut("{id:int}", async (int id, ExempleDTO req, ExempleContext context) =>
+        rout.MapPut("{id:int}", async (int id, ExempleDTO req, SqlServerContext context) =>
         {
             try
             {
@@ -60,7 +60,7 @@ public static class ExempleController
             }
         });
         
-        rout.MapDelete("{id:int}", async (int id, ExempleContext context) =>
+        rout.MapDelete("{id:int}", async (int id, SqlServerContext context) =>
         {
             try
             {
