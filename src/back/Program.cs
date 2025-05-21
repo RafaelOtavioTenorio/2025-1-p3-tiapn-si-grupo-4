@@ -1,23 +1,17 @@
 using back.Controllers;
 using back.Entities;
+using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
+
+DotNetEnv.Env.Load();
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<SqlServerContext>(provider =>
-{
-    var configuration = provider.GetRequiredService<IConfiguration>();
-    var connectionString = configuration.GetConnectionString("LocalHost");
-    
-    var optionsBuilder = new DbContextOptionsBuilder<SqlServerContext>();
-    optionsBuilder.UseSqlServer(connectionString);
-    
-    return new SqlServerContext(optionsBuilder.Options);
-});
+builder.Services.AddDbContext<MyDbContext>(); // No configuration here, relies on MyDbContext
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
@@ -28,7 +22,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.ExempleRoutes();
+app.LogRoutes();
+// app.UseHttpsRedirection(); // Comment out to avoid HTTPS warning for now
 
-app.UseHttpsRedirection();
-app.Run();
+app.Run("http://localhost:3000");
