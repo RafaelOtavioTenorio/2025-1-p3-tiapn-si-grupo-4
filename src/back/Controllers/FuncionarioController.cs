@@ -51,7 +51,6 @@ namespace back.Controllers
                     }
                 });
 
-            //incompleto
             route.MapPut("{id:int}", async (int id, FuncionarioDTO req, SqlServerContext context) =>
             {
                 try
