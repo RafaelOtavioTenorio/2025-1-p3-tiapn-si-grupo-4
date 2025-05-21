@@ -5,18 +5,19 @@ using Microsoft.EntityFrameworkCore;
 
 namespace back.Controllers
 {
-    public static class UsuarioController
+    public static class FuncionarioController
     {
-        public static void UsuarioRoutes(this WebApplication app)
+        
+        public static void FuncionarioRoutes(this WebApplication app)
         {
-            var route = app.MapGroup("usuario");
+            var route = app.MapGroup("funcionario");
 
             route.MapGet("", async (SqlServerContext context) =>
             {
                 try
                 {
-                    var usuarios = await context.Usuario.ToListAsync();
-                    return Results.Ok(usuarios);
+                    var funcionarios = await context.Funcionario.ToListAsync();
+                    return Results.Ok(funcionarios);
                 }
                 catch (Exception e)
                 {
@@ -25,13 +26,21 @@ namespace back.Controllers
                 }
             });
 
-            route.MapPost("", 
-                async (UsuarioDTO req, SqlServerContext context) => 
+            route.MapPost("",
+                async (FuncionarioDTO req, SqlServerContext context) =>
                 {
                     try
                     {
-                        var usuario = new UsuarioModel(req.Nome);
-                        await context.AddAsync(usuario);
+                        var funcionario = new FuncionarioModel();
+                        if (req.UsuarioId > 0)
+                        {
+                            funcionario.UpdateUser(req.UsuarioId);
+                        }
+                        if (req.EmpresaId > 0)
+                        {
+                            funcionario.UpdateEmpresa(req.EmpresaId);
+                        }
+                        await context.AddAsync(funcionario);
                         await context.SaveChangesAsync();
                         return Results.Ok();
                     }
@@ -42,37 +51,26 @@ namespace back.Controllers
                     }
                 });
 
-            route.MapPut("{id:int}", async (int id, UsuarioDTO req, SqlServerContext context) =>
+            //incompleto
+            route.MapPut("{id:int}", async (int id, FuncionarioDTO req, SqlServerContext context) =>
             {
                 try
                 {
-                    var usuario = await context.Usuario.FindAsync(id);
-                    if(usuario == null)
+                    var funcionario = await context.Funcionario.FindAsync(id);
+                    if (funcionario == null)
                         return Results.NotFound();
 
-                    if (!string.IsNullOrWhiteSpace(req.Nome))
+                    if (req.UsuarioId > 0)
                     {
-                        usuario.UpdateName(req.Nome);
+                        funcionario.UpdateUser(req.UsuarioId);
                     }
-                    if (!string.IsNullOrWhiteSpace(req.Email))
+                    if (req.EmpresaId > 0)
                     {
-                        usuario.UpdateEmail(req.Email);
-                    }
-                    if (!string.IsNullOrWhiteSpace(req.CPF))
-                    {
-                        usuario.UpdateCPF(req.CPF);
-                    }
-                    if (!string.IsNullOrWhiteSpace(req.Celular))
-                    {
-                        usuario.UpdateCelular(req.Celular);
-                    }
-                    if (req.NivelAcesso.HasValue)
-                    {
-                        usuario.UpdateNivelAcesso(req.NivelAcesso);
+                        funcionario.UpdateEmpresa(req.EmpresaId);
                     }
 
                     await context.SaveChangesAsync();
-                    return Results.Ok(usuario);
+                    return Results.Ok(funcionario);
                 }
                 catch (Exception e)
                 {
@@ -85,10 +83,10 @@ namespace back.Controllers
             {
                 try
                 {
-                    var usuario = await context.Usuario.FindAsync(id);
-                    if(usuario == null)
+                    var funcionario = await context.Funcionario.FindAsync(id);
+                    if (funcionario == null)
                         return Results.NotFound();
-                    usuario.SetInactive();
+                    context.Funcionario.Remove(funcionario);
                     await context.SaveChangesAsync();
                     return Results.Ok();
                 }
