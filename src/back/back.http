@@ -4,3 +4,7 @@ GET {{back_HostAddress}}/logs/
 Accept: application/json
 
 ###
+
+
+GET {{back_HostAddress}}/
+Accept: application/json
