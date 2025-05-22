@@ -8,5 +8,3 @@
 //     Ativo BIT DEFAULT 1,
 //     FOREIGN KEY (Empresa) REFERENCES EMPRESA(ID)
 // );
-
-namespace back.Models;

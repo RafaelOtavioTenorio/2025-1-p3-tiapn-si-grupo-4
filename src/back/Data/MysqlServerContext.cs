@@ -16,10 +16,10 @@ public partial class MyDbContext : DbContext
         if (!optionsBuilder.IsConfigured)
         {
             DotNetEnv.Env.Load();
-            var host = Environment.GetEnvironmentVariable("DATABASE_HOST") ?? "localhost";
+            var host = Environment.GetEnvironmentVariable("DATABASE_HOST") ?? "db";
             var port = Environment.GetEnvironmentVariable("DATABASE_PORT") ?? "3306";
             var database = Environment.GetEnvironmentVariable("DATABASE_NAME") ?? "routix";
-            var user = Environment.GetEnvironmentVariable("DATABASE_USER") ?? "root"; // Changed to root
+            var user = Environment.GetEnvironmentVariable("DATABASE_USER") ?? "routix";
             var password = Environment.GetEnvironmentVariable("DATABASE_PASSWORD") ?? "1234"; // Match Program.cs
 
             var connectionString = $"Server={host};Port={port};Database={database};User Id={user};Password={password};";

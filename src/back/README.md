@@ -1,189 +1,206 @@
-# EF Core Migration Commands Documentation
+Abaixo está a documentação simplificada para executar seu projeto, incluindo o banco de dados e as migrações, usando Docker Compose.
 
-This document outlines the sequence of commands executed to set up and apply Entity Framework Core (EF Core) migrations for a .NET application using a MySQL database (`routix`). The commands resolve the error `Table 'routix.logs' doesn't exist` by installing the necessary tools, creating migrations, and applying them to the database to create the `Logs` table based on the `LogModel` entity.
+---
 
-## Purpose
-The commands enable the creation and application of database migrations to synchronize the database schema with the application's data model, specifically creating the `Logs` table for the `LogModel` entity in the `routix` database.
+## Como Rodar o Projeto com Docker Compose e Migrações EF Core
 
-## Prerequisites
-- **Project Setup**: A .NET project with the following EF Core packages in the `.csproj` file:
-  ```xml
-  <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0" />
-    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.0" />
-  </ItemGroup>
-  ```
-- **Database**: A MySQL database named `routix` with a user (`routix`) and password (`123456789`) configured with appropriate permissions. Create the database if it doesn't exist:
-  ```sql
-  CREATE DATABASE routix;
-  GRANT ALL PRIVILEGES ON routix.* TO 'routix'@'%' IDENTIFIED BY '123456789';
-  FLUSH PRIVILEGES;
-  ```
-- **DbContext**: A `MyDbContext` class configured with a connection string in `OnConfiguring`:
-  ```csharp
-  var connectionString = $"Server=localhost;Port=3306;Database=routix;User Id=routix;Password=123456789;";
-  optionsBuilder.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 21)));
-  ```
-- **Environment**: Commands are executed in the project directory:
-  ```
-  C:\Users\Joao-Santos\Desktop\2025-1-p3-tiapn-si-grupo-4\src\back
-  ```
+Este guia mostra como configurar e executar seu projeto .NET, MySQL e migrações do EF Core usando Docker Compose.
 
-## Commands in Order of Execution
+### Pré-requisitos
 
-1. **Initial Attempt: Create Migration**
-   - **Command**:
-     ```bash
-     dotnet ef migrations add InitialMigration
-     ```
-   - **Purpose**: Attempts to create a new migration named `InitialMigration` to define the database schema for the `LogModel` entity (e.g., creating the `Logs` table).
-   - **Outcome**: Failed with the error:
-     ```
-     Não foi possível executar porque o comando ou arquivo especificado não foi encontrado.
-     ```
-     The error occurred because the `dotnet-ef` tool was not installed.
-   - **Context**: This step highlighted the need to install the EF Core CLI tools to enable migration commands.
+Certifique-se de ter o Docker e o Docker Compose instalados.
 
-2. **Install EF Core CLI Tool**
-   - **Command**:
-     ```bash
-     dotnet tool install --global dotnet-ef
-     ```
-   - **Purpose**: Installs the `dotnet-ef` tool globally to enable EF Core CLI commands like `migrations add` and `database update`.
-   - **Outcome**: Successfully installed version `9.0.5`:
-     ```
-     Você pode invocar a ferramenta usando o comando a seguir: dotnet-ef
-     A ferramenta 'dotnet-ef' (versão '9.0.5') foi instalada com êxito.
-     ```
-   - **Context**: This resolved the "command not found" error, allowing subsequent EF Core commands to execute.
+### 1. Estrutura de Arquivos
 
-3. **Create Migration: `InitialMigration`**
-   - **Command**:
-     ```bash
-     dotnet ef migrations add InitialMigration
-     ```
-   - **Purpose**: Generates migration files in the `Migrations` folder to create the `Logs` table based on the `LogModel` entity.
-   - **Outcome**: Successfully created the migration:
-     ```
-     Build started...
-     Build succeeded.
-     Connection String: Server=localhost;Port=3306;Database=routix;User Id=routix;Password=123456789;
-     Done. To undo this action, use 'ef migrations remove'
-     ```
-   - **Context**: Created the migration `20250521224509_InitialMigration`, defining the schema for the `Logs` table. The logged connection string confirmed the use of the `routix` user.
+Seus arquivos devem estar organizados da seguinte forma:
 
-4. **Create Another Migration: `InitialCreate`**
-   - **Command**:
-     ```bash
-     dotnet ef migrations add InitialCreate
-     ```
-   - **Purpose**: Attempts to create another migration named `InitialCreate`.
-   - **Outcome**: Successfully created the migration:
-     ```
-     Build started...
-     Build succeeded.
-     Connection String: Server=localhost;Port=3306;Database=routix;User Id=routix;Password=123456789;
-     Done. To undo this action, use 'ef migrations remove'
-     ```
-   - **Context**: Created a second migration (`20250521224829_InitialCreate`). If no model changes were made since `InitialMigration`, this migration may be empty or redundant. It can be removed if unnecessary:
-     ```bash
-     dotnet ef migrations remove
-     ```
-
-5. **Apply Migrations**
-   - **Command**:
-     ```bash
-     dotnet ef database update
-     ```
-   - **Purpose**: Applies all pending migrations (`InitialMigration` and `InitialCreate`) to the `routix` database, creating the `Logs` table and the `__EFMigrationsHistory` table to track applied migrations.
-   - **Outcome**: Successfully applied migrations:
-     ```
-     Build started...
-     Build succeeded.
-     Connection String: Server=localhost;Port=3306;Database=routix;User Id=routix;Password=123456789;
-     info: Microsoft.EntityFrameworkCore.Database.Command[20101]
-           Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-           SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='routix' AND TABLE_NAME='__EFMigrationsHistory';
-     info: Microsoft.EntityFrameworkCore.Database.Command[20101]
-           Executed DbCommand (50ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-           CREATE TABLE `__EFMigrationsHistory` ...
-     ...
-     info: Microsoft.EntityFrameworkCore.Migrations[20402]
-           Applying migration '20250521224509_InitialMigration'.
-     info: Microsoft.EntityFrameworkCore.Database.Command[20101]
-           Executed DbCommand (45ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-           CREATE TABLE `Logs` (
-               `Id` int NOT NULL AUTO_INCREMENT,
-               `DataHora` datetime(6) NOT NULL,
-               `Tabela` longtext CHARACTER SET utf8mb4 NOT NULL,
-               `Operacao` int NOT NULL,
-               `ValorAnterior` longtext CHARACTER SET utf8mb4 NOT NULL,
-               `ValorPosterior` longtext CHARACTER SET utf8mb4 NOT NULL,
-               CONSTRAINT `PK_Logs` PRIMARY KEY (`Id`)
-           ) CHARACTER SET=utf8mb4;
-     ...
-     info: Microsoft.EntityFrameworkCore.Migrations[20402]
-           Applying migration '20250521224829_InitialCreate'.
-     ...
-     Done.
-     ```
-   - **Context**: Created the `Logs` table, resolving the `Table 'routix.logs' doesn't exist` error. The `__EFMigrationsHistory` table tracks applied migrations.
-
-6. **Run Application**
-   - **Command**:
-     ```bash
-     dotnet run
-     ```
-   - **Purpose**: Starts the .NET application, which queries the `Logs` table via the `LogsController.GetAllLogs` method.
-   - **Outcome**: Application ran successfully without the table error:
-     ```
-     Compilando...
-     info: Microsoft.Hosting.Lifetime[14]
-           Now listening on: http://localhost:3000
-     info: Microsoft.Hosting.Lifetime[0]
-           Application started. Press Ctrl+C to shut down.
-     Connection String: Server=localhost;Port=3306;Database=routix;User Id=routix;Password=123456789;
-     info: Microsoft.EntityFrameworkCore.Database.Command[20101]
-           Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-           SELECT `l`.`Id`, `l`.`DataHora`, `l`.`Operacao`, `l`.`Tabela`, `l`.`ValorAnterior`, `l`.`ValorPosterior`
-           FROM `Logs` AS `l`
-     ```
-   - **Context**: The successful query confirmed that the `Logs` table exists and the application can access it.
-
-## Notes
-- **Error Resolution**: The initial `Table 'routix.logs' doesn't exist` error was resolved by applying migrations with `dotnet ef database update`. The `Access denied for user 'root'@'172.20.0.1'` error from earlier was fixed by using the `routix` user in the connection string.
-- **Redundant Migration**: The `InitialCreate` migration may be empty if no model changes were made. Check the `Migrations` folder and remove it if unnecessary:
-  ```bash
-  dotnet ef migrations remove
-  ```
-- **Security**: The password `123456789` for the `routix` user is weak. For production, use a stronger password and update the `.env` file or `MyDbContext` defaults:
-  ```csharp
-  var password = Environment.GetEnvironmentVariable("DATABASE_PASSWORD") ?? "secure_password";
-  ```
-- **Docker**: If MySQL is running in a Docker container, ensure `DATABASE_HOST` is set to the container name (e.g., `mysql`) and both containers are on the same network:
-  ```bash
-  docker network create app-network
-  docker run --network app-network --name mysql -e MYSQL_ROOT_PASSWORD=123456789 -d mysql:8.0.21
-  ```
-
-## Verification
-To confirm the schema:
-```sql
-mysql -h localhost -u routix -p123456789 -D routix
-SHOW TABLES;
-DESCRIBE Logs;
 ```
-Expected `Logs` table structure:
+seu-projeto/
+├── .env
+├── docker-compose.yml
+├── Dockerfile          # Para o serviço 'app'
+├── Dockerfile.migrations # Para o serviço 'migrations'
+├── src/
+│   └── back/           # Seu projeto .NET (onde está o back.csproj)
+│       └── back.csproj
+│       └── ... (demais arquivos do projeto)
+└── .db/                # Diretório para persistir os dados do MySQL
+    └── service-core-db/
 ```
-+----------------+--------------+------+-----+---------+----------------+
-| Field          | Type         | Null | Key | Default | Extra          |
-+----------------+--------------+------+-----+---------+----------------+
-| Id             | int          | NO   | PRI | NULL    | auto_increment |
-| DataHora       | datetime(6)  | NO   |     | NULL    |                |
-| Tabela         | longtext     | NO   |     | NULL    |                |
-| Operacao       | int          | NO   |     | NULL    |                |
-| ValorAnterior  | longtext     | NO   |     | NULL    |                |
-| ValorPosterior | longtext     | NO   |     | NULL    |                |
-+----------------+--------------+------+-----+---------+----------------+
+
+### 2. Configurações Necessárias
+
+#### a. Arquivo `.env`
+
+Crie um arquivo `.env` na raiz do seu projeto (no mesmo nível do `docker-compose.yml`) com as credenciais do seu banco de dados:
+
+```ini
+DATABASE_PASSWORD=123456789
+DATABASE_NAME=routix
+DATABASE_USER=routix
+# Use 'db' para o host do banco de dados quando dentro do Docker Compose
+DATABASE_HOST=db
+DATABASE_PORT=3306
 ```
+
+#### b. Dockerfile do Serviço `app` (`Dockerfile`)
+
+Este `Dockerfile` é para a sua aplicação principal. Ele foca apenas em construir e rodar o app.
+
+```dockerfile
+# Estágio de build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+COPY back.csproj .
+RUN dotnet restore
+COPY . .
+RUN dotnet publish -c Release -o /app/publish
+
+# Estágio final (runtime)
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
+WORKDIR /app
+COPY --from=build /app/publish .
+
+ENTRYPOINT ["dotnet", "back.dll"]
+```
+
+#### c. Dockerfile do Serviço `migrations` (`Dockerfile.migrations`)
+
+Este `Dockerfile` é dedicado à execução das migrações do EF Core. Ele inclui as ferramentas necessárias.
+
+```dockerfile
+# Usa a imagem do SDK para ter as ferramentas de build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS migrator
+
+WORKDIR /app
+
+# Copia o arquivo de projeto e restaura as dependências
+COPY back.csproj .
+RUN dotnet restore
+
+# Instala a ferramenta global dotnet-ef
+RUN dotnet tool install --global dotnet-ef --version 8.0.*
+
+# Adiciona o diretório de ferramentas ao PATH
+ENV PATH="${PATH}:/root/.dotnet/tools"
+
+# Copia o restante do código fonte
+COPY . .
+
+# Comando para rodar as migrações
+ENTRYPOINT ["dotnet", "ef", "database", "update", "--project", "back.csproj"]
+```
+
+#### d. `docker-compose.yml`
+
+Este arquivo orquestra seus serviços (banco de dados, migrações, aplicação e PhpMyAdmin).
+
+```yaml
+services:
+  db:
+    image: mysql:latest
+    container_name: db
+    ports:
+      - ${DATABASE_PORT:-3306}:3306
+    volumes:
+      - ./.db/service-core-db:/var/lib/mysql
+    networks:
+      - service-core-backend
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "${MYSQL_USER}", "-p${MYSQL_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+      MYSQL_DATABASE: ${DATABASE_NAME}
+      MYSQL_USER: ${DATABASE_USER}
+      MYSQL_PASSWORD: ${DATABASE_PASSWORD}
+
+  migrations:
+    build:
+      context: . # Onde buscar os arquivos (assumindo a raiz do projeto)
+      dockerfile: Dockerfile.migrations
+    container_name: migrations
+    depends_on:
+      db:
+        condition: service_healthy # Garante que o DB esteja pronto
+    environment:
+      - DATABASE_HOST=db # O nome do serviço do banco de dados no Docker
+      - DATABASE_PORT=${DATABASE_PORT}
+      - DATABASE_NAME=${DATABASE_NAME}
+      - DATABASE_USER=${DATABASE_USER}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+    networks:
+      - service-core-backend
+
+  app:
+    build: . # Usará o Dockerfile padrão
+    container_name: app
+    ports:
+      - "3000:3000"
+    depends_on:
+      migrations:
+        condition: service_completed_successfully # Garante que as migrações rodaram
+    environment:
+      - DATABASE_HOST=db # O nome do serviço do banco de dados no Docker
+      - DATABASE_PORT=${DATABASE_PORT}
+      - DATABASE_NAME=${DATABASE_NAME}
+      - DATABASE_USER=${DATABASE_USER}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+    networks:
+      - service-core-backend
+
+  mysqladmin:
+    image: phpmyadmin/phpmyadmin:latest
+    restart: unless-stopped
+    container_name: mysqladmin
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - 8081:80
+    networks:
+      - service-core-backend
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_USER: ${DATABASE_USER}
+      PMA_PASSWORD: ${DATABASE_PASSWORD}
+
+networks:
+  service-core-backend:
+    driver: "bridge"
+
+volumes:
+  mysql_data:
+    driver: local
+```
+
+### 3. Executando o Projeto
+
+Abra o terminal na **raiz do seu projeto** (onde estão `docker-compose.yml`, `Dockerfile`, `.env` etc.) e execute o seguinte comando:
+
+```bash
+docker compose up --build
+```
+
+Este comando fará o seguinte:
+
+1.  **Construirá** as imagens dos seus serviços (`app` e `migrations`).
+2.  **Iniciará** o serviço `db` (seu MySQL).
+3.  **Aguardará** até que o `db` esteja saudável.
+4.  **Iniciará** o serviço `migrations`, que executará `dotnet ef database update` para aplicar suas migrações.
+5.  **Aguardará** que o serviço `migrations` termine com sucesso.
+6.  **Iniciará** o serviço `app` (sua aplicação .NET).
+7.  **Iniciará** o `mysqladmin` (PhpMyAdmin) após o `db` estar saudável.
+
+Se você precisar apenas rodar o banco de dados e as migrações (sem iniciar a aplicação principal), você pode usar:
+
+```bash
+docker compose up db migrations
+```
+
+---
+
+Dessa forma, todo o ciclo de vida do seu ambiente de desenvolvimento será gerenciado pelo Docker Compose, garantindo que suas migrações sejam aplicadas antes que a aplicação tente se conectar ao banco de dados.
