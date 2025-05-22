@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using back.Entities;
 
@@ -11,9 +12,11 @@ using back.Entities;
 namespace back.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250522043438_UserModel")]
+    partial class UserModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,7 +78,7 @@ namespace back.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("LOGS", "dbo");
+                    b.ToTable("Logs");
                 });
 
             modelBuilder.Entity("back.Models.RotinaTemplateModel", b =>
@@ -120,9 +123,6 @@ namespace back.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<bool>("Ativo")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<string>("CPF")
                         .IsRequired()
                         .HasMaxLength(14)
@@ -156,7 +156,7 @@ namespace back.Migrations
 
                     b.HasIndex(new[] { "Nome" }, "idx_usuario_nome");
 
-                    b.ToTable("USERS", "dbo");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("back.Models.RotinaTemplateModel", b =>

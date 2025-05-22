@@ -10,7 +10,6 @@ public partial class MyDbContext : DbContext
     public DbSet<LogModel> Logs { get; set; }
     public DbSet<EmpresaModel> Empresas { get; set; }
     public DbSet<RotinaTemplateModel> RotinaTemplates { get; set; }
-
     public DbSet<UserModel> Users { get; set; }
 
     public MyDbContext(DbContextOptions<MyDbContext> options) : base(options) { }
@@ -40,8 +39,10 @@ public partial class MyDbContext : DbContext
     {
         
         modelBuilder.Entity<RotinaTemplateModel>().ToTable("TEMPLATE_ROTINAS", "dbo");
-        
         modelBuilder.Entity<EmpresaModel>().ToTable("EMPRESAS", "dbo");
+        modelBuilder.Entity<LogModel>().ToTable("LOGS", "dbo");
+        modelBuilder.Entity<UserModel>().ToTable("USERS", "dbo");
+        
         base.OnModelCreating(modelBuilder);
     }
 }

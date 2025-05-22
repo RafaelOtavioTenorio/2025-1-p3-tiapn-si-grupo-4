@@ -32,5 +32,5 @@ public class UserModel
 
     public int NivelAcesso { get; set; }
 
-    public bool Ativo = true;
+    public Boolean Ativo { get; set; } = true;
 }
