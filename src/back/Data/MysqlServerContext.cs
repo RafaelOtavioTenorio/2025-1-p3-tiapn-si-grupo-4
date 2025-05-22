@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using back.Models;
 using DotNetEnv;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace back.Entities;
 
@@ -8,6 +9,7 @@ public partial class MyDbContext : DbContext
 {
     public DbSet<LogModel> Logs { get; set; }
     public DbSet<EmpresaModel> Empresas { get; set; }
+    public DbSet<RotinaTemplateModel> RotinaTemplates { get; set; }
 
     public DbSet<UserModel> Users { get; set; }
 
@@ -28,13 +30,18 @@ public partial class MyDbContext : DbContext
             Console.WriteLine($"Connection String: {connectionString}"); // For debugging
             optionsBuilder.UseMySql(
                 connectionString,
-                new MySqlServerVersion(new Version(8, 0, 21))
+                new MySqlServerVersion(new Version(8, 0, 21)),
+                mySqlOptions => mySqlOptions.SchemaBehavior(MySqlSchemaBehavior.Ignore)
             );
         }
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        
+        modelBuilder.Entity<RotinaTemplateModel>().ToTable("TEMPLATE_ROTINAS", "dbo");
+        
+        modelBuilder.Entity<EmpresaModel>().ToTable("EMPRESAS", "dbo");
         base.OnModelCreating(modelBuilder);
     }
 }
