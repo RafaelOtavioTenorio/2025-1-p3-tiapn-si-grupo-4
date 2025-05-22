@@ -2,3 +2,8 @@ bin/
 .idea/
 .db/
 obj/
+
+
+.env
+
+.vs/
