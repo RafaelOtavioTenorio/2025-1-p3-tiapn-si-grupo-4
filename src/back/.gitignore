@@ -1,2 +1,14 @@
 .env
 .db/
+bin/
+.idea/
+.db/
+obj/
+
+
+.env
+
+.vs/
+.vs
+
+../.vs

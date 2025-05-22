@@ -21,6 +21,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.LogRoutes();
+app.UsuarioRoutes();
 
 app.HelloRoutes();
 
