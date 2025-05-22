@@ -6,7 +6,7 @@ namespace back.Entities;
 
 public partial class MyDbContext : DbContext
 {
-    // public DbSet<LogModel> Logs { get; set; }
+    public DbSet<LogModel> Logs { get; set; }
 
     public MyDbContext(DbContextOptions<MyDbContext> options) : base(options) { }
 
