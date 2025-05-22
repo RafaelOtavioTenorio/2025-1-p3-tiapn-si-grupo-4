@@ -8,9 +8,9 @@ public static class HelloController
 {
     public static void HelloRoutes(this WebApplication app)
     {
-        app.MapGet("/", () =>
+        app.MapGet("/{message}", (string message) =>
         {
-            return Results.Ok("OKOK");
+            return Results.Ok($"You sent: {message}");
         });
     }
 }
