@@ -11,6 +11,7 @@ public class EmpresaModel
 
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    
     public int Id { get; set; }
 
 
