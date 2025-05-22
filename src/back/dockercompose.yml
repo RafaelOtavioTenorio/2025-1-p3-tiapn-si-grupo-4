@@ -19,31 +19,20 @@ services:
 
     app:
         build: .
-        ports:
-            - 3000:3000
         container_name: app
-        volumes:
-            - .:/app
-        develop:
-            watch:
-                - action: sync
-                  path: ./
-                  target: /app
-                  ignore:
-                    - data/
-                
+        ports:
+            - "3000:3000"
         depends_on:
             - db
+        environment:
+            - DATABASE_HOST=${DATABASE_HOST}
+            - DATABASE_PORT=${DATABASE_PORT}
+            - DATABASE_NAME=${DATABASE_NAME}
+            - DATABASE_USER=${DATABASE_USER}
+            - DATABASE_PASSWORD=${DATABASE_PASSWORD}
         networks:
             - service-core-backend
-        environment:
-            DATABASE_PORT: ${DATABASE_PORT}
-            MYSQL_USER: ${DATABASE_USER}
-            MYSQL_PASSWORD: ${DATABASE_PASSWORD}
-            DATABASE_NAME: ${DATABASE_NAME}
-            DATABASE_HOST: db # Alterado para db, o nome do container do banco.
-        
-
+    
 
     mysqladmin:
         image: phpmyadmin/phpmyadmin:latest
