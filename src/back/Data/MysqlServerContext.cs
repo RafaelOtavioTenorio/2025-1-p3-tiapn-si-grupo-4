@@ -9,6 +9,8 @@ public partial class MyDbContext : DbContext
     public DbSet<LogModel> Logs { get; set; }
     public DbSet<EmpresaModel> Empresas { get; set; }
 
+    public DbSet<UserModel> Users { get; set; }
+
     public MyDbContext(DbContextOptions<MyDbContext> options) : base(options) { }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
