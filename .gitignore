@@ -1,4 +1,14 @@
+.env
+.db/
 bin/
-.idea
+.idea/
+.db/
 obj/
-tmp/
+
+
+.env
+
+.vs/
+.vs
+
+../.vs
