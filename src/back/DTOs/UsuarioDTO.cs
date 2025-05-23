@@ -1,12 +1,21 @@
-﻿namespace back.DTOs
+﻿namespace back.DTOs;
+
+public class UsuarioDTO
 {
-    public class UsuarioDTO
-    {
-        public string Nome { get; set; }
-        public string? Email { get; set; }
-        public string? CPF { get; set; }
-        public string? Celular { get; set; }
-        public int? NivelAcesso { get; set; }
-        public bool? Ativo { get; set; }
-    }
+    public required string Nome { get; set; }
+    public required string Email { get; set; }
+    public required string CPF { get; set; }
+    public required string Celular { get; set; }
+
+    public int? NivelAcesso { get; set; }
+}
+
+public class UsuarioCreateDTO
+{
+    public required string Nome { get; set; }
+    public required string Email { get; set; }
+    public required string CPF { get; set; }
+    public required string Celular { get; set; }
+
+    public required string Password { get; set; }
 }

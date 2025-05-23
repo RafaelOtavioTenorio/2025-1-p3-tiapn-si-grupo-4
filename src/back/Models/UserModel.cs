@@ -16,7 +16,7 @@ public class UserModel
 
     [Required]
     [StringLength(255)]
-    public string Nome { get; set; } = string.Empty;
+    public string Nome { get; private set; } = string.Empty;
 
     [Required]
     [StringLength(255)]

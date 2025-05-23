@@ -9,12 +9,26 @@
 
 
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace back.Models;
 
 public class LoginModel
 {
     [Key]
-    public int Id { get; set; }
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public int ID { get; set; }
 
+    [Required]
+    [StringLength(255)]
+    public string Login { get; set; } = string.Empty;
+
+    [Required]
+    [StringLength(255)]
+    public string Senha { get; set; } = string.Empty;
+
+    [ForeignKey("Usuario")]
+    public int Usuario { get; set; }
+
+    public UserModel? UsuarioNavegacao { get; set; }
 }

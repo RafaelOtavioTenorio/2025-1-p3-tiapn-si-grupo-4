@@ -12,6 +12,8 @@ public partial class MyDbContext : DbContext
     public DbSet<RotinaTemplateModel> RotinaTemplates { get; set; }
     public DbSet<UserModel> Users { get; set; }
 
+    public DbSet<LoginModel> Login { get; set; }
+
     public MyDbContext(DbContextOptions<MyDbContext> options) : base(options) { }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -42,6 +44,7 @@ public partial class MyDbContext : DbContext
         modelBuilder.Entity<EmpresaModel>().ToTable("EMPRESAS", "dbo");
         modelBuilder.Entity<LogModel>().ToTable("LOGS", "dbo");
         modelBuilder.Entity<UserModel>().ToTable("USERS", "dbo");
+        modelBuilder.Entity<LoginModel>().ToTable("LOGIN", "dbo");
         
         base.OnModelCreating(modelBuilder);
     }
