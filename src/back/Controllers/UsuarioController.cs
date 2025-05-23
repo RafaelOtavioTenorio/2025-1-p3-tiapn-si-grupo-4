@@ -1,8 +1,8 @@
 ﻿using back.DTOs;
 using back.Entities;
-using back.Models;   
+using back.Models;
 using Microsoft.EntityFrameworkCore;
-using BCrypt.Net;  
+using BCrypt.Net;
 
 namespace back.Controllers;
 
@@ -18,7 +18,7 @@ public static class UsuarioController
             try
             {
                 var usuarios = await context.Users
-                                    .Where(u => u.Ativo) 
+                                    .Where(u => u.Ativo)
                                     .ToListAsync();
                 return Results.Ok(usuarios);
             }
@@ -73,15 +73,25 @@ public static class UsuarioController
                     Ativo = true,
                 };
 
+
+                context.Users.Add(newUser);
+                await context.SaveChangesAsync();
+
+                var userRef = await context.Users.FirstOrDefaultAsync(l => l.Email == newUser.Email);
+
+                if (userRef == null)
+                {
+                    return Results.Problem();
+                }
+
                 // 2. Create LoginModel
                 var newLogin = new LoginModel
                 {
                     Login = req.Email,
                     Senha = BCrypt.Net.BCrypt.HashPassword(req.Password),
-                    UsuarioNavegacao = newUser
+                    Usuario =  userRef
                 };
 
-                context.Users.Add(newUser);
                 context.Login.Add(newLogin);
 
                 await context.SaveChangesAsync();
@@ -110,14 +120,14 @@ public static class UsuarioController
                 }
                 if (!string.IsNullOrWhiteSpace(req.Email))
                 {
-                    var loginModel = await context.Login.FirstOrDefaultAsync(l => l.Usuario == usuario.ID);
+                    var loginModel = await context.Login.FirstOrDefaultAsync(l => l.Usuario.ID == usuario.ID);
                     if (loginModel != null)
                     {
                         loginModel.Login = req.Email;
                     }
                     usuario.Email = req.Email;
                 }
-                
+
                 if (!string.IsNullOrWhiteSpace(req.Celular))
                 {
                     usuario.Celular = req.Celular;

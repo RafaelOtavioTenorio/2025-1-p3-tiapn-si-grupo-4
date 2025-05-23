@@ -78,6 +78,34 @@ namespace back.Migrations
                     b.ToTable("LOGS", "dbo");
                 });
 
+            modelBuilder.Entity("back.Models.LoginModel", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("Login")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("Senha")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<int>("UsuarioID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("UsuarioID");
+
+                    b.ToTable("LOGIN", "dbo");
+                });
+
             modelBuilder.Entity("back.Models.RotinaTemplateModel", b =>
                 {
                     b.Property<int>("Id")
@@ -157,6 +185,17 @@ namespace back.Migrations
                     b.HasIndex(new[] { "Nome" }, "idx_usuario_nome");
 
                     b.ToTable("USERS", "dbo");
+                });
+
+            modelBuilder.Entity("back.Models.LoginModel", b =>
+                {
+                    b.HasOne("back.Models.UserModel", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("back.Models.RotinaTemplateModel", b =>

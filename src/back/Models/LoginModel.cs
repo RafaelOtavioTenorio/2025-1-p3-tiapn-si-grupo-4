@@ -17,7 +17,7 @@ public class LoginModel
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int ID { get; set; }
+    public int ID { get; init; }
 
     [Required]
     [StringLength(255)]
@@ -27,8 +27,8 @@ public class LoginModel
     [StringLength(255)]
     public string Senha { get; set; } = string.Empty;
 
-    [ForeignKey("Usuario")]
-    public int Usuario { get; set; }
+    [Required]
+    [ForeignKey("UsuarioID")]
+    public required UserModel Usuario { get; set; }
 
-    public UserModel? UsuarioNavegacao { get; set; }
 }

@@ -37,9 +37,9 @@ public static class AuthController
 
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.NameIdentifier, usuario.ID.ToString()), // Assumes UserModel has 'ID' property
-                    new Claim(ClaimTypes.Name, usuario.Nome),                   // Assumes UserModel has 'Nome' property
-                    new Claim(ClaimTypes.Email, usuario.Email)                  // Assumes UserModel has 'Email' property
+                    new Claim(ClaimTypes.NameIdentifier, usuario.ID.ToString()),
+                    new Claim(ClaimTypes.Name, usuario.Nome),
+                    new Claim(ClaimTypes.Email, usuario.Email)               
                 };
 
                 var tokenDescriptor = new SecurityTokenDescriptor

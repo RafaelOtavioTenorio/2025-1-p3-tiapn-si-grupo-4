@@ -16,14 +16,14 @@ public class AuthService
     public UserModel? Autenticar(string login, string senha)
     {
         var loginModel = _context.Login
-            .Include(l => l.UsuarioNavegacao)
+            .Include(l => l.Usuario)
             .FirstOrDefault(l => l.Login == login);
 
         if (loginModel == null) return null;
 
         if (BCrypt.Net.BCrypt.Verify(senha, loginModel.Senha))
         {
-            return loginModel.UsuarioNavegacao;
+            return loginModel.Usuario;
         }
 
         return null;

@@ -20,7 +20,8 @@ builder.Services.AddDbContext<MyDbContext>();
 
 builder.Services.AddScoped<service.AuthService>();
 
-var jwtKey = Environment.GetEnvironmentVariable("JWT_KEY") ?? "superSecretKeyThatShouldBeAtLeast32BytesLongAndSecureInProduction";
+// var jwtKey = Environment.GetEnvironmentVariable("JWT_KEY") ?? "CHAVE";
+var jwtKey =  "CHAVE";
 var jwtIssuer = Environment.GetEnvironmentVariable("JWT_ISSUER") ?? "yourdomain.com";
 var jwtAudience = Environment.GetEnvironmentVariable("JWT_AUDIENCE") ?? "youraudiencedomain.com";
 
