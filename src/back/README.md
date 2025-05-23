@@ -212,5 +212,5 @@ dotnet ef migrations add <nome da migration>
 
 Subir para o banco
 ```
-dotnet ef databa update 
+dotnet ef database update 
 ```

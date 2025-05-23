@@ -20,8 +20,7 @@ builder.Services.AddDbContext<MyDbContext>();
 
 builder.Services.AddScoped<service.AuthService>();
 
-// var jwtKey = Environment.GetEnvironmentVariable("JWT_KEY") ?? "CHAVE";
-var jwtKey =  "CHAVE";
+var jwtKey = Environment.GetEnvironmentVariable("JWT_KEY") ?? "A_VERY_LONG_AND_SECURE_KEY_FOR_PRODUCTION_MINIMUM_32_BYTES";
 var jwtIssuer = Environment.GetEnvironmentVariable("JWT_ISSUER") ?? "yourdomain.com";
 var jwtAudience = Environment.GetEnvironmentVariable("JWT_AUDIENCE") ?? "youraudiencedomain.com";
 
@@ -39,7 +38,7 @@ builder.Services.AddAuthentication(options =>
         ValidateIssuerSigningKey = true,
         ValidIssuer = jwtIssuer,
         ValidAudience = jwtAudience,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)), // From environment variable
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)),
         ClockSkew = TimeSpan.Zero
     };
 });
