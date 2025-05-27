@@ -7,6 +7,7 @@ import RoutinesPage from './pages/RoutinesPage';
 import HistoricPage from './pages/HistoricPage';
 import GroupsPage from './pages/GroupsPage';
 import LoginPage from './pages/LoginPage';
+import SignUp from './pages/SignupPage';
 
 export const Pannels = {
   CREATE: '',
@@ -16,7 +17,7 @@ export const Pannels = {
 } as const;
 
 export function App() {
-
+  
   const [activePannel, setActivePannel] = useState(Pannels.CREATE as string);
 
 
@@ -28,6 +29,9 @@ export function App() {
         {/* side pannel */}
         <div className='flex flex-row h-[calc(100vh-4rem)]'>
           {/* main content */}
+
+          
+
           <BrowserRouter basename='/app' >
             <SidePannel activePannel={activePannel} setActivePannel={setActivePannel} />
             <main className='flex-1 bg-[#F5F5F5] '>
@@ -40,6 +44,9 @@ export function App() {
               </Routes>
             </main>
           </BrowserRouter>
+          <BrowserRouter basename="/signup">
+            <Route path="/" element={<SignUp />}/>
+          </BrowserRouter>
           <BrowserRouter basename='/login'>
             <Routes>
               <Route path="/" element={<LoginPage />} />
@@ -50,5 +57,3 @@ export function App() {
     </>
   )
 }
-
-
