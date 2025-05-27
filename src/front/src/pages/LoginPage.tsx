@@ -94,19 +94,19 @@ const Signup = (props: { toggle: (e: any) => void }) => {
     )
 }
 
- const ErrorMessage = (props: { message: string | null, key: Key }) => {
+const ErrorMessage = (props: { message: string | null, key: Key }) => {
 
     const [bounce, setBounce] = useState(true)
 
-    setInterval(()=>{
+    setInterval(() => {
         setBounce(false)
-    }, 2000)
+    }, 500)
 
     return (<>
         {props.message && (
             <div
                 key={props.key}
-                className="mt-4 text-red-500 text-sm text-center ${}
+                className={`mt-4 text-red-500 text-sm text-center ${bounce ? 'animate-wiggle' : ''}`}
             >
                 {props.message}
             </div>
@@ -126,11 +126,10 @@ const Login = ({ toggle }: { toggle: (e: any) => void }) => {
 
     const handleSubmit = async (event: FormEvent) => {
         event.preventDefault();
-        setError(null); // Limpa erros anteriores antes de uma nova tentativa
 
         try {
             await loginUser({ Login: email, Senha: password });
-            navigate('/app'); 
+            navigate('/app');
         } catch (err: any) {
             const errorMessage = err.response?.data?.message || 'Falha no login. Tente novamente.';
             setError(errorMessage);
@@ -178,7 +177,7 @@ const Login = ({ toggle }: { toggle: (e: any) => void }) => {
                         esqueceu a senha?
                     </a>
 
-                    <ErrorMessage key={errorKey} message={error}/>
+                    <ErrorMessage key={errorKey} message={error} />
 
 
                 </div>

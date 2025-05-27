@@ -43,6 +43,16 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+Console.WriteLine(Env.GetString("FRONT_URL") ?? "ERROOOOO");
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "front-origin", policy =>
+    {
+        policy.WithOrigins(Environment.GetEnvironmentVariable("FRONT_URL") ?? "").AllowAnyHeader().AllowAnyMethod();
+    });
+});
+
 // Add Authorization policies (if needed later for roles/permissions)
 builder.Services.AddAuthorization(options =>
 {
@@ -55,6 +65,7 @@ builder.Services.AddAuthorization(options =>
 
 var app = builder.Build();
 
+app.UseCors("front-origin");
 
 if (app.Environment.IsDevelopment())
 {

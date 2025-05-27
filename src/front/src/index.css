@@ -2,22 +2,22 @@
 @import "tailwindcss";
 
 
-* {
-    font-family: 'Inter', sans-serif;
-}
-
 @theme {
-    --animate-wiggle: wiggle 1s ease-in-out 2s;
+    --animate-wiggle: wiggle 0.2s ease-in-out infinite;
 
     @keyframes wiggle {
 
         0%,
         100% {
-            transform: rotate(-3deg);
+            transform: translateY(-3px);
         }
 
         50% {
-            transform: rotate(3deg);
+            transform: translateY(3px);
         }
     }
+}
+
+* {
+    font-family: 'Inter', sans-serif;
 }
