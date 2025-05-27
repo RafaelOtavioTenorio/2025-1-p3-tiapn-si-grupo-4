@@ -78,6 +78,6 @@ public static class AuthController
             }
         });
 
-        // authGroup.MapPost("/register", ...);
+        // authGroup.MapPost("/signup", ...);
     }
 }
