@@ -1,12 +1,9 @@
 using back.Controllers;
-using back.Entities; // Contains MyDbContext
-using back.Models;   // If your models are here (e.g., LoginRequest)
+using back.Entities;
 using DotNetEnv;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using System.Security.Claims; 
 
 DotNetEnv.Env.Load();
 
@@ -43,8 +40,17 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-// Add Authorization policies (if needed later for roles/permissions)
-builder.Services.AddAuthorization(options =>
+Console.WriteLine(Env.GetString("FRONT_URL") ?? "ERROOOOO");
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "front-origin", policy =>
+    {
+        policy.WithOrigins(Environment.GetEnvironmentVariable("FRONT_URL") ?? "").AllowAnyHeader().AllowAnyMethod();
+    });
+});
+
+    builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("AuthenticatedUser", policy =>
         policy.RequireAuthenticatedUser());
@@ -55,6 +61,7 @@ builder.Services.AddAuthorization(options =>
 
 var app = builder.Build();
 
+app.UseCors("front-origin");
 
 if (app.Environment.IsDevelopment())
 {
@@ -69,6 +76,6 @@ app.AuthRoutes();
 app.UsuarioRoutes(); 
 app.HelloRoutes();
 
-// app.LogRoutes(); // Uncomment if you have this defined as well
+ app.LogRoutes(); // Uncomment if you have this defined as well
 
 app.Run("http://localhost:3000");

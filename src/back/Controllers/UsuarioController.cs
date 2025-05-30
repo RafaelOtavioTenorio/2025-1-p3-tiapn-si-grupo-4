@@ -10,7 +10,7 @@ public static class UsuarioController
 {
     public static void UsuarioRoutes(this WebApplication app)
     {
-        var route = app.MapGroup("usuario");
+        var route = app.MapGroup("user");
 
         // GET all users
         route.MapGet("", async (MyDbContext context) =>
