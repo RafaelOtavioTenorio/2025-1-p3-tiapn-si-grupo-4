@@ -6,6 +6,10 @@
   ],
   "compilerOptions": {
     "erasableSyntaxOnly": false,
+    "baseUrl": ".",
+    "paths": {
+      "@assets/*": ["src/assets/*"]
+    }
     
   }
 }

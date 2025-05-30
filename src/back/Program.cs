@@ -1,12 +1,9 @@
 using back.Controllers;
-using back.Entities; // Contains MyDbContext
-using back.Models;   // If your models are here (e.g., LoginRequest)
+using back.Entities;
 using DotNetEnv;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using System.Security.Claims; 
 
 DotNetEnv.Env.Load();
 
@@ -53,8 +50,7 @@ builder.Services.AddCors(options =>
     });
 });
 
-// Add Authorization policies (if needed later for roles/permissions)
-builder.Services.AddAuthorization(options =>
+    builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("AuthenticatedUser", policy =>
         policy.RequireAuthenticatedUser());
@@ -80,6 +76,6 @@ app.AuthRoutes();
 app.UsuarioRoutes(); 
 app.HelloRoutes();
 
-// app.LogRoutes(); // Uncomment if you have this defined as well
+ app.LogRoutes(); // Uncomment if you have this defined as well
 
 app.Run("http://localhost:3000");

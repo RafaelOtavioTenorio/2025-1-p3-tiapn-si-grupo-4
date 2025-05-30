@@ -6,7 +6,7 @@ import CreatePage from './pages/CreatePage';
 import RoutinesPage from './pages/RoutinesPage';
 import HistoricPage from './pages/HistoricPage';
 import GroupsPage from './pages/GroupsPage';
-import LoginPage from './pages/LoginPage';
+import LoginPage from './pages/Login/LoginPage';
 import SignUp from './pages/SignupPage';
 
 export const Pannels = {
