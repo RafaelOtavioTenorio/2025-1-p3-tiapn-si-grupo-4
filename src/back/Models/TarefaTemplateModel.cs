@@ -8,7 +8,7 @@ public class TarefaTemplateModel
 {
   [Key]
   [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-  public int Id { get; set; }
+  public int ID { get; init; }
 
   [Required]
   [StringLength(255)]
@@ -18,14 +18,11 @@ public class TarefaTemplateModel
   [ForeignKey("Rotina")]
   public int IdRotina { get; set; }
 
-  [Required]
   [ForeignKey("Tarefa")]
   public int Pai { get; set; }
 
-  [Required]
   public int Prioridade { get; set; }
 
-  [Required]
   public bool Ativo { get; set; } = true;
 
   //Métodos Set

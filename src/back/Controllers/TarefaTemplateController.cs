@@ -1,162 +1,138 @@
-﻿// back\Controllers\TarefaController.cs
-using back.DTOs;
-using back.Models; // Certifique-se de que esta linha está presente para TarefaModel
+﻿using back.DTOs;
+using back.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
-using back.Entities; // Adicione esta linha para MyDbContext
+using back.Entities;
 
-namespace back.Controllers
+namespace back.Controllers;
+
+public static class TarefaTemplateController
 {
-    public static class TarefaController
+    public static void TarefaTemplateRoutes(this WebApplication app)
     {
-        public static void TarefaRoutes(this WebApplication app)
+        var route = app.MapGroup("tarefa-template");
+
+        route.MapGet("", GetAllTarefaTemplates);
+        route.MapGet("{id:int}", GetTarefaTemplateById);
+        route.MapPost("", CreateTarefaTemplate);
+        route.MapPut("{id:int}", UpdateTarefaTemplate);
+        route.MapDelete("{id:int}", DeleteTarefaTemplate);
+    }
+
+    private static async Task<IResult> GetAllTarefaTemplates(MyDbContext context)
+    {
+        try
         {
-            var route = app.MapGroup("tarefa");
-
-            route.MapGet("", GetAllTarefas);
-
-            route.MapGet("{id:int}", GetTarefaById);
-
-            route.MapPost("", CreateTarefa);
-
-            route.MapPut("{id:int}", UpdateTarefa);
-
-            route.MapDelete("{id:int}", DeleteTarefa);
+            var templates = await context.TarefaTemplates.ToListAsync();
+            return Results.Ok(templates);
         }
-
-        private static async Task<IResult> GetAllTarefas(MyDbContext context)
+        catch (Exception e)
         {
-            try
-            {
-                var tarefas = await context.Tarefa.ToListAsync();
-                return Results.Ok(tarefas);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Erro ao buscar tarefas: {e.Message}");
-                return Results.Problem("Ocorreu um erro ao buscar as tarefas.");
-            }
+            Console.WriteLine($"Erro ao buscar templates de tarefa: {e.Message}");
+            return Results.Problem("Ocorreu um erro ao buscar os templates de tarefa.", statusCode: StatusCodes.Status500InternalServerError);
         }
+    }
 
-        private static async Task<IResult> GetTarefaById(int id, MyDbContext context)
+    private static async Task<IResult> GetTarefaTemplateById(int id, MyDbContext context)
+    {
+        try
         {
-            try
-            {
-                var tarefa = await context.Tarefa.FindAsync(id);
-                if (tarefa == null)
-                    return Results.NotFound($"Tarefa com ID {id} não encontrada.");
+            var template = await context.TarefaTemplates.FindAsync(id);
+            if (template == null)
+                return Results.NotFound($"Template de tarefa com ID {id} não encontrado.");
 
-                return Results.Ok(tarefa);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Erro ao buscar tarefa por ID: {e.Message}");
-                return Results.Problem($"Ocorreu um erro ao buscar a tarefa com ID {id}.");
-            }
+            return Results.Ok(template);
         }
-
-        private static async Task<IResult> CreateTarefa(TarefaDTO req, MyDbContext context)
+        catch (Exception e)
         {
-            try
-            {
-                if (string.IsNullOrWhiteSpace(req.Nome) || string.IsNullOrWhiteSpace(req.Descricao) || !req.IdTarefa.HasValue)
-                {
-                    return Results.BadRequest("Nome, Descrição e IdTarefa são obrigatórios para criar uma Tarefa.");
-                }
-
-                var tarefa = new TarefaModel
-                {
-                    IdTarefa = req.IdTarefa.Value,
-                    Nome = req.Nome,
-                    Descricao = req.Descricao,
-                    FoiExecutada = req.FoiExecutada ?? false,
-                    DataInicio = req.DataInicio,
-                    DataFim = req.DataFim
-                };
-
-                await context.AddAsync(tarefa);
-                await context.SaveChangesAsync();
-                return Results.Created($"/tarefa/{tarefa.Id}", tarefa);
-            }
-            catch (ArgumentException e)
-            {
-                return Results.BadRequest(e.Message);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Erro ao criar tarefa: {e.Message}");
-                return Results.Problem("Ocorreu um erro ao criar a tarefa.", statusCode: StatusCodes.Status500InternalServerError);
-            }
+            Console.WriteLine($"Erro ao buscar template de tarefa por ID: {e.Message}");
+            return Results.Problem($"Ocorreu um erro ao buscar o template de tarefa com ID {id}.", statusCode: StatusCodes.Status500InternalServerError);
         }
+    }
 
-        private static async Task<IResult> UpdateTarefa(int id, TarefaDTO req, MyDbContext context)
+    private static async Task<IResult> CreateTarefaTemplate(TarefaTemplateDTO req, MyDbContext context)
+    {
+        try
         {
-            try
+            if (string.IsNullOrWhiteSpace(req.Nome) || !req.IdRotina.HasValue)
             {
-                var tarefa = await context.Tarefa.FindAsync(id);
-                if (tarefa == null)
-                    return Results.NotFound($"Tarefa com ID {id} não encontrada.");
-
-                if (!string.IsNullOrWhiteSpace(req.Nome))
-                {
-                    tarefa.UpdateName(req.Nome);
-                }
-                if (!string.IsNullOrWhiteSpace(req.Descricao))
-                {
-                    tarefa.UpdateDescricao(req.Descricao);
-                }
-                if (req.FoiExecutada.HasValue)
-                {
-                    if (req.FoiExecutada.Value)
-                    {
-                        tarefa.SetExecutada();
-                    }
-                    else
-                    {
-                        tarefa.SetNaoExecutada();
-                    }
-                }
-
-                if (req.DataInicio.HasValue)
-                {
-                    tarefa.SetDataInicio(req.DataInicio.Value);
-                }
-                if (req.DataFim.HasValue)
-                {
-                    tarefa.SetDataFim(req.DataFim.Value);
-                }
-
-                await context.SaveChangesAsync();
-                return Results.Ok(tarefa);
+                return Results.BadRequest("Nome e IdRotina são obrigatórios para criar um TarefaTemplate.");
             }
-            catch (ArgumentException e)
+
+            var template = new TarefaTemplateModel
             {
-                return Results.BadRequest(e.Message);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Erro ao atualizar tarefa: {e.Message}");
-                return Results.Problem("Ocorreu um erro ao atualizar a tarefa.");
-            }
+                Nome = req.Nome,
+                IdRotina = req.IdRotina.Value,
+                Pai = req.Pai,
+                Prioridade = req.Prioridade,
+                Ativo = req.Ativo
+            };
+
+            await context.TarefaTemplates.AddAsync(template);
+            await context.SaveChangesAsync();
+            return Results.Created($"/tarefa-template/{template.ID}", template);
         }
-
-        private static async Task<IResult> DeleteTarefa(int id, MyDbContext context)
+        catch (ArgumentException e)
         {
-            try
-            {
-                var tarefa = await context.Tarefa.FindAsync(id);
-                if (tarefa == null)
-                    return Results.NotFound($"Tarefa com ID {id} não encontrada.");
+            return Results.BadRequest(e.Message);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Erro ao criar template de tarefa: {e.Message}");
+            return Results.Problem("Ocorreu um erro ao criar o template de tarefa.", statusCode: StatusCodes.Status500InternalServerError);
+        }
+    }
 
-                context.Tarefa.Remove(tarefa);
-                await context.SaveChangesAsync();
-                return Results.NoContent();
-            }
-            catch (Exception e)
+    private static async Task<IResult> UpdateTarefaTemplate(int id, TarefaTemplateDTO req, MyDbContext context)
+    {
+        try
+        {
+            var template = await context.TarefaTemplates.FindAsync(id);
+            if (template == null)
+                return Results.NotFound($"Template de tarefa com ID {id} não encontrado.");
+
+            template.UpdateName(req.Nome);
+
+            if (req.IdRotina.HasValue)
             {
-                Console.WriteLine($"Erro ao excluir tarefa: {e.Message}");
-                return Results.Problem("Ocorreu um erro ao excluir a tarefa.");
+                template.UpdateIdRotina(req.IdRotina.Value);
             }
+
+            template.UpdatePai(req.Pai);
+            template.UpdatePrioridade(req.Prioridade);
+
+            template.Ativo = req.Ativo;
+
+            await context.SaveChangesAsync();
+            return Results.Ok(template);
+        }
+        catch (ArgumentException e)
+        {
+            return Results.BadRequest(e.Message);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Erro ao atualizar template de tarefa: {e.Message}");
+            return Results.Problem("Ocorreu um erro ao atualizar o template de tarefa.", statusCode: StatusCodes.Status500InternalServerError);
+        }
+    }
+
+    private static async Task<IResult> DeleteTarefaTemplate(int id, MyDbContext context)
+    {
+        try
+        {
+            var template = await context.TarefaTemplates.FindAsync(id);
+            if (template == null)
+                return Results.NotFound($"Template de tarefa com ID {id} não encontrado.");
+
+            template.SetInactive();
+            await context.SaveChangesAsync();
+            return Results.NoContent();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Erro ao desativar template de tarefa: {e.Message}");
+            return Results.Problem("Ocorreu um erro ao desativar o template de tarefa.", statusCode: StatusCodes.Status500InternalServerError);
         }
     }
 }
