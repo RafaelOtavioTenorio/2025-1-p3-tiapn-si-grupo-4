@@ -11,7 +11,7 @@ public partial class MyDbContext : DbContext
     public DbSet<EmpresaModel> Empresas { get; set; }
     public DbSet<RotinaTemplateModel> RotinaTemplates { get; set; }
     public DbSet<UserModel> Users { get; set; }
-
+    public DbSet<LoginModel> Login { get; set; }public DbSet<UserModel> Users { get; set; }
     public DbSet<LoginModel> Login { get; set; }
 
     public MyDbContext(DbContextOptions<MyDbContext> options) : base(options) { }
