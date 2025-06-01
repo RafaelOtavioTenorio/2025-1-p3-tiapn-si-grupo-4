@@ -5,7 +5,7 @@ import DefaultModal from "../components/DefaultModal";
 
 function okAction(setModal: (v: boolean) => void) {
     return <>
-        <DefaultButton onClick={() => { setModal(false) }} type={ButtonTypes.SECONDARY}>OK</DefaultButton>
+        <DefaultButton onClick={() => { setModal(false) }} buttonType={ButtonTypes.SECONDARY}>OK</DefaultButton>
     </>
 }
 
