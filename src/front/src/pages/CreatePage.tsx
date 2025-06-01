@@ -2,9 +2,11 @@ import DefaultButton from "../components/DefaultButton";
 import Title from "../components/Title";
 import { useState } from "react";
 import DefaultModal from "../components/DefaultModal";
+import SearchIcon from "../components/SearchInput"
 
 export default function RoutinesPage() {
     const [createModal, setModal] = useState(false)
+    const [searchText, setSearchText] = useState ("")
   const rotinas = [
     { nome: "Auditoria Interna", tarefas: 3, insumos: 5 },
     { nome: "Controle de inventário", tarefas: 4, insumos: 1 },
@@ -24,10 +26,7 @@ export default function RoutinesPage() {
       </div>
 
       {/* Campo de busca */}
-      <input
-        placeholder="Pesquisar rotina ..."
-        className="mb-6 p-2 w-full rounded"
-      />
+    <SearchIcon value={searchText} onChange={(e) => setSearchText(e.target.value)} />
 
       {/* Conteúdo principal */}
       <div className="flex flex-row gap-6 w-full max-w-[1200px] mx-auto">
