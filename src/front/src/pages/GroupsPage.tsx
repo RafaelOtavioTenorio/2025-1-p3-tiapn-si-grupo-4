@@ -12,8 +12,6 @@ function okAction(setModal: (v: boolean) => void) {
 export default function GroupsPage() {
     const [modal, setModal] = useState(false);
 
-
-
     return (
         <MainPage title="Gerenciar Grupos" >
             <DefaultButton onClick={() => setModal(true)} >
@@ -23,9 +21,7 @@ export default function GroupsPage() {
                 actions={[okAction(() => setModal(false))]}>
                 Modal Content
             </DefaultModal>
-
         </MainPage>
     )
-
 
 }
