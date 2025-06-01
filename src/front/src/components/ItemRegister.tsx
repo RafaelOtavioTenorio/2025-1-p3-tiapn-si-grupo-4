@@ -1,4 +1,5 @@
 import React, { useState, useEffect, type PropsWithChildren, useRef } from 'react';
+import DefaultButton from './DefaultButton';
 
 export type NovoItem = {
   tipo: string;
@@ -48,11 +49,11 @@ function ItemRegister(props: ModalProps) {
     <dialog
       ref={ref}
       onCancel={props.closeModal}
-      className="items-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-4/5"
+      className="items-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg shadow-lg"
     >
       <div className='modal-overlay' onClick={props.closeModal}>
         <div
-          className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full overflow-auto max-h-[90vh]"
+          className="bg-white p-10 rounded-lg shadow-lg w-md w-full overflow-auto max-h-[90vh]"
           onClick={(e) => e.stopPropagation()}
         >
           <h2 className="text-xl font-bold mb-4">CADASTRAR ITEM</h2>
@@ -125,13 +126,13 @@ function ItemRegister(props: ModalProps) {
             </>
           )}
 
-          <div className="text-right">
-            <button
-              onClick={handleCreate}
-              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-            >
+          <div className="flex w-full p-4 justify-center gap-2">
+            {props.actions && props.actions.map((action, index) => (
+              <div key={index}>{action}</div>
+            ))}
+            <DefaultButton onClick={handleCreate}>
               Criar
-            </button>
+            </DefaultButton>
           </div>
         </div>
       </div>
