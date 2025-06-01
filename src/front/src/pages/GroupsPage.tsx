@@ -3,6 +3,12 @@ import DefaultButton, { ButtonTypes } from "../components/DefaultButton";
 import MainPage from "./MainPage";
 import DefaultModal from "../components/DefaultModal";
 
+function okAction(setModal: (v: boolean) => void) {
+    return <>
+        <DefaultButton onClick={() => { setModal(false) }} type={ButtonTypes.SECONDARY}>OK</DefaultButton>
+    </>
+}
+
 export default function GroupsPage() {
     const [modal, setModal] = useState(false);
 
@@ -14,11 +20,12 @@ export default function GroupsPage() {
                 CRIAR GRUPO
             </DefaultButton>
             <DefaultModal closeModal={() => setModal(false)} openModal={modal}
-                actions={[<DefaultButton onClick={() => {setModal(false)}} type={ButtonTypes.SECONDARY}>OK</DefaultButton>]}>
+                actions={[okAction(() => setModal(false))]}>
                 Modal Content
             </DefaultModal>
 
-
         </MainPage>
     )
+
+
 }
