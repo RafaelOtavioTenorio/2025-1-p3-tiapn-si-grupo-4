@@ -1,5 +1,6 @@
 import React, { useState, useEffect, type PropsWithChildren, useRef } from 'react';
 import DefaultButton from './DefaultButton';
+import CloseIcon from '@mui/icons-material/Close';
 
 export type NovoItem = {
   tipo: string;
@@ -51,12 +52,25 @@ function ItemRegister(props: ModalProps) {
       onCancel={props.closeModal}
       className="items-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg shadow-lg"
     >
+      
       <div className='modal-overlay' onClick={props.closeModal}>
         <div
-          className="bg-white p-10 rounded-lg shadow-lg w-md w-full overflow-auto max-h-[90vh]"
+          className="bg-white p-4 m-4 rounded-lg w-md w-full overflow-auto max-h-[90vh]"
           onClick={(e) => e.stopPropagation()}
         >
-          <h2 className="text-xl font-bold mb-4">CADASTRAR ITEM</h2>
+           <div className="justify-between flex items-center">
+            <h2 className="text-xl font-bold mb-4">CADASTRAR ITEM</h2>
+            <button
+              onClick={props.closeModal}
+              className="text-gray-500 hover:text-gray-700 border 
+              border-gray-300 rounded-lg p-2 transition-colors 
+              duration-150 hover:bg-gray-100 focus:outline-none"
+              aria-label="Fechar"
+              type="button"
+            >
+              <CloseIcon />
+            </button>
+          </div>
 
           {/* Seletor de tipo */}
           <div className="mb-4">
