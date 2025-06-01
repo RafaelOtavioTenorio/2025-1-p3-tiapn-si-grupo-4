@@ -14,7 +14,7 @@ export default function RoutinesPage(props: any) {
                         </DefaultButton>
                     </div>
                 </div>
-
+                
                 <div className="bg-white w-full min-h-[90vh] mt-4 rounded-lg shadow-md">
 
                 </div>

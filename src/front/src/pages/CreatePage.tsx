@@ -1,8 +1,16 @@
 import DefaultButton from "../components/DefaultButton";
 import Title from "../components/Title";
 import { useState } from "react";
-import DefaultModal from "../components/DefaultModal";
+import DefaultModal from "../components/CreateRoutine";
 import SearchIcon from "../components/SearchInput"
+import ItemRegisterModal from "../components/ItemRegister";
+
+export type NovoItem = {
+  tipo: string;
+  nome: string;
+  prioridade?: string;
+  descricao?: string;
+}
 
 export default function RoutinesPage() {
     const [createModal, setModal] = useState(false)
@@ -15,6 +23,12 @@ export default function RoutinesPage() {
   ];
 
   const tarefas = new Array(7).fill("Coletar dados");
+    const [itemRegisterOpen, setItemRegisterOpen] = useState(false);
+    const [resultadoModalRegistroItem, setResultadoModalRegistroItem] = useState();
+
+    const handleCreateItem = () => {
+        
+    }
 
   return (
     <div className="flex flex-col p-8 bg-gray-200 min-h-screen">
