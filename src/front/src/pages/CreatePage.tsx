@@ -4,6 +4,8 @@ import { useState } from "react";
 import DefaultModal from "../components/CreateRoutine";
 import SearchIcon from "../components/SearchInput"
 import ItemRegisterModal from "../components/ItemRegister";
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'; //icone de lixeira
+import DeleteRotina from "../components/DeleteRotinaPage";
 
 export type NovoItem = {
   tipo: string;
@@ -24,6 +26,7 @@ export default function RoutinesPage() {
 
   const tarefas = new Array(7).fill("Coletar dados");
     const [itemRegisterOpen, setItemRegisterOpen] = useState(false);
+    const [deleteRotinaOpen, setDeleteRotinaOpen] = useState(false);
     const [resultadoModalRegistroItem, setResultadoModalRegistroItem] = useState();
 
     const handleCreateItem = () => {
@@ -40,10 +43,10 @@ export default function RoutinesPage() {
       </div>
 
       {/* Campo de busca */}
-    <SearchIcon value={searchText} onChange={(e) => setSearchText(e.target.value)} />
+        <SearchIcon value={searchText} onChange={(e) => setSearchText(e.target.value)} />
 
       {/* Conteúdo principal */}
-      <div className="flex flex-row gap-6 w-full max-w-[1200px] mx-auto">
+      <div className="flex flex-row p-4 gap-6 w-full max-w-[1200px] mx-auto">
         {/* Lista de Rotinas */}
         <div className="flex flex-col gap-4 flex-1 max-h-[75vh] overflow-y-auto pr-2">
           {rotinas.map((rotina, i) => (
@@ -65,12 +68,24 @@ export default function RoutinesPage() {
         <div className="bg-white flex-1 rounded-lg p-6 shadow-md">
           <div className="flex justify-between items-start">
             <h2 className="text-xl font-bold">Auditoria Interna</h2>
-            <button className="text-red-600 border border-red-600 px-2 py-1 rounded hover:bg-red-100">
-              🗑
+            <button onClick={() => setDeleteRotinaOpen(true)} className="text-red-600 border border-red-600 px-2 py-1 rounded hover:bg-red-100">
+              <DeleteOutlineIcon />
             </button>
+            <DeleteRotina
+              openModal={deleteRotinaOpen}
+              closeModal={() => setDeleteRotinaOpen(false)}
+              onDelete={() => {}}
+            //   nomeRotina="Auditoria Interna"
+            />
           </div>
-
-          <DefaultButton >ADICIONAR TAREFA</DefaultButton>
+        
+        
+          <DefaultButton onClick={() => setItemRegisterOpen(true)}>ADICIONAR TAREFA</DefaultButton>
+          <ItemRegisterModal
+                    closeModal={() => setItemRegisterOpen(false)}
+                    openModal={itemRegisterOpen}
+                    onCreate={handleCreateItem}
+                />
 
           <ul className="mt-6 space-y-3">
             {tarefas.map((tarefa, i) => (
@@ -79,7 +94,7 @@ export default function RoutinesPage() {
                   <input type="checkbox" />
                   <span>{tarefa}</span>
                 </div>
-                <span>⚙️</span>
+                <span>⚙️</span> {/* Vai deixar essa engrenagem mesmo? */}
               </li>
             ))}
           </ul>

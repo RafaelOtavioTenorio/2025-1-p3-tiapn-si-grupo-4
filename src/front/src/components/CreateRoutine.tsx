@@ -1,12 +1,12 @@
-
 import { useEffect, useRef, useState, type PropsWithChildren } from "react";
 import DefaultButton from "./DefaultButton";
+import CloseIcon from '@mui/icons-material/Close';
 
 export type NovoItem = {
-  tipo: string;
-  nome: string;
-  prioridade?: string;
-  descricao?: string;
+    tipo: string;
+    nome: string;
+    prioridade?: string;
+    descricao?: string;
 }
 
 interface ModalProps extends PropsWithChildren {
@@ -22,12 +22,12 @@ function CreateRoutine(props: ModalProps) {
     const [prioridade, setPrioridade] = useState('');
 
     const handleCreate = () => {
-    if (nome.trim() === "") return;
-    setNome('');
-    setPrioridade('1');
-    setDescRotina('');
-    props.closeModal();
-  }
+        if (nome.trim() === "") return;
+        setNome('');
+        setPrioridade('1');
+        setDescRotina('');
+        props.closeModal();
+    }
 
     useEffect(() => {
         if (props.openModal) {
@@ -41,17 +41,30 @@ function CreateRoutine(props: ModalProps) {
         <dialog
             ref={ref}
             onCancel={props.closeModal}
-            className="items-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-4/5"
+            className="items-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg shadow-lg"
         >
-            <div className="h-full flex flex-col">
+            <div className="bg-white p-4 m-4 rounded-lg w-md w-full overflow-auto max-h-[90vh]"
+                onClick={(e) => e.stopPropagation()}>
                 <div className="flex-1 flex items-center justify-center">
                     {props.children}
                 </div>
 
+                <div className="justify-between flex items-center">
+                    <h2 className="text-xl font-bold mb-4">CADASTRAR ROTINA</h2>
+                    <button
+                        onClick={props.closeModal}
+                        className="text-gray-500 hover:text-gray-700 border 
+              border-gray-300 rounded-lg p-2 transition-colors 
+              duration-150 hover:bg-gray-100 focus:outline-none"
+                        aria-label="Fechar"
+                        type="button"
+                    >
+                        <CloseIcon />
+                    </button>
+                </div>
 
-                <h2 className="text-xl font-bold mb-4">CADASTRAR ROTINA</h2>
-
-                <div className="mb-4">
+                <div className="pt-4 grid grid-cols-5 gap-4">
+                <div className="col-span-4 mb-4">
                     <label className="block font-medium mb-1">Nome da rotina</label>
                     <input
                         type="text"
@@ -61,18 +74,6 @@ function CreateRoutine(props: ModalProps) {
                         className="w-full border p-2 rounded"
                     />
                 </div>
-                <div className="mb-4">
-                    <label className="block font-medium mb-1">Descrição da rotina</label>
-                    <textarea
-                        maxLength={255}
-                        rows={4}
-                        placeholder="Digite a descrição do insumo"
-                        value={descRotina}
-                        onChange={e => setDescRotina(e.target.value)}
-                        className="w-full border p-2 rounded"
-                    />
-                </div>
-
                 <div className="mb-4">
                     <label className="block font-medium mb-1">Prioridade</label>
                     <select
@@ -85,26 +86,26 @@ function CreateRoutine(props: ModalProps) {
                         <option value="3">3</option>
                     </select>
                 </div>
-
-                <div className="text-right">
-                    <button
-                        onClick={handleCreate}
-                        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-                    >
-                        Criar
-                    </button>
-
+                <div className="col-span-5 mb-4">
+                    <label className="block font-medium mb-1">Descrição da rotina</label>
+                    <textarea
+                        maxLength={255}
+                        rows={4}
+                        placeholder="Digite a descrição do insumo"
+                        value={descRotina}
+                        onChange={e => setDescRotina(e.target.value)}
+                        className="w-full border p-2 rounded"
+                    />
+                </div>
+                </div>
 
                     <div className="flex w-full p-4 justify-center gap-2">
-                        {props.actions && props.actions.map((action, index) => (
-                            <div key={index}>{action}</div>
-                        ))}
-                        <DefaultButton onClick={props.closeModal}>
-                            Fechar
+                        <DefaultButton onClick={handleCreate}>
+                            Criar
                         </DefaultButton>
                     </div>
-                </div>
-                </div>
+                
+            </div>
 
         </dialog>
     );
