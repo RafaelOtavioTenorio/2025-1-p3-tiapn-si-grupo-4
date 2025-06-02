@@ -1,7 +1,7 @@
 import { useState } from "react";
 import DefaultButton, { ButtonTypes } from "../components/DefaultButton";
 import MainPage from "./MainPage";
-import DefaultModal from "../components/DefaultModal";
+import DefaultModal from "../components/CreateRoutine";
 
 function okAction(setModal: (v: boolean) => void) {
     return <>
