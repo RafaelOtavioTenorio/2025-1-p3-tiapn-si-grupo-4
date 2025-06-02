@@ -7,7 +7,7 @@ import Login from "../components/LoginComponent";
 import Signup from "../components/SignUpComponent";
 
 
-export default function LoginPage() {
+export default function () {
     const [isLogon, setLogon] = useState(false);
 
     const toggleLogon = (e: Event) => {

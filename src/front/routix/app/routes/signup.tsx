@@ -9,7 +9,11 @@ export function loader() {
 
 }
 
-export default function SignupPage() {
+export function action(){
+    
+}
+
+export default function () {
 
     const location = useLocation();
 

@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { loginUser } from "../../../src/services/auth";
+import { loginUser } from "../services/auth";
 import { useNavigate } from "react-router";
 import ErrorMessage from "./ErrorMessage";
 
