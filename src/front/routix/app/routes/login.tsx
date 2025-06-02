@@ -3,8 +3,8 @@ import Bg1 from "@assets/bg-01.png";
 import Bg2 from "@assets/bg-02.png";
 import Bg3 from "@assets/bg-03.png";
 import Bg4 from "@assets/bg-04.png";
-import Login from "./components/LoginComponent";
-import Signup from "./components/SignUpComponent";
+import Login from "../components/LoginComponent";
+import Signup from "../components/SignUpComponent";
 
 
 export default function LoginPage() {

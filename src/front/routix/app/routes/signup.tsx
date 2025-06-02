@@ -1,7 +1,12 @@
 import { useLocation } from "react-router";
+import Header from "~/components/header";
 interface SignupState {
     email: string;
     name: string;
+}
+
+export function loader() {
+
 }
 
 export default function SignupPage() {
@@ -12,6 +17,7 @@ export default function SignupPage() {
 
     return (
         <>
+            <Header />
             {
                 state?.email
             },

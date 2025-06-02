@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from "react";
-import { loginUser } from "../../../services/auth";
-import ErrorMessage from "../../../components/ErrorMessage";
+import { loginUser } from "../../../src/services/auth";
 import { useNavigate } from "react-router";
+import ErrorMessage from "./ErrorMessage";
 
 const Login = ({ toggle }: { toggle: (e: any) => void }) => {
     const [email, setEmail] = useState('');

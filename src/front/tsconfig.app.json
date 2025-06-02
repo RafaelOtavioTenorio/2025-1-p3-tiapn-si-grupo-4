@@ -23,5 +23,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src"]
+  "include": ["src", "routix/app/components/LoginComponent.tsx", "routix/app/components/SignUpComponent.tsx", "routix/app/routes/signup.tsx"]
 }

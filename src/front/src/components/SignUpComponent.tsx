@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router"
-import DefaultButton, { ButtonTypes } from "../../../components/DefaultButton";
+import DefaultButton, { ButtonTypes } from "../../../src/components/DefaultButton";
 
 const Signup = (props: { toggle: (e: any) => void }) => {
 
