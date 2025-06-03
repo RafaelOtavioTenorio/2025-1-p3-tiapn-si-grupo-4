@@ -7,6 +7,7 @@ export type NovoItem = {
   nome: string;
   prioridade?: string;
   descricao?: string;
+  responsavel?: string;
 }
 
 interface ModalProps extends PropsWithChildren {
@@ -22,6 +23,7 @@ function ItemRegister(props: ModalProps) {
   const [nome, setNome] = useState('');
   const [prioridade, setPrioridade] = useState('1');
   const [descricao, setDescricao] = useState('');
+  const [responsavel, setResponsavel] = useState('');
 
   const handleCreate = () => {
     if (nome.trim() === "") return;
@@ -74,7 +76,7 @@ function ItemRegister(props: ModalProps) {
 
           {/* Seletor de tipo*/}
           <div className="pt-4 grid gap-4 grid-cols-5">
-            <div className="col-span-4 mb-4">
+            <div className="col-span-5 mb-5">
               <label className="block font-medium mb-1">Tipo</label>
               <select
                 value={tipo}
@@ -90,19 +92,36 @@ function ItemRegister(props: ModalProps) {
             {/* Formulário de Tarefa */}
             {tipo === 'Tarefa' && (
               <>
-                <div className="mb-4">
-                  <label className="block font-medium mb-1">Prioridade</label>
-                  <select
-                    value={prioridade}
-                    onChange={e => setPrioridade(e.target.value)}
-                    className="w-full border p-2 rounded"
-                  >
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                  </select>
+                <div className="col-span-5 mb-5">
+                  <div className="flex flex-row justify-around">
+                    <div className="mb-4 w-2/5">
+                      <label className="block font-medium mb-1">Prioridade</label>
+                      <select
+                        value={prioridade}
+                        onChange={e => setPrioridade(e.target.value)}
+                        className="w-full border p-2 rounded"
+                      >
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                      </select>
+                    </div>
+                    <div className="mb-4 w-2/4 justify-self-end">
+                      <label className="block font-medium mb-1">Responsável</label>
+                      <select
+                        value={responsavel}
+                        onChange={e => setResponsavel(e.target.value)}
+                        className="w-full border p-2 rounded"
+                      >
+                        <option value="1">Gestor</option>
+                        <option value="2">Administrador</option>
+                        <option value="3">Almoxarifado</option>
+                        <option value="4">Funcionario</option>
+                      </select>
+                    </div>
+                  </div>
                 </div>
                 <div className="col-span-5 mb-4">
                   <label className="block font-medium mb-1">Nome da tarefa</label>
