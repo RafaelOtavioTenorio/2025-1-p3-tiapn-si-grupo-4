@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
-import DefaultButton from "../../../src/components/DefaultButton";
 import CloseIcon from '@mui/icons-material/Close';
+import DefaultButton from "./DefaultButton";
 
 interface DeleteProps {
   openModal: boolean;

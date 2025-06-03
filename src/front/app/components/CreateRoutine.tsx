@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type PropsWithChildren } from "react";
-import DefaultButton from "../../../src/components/DefaultButton";
 import CloseIcon from '@mui/icons-material/Close';
+import DefaultButton from "./DefaultButton";
 
 export type NovoItem = {
     tipo: string;

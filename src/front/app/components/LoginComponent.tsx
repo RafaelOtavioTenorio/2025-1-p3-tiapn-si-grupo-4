@@ -15,7 +15,7 @@ const Login = ({ toggle }: { toggle: (e: any) => void }) => {
 
         try {
             await loginUser({ Login: email, Senha: password });
-            navigate('/app');
+            navigate('/');
         } catch (err: any) {
             const errorMessage = err.response?.data?.message || 'Falha no login. Tente novamente.';
             setError(errorMessage);
@@ -64,7 +64,6 @@ const Login = ({ toggle }: { toggle: (e: any) => void }) => {
                     </a>
 
                     <ErrorMessage key={errorKey} message={error} />
-
 
                 </div>
             </form>

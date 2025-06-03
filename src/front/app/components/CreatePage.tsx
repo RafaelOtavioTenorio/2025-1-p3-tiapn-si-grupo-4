@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DefaultModal from "./CreateRoutine";
 import DeleteRotina from "./DeleteRotinaPage";
 import Title from "./Title";
 import DefaultButton from "./DefaultButton";
 import SearchIcon from "./SearchInput";
+import ItemRegister from "./ItemRegister";
+import DeleteIcon from '@mui/icons-material/DeleteOutline';
+import apiClient from "~/services/client";
+import type { Route } from "../+types/root";
 
 export type NovoItem = {
   tipo: string;
@@ -12,24 +16,40 @@ export type NovoItem = {
   descricao?: string;
 }
 
+export async function loader({ params }: Route.LoaderArgs) {
+  const token = localStorage.getItem('authToken');
+
+  const response = await apiClient.get('/rotinas', {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
+  return response.data;
+}
+
 export default function RoutinesPage() {
-    const [createModal, setModal] = useState(false)
-    const [searchText, setSearchText] = useState ("")
-  const rotinas = [
+  const [createModal, setModal] = useState(false)
+  const [searchText, setSearchText] = useState("")
+  const [rotinas, setRotinas] = useState([
     { nome: "Auditoria Interna", tarefas: 3, insumos: 5 },
     { nome: "Controle de inventário", tarefas: 4, insumos: 1 },
     { nome: "Gerenciar recursos", tarefas: 3, insumos: 5 },
     { nome: "Auditoria Interna", tarefas: 3, insumos: 5 },
-  ];
+  ]);
+
+  useEffect(() => {
+    setRotinas(rotinas.filter(rotina => rotina.nome.toLowerCase().includes(searchText.toLowerCase())))
+  }, [searchText]);
+
 
   const tarefas = new Array(7).fill("Coletar dados");
-    const [itemRegisterOpen, setItemRegisterOpen] = useState(false);
-    const [deleteRotinaOpen, setDeleteRotinaOpen] = useState(false);
-    const [resultadoModalRegistroItem, setResultadoModalRegistroItem] = useState();
+  const [itemRegisterOpen, setItemRegisterOpen] = useState(false);
+  const [deleteRotinaOpen, setDeleteRotinaOpen] = useState(false);
+  const [resultadoModalRegistroItem, setResultadoModalRegistroItem] = useState();
 
-    const handleCreateItem = () => {
-        
-    }
+  const handleCreateItem = () => {
+
+  }
 
   return (
     <div className="flex flex-col p-8 bg-gray-200 min-h-screen">
@@ -41,7 +61,7 @@ export default function RoutinesPage() {
       </div>
 
       {/* Campo de busca */}
-        <SearchIcon value={searchText} onChange={(e) => setSearchText(e.target.value)} />
+      <SearchIcon value={searchText} onChange={(e) => setSearchText(e.target.value)} />
 
       {/* Conteúdo principal */}
       <div className="flex flex-row p-4 gap-6 w-full max-w-[1200px] mx-auto">
@@ -50,9 +70,8 @@ export default function RoutinesPage() {
           {rotinas.map((rotina, i) => (
             <div
               key={i}
-              className={`bg-white rounded-lg p-4 shadow-md hover:bg-gray-100 ${
-                i === 0 ? "bg-blue-100" : ""
-              }`}
+              className={`bg-white rounded-lg p-4 shadow-md hover:bg-gray-100 ${i === 0 ? "bg-blue-100" : ""
+                }`}
             >
               <h2 className="font-semibold">{rotina.nome}</h2>
               <p className="text-sm text-gray-600">
@@ -67,23 +86,23 @@ export default function RoutinesPage() {
           <div className="flex justify-between items-start">
             <h2 className="text-xl font-bold">Auditoria Interna</h2>
             <button onClick={() => setDeleteRotinaOpen(true)} className="text-red-600 border border-red-600 px-2 py-1 rounded hover:bg-red-100">
-              <DeleteOutlineIcon />
+              <DeleteIcon />
             </button>
             <DeleteRotina
               openModal={deleteRotinaOpen}
               closeModal={() => setDeleteRotinaOpen(false)}
-              onDelete={() => {}}
+              onDelete={() => { }}
             //   nomeRotina="Auditoria Interna"
             />
           </div>
-        
-        
+
+
           <DefaultButton onClick={() => setItemRegisterOpen(true)}>ADICIONAR TAREFA</DefaultButton>
-          <ItemRegisterModal
-                    closeModal={() => setItemRegisterOpen(false)}
-                    openModal={itemRegisterOpen}
-                    onCreate={handleCreateItem}
-                />
+          <ItemRegister
+            closeModal={() => setItemRegisterOpen(false)}
+            openModal={itemRegisterOpen}
+            onCreate={handleCreateItem}
+          />
 
           <ul className="mt-6 space-y-3">
             {tarefas.map((tarefa, i) => (

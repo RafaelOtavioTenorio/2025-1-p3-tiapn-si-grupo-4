@@ -6,8 +6,8 @@ import {
     ViewKanbanOutlined
 } from '@mui/icons-material';
 import { useState } from "react";
-import { Pannels } from "../App";
 import { Link } from "react-router";
+import { Pannels } from '~/root';
 
 interface props {
     activePannel: string;

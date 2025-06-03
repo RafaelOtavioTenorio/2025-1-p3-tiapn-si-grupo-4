@@ -1,4 +1,4 @@
-import Title from "../../../src/components/Title";
+import Title from "./Title";
 
 interface MainPageProps  extends React.PropsWithChildren {
     title: string;

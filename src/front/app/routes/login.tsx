@@ -48,7 +48,7 @@ export default function () {
             <div className="flex w-full h-full relative z-50">
                 <div className={`flex w-1/2 h-full bg-gray-200 transition-all duration-700 ease-in-out ${isLogon ? 'translate-x-full' : 'translate-x-0'
                     }`}>
-                    {!isLogon ? <Login toggle={toggleLogon} /> : <Signup toggle={toggleLogon} />}
+                    {!isLogon ? <Login toggle={toggleLogon} /> : <Signup toggle={() => toggleLogon(new MouseEvent('click'))} />}
                 </div>
             </div>
         </main>

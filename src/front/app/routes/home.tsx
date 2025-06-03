@@ -2,12 +2,12 @@ import MainPage from "~/components/MainPage";
 import type { Route as r } from "../../types/app/+types/root";
 import Header from "~/components/header";
 import { BrowserRouter, Route, Routes } from "react-router";
-import SidePannel from "~/components/SidePannel";
 import { useState } from "react";
 import CreatePage from "~/components/CreatePage";
 import RoutinesPage from "~/components/CreatePage";
 import HistoricPage from "~/components/HistoricPage";
 import GroupsPage from "~/components/GroupsPage";
+import SidePannel from "~/components/SidePannel";
 
 export const Pannels = {
   CREATE: '',
@@ -38,7 +38,7 @@ export default function () {
                   <SidePannel activePannel={activePannel} setActivePannel={setActivePannel} />
                   <main className='flex-1 bg-[#F5F5F5] '>
                     <Routes> 
-                      <Route path="/" element={<CreatePage />} /> 
+                      <Route path="/" element={<CreatePage  />} /> 
                       <Route path="routines" element={<RoutinesPage/>} /> 
                       <Route path="historic" element={<HistoricPage />} /> 
                       <Route path="groups" element={<GroupsPage />} /> 

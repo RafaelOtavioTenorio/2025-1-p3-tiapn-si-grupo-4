@@ -49,12 +49,8 @@ export const signupUser = async (data: SignupData): Promise<AuthResponse> => {
 export const logoutUser = () => {
     localStorage.removeItem('authToken');
     localStorage.removeItem('userData');
-    // Adicione qualquer outra lógica de limpeza necessária
-    // Ex: redirecionar para a página de login
-    // window.location.href = '/login';
 };
 
-// Função para pegar o usuário logado (exemplo)
 export const getCurrentUser = () => {
     const token = localStorage.getItem('authToken');
     const userData = localStorage.getItem('userData');

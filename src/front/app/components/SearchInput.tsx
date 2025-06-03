@@ -1,7 +1,7 @@
 import React  from 'react'
 import type { ChangeEvent } from "react";
 import { useState } from "react";
-import {Search} from '@mui/icons-material/';
+import Search from '@mui/icons-material/Search';
 
 
 interface SearchInputProps {
