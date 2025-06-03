@@ -1,5 +1,5 @@
-import DefaultButton from "../components/DefaultButton";
-import MainPage from "./MainPage";
+import DefaultButton from "./DefaultButton";
+import MainPage from "../../routix/app/components/MainPage";
 
 export default function HistoricPage() {
     return (

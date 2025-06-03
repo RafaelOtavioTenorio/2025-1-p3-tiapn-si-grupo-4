@@ -1,8 +1,7 @@
-import Title from "../components/Title";
+import Title from "../../../src/components/Title";
 
 interface MainPageProps  extends React.PropsWithChildren {
     title: string;
-    header?: React.Component
 
 }
 

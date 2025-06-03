@@ -1,7 +1,7 @@
 import React  from 'react'
 import type { ChangeEvent } from "react";
 import { useState } from "react";
-import SearchIcon from '@mui/icons-material/Search';
+import {Search} from '@mui/icons-material/';
 
 
 interface SearchInputProps {
@@ -20,7 +20,7 @@ const [search, setSearch] = useState("");
         type="button"
         tabIndex={-1}
       >
-        <SearchIcon />
+        <Search />
       </button>
 
       {/* Campo de texto */}

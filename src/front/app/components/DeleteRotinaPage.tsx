@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import DefaultButton from "./DefaultButton";
+import DefaultButton from "../../../src/components/DefaultButton";
 import CloseIcon from '@mui/icons-material/Close';
 
 interface DeleteProps {
@@ -27,7 +27,7 @@ export default function Delete({ openModal, closeModal, onDelete, nomeRotina }: 
       className="items-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg shadow-lg"
     >
       <div
-        className="bg-white p-4 m-4 rounded-lg w-md w-full overflow-auto max-h-[90vh]"
+        className="bg-white p-4 m-4 rounded-lg w-full overflow-auto max-h-[90vh]"
         onClick={e => e.stopPropagation()}
       >
         <div className="justify-between flex items-center">

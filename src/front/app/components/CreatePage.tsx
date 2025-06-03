@@ -1,11 +1,9 @@
-import DefaultButton from "../components/DefaultButton";
-import Title from "../components/Title";
 import { useState } from "react";
-import DefaultModal from "../components/CreateRoutine";
-import SearchIcon from "../components/SearchInput"
-import ItemRegisterModal from "../components/ItemRegister";
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'; //icone de lixeira
-import DeleteRotina from "../components/DeleteRotinaPage";
+import DefaultModal from "./CreateRoutine";
+import DeleteRotina from "./DeleteRotinaPage";
+import Title from "./Title";
+import DefaultButton from "./DefaultButton";
+import SearchIcon from "./SearchInput";
 
 export type NovoItem = {
   tipo: string;

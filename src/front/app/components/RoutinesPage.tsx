@@ -1,5 +1,5 @@
-import DefaultButton from "../components/DefaultButton";
-import Title from "../components/Title";
+import DefaultButton from "./DefaultButton";
+import Title from "./Title";
 
 export default function RoutinesPage(props: any) {
 

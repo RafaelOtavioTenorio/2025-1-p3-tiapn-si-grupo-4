@@ -23,5 +23,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src", "routix/app/components/LoginComponent.tsx", "routix/app/components/SignUpComponent.tsx", "routix/app/routes/signup.tsx", "routix/app/services"]
+  "include": ["src", "routix/app/components/LoginComponent.tsx", "routix/app/components/SignUpComponent.tsx", "routix/app/routes/signup.tsx", "routix/app/services", "routix/app/components/CreateRoutine.tsx", "routix/app/components/MainPage.tsx", "routix/app/components/CreatePage.tsx", "routix/app/components/DeleteRotinaPage.tsx", "routix/app/components/DeleteTarefaPage.tsx"]
 }

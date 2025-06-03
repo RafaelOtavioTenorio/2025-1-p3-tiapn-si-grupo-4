@@ -1,7 +1,7 @@
 import { useState } from "react";
-import DefaultButton, { ButtonTypes } from "../components/DefaultButton";
-import MainPage from "./MainPage";
-import DefaultModal from "../components/CreateRoutine";
+import DefaultButton, { ButtonTypes } from "./DefaultButton";
+import MainPage from "../../routix/app/components/MainPage";
+import DefaultModal from "../../routix/app/components/CreateRoutine";
 
 function okAction(setModal: (v: boolean) => void) {
     return <>
