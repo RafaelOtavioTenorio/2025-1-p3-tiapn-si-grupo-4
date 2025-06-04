@@ -27,8 +27,13 @@ export default function RoutinesPage() {
   const [searchText, setSearchText] = useState("")
 
   const handleItemRegister = (item: NovoItem) => {
-    setResultadoModalRegistroItem(item);
-    console.log("Item para enviar ao backend:", item);
+    try {
+      console.log("entrou1");
+      setResultadoModalRegistroItem(item);
+      console.log("Item para enviar ao backend:", item);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const handleSetRotinas = () => {
@@ -39,6 +44,14 @@ export default function RoutinesPage() {
       { nome: "Auditoria Interna", tarefas: 3, insumos: 5 },
     ];
     const extra = localStorage.getItem("rotinaExtra")
+    if (extra) {
+      try {
+        const parsed = JSON.parse(extra);
+        mockData.push(parsed);
+      } catch (err) {
+        console.error("Erro ao fazer parse do item salvo no localStorage", err);
+      }
+    }
     console.log("Definindo rotinas mockadas:", mockData);
     setRotinas(mockData);
   };
@@ -61,16 +74,30 @@ export default function RoutinesPage() {
 
   useEffect(() => {
     //somente está setado para rotinas, falta insumos e tarefas
+    if (resultadoModalRegistroItem) {
+      console.log("entrou2");
+      const novaRotina: Rotina = {
+        nome: resultadoModalRegistroItem.nome,
+        //depois tem que colocar um count
+        tarefas: 0,
+        insumos: 0,
+      };
+
+      setRotinas(prev => [...prev, novaRotina]);
+
+      // Limpa o resultado para evitar duplicações futuras
+      setResultadoModalRegistroItem(undefined);
+    }
     handleSetRotinas();
     handleSetItens();
-    apiClient.get("http://localhost:3000/rotinas")
-      .then(response => {
-        setRotinas(response.data);
-      })
-      .catch(error => {
-        console.error("Erro ao buscar rotinas:", error);
-      });
-  }, []);
+    // apiClient.get("http://localhost:3000/rotinas")
+    //   .then(response => {
+    //     setRotinas(response.data);
+    //   })
+    //   .catch(error => {
+    //     console.error("Erro ao buscar rotinas:", error);
+    //   });
+  }, [resultadoModalRegistroItem]);
 
   return (
     <div className="flex flex-col p-8 bg-gray-200 min-h-screen">
@@ -78,7 +105,7 @@ export default function RoutinesPage() {
       <div className="flex justify-between items-center mb-6">
         <Title>Minhas Rotinas</Title>
         <DefaultButton onClick={() => setModal(true)}>+ CRIAR ROTINA</DefaultButton>
-        <DefaultModal closeModal={() => setModal(false)} openModal={createModal} />
+        <DefaultModal closeModal={() => setModal(false)} openModal={createModal} onCreate={handleItemRegister} result={resultadoModalRegistroItem} />
       </div>
 
       {/* Campo de busca */}

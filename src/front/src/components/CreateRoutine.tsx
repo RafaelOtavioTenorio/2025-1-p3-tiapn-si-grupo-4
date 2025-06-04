@@ -7,12 +7,15 @@ export type NovoItem = {
     nome: string;
     prioridade?: string;
     descricao?: string;
+    responsavel?: string;
 }
 
 interface ModalProps extends PropsWithChildren {
     openModal: boolean;
     closeModal: () => void;
+    onCreate: (item: NovoItem) => void;
     actions?: React.ReactElement[];
+    result: NovoItem | undefined;
 }
 
 function CreateRoutine(props: ModalProps) {
@@ -21,7 +24,8 @@ function CreateRoutine(props: ModalProps) {
     const [descRotina, setDescRotina] = useState('');
     const [prioridade, setPrioridade] = useState('');
 
-    const handleCreate = () => {
+    const handleSubmit = () => {
+        if (!props) return null;
         if (nome.trim() === "") return;
         setNome('');
         setPrioridade('1');
@@ -100,7 +104,7 @@ function CreateRoutine(props: ModalProps) {
                 </div>
 
                     <div className="flex w-full p-4 justify-center gap-2">
-                        <DefaultButton onClick={handleCreate}>
+                        <DefaultButton onClick={handleSubmit}>
                             Criar
                         </DefaultButton>
                     </div>
