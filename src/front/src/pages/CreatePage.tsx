@@ -1,10 +1,10 @@
+import { useState, useEffect } from "react";
 import DefaultButton from "../components/DefaultButton";
 import Title from "../components/Title";
-import { useState, useEffect } from "react";
 import DefaultModal from "../components/CreateRoutine";
-import SearchIcon from "../components/SearchInput"
+import SearchInput from "../components/SearchInput";
 import ItemRegisterModal from "../components/ItemRegister";
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'; //icone de lixeira
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import DeleteRotina from "../components/DeleteRotinaPage";
 import type { NovoItem } from "../components/ItemRegister";
 import apiClient from "../services/client";
@@ -23,14 +23,15 @@ interface Item {
 export default function RoutinesPage() {
   const [rotinas, setRotinas] = useState<Rotina[]>([]);
   const [itens, setItens] = useState<Item[]>([]);
-  const [createModal, setModal] = useState(false)
-  const [searchText, setSearchText] = useState("")
+  const [selectedRotina, setSelectedRotina] = useState<Rotina | null>(null);
 
-  const handleItemRegister = (item: NovoItem) => {
-    setResultadoModalRegistroItem(item);
-    console.log("Item para enviar ao backend:", item);
-  };
+  const [createModal, setModal] = useState(false);
+  const [searchText, setSearchText] = useState("");
+  const [itemRegisterOpen, setItemRegisterOpen] = useState(false);
+  const [deleteRotinaOpen, setDeleteRotinaOpen] = useState(false);
+  const [resultadoModalRegistroItem, setResultadoModalRegistroItem] = useState<NovoItem>();
 
+  // Mock inicial
   const handleSetRotinas = () => {
     const mockData = [
       { nome: "Auditoria Interna", tarefas: 3, insumos: 5 },
@@ -38,8 +39,6 @@ export default function RoutinesPage() {
       { nome: "Gerenciar recursos", tarefas: 3, insumos: 5 },
       { nome: "Auditoria Interna", tarefas: 3, insumos: 5 },
     ];
-    const extra = localStorage.getItem("rotinaExtra")
-    console.log("Definindo rotinas mockadas:", mockData);
     setRotinas(mockData);
   };
 
@@ -50,19 +49,18 @@ export default function RoutinesPage() {
       { nome: "Gerenciar recursos", concluido: false },
       { nome: "Auditoria Interna", concluido: false },
     ];
-    console.log("Definindo rotinas mockadas:", mockData);
     setItens(mockData);
   };
 
-  const tarefas = new Array(7).fill("Coletar dados");
-  const [itemRegisterOpen, setItemRegisterOpen] = useState(false);
-  const [deleteRotinaOpen, setDeleteRotinaOpen] = useState(false);
-  const [resultadoModalRegistroItem, setResultadoModalRegistroItem] = useState<NovoItem>();
+  const handleItemRegister = (item: NovoItem) => {
+    setResultadoModalRegistroItem(item);
+    console.log("Item para enviar ao backend:", item);
+  };
 
   useEffect(() => {
-    //somente está setado para rotinas, falta insumos e tarefas
     handleSetRotinas();
     handleSetItens();
+
     apiClient.get("http://localhost:3000/rotinas")
       .then(response => {
         setRotinas(response.data);
@@ -82,7 +80,12 @@ export default function RoutinesPage() {
       </div>
 
       {/* Campo de busca */}
-      <SearchIcon value={searchText} onChange={(e) => setSearchText(e.target.value)} rotinas={rotinas} />
+      <SearchInput
+        value={searchText}
+        onChange={(e) => setSearchText(e.target.value)}
+        rotinas={rotinas}
+      />
+
       {/* Conteúdo principal */}
       <div className="flex flex-row p-4 gap-6 w-full max-w-[1200px] mx-auto">
         {/* Lista de Rotinas */}
@@ -90,8 +93,10 @@ export default function RoutinesPage() {
           {rotinas.map((rotina, i) => (
             <div
               key={i}
-              className={`bg-white rounded-lg p-4 shadow-md hover:bg-gray-100 ${i === 0 ? "bg-blue-100" : ""
-                }`}
+              onClick={() => setSelectedRotina(rotina)}
+              className={`bg-white rounded-lg p-4 shadow-md hover:bg-gray-100 cursor-pointer ${
+                selectedRotina?.nome === rotina.nome ? "bg-blue-100" : ""
+              }`}
             >
               <h2 className="font-semibold">{rotina.nome}</h2>
               <p className="text-sm text-gray-600">
@@ -103,39 +108,46 @@ export default function RoutinesPage() {
 
         {/* Detalhes da Rotina */}
         <div className="bg-white flex-1 rounded-lg p-6 shadow-md">
-          <div className="flex justify-between items-start">
-            <h2 className="text-xl font-bold">Auditoria Interna</h2>
-            <button onClick={() => setDeleteRotinaOpen(true)} className="text-red-600 border border-red-600 px-2 py-1 rounded hover:bg-red-100">
-              <DeleteOutlineIcon />
-            </button>
-            <DeleteRotina
-              openModal={deleteRotinaOpen}
-              closeModal={() => setDeleteRotinaOpen(false)}
-              onDelete={() => { }}
-            //   nomeRotina="Auditoria Interna"
-            />
-          </div>
+          {selectedRotina ? (
+            <>
+              <div className="flex justify-between items-start">
+                <h2 className="text-xl font-bold">{selectedRotina.nome}</h2>
+                <button
+                  onClick={() => setDeleteRotinaOpen(true)}
+                  className="text-red-600 border border-red-600 px-2 py-1 rounded hover:bg-red-100"
+                >
+                  <DeleteOutlineIcon />
+                </button>
+                <DeleteRotina
+                  openModal={deleteRotinaOpen}
+                  closeModal={() => setDeleteRotinaOpen(false)}
+                  onDelete={() => {}}
+                />
+              </div>
 
+              <DefaultButton onClick={() => setItemRegisterOpen(true)}>ADICIONAR TAREFA</DefaultButton>
+              <ItemRegisterModal
+                closeModal={() => setItemRegisterOpen(false)}
+                openModal={itemRegisterOpen}
+                onCreate={handleItemRegister}
+                result={resultadoModalRegistroItem}
+              />
 
-          <DefaultButton onClick={() => setItemRegisterOpen(true)}>ADICIONAR TAREFA</DefaultButton>
-          <ItemRegisterModal
-            closeModal={() => setItemRegisterOpen(false)}
-            openModal={itemRegisterOpen}
-            onCreate={handleItemRegister}
-            result={resultadoModalRegistroItem}
-          />
-
-          <ul className="mt-6 space-y-3">
-            {itens.map((tarefa, i) => (
-              <li key={i} className="flex justify-between items-center">
-                <div className="flex items-center gap-2">
-                  <input type="checkbox" />
-                  <span>{tarefa.nome}</span>
-                </div>
-                <span>⚙️</span> {/* Vai deixar essa engrenagem mesmo? */}
-              </li>
-            ))}
-          </ul>
+              <ul className="mt-6 space-y-3">
+                {itens.map((tarefa, i) => (
+                  <li key={i} className="flex justify-between items-center">
+                    <div className="flex items-center gap-2">
+                      <input type="checkbox" />
+                      <span>{tarefa.nome}</span>
+                    </div>
+                    <span>⚙️</span>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : (
+            <div className="text-gray-400 italic">Selecione uma rotina para visualizar detalhes.</div>
+          )}
         </div>
       </div>
     </div>
