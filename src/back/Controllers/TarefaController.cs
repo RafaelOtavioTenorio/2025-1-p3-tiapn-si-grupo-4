@@ -56,7 +56,7 @@ public static class TarefaController
         {
             var tarefa = new TarefaModel
             {
-                IdTarefa = req.IdTarefa,
+                // IdTarefa = req.IdTarefa,
                 Nome = req.Nome,
                 Descricao = req.Descricao,
                 FoiExecutada = req.FoiExecutada,
@@ -87,35 +87,35 @@ public static class TarefaController
             if (tarefa == null)
                 return Results.NotFound($"Tarefa com ID {id} não encontrada.");
 
-            tarefa.UpdateName(req.Nome);
-            tarefa.UpdateDescricao(req.Descricao);
+            // tarefa.UpdateName(req.Nome);
+            // tarefa.UpdateDescricao(req.Descricao);
 
-            if (req.FoiExecutada)
-            {
-                tarefa.SetExecutada();
-            }
-            else
-            {
-                tarefa.SetNaoExecutada();
-            }
+            // if (req.FoiExecutada)
+            // {
+            //     tarefa.SetExecutada();
+            // }
+            // else
+            // {
+            //     tarefa.SetNaoExecutada();
+            // }
 
-            if (req.DataInicio.HasValue)
-            {
-                tarefa.SetDataInicio(req.DataInicio.Value);
-            }
-            else
-            {
-                tarefa.SetDataInicio(null);
-            }
+            // if (req.DataInicio.HasValue)
+            // {
+            //     tarefa.SetDataInicio(req.DataInicio.Value);
+            // }
+            // else
+            // {
+            //     tarefa.SetDataInicio(null);
+            // }
 
-            if (req.DataFim.HasValue)
-            {
-                tarefa.SetDataFim(req.DataFim.Value);
-            }
-            else
-            {
-                tarefa.SetDataFim(null);
-            }
+            // if (req.DataFim.HasValue)
+            // {
+            //     tarefa.SetDataFim(req.DataFim.Value);
+            // }
+            // else
+            // {
+            //     tarefa.SetDataFim(null);
+            // }
 
             await context.SaveChangesAsync();
             return Results.Ok(tarefa);
