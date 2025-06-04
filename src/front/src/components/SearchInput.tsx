@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import type { ChangeEvent } from "react";
 import SearchIcon from '@mui/icons-material/Search';
-
+import ViewRoutineModal from './ViewRoutineModal';
 interface Rotina {
   nome: string;
   tarefas: number;
@@ -23,6 +23,8 @@ export default function SearchInput({
 }: SearchInputProps) {
   const [filtradas, setFiltradas] = useState<Rotina[]>([]);
   const [isFocused, setIsFocused] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedRotina, setSelectedRotina] = useState<Rotina | null>(null);
 
   useEffect(() => {
     const resultado = rotinas.filter((r) =>
@@ -54,13 +56,25 @@ export default function SearchInput({
           className="w-full pl-12 pr-4 py-2 rounded shadow-sm border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
         />
       </div>
+      <ViewRoutineModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        rotina={selectedRotina}
+      />
 
       {/* Lista filtrada visível apenas se focado */}
       {isFocused && (
         <div className="flex flex-col gap-2">
           {filtradas.length > 0 ? (
             filtradas.map((r, index) => (
-              <div key={index} className="p-3 border rounded shadow-sm bg-white">
+              <div
+                key={index}
+                onClick={() => {
+                  setSelectedRotina(r);
+                  setModalOpen(true);
+                }}
+                className="p-3 border rounded shadow-sm bg-white cursor-pointer hover:bg-gray-100"
+              >
                 <strong>{r.nome}</strong><br />
                 {r.tarefas} tarefas • {r.insumos} insumos
               </div>
