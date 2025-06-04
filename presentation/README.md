@@ -6,6 +6,8 @@
 ## Slides
 
 [Routix Apresentação-1.pdf](https://github.com/user-attachments/files/19706037/Routix.Apresentacao-1.pdf)
+[Routix.Apresentação-2.pdf](https://github.com/user-attachments/files/20599864/Routix.Apresentacao-2.pdf)
+[Routix.Apresentação-3.pdf](https://github.com/user-attachments/files/20599860/Routix.Apresentacao-3.pdf)
 
 ## Vídeo
 
