@@ -1,13 +1,12 @@
+import { Delete as DeleteIcon, Search } from "@mui/icons-material";
 import { useEffect, useState } from "react";
-import DefaultModal from "./CreateRoutine";
-import DeleteRotina from "./DeleteRotinaPage";
-import Title from "./Title";
-import DefaultButton from "./DefaultButton";
-import SearchIcon from "./SearchInput";
-import ItemRegister from "./ItemRegister";
-import DeleteIcon from '@mui/icons-material/DeleteOutline';
-import apiClient from "~/services/client";
 import type { Route } from "types/app/+types/root";
+import DefaultButton from "~/components/DefaultButton";
+import DefaultModal from "~/components/DefaultModal";
+import Delete from "~/components/DeleteRotinaPage";
+import ItemRegister from "~/components/ItemRegister";
+import Title from "~/components/Title";
+import apiClient from "~/services/client";
 
 export type NovoItem = {
   tipo: string;
@@ -16,18 +15,9 @@ export type NovoItem = {
   descricao?: string;
 }
 
-export async function loader({ params }: Route.LoaderArgs) {
-  const token = localStorage.getItem('authToken');
 
-  const response = await apiClient.get('/rotinas', {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  });
-  return response.data;
-}
 
-export default function RoutinesPage() {
+export default function () {
   const [createModal, setModal] = useState(false)
   const [searchText, setSearchText] = useState("")
   const [rotinas, setRotinas] = useState([
@@ -61,7 +51,7 @@ export default function RoutinesPage() {
       </div>
 
       {/* Campo de busca */}
-      <SearchIcon value={searchText} onChange={(e) => setSearchText(e.target.value)} />
+      <Search  />
 
       {/* Conteúdo principal */}
       <div className="flex flex-row p-4 gap-6 w-full max-w-[1200px] mx-auto">
@@ -88,7 +78,7 @@ export default function RoutinesPage() {
             <button onClick={() => setDeleteRotinaOpen(true)} className="text-red-600 border border-red-600 px-2 py-1 rounded hover:bg-red-100">
               <DeleteIcon />
             </button>
-            <DeleteRotina
+            <Delete
               openModal={deleteRotinaOpen}
               closeModal={() => setDeleteRotinaOpen(false)}
               onDelete={() => { }}

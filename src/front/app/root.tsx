@@ -42,47 +42,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export const Pannels = {
-  CREATE: '',
+  CREATE: 'create',
   ROUTINES: 'routines',
   HISTORIC: 'historic',
   GROUPS: 'groups',
 } as const;
-
-// export function App() {
-//   const [activePannel, setActivePannel] = useState(Pannels.CREATE as string);
-
-//   return (
-//     <>
-//       <div className='h-screen overflow-hidden'>
-//         <Header />
-//         <div className='flex flex-row h-[calc(100vh-4rem)]'>
-//           <BrowserRouter> 
-//             <Routes>
-//               <Route path="/login" element={<LoginPage />} />
-//               <Route path="/signup" element={<SignupPage />} /> 
-//               <Route path="/app/*" element={ 
-//                 <>
-//                   <SidePannel activePannel={activePannel} setActivePannel={setActivePannel} />
-//                   <main className='flex-1 bg-[#F5F5F5] '>
-//                     <Routes> 
-//                       <Route path="/" element={<CreatePage />} /> 
-//                       <Route path="routines" element={<RoutinesPage text="routines" />} /> 
-//                       <Route path="historic" element={<HistoricPage />} /> 
-//                       <Route path="groups" element={<GroupsPage />} /> 
-//                     </Routes>
-//                   </main>
-//                 </>
-//               } />
-
-//               <Route path="*" element={<LoginPage />} /> 
-
-//             </Routes>
-//           </BrowserRouter>
-//         </div>
-//       </div>
-//     </>
-//   );
-// }
 
 export default function App() {
   return <Outlet />;

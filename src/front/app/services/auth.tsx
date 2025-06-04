@@ -18,14 +18,17 @@ interface AuthResponse {
     user: any;
 }
 
-export const loginUser = async (credentials: LoginCredentials): Promise<AuthResponse> => {
+export const  loginUser = async (credentials: LoginCredentials): Promise<AuthResponse> => {
+   
+   
     try {
         const response = await apiClient.post<AuthResponse>('/auth/login', credentials);
         if (response.data.token) {
             localStorage.setItem('authToken', response.data.token);
             localStorage.setItem('userData', JSON.stringify(response.data.user));
+            return response.data;
         }
-        return response.data;
+        throw new Error('no token');
     } catch (error) {
         console.error('Erro no login:', error);
         throw error;
