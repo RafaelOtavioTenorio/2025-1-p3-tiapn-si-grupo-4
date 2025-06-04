@@ -20,7 +20,6 @@ interface Item {
   concluido: boolean;
 }
 
-
 export default function RoutinesPage() {
   const [rotinas, setRotinas] = useState<Rotina[]>([]);
   const [itens, setItens] = useState<Item[]>([]);
@@ -39,6 +38,7 @@ export default function RoutinesPage() {
       { nome: "Gerenciar recursos", tarefas: 3, insumos: 5 },
       { nome: "Auditoria Interna", tarefas: 3, insumos: 5 },
     ];
+    const extra = localStorage.getItem("rotinaExtra")
     console.log("Definindo rotinas mockadas:", mockData);
     setRotinas(mockData);
   };
@@ -53,8 +53,6 @@ export default function RoutinesPage() {
     console.log("Definindo rotinas mockadas:", mockData);
     setItens(mockData);
   };
-
-
 
   const tarefas = new Array(7).fill("Coletar dados");
   const [itemRegisterOpen, setItemRegisterOpen] = useState(false);
