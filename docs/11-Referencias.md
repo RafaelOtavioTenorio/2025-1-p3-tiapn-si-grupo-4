@@ -14,6 +14,8 @@ Elmasri, R., Navathe, S. Sistemas de banco de dados, 7ª edic¸ao, Pearson, 2019
 
 International Diabetes Federation. Diabetes Atlas, 10ª edic¸ao, Acesso em: https://diabetesatlas.org, Acesso em: 12 mar. 2025
 
+Oracle Brasil, 10 Riscos e Soluções Comuns da Planilha para as Empresas, Acesso em: https://www.oracle.com/br/business-analytics/spreadsheet-risks/, Acesso em: 4 jun. 2025
+
 Sutherland, J.V., Sutherland, J.J. Scrum: a arte de fazer o dobro do trabalho na metade do
 tempo, Sextante, 2019, p. 254
 
