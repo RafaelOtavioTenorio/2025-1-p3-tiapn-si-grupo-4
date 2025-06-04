@@ -37,11 +37,13 @@ Almeja-se otimizar o gerenciamento de rotinas executadas simultaneamente, garant
 
 ## Justificativa
 
-Este projeto nasce da análise de um problema recorrente em empresas que realizam tarefas rotineiras: a **falta de uma ferramenta flexível, clara e funcional** para controlar o que está sendo feito, por quem, com quais recursos e em que prazo.
+Este projeto nasce da análise de um problema recorrente em empresas que realizam tarefas rotineiras: a falta de uma ferramenta flexível, clara e funcional para controlar o que está sendo feito, por quem, com quais recursos e em que prazo.
 
-A proposta vai além de um simples checklist. Trata-se de uma plataforma que combina **modelagem de processos**, **gerenciamento de execução**, **controle de insumos** e **histórico de produtividade**.
+Conforme apontado pela Oracle Brasil, o uso inadequado de ferramentas como planilhas para tarefas além de suas funcionalidades pode gerar diversos riscos, como erros de entrada e de cálculo, vulnerabilidades de segurança, problemas de escalabilidade e deficiências de conformidade. Essas limitações resultam em um ambiente onde o controle de rotinas se torna falho por natureza, com a ausência de padronização, dificuldade em medir a produtividade, perda de histórico e tomada de decisões sem dados confiáveis.
 
-A aplicação terá papel estratégico para empresas que precisam repetir rotinas com consistência e qualidade, oferecendo visibilidade e controle operacional em tempo real.
+Quando um mesmo processo precisa ser executado por várias equipes ao mesmo tempo, a desorganização é ainda maior, e a falta de uma ferramenta adequada impede a visibilidade sobre o que está em andamento, o que está parado e o que foi concluído. Outro gargalo comum é o controle de insumos, onde tarefas ficam pendentes por falta de material ou ferramentas, e não há integração com o estoque ou alertas automáticos.
+
+A proposta vai além de um simples checklist. Trata-se de uma plataforma que combina **modelagem de processos**, **gerenciamento de execução**, **controle de insumos** e **histórico de produtividade**. A aplicação terá papel estratégico para empresas que precisam repetir rotinas com consistência e qualidade, oferecendo visibilidade e controle operacional em tempo real, mitigando os riscos associados a métodos manuais e promovendo a eficiência e a confiabilidade.
 
 ## Público-Alvo
 
