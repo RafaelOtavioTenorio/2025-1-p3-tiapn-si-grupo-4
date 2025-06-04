@@ -7,6 +7,7 @@ import ItemRegisterModal from "../components/ItemRegister";
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import DeleteRotina from "../components/DeleteRotinaPage";
 import type { NovoItem } from "../components/ItemRegister";
+import type { NovaRotina } from "../components/CreateRoutine"
 import apiClient from "../services/client";
 
 interface Rotina {
@@ -30,13 +31,22 @@ export default function RoutinesPage() {
   const [itemRegisterOpen, setItemRegisterOpen] = useState(false);
   const [deleteRotinaOpen, setDeleteRotinaOpen] = useState(false);
   const [resultadoModalRegistroItem, setResultadoModalRegistroItem] = useState<NovoItem>();
+  const [resultadoModalRegistroRotina, setResultadoModalRegistroRotina] = useState<NovaRotina>();
 
 
   const handleItemRegister = (item: NovoItem) => {
     try {
-      console.log("entrou1");
       setResultadoModalRegistroItem(item);
       console.log("Item para enviar ao backend:", item);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleRotinaRegister = (item: NovaRotina) => {
+    try {
+      setResultadoModalRegistroRotina(item);
+      console.log("Rotina para enviar ao backend:", item);
     } catch (err) {
       console.log(err);
     }
@@ -73,22 +83,18 @@ export default function RoutinesPage() {
   };
 
   useEffect(() => {
-    //somente está setado para rotinas, falta insumos e tarefas
-    if (resultadoModalRegistroItem) {
-      console.log("entrou2");
-      const novaRotina: Rotina = {
-        nome: resultadoModalRegistroItem.nome,
-        //depois tem que colocar um count
-        tarefas: 0,
-        insumos: 0,
-      };
-
-      setRotinas(prev => [...prev, novaRotina]);
-
-      // Limpa o resultado para evitar duplicações futuras
-      setResultadoModalRegistroItem(undefined);
+    if (resultadoModalRegistroRotina) {
+        const novaRotina: Rotina = {
+            nome: resultadoModalRegistroRotina.nome,
+            tarefas: 0,
+            insumos: 0,
+        };
+        setRotinas(prev => [...prev, novaRotina]);
+        setResultadoModalRegistroRotina(undefined);
+    } else {
+        handleSetRotinas();
     }
-    handleSetRotinas();
+
     handleSetItens();
     // apiClient.get("http://localhost:3000/rotinas")
     //   .then(response => {
@@ -97,7 +103,7 @@ export default function RoutinesPage() {
     //   .catch(error => {
     //     console.error("Erro ao buscar rotinas:", error);
     //   });
-  }, [resultadoModalRegistroItem]);
+}, [resultadoModalRegistroRotina]);
 
   return (
     <div className="flex flex-col p-8 bg-gray-200 min-h-screen">
@@ -105,7 +111,7 @@ export default function RoutinesPage() {
       <div className="flex justify-between items-center mb-6">
         <Title>Minhas Rotinas</Title>
         <DefaultButton onClick={() => setModal(true)}>+ CRIAR ROTINA</DefaultButton>
-        <DefaultModal closeModal={() => setModal(false)} openModal={createModal} onCreate={handleItemRegister} result={resultadoModalRegistroItem} />
+        <DefaultModal closeModal={() => setModal(false)} openModal={createModal} onCreate={handleRotinaRegister} result={resultadoModalRegistroRotina} />
       </div>
 
       {/* Campo de busca */}

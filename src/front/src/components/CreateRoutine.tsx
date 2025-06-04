@@ -2,31 +2,37 @@ import { useEffect, useRef, useState, type PropsWithChildren } from "react";
 import DefaultButton from "./DefaultButton";
 import CloseIcon from '@mui/icons-material/Close';
 
-export type NovoItem = {
-    tipo: string;
+export type NovaRotina = {
     nome: string;
     prioridade?: string;
     descricao?: string;
-    responsavel?: string;
 }
 
 interface ModalProps extends PropsWithChildren {
     openModal: boolean;
     closeModal: () => void;
-    onCreate: (item: NovoItem) => void;
+    onCreate: (item: NovaRotina) => void;
     actions?: React.ReactElement[];
-    result: NovoItem | undefined;
+    result: NovaRotina | undefined;
 }
 
 function CreateRoutine(props: ModalProps) {
     const ref = useRef<HTMLDialogElement>(null);
     const [nome, setNome] = useState('');
-    const [descRotina, setDescRotina] = useState('');
+    const [descricao, setDescRotina] = useState('');
     const [prioridade, setPrioridade] = useState('');
 
     const handleSubmit = () => {
         if (!props) return null;
         if (nome.trim() === "") return;
+
+        const novaRotina: NovaRotina = {
+            nome: nome.trim(),
+            prioridade: prioridade,
+            descricao: descricao,
+        };
+        localStorage.setItem("rotinaExtra", JSON.stringify(novaRotina));
+        props.onCreate(novaRotina);
         setNome('');
         setPrioridade('1');
         setDescRotina('');
@@ -68,47 +74,47 @@ function CreateRoutine(props: ModalProps) {
                 </div>
 
                 <div className="pt-4 grid grid-cols-5 gap-4">
-                <div className="col-span-4 mb-4">
-                    <label className="block font-medium mb-1">Nome da rotina</label>
-                    <input
-                        type="text"
-                        placeholder="Digite o nome da rotina"
-                        value={nome}
-                        onChange={e => setNome(e.target.value)}
-                        className="w-full border p-2 rounded"
-                    />
-                </div>
-                <div className="mb-4">
-                    <label className="block font-medium mb-1">Prioridade</label>
-                    <select
-                        value={prioridade}
-                        onChange={e => setPrioridade(e.target.value)}
-                        className="w-full border p-2 rounded"
-                    >
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-                </div>
-                <div className="col-span-5 mb-4">
-                    <label className="block font-medium mb-1">Descrição da rotina</label>
-                    <textarea
-                        maxLength={255}
-                        rows={4}
-                        placeholder="Digite a descrição do insumo"
-                        value={descRotina}
-                        onChange={e => setDescRotina(e.target.value)}
-                        className="w-full border p-2 rounded"
-                    />
-                </div>
+                    <div className="col-span-4 mb-4">
+                        <label className="block font-medium mb-1">Nome da rotina</label>
+                        <input
+                            type="text"
+                            placeholder="Digite o nome da rotina"
+                            value={nome}
+                            onChange={e => setNome(e.target.value)}
+                            className="w-full border p-2 rounded"
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block font-medium mb-1">Prioridade</label>
+                        <select
+                            value={prioridade}
+                            onChange={e => setPrioridade(e.target.value)}
+                            className="w-full border p-2 rounded"
+                        >
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </div>
+                    <div className="col-span-5 mb-4">
+                        <label className="block font-medium mb-1">Descrição da rotina</label>
+                        <textarea
+                            maxLength={255}
+                            rows={4}
+                            placeholder="Digite a descrição do insumo"
+                            value={descricao}
+                            onChange={e => setDescRotina(e.target.value)}
+                            className="w-full border p-2 rounded"
+                        />
+                    </div>
                 </div>
 
-                    <div className="flex w-full p-4 justify-center gap-2">
-                        <DefaultButton onClick={handleSubmit}>
-                            Criar
-                        </DefaultButton>
-                    </div>
-                
+                <div className="flex w-full p-4 justify-center gap-2">
+                    <DefaultButton onClick={handleSubmit}>
+                        Criar
+                    </DefaultButton>
+                </div>
+
             </div>
 
         </dialog>
