@@ -15,6 +15,7 @@ interface ModalProps extends PropsWithChildren {
   closeModal: () => void;
   onCreate: (item: NovoItem) => void;
   actions?: React.ReactElement[];
+  result: NovoItem | undefined;
 }
 
 function ItemRegister(props: ModalProps) {
@@ -25,11 +26,12 @@ function ItemRegister(props: ModalProps) {
   const [descricao, setDescricao] = useState('');
   const [responsavel, setResponsavel] = useState('');
 
-  const handleCreate = () => {
+  const handleSubmit = () => {
+    if (!props) return null;
     if (nome.trim() === "") return;
 
     if (tipo == 'Tarefa') {
-      props.onCreate({ tipo, nome, prioridade });
+      props.onCreate({ tipo, nome, prioridade, responsavel });
     } else if (tipo == 'Insumo') {
       props.onCreate({ tipo, nome, descricao });
     }
@@ -37,6 +39,7 @@ function ItemRegister(props: ModalProps) {
     setNome('');
     setPrioridade('1');
     setDescricao('');
+    setResponsavel('');
     props.closeModal();
   }
 
@@ -47,6 +50,7 @@ function ItemRegister(props: ModalProps) {
       ref.current?.close();
     }
   }, [props.openModal]);
+
 
   return (
     <dialog
@@ -168,7 +172,7 @@ function ItemRegister(props: ModalProps) {
             {props.actions && props.actions.map((action, index) => (
               <div key={index}>{action}</div>
             ))}
-            <DefaultButton onClick={handleCreate}>
+            <DefaultButton onClick={handleSubmit}>
               Criar
             </DefaultButton>
           </div>
