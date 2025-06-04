@@ -82,8 +82,7 @@ export default function RoutinesPage() {
       </div>
 
       {/* Campo de busca */}
-      <SearchIcon value={searchText} onChange={(e) => setSearchText(e.target.value)} />
-
+      <SearchIcon value={searchText} onChange={(e) => setSearchText(e.target.value)} rotinas={rotinas} />
       {/* Conteúdo principal */}
       <div className="flex flex-row p-4 gap-6 w-full max-w-[1200px] mx-auto">
         {/* Lista de Rotinas */}
