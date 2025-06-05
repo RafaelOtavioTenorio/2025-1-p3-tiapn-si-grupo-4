@@ -7,8 +7,8 @@ public static class LogsController
 {
     public static void LogRoutes(this WebApplication app)
     {
-        var route = app.MapGroup("logs");
-
+        var route = app.MapGroup("logs").RequireAuthorization("AuthenticatedUser");
+        
         route.MapGet("", GetAllLogs);
     }
 

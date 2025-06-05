@@ -75,7 +75,6 @@ app.UseAuthorization();
 app.AuthRoutes();
 app.UsuarioRoutes(); 
 app.HelloRoutes();
-
- app.LogRoutes(); // Uncomment if you have this defined as well
+app.LogRoutes();
 
 app.Run("http://localhost:3000");
