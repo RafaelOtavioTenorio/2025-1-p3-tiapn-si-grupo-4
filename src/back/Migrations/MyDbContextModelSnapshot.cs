@@ -24,11 +24,11 @@ namespace back.Migrations
 
             modelBuilder.Entity("back.Models.EmpresaModel", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<bool>("Ativo")
                         .HasColumnType("tinyint(1)");
@@ -42,7 +42,7 @@ namespace back.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("varchar(255)");
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
                     b.ToTable("EMPRESAS", "dbo");
                 });
@@ -140,6 +140,73 @@ namespace back.Migrations
                     b.ToTable("TEMPLATE_ROTINAS", "dbo");
                 });
 
+            modelBuilder.Entity("back.Models.TarefaModel", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<DateTime?>("DataFim")
+                        .HasColumnType("date");
+
+                    b.Property<DateTime?>("DataInicio")
+                        .HasColumnType("date");
+
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<bool>("FoiExecutada")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<int>("TarefaID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("TarefaID");
+
+                    b.ToTable("TAREFAS", "dbo");
+                });
+
+            modelBuilder.Entity("back.Models.TarefaTemplateModel", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int>("IdRotina")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<int>("Pai")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Prioridade")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("TAREFA_TEMPLATES", "dbo");
+                });
+
             modelBuilder.Entity("back.Models.UserModel", b =>
                 {
                     b.Property<int>("ID")
@@ -207,6 +274,17 @@ namespace back.Migrations
                         .IsRequired();
 
                     b.Navigation("Empresa");
+                });
+
+            modelBuilder.Entity("back.Models.TarefaModel", b =>
+                {
+                    b.HasOne("back.Models.TarefaModel", "Tarefa")
+                        .WithMany()
+                        .HasForeignKey("TarefaID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tarefa");
                 });
 #pragma warning restore 612, 618
         }
