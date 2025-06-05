@@ -23,7 +23,18 @@ public static class TarefaTemplateController
     {
         try
         {
-            var templates = await context.TarefaTemplates.ToListAsync();
+            var templates = await context.TarefaTemplates
+                .Include(t => t.Rotina)
+                .Select(t => new TarefaTemplateDTO // Projeta para o DTO
+                {
+                    ID = t.ID,
+                    Nome = t.Nome,
+                    Rotina = t.Rotina != null ? new RotinaTemplateOnTarefaDTO { Id = t.Rotina.Id, Nome = t.Rotina.Nome, Descricao = t.Rotina.Descricao, EmpresaId = t.Rotina.IdEmpresa} : null,
+                    Pai = t.Pai,
+                    Prioridade = t.Prioridade,
+                    Ativo = t.Ativo
+                })
+                .ToListAsync();
             return Results.Ok(templates);
         }
         catch (Exception e)
@@ -50,7 +61,7 @@ public static class TarefaTemplateController
         }
     }
 
-    private static async Task<IResult> CreateTarefaTemplate(TarefaTemplateDTO req, MyDbContext context)
+    private static async Task<IResult> CreateTarefaTemplate(CreateTarefaTemplateDTO req, MyDbContext context)
     {
         try
         {
@@ -83,7 +94,7 @@ public static class TarefaTemplateController
         }
     }
 
-    private static async Task<IResult> UpdateTarefaTemplate(int id, TarefaTemplateDTO req, MyDbContext context)
+    private static async Task<IResult> UpdateTarefaTemplate(int id, UpdateTarefaTemplateDTO req, MyDbContext context)
     {
         try
         {
