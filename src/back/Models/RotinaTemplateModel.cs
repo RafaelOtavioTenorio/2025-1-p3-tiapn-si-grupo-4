@@ -26,7 +26,10 @@ public class RotinaTemplateModel
     
     public string Nome { get; set; } = string.Empty;
     
-    [ForeignKey("EmpresaId")]
+    public int IdEmpresa { get; set; }
+    
+    [Required]
+    [ForeignKey("IdEmpresa")]
     public EmpresaModel Empresa { get; set; }
     
     public int Prioridade { get; set; }
@@ -34,4 +37,6 @@ public class RotinaTemplateModel
     public string Descricao { get; set; }
     
     public bool Ativo { get; set; }
+    
+    public ICollection<TarefaTemplateModel> TarefasTemplates { get; private set; } =  new List<TarefaTemplateModel>();
 }
