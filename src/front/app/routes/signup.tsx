@@ -87,6 +87,14 @@ const CompleteSignUpFormComponent = () => {
     const [errorKey, setErrorKey] = useState(0);
     const [error, setError] = useState('');
 
+    useEffect(()=>{
+        setName(stateName)
+        setPassword("")
+        setCpf("")
+        setConfirmPassword("")
+        setEmail(stateEmail)
+    }, [navigate])
+
 
 
     const handleSubmit = async (event: FormEvent) => {
@@ -131,9 +139,7 @@ const CompleteSignUpFormComponent = () => {
                 setErrorKey(prevKey => prevKey + 1);
                 return;
             }
-            navigate('/');
-            localStorage.setItem('authToken', result.token);
-            localStorage.setItem('userData', JSON.stringify(result.user));
+            navigate('/create');
         } catch (err: any) {
             const errorMessage = err.response?.data?.message || 'Falha no login. Tente novamente.';
             setError(errorMessage);
@@ -163,6 +169,8 @@ const CompleteSignUpFormComponent = () => {
                                 type="text"
                                 name="name"
                                 placeholder="Nome"
+                                onChange={(e) => setName(e.target.value)}
+                                value={name}
                                 required
                                 className="mt-1 bg-white block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#00161C] focus:border-[#00161C] sm:text-sm text-gray-700"
                             />
@@ -175,6 +183,9 @@ const CompleteSignUpFormComponent = () => {
                                 type="email"
                                 name="email"
                                 placeholder="Email"
+                                autoComplete='off'
+                                onChange={(e) => setEmail(e.target.value)}
+                                value={email}
                                 required
                                 className="mt-1 bg-white block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#00161C] focus:border-[#00161C] sm:text-sm text-gray-700"
                             />
@@ -187,6 +198,10 @@ const CompleteSignUpFormComponent = () => {
                                 type="password"
                                 name="password"
                                 placeholder="Senha"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                autoComplete='off'
+
                                 required
                                 className="mt-1 bg-white block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#00161C] focus:border-[#00161C] sm:text-sm text-gray-700"
                             />
@@ -199,6 +214,9 @@ const CompleteSignUpFormComponent = () => {
                                 type="password"
                                 name="confirmPassword"
                                 placeholder="Confirmar senha"
+                                autoComplete='off'
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                                value={confirmPassword}
                                 required
                                 className="mt-1 bg-white block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#00161C] focus:border-[#00161C] sm:text-sm text-gray-700"
                             />
@@ -212,6 +230,7 @@ const CompleteSignUpFormComponent = () => {
                                 name="cpf"
                                 placeholder="CPF"
                                 onChange={(e) => setCpf(maskCPF(e.target.value))}
+
                                 maxLength={14}
                                 value={cpf}
                                 required

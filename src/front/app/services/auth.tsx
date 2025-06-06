@@ -13,6 +13,17 @@ interface SignupData extends LoginCredentials {
     Password: string;
 }
 
+interface SignupResponse {
+    id: string;
+    nome: string;
+    email: string;
+    cpf: string;
+    celular: string;
+    nivelAcesso: number;
+    ativo: boolean;
+}
+
+
 interface AuthResponse {
     token: string;
     user: any;
@@ -38,15 +49,24 @@ export const  loginUser = async (credentials: LoginCredentials): Promise<AuthRes
 
 export const signupUser = async (data: SignupData): Promise<AuthResponse> => {
     try {
-        const response = await apiClient.post<AuthResponse>('/user', data);
-        if (response.data.token) {
-            localStorage.setItem('authToken', response.data.token);
-            localStorage.setItem('userData', JSON.stringify(response.data.user));
+        const response = await apiClient.post<SignupResponse>('/user', data);
+        if(!response.data.id){
+            throw new Error('Erro ao cadastrar usuário: ID não retornado');
         }
-        return response.data;
+
+        const responseLogin = await apiClient.post<AuthResponse>('/auth/login', {
+            login: data.Email,
+            senha: data.Password
+        });
+
+        if (responseLogin.data.token) {
+            localStorage.setItem('authToken', responseLogin.data.token);
+            localStorage.setItem('userData', JSON.stringify(responseLogin.data.user));
+        }
+        return responseLogin.data;
     } catch (error) {
         console.error('Erro no cadastro:', error);
-        throw error;
+        throw console.error('Erro no cadastro:', error);;
     }
 };
 
