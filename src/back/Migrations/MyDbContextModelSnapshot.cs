@@ -131,7 +131,7 @@ namespace back.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("EmpresaId")
+                    b.Property<int>("IdEmpresa")
                         .HasColumnType("int");
 
                     b.Property<string>("Nome")
@@ -143,7 +143,7 @@ namespace back.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EmpresaId");
+                    b.HasIndex("IdEmpresa");
 
                     b.HasIndex(new[] { "Nome" }, "idx_template_rotina_nome");
 
@@ -206,13 +206,15 @@ namespace back.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("varchar(255)");
 
-                    b.Property<int>("Pai")
+                    b.Property<int?>("Pai")
                         .HasColumnType("int");
 
                     b.Property<int>("Prioridade")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("IdRotina");
 
                     b.ToTable("TAREFA_TEMPLATES", "dbo");
                 });
@@ -279,7 +281,7 @@ namespace back.Migrations
                 {
                     b.HasOne("back.Models.EmpresaModel", "Empresa")
                         .WithMany()
-                        .HasForeignKey("EmpresaId")
+                        .HasForeignKey("IdEmpresa")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -295,6 +297,22 @@ namespace back.Migrations
                         .IsRequired();
 
                     b.Navigation("Tarefa");
+                });
+
+            modelBuilder.Entity("back.Models.TarefaTemplateModel", b =>
+                {
+                    b.HasOne("back.Models.RotinaTemplateModel", "Rotina")
+                        .WithMany("TarefasTemplates")
+                        .HasForeignKey("IdRotina")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Rotina");
+                });
+
+            modelBuilder.Entity("back.Models.RotinaTemplateModel", b =>
+                {
+                    b.Navigation("TarefasTemplates");
                 });
 #pragma warning restore 612, 618
         }
