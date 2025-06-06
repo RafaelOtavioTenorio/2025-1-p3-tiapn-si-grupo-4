@@ -73,6 +73,8 @@ export const signupUser = async (data: SignupData): Promise<AuthResponse> => {
 export const logoutUser = () => {
     localStorage.removeItem('authToken');
     localStorage.removeItem('userData');
+
+    
 };
 
 export const getCurrentUser = () => {

@@ -1,20 +1,29 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Bg1 from "@assets/bg-01.png";
 import Bg2 from "@assets/bg-02.png";
 import Bg3 from "@assets/bg-03.png";
 import Bg4 from "@assets/bg-04.png";
 import Login from "../components/LoginComponent";
 import Signup from "../components/SignUpComponent";
+import { useNavigate } from "react-router-dom";
 
 
 export default function () {
     const [isLogon, setLogon] = useState(false);
+    const navigate = useNavigate();
 
     const toggleLogon = (e: Event) => {
         e.preventDefault();
 
         setLogon(prev => !prev);
     }
+
+    useEffect(() => {
+        const token = localStorage.getItem('authToken');
+        if (token) {
+            navigate('/create');
+        }
+    }, [navigate]);
 
 
     return (

@@ -58,9 +58,6 @@ Content-Type: application/json
 
 
 
-
-
-
 ### get all users
 GET {{back_HostAddress}}/user
 Accept: application/json
