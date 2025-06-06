@@ -56,7 +56,7 @@ export default function SidePannel(props: props) {
                     pannel="logout"
                     active={false}
                     setActivePannel={() => {
-                        localStorage.removeItem('authToken');
+                        localStorage.clear();
                         window.location.href = '/login';
                     }}
                 />
