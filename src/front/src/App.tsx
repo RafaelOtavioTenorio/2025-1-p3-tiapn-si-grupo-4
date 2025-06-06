@@ -9,6 +9,7 @@ import LoginPage from './pages/Login/LoginPage';
 import SignupPage from './pages/Signup/SignupPage';
 import { BrowserRouter, Route, Routes } from 'react-router';
 
+// Comentario
 export const Pannels = {
   CREATE: '',
   ROUTINES: 'routines',
