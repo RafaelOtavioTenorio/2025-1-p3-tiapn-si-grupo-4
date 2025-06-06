@@ -3,11 +3,17 @@ import type { ChangeEvent } from "react";
 import { useState } from "react";
 import Search from '@mui/icons-material/Search';
 
+interface Rotina {
+  nome: string;
+  tarefas: number;
+  insumos: number;
+}
 
 interface SearchInputProps {
   value: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
+  rotinas?: Rotina[];
 }
 
 export default function SearchInput(props:SearchInputProps) {

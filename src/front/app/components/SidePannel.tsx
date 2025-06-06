@@ -3,7 +3,8 @@ import {
     AddCircleOutlineRounded,
     ArrowBackIosRounded,
     Person,
-    ViewKanbanOutlined
+    ViewKanbanOutlined,
+    LogoutRounded
 } from '@mui/icons-material';
 import { useState } from "react";
 import { Link } from "react-router";
@@ -24,11 +25,9 @@ export default function SidePannel(props: props) {
 
 
     const [open, setOpen] = useState(false);
-    const handleClick = () => {
+    const handleClickPannelItem = () => {
         setOpen(!open);
     }
-
-
     
 
 
@@ -36,7 +35,7 @@ export default function SidePannel(props: props) {
         <div className={`${open ? 'w-1/5' : 'w-16'} bg-[#1A4855] min-h-screen max-h-screen h-screen flex flex-col transition-all duration-300  `} onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)} >
             <div className={`flex flex-row items-center ${open ? `justify-end` : `justify-center`} m-5`}>
                 <span className='rounded-full m-5'
-                    onClick={handleClick}
+                    onClick={handleClickPannelItem}
                 >
                     <ArrowBackIosRounded className={`text-[#F5F5F5] transform ${open ? '' : 'rotate-180'} transition-transform duration-300`} />
 
@@ -49,6 +48,19 @@ export default function SidePannel(props: props) {
             <SidePannelRow icon={AccessTime} open={open} text="Historico" pannel={Pannels.HISTORIC} active={props.activePannel == 'historic'} setActivePannel={props.setActivePannel} />
             <SidePannelRow icon={Person} open={open} text="Grupos" pannel={Pannels.GROUPS} active={props.activePannel == 'groups'} setActivePannel={props.setActivePannel} />
 
+            <div className="mt-auto mb-12">
+                <SidePannelRow 
+                    icon={LogoutRounded} 
+                    open={open} 
+                    text="Sair" 
+                    pannel="logout"
+                    active={false}
+                    setActivePannel={() => {
+                        localStorage.removeItem('authToken');
+                        window.location.href = '/login';
+                    }}
+                />
+            </div>
         </div>
     </>)
 }

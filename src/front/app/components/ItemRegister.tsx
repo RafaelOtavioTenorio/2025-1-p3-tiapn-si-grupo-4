@@ -1,7 +1,7 @@
 import React, { useState, useEffect, type PropsWithChildren, useRef } from 'react';
 import DefaultButton from './DefaultButton';
 
-export type NovoItem = {
+export interface NovoItem  {
   tipo: string;
   nome: string;
   prioridade?: string;

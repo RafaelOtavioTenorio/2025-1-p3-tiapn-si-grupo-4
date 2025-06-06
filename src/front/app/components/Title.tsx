@@ -1,3 +1,11 @@
+
+
+/**
+ * 
+ * @param props 
+ * @description  Reusable Title component
+ * @returns 
+ */
 export default function Title(props: any) {
 
     return (
