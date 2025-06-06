@@ -53,7 +53,8 @@ public static class AuthController
 
                 context.Login.Add(new LoginModel{
                     Usuario = usuario,
-                    Token = tokenString
+                    Token = tokenString,
+                    DataLogin = DateTime.Now,
                     
                 });
                 context.SaveChanges();

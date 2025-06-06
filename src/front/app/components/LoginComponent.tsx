@@ -14,8 +14,8 @@ const Login = ({ toggle }: { toggle: (e: any) => void }) => {
         event.preventDefault();
 
         try {
-            await loginUser({ Login: email, Senha: password });
-            navigate('/');
+            await loginUser({ login: email, senha: password });
+            navigate('/create');
         } catch (err: any) {
             const errorMessage = err.response?.data?.message || 'Falha no login. Tente novamente.';
             setError(errorMessage);

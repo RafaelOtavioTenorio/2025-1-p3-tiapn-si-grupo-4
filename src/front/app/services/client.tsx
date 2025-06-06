@@ -1,20 +1,27 @@
 import axios from "axios"
 
-
-
 const apiClient = axios.create({
-  baseURL:  import.meta.env.VITE_BASE_URL, // Ex: 'http://localhost:3000/api'
+  baseURL: import.meta.env.VITE_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },
+  withCredentials: true
 });
 
-console.log(import.meta.env.VITE_BASE_URL)
-
-console.log(apiClient.defaults)
+// Logs para debug
+console.log('Configuração do cliente API:');
+console.log('Base URL:', import.meta.env.VITE_BASE_URL);
+console.log('Headers padrão:', apiClient.defaults.headers);
 
 apiClient.interceptors.request.use(
   (config) => {
+    console.log('Requisição sendo enviada:', {
+      url: config.url,
+      method: config.method,
+      headers: config.headers,
+      data: config.data
+    });
+    
     const token = localStorage.getItem('authToken');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
@@ -22,6 +29,7 @@ apiClient.interceptors.request.use(
     return config;
   },
   (error) => {
+    console.error('Erro no interceptor de requisição:', error);
     return Promise.reject(error);
   }
 );

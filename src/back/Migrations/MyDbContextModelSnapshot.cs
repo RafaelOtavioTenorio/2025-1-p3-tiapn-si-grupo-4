@@ -86,6 +86,12 @@ namespace back.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ID"));
 
+                    b.Property<DateTime>("DataLogin")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("DataLogout")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("Login")
                         .IsRequired()
                         .HasMaxLength(255)
@@ -95,6 +101,10 @@ namespace back.Migrations
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("varchar(255)");
+
+                    b.Property<string>("Token")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<int>("UsuarioID")
                         .HasColumnType("int");

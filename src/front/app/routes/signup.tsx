@@ -3,7 +3,7 @@ import { Form, redirect, useActionData, useLocation, useNavigate } from 'react-r
 import type { ActionFunctionArgs } from 'react-router-dom';
 import ErrorMessage from '~/components/ErrorMessage';
 import Header from '~/components/header';
-import { loginUser } from '~/services/auth';
+import { loginUser, signupUser } from '~/services/auth';
 
 interface CompleteSignUpActionData {
     error?: string;
@@ -35,7 +35,7 @@ function maskCPF(value: string): string {
     return maskedValue.slice(0, 14);
 }
 function validateCPF(cpf: string): boolean {
-    const cleanCpf = cpf.replace(/\D/g, ""); 
+    const cleanCpf = cpf.replace(/\D/g, "");
     return cleanCpf.length === 11 && /^\d+$/.test(cleanCpf);
 }
 
@@ -46,7 +46,7 @@ export async function completeSignUpAction({ request }: ActionFunctionArgs) {
     const password = formData.get('password') as string | null;
     const confirmPassword = formData.get('confirmPassword') as string | null;
     const cpf = formData.get('cpf') as string | null;
-    
+
 
     const fieldErrors: CompleteSignUpActionData['fieldErrors'] = {};
 
@@ -87,13 +87,13 @@ const CompleteSignUpFormComponent = () => {
     const [errorKey, setErrorKey] = useState(0);
     const [error, setError] = useState('');
 
-    
+
 
     const handleSubmit = async (event: FormEvent) => {
         event.preventDefault();
 
         if (!stateEmail || !stateName || !password || !confirmPassword || !cpf || !name) {
-            
+
             setError('Por favor, preencha todos os campos');
             setErrorKey(prevKey => prevKey + 1);
             return;
@@ -119,8 +119,14 @@ const CompleteSignUpFormComponent = () => {
 
 
         try {
-            const result = await loginUser({ Login: email, Senha: password });
-            if (!result.token){
+            const result = await signupUser({
+                Nome: name,
+                Email: email,
+                CPF: cpf,
+                Celular: '', // Assuming you don't have a phone number field in the form
+                Password: password,
+            });
+            if (!result.token) {
                 setError('Falha no login. Tente novamente.');
                 setErrorKey(prevKey => prevKey + 1);
                 return;
@@ -138,7 +144,7 @@ const CompleteSignUpFormComponent = () => {
 
     useEffect(() => {
         if (actionData?.error) {
-            alert(actionData.error); 
+            alert(actionData.error);
         }
     }, [actionData]);
 

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import DefaultModal from "./CreateRoutine";
 import DeleteRotina from "./DeleteRotinaPage";
 import Title from "./Title";
 import DefaultButton from "./DefaultButton";
@@ -8,6 +7,7 @@ import ItemRegister from "./ItemRegister";
 import DeleteIcon from '@mui/icons-material/DeleteOutline';
 import apiClient from "~/services/client";
 import type { Route } from "types/app/+types/root";
+import CreateRoutine from "./CreateRoutine";
 
 export type NovoItem = {
   tipo: string;
@@ -57,7 +57,7 @@ export default function RoutinesPage() {
       <div className="flex justify-between items-center mb-6">
         <Title>Minhas Rotinas</Title>
         <DefaultButton onClick={() => setModal(true)}>+ CRIAR ROTINA</DefaultButton>
-        <DefaultModal closeModal={() => setModal(false)} openModal={createModal} />
+        <CreateRoutine closeModal={() => setModal(false)} openModal={createModal}  onCreate={handleCreateItem} result={{nome: "",}}/>
       </div>
 
       {/* Campo de busca */}
@@ -102,6 +102,7 @@ export default function RoutinesPage() {
             closeModal={() => setItemRegisterOpen(false)}
             openModal={itemRegisterOpen}
             onCreate={handleCreateItem}
+            result={resultadoModalRegistroItem}
           />
 
           <ul className="mt-6 space-y-3">

@@ -1,11 +1,12 @@
 import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function NotFound() {
     const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
-        navigate("/app/create");
+        navigate("/login");
     }, [navigate]);
 
     return (

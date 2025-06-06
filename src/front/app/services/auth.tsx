@@ -1,8 +1,8 @@
 import apiClient from './client';
 
 interface LoginCredentials {
-    Login?: string;
-    Senha?: string;
+    login?: string;
+    senha?: string;
 }
 
 interface SignupData extends LoginCredentials {
@@ -19,7 +19,8 @@ interface AuthResponse {
 }
 
 export const  loginUser = async (credentials: LoginCredentials): Promise<AuthResponse> => {
-   
+    console.log('Dados do login:', credentials);
+    console.log('URL base:', import.meta.env.VITE_BASE_URL);
    
     try {
         const response = await apiClient.post<AuthResponse>('/auth/login', credentials);

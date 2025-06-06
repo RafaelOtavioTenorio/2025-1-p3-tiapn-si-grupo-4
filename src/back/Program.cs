@@ -46,7 +46,10 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: "front-origin", policy =>
     {
-        policy.WithOrigins(Environment.GetEnvironmentVariable("FRONT_URL") ?? "").AllowAnyHeader().AllowAnyMethod();
+        policy.WithOrigins(Environment.GetEnvironmentVariable("FRONT_URL") ?? "http://localhost:5173")
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials();
     });
 });
 

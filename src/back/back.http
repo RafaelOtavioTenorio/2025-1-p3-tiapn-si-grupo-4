@@ -51,8 +51,8 @@ POST {{back_HostAddress}}/auth/login
 Content-Type: application/json
 
 {
-    "login": "teste@teste.com",
-    "senha": "123456"
+    "login": "teste@email",
+    "senha": "123123"
 }
 
 

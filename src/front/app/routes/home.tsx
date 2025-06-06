@@ -7,6 +7,7 @@ import CreatePage from "~/components/CreatePage";
 import RoutinesPage from "~/components/CreatePage";
 import HistoricPage from "~/components/HistoricPage";
 import GroupsPage from "~/components/GroupsPage";
+import { isAuthenticated } from "~/services/auth";
 
 export const Pannels = {
   CREATE: 'create',
@@ -24,23 +25,21 @@ export function meta({ }: r.MetaArgs) {
 
 export default function Home() {
   const [activePannel, setActivePannel] = useState(Pannels.CREATE as string);
-
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("authToken")
-    const userData = localStorage.getItem("userData")
-    if (!token) {
-      navigate("/login")
+    if (typeof window !== 'undefined' && !isAuthenticated()) {
+      navigate("/login");
     }
   }, [navigate]);
 
-
   useEffect(() => {
-    console.log(activePannel)
-      navigate(`/app/${activePannel}`)
-  }, [activePannel]);
+    if(isAuthenticated()){
 
+      console.log(activePannel);
+      navigate(`/${activePannel}`);
+    }
+  }, [activePannel, navigate]);
 
   return (
     <div className='h-screen overflow-hidden'>

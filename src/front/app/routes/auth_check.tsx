@@ -1,22 +1,31 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, Outlet } from "react-router-dom";
+import { isAuthenticated } from "../services/auth";
 
 export default function AuthCheck() {
     const [isLoading, setIsLoading] = useState(true);
-
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const token = localStorage.getItem("authToken")
-        const userData = localStorage.getItem("userData")
+    const checkAuth = async () => {
+        try {
+            if (!isAuthenticated()) {
+                navigate("/login");
+                return;
+            }
 
-        if (!token) {
-            navigate("/login")
+        } catch (error) {
+            console.error("Erro ao verificar autenticação:", error);
+            navigate("/login");
+        } finally {
+            setIsLoading(false);
         }
+    };
 
-        navigate("/app")
-    }, [navigate]);
+    checkAuth();
 
-    return <div>Loading...</div>
+    if (isLoading) {
+        return <div>Carregando...</div>;
+    }
 
+    return <Outlet />;
 }

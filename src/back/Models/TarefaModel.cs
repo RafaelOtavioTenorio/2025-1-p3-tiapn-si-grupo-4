@@ -13,15 +13,15 @@ public class TarefaModel
 
   [Required]
   [ForeignKey("TarefaID")]
-  public TarefaModel Tarefa { get; set; }
+  public TarefaModel Tarefa { get; set; } = null!;
 
   [Required]
   [StringLength(255)]
-  public string Nome { get; set; }
+  public string Nome { get; set; } = "";
 
   [Required]
   [StringLength(255)]
-  public string Descricao { get; set; }
+  public string Descricao { get; set; } = "";
 
   [Required]
   public bool FoiExecutada { get; set; }

@@ -33,8 +33,8 @@ public class LoginModel
 
 
     public string Token { get; set; } = string.Empty;
-    public DateTime DataLogin { get; set; } = DateTime.Now;
-    public DateTime DataLogout { get; set; } = DateTime.Now;
+    public DateTime? DataLogin { get; set; } = DateTime.Now;
+    public DateTime? DataLogout { get; set; } = DateTime.Now;
 
     public void UpdateToken(string token) => Token = token;
 

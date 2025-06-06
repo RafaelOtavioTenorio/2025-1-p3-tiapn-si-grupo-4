@@ -88,7 +88,7 @@ export default function () {
 
 
           <DefaultButton onClick={() => setItemRegisterOpen(true)}>ADICIONAR TAREFA</DefaultButton>
-          <ItemRegister
+          <ItemRegister result={resultadoModalRegistroItem}
             closeModal={() => setItemRegisterOpen(false)}
             openModal={itemRegisterOpen}
             onCreate={handleCreateItem}

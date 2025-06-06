@@ -12,8 +12,8 @@ using back.Entities;
 namespace back.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20250604021705_TarefaModel")]
-    partial class TarefaModel
+    [Migration("20250605033042_LoginDateTime")]
+    partial class LoginDateTime
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -89,6 +89,12 @@ namespace back.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ID"));
 
+                    b.Property<DateTime>("DataLogin")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("DataLogout")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("Login")
                         .IsRequired()
                         .HasMaxLength(255)
@@ -98,6 +104,10 @@ namespace back.Migrations
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("varchar(255)");
+
+                    b.Property<string>("Token")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<int>("UsuarioID")
                         .HasColumnType("int");
