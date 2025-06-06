@@ -79,6 +79,16 @@ export default function RoutinesPage() {
       { nome: "Gerenciar recursos", concluido: false },
       { nome: "Auditoria Interna", concluido: false },
     ];
+    const extra = localStorage.getItem("tarefaExtra")
+    if (extra) {
+      try {
+        const parsed = JSON.parse(extra);
+        mockData.push(parsed);
+      } catch (err) {
+        console.error("Erro ao fazer parse do item salvo no localStorage", err);
+      }
+    }
+    console.log("Definindo rotinas mockadas:", mockData);
     setItens(mockData);
   };
 
@@ -95,7 +105,18 @@ export default function RoutinesPage() {
         handleSetRotinas();
     }
 
-    handleSetItens();
+    if (resultadoModalRegistroItem) {
+        const novoItem: Item = {
+            nome: resultadoModalRegistroItem.nome,
+            concluido: false,
+        };
+        setItens(prev => [...prev, novoItem]);
+        setResultadoModalRegistroRotina(undefined);
+    } else {
+        handleSetItens();
+    }
+
+    
     // apiClient.get("http://localhost:3000/rotinas")
     //   .then(response => {
     //     setRotinas(response.data);
@@ -103,7 +124,7 @@ export default function RoutinesPage() {
     //   .catch(error => {
     //     console.error("Erro ao buscar rotinas:", error);
     //   });
-}, [resultadoModalRegistroRotina]);
+}, [resultadoModalRegistroRotina, resultadoModalRegistroItem]);
 
   return (
     <div className="flex flex-col p-8 bg-gray-200 min-h-screen">
