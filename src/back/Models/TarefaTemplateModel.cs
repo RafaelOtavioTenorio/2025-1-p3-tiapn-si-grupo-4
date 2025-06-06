@@ -14,12 +14,14 @@ public class TarefaTemplateModel
   [StringLength(255)]
   public string Nome { get; set; } = string.Empty;
 
-  [Required]
-  [ForeignKey("Rotina")]
   public int IdRotina { get; set; }
+  
+  [Required]
+  [ForeignKey("IdRotina")]
+  public virtual RotinaTemplateModel Rotina { get; set; } = null!;
 
   [ForeignKey("Tarefa")]
-  public int Pai { get; set; }
+  public int? Pai { get; set; }
 
   public int Prioridade { get; set; }
 

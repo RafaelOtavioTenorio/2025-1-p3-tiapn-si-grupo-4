@@ -10,7 +10,7 @@ public static class TarefaController
 {
     public static void TarefaRoutes(this WebApplication app)
     {
-        var route = app.MapGroup("tarefa");
+        var route = app.MapGroup("tarefa").RequireAuthorization("AuthenticatedUser");
 
         route.MapGet("", GetAllTarefas);
         route.MapGet("{id:int}", GetTarefaById);
