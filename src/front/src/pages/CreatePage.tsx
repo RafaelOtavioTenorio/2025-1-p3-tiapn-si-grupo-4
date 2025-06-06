@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
-import DefaultButton from "../components/DefaultButton";
-import Title from "../components/Title";
-import DefaultModal from "../components/CreateRoutine";
-import SearchInput from "../components/SearchInput";
-import ItemRegisterModal from "../components/ItemRegister";
+import DefaultButton from "../../app/components/DefaultButton";
+import Title from "../../app/components/Title";
+import DefaultModal from "../../app/components/CreateRoutine";
+import SearchInput from "../../app/components/SearchInput";
+import ItemRegisterModal from "../../app/components/ItemRegister";
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import DeleteRotina from "../components/DeleteRotinaPage";
-import type { NovoItem } from "../components/ItemRegister";
-import type { NovaRotina } from "../components/CreateRoutine"
-import apiClient from "../services/client";
+import DeleteRotina from "../../app/components/DeleteRotinaPage";
+import type { NovoItem } from "../../app/components/ItemRegister";
+import type { NovaRotina } from "../../app/components/CreateRoutine"
+import apiClient from "../../app/services/client";
 
 interface Rotina {
   nome: string;
