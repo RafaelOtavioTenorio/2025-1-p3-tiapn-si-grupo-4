@@ -47,10 +47,29 @@ function CreateRoutine(props: ModalProps) {
         }
     }, [props.openModal]);
 
+    // Listener para fechar ao pressionar "Esc"
+    useEffect(() => {
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === "Escape") {
+                props.closeModal();
+            }
+        };
+
+        window.addEventListener("keydown", handleKeyDown);
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [props.closeModal]);
+
     return (
         <dialog
             ref={ref}
             onCancel={props.closeModal}
+            onClick={(e) => {
+                if (e.target === ref.current) {
+                    props.closeModal();
+                }
+            }}
             className="items-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg shadow-lg"
         >
             <div className="bg-white p-4 m-4 rounded-lg w-md w-full overflow-auto max-h-[90vh]"
@@ -58,21 +77,8 @@ function CreateRoutine(props: ModalProps) {
                 <div className="flex-1 flex items-center justify-center">
                     {props.children}
                 </div>
-
-                <div className="justify-between flex items-center">
-                    <h2 className="text-xl font-bold mb-4">CADASTRAR ROTINA</h2>
-                    <button
-                        onClick={props.closeModal}
-                        className="text-gray-500 hover:text-gray-700 border 
-              border-gray-300 rounded-lg p-2 transition-colors 
-              duration-150 hover:bg-gray-100 focus:outline-none"
-                        aria-label="Fechar"
-                        type="button"
-                    >
-                        <CloseIcon />
-                    </button>
-                </div>
-
+                <h2 className="text-xl font-bold mb-4">CADASTRAR ROTINA</h2>
+                
                 <div className="pt-4 grid grid-cols-5 gap-4">
                     <div className="col-span-4 mb-4">
                         <label className="block font-medium mb-1">Nome da rotina</label>
@@ -111,7 +117,7 @@ function CreateRoutine(props: ModalProps) {
 
                 <div className="flex w-full p-4 justify-center gap-2">
                     <DefaultButton onClick={handleSubmit}>
-                        Criar
+                        CRIAR
                     </DefaultButton>
                 </div>
 
