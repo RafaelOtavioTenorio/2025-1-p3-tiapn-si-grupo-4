@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import DefaultModal from "./DefaultModal";
-import DefaultButton from "./DefaultButton";
+import DefaultButton, { ButtonTypes } from "./DefaultButton";
 
 interface Rotina {
   nome: string;
@@ -41,8 +41,24 @@ export default function ViewRoutineModal({ open, onClose, rotina }: ViewRoutineM
     onClose(); // fecha o modal após salvar
   };
 
+  function closeAction(setModal: (v: boolean) => void) {
+    return <>
+      <DefaultButton onClick={onClose} buttonType={ButtonTypes.SECONDARY}>Cancelar</DefaultButton>
+    </>
+  }
+
+  function saveAction(setModal: (v: boolean) => void) {
+    return <>
+      <DefaultButton onClick={handleSalvar} buttonType={ButtonTypes.PRIMARY}>Salvar</DefaultButton>
+    </>
+  }
+
+
   return (
-    <DefaultModal openModal={open} closeModal={onClose} actions={[]}>
+    <DefaultModal openModal={open} closeModal={onClose} actions={[
+      closeAction(onClose),
+      saveAction(handleSalvar)
+    ]}>
       {rotina && (
         <div className="w-full p-4 space-y-4">
           <h2 className="text-xl font-bold text-center">Editar Rotina</h2>
@@ -78,10 +94,7 @@ export default function ViewRoutineModal({ open, onClose, rotina }: ViewRoutineM
             />
           </div>
 
-          <div className="flex justify-between gap-2">
-            <DefaultButton onClick={onClose}>Cancelar</DefaultButton>
-            <DefaultButton onClick={handleSalvar}>Salvar</DefaultButton>
-          </div>
+          
         </div>
       )}
     </DefaultModal>

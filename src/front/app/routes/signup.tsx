@@ -128,11 +128,13 @@ const CompleteSignUpFormComponent = () => {
 
         try {
             const result = await signupUser({
-                Nome: name,
-                Email: email,
-                CPF: cpf,
-                Celular: '', // Assuming you don't have a phone number field in the form
-                Password: password,
+                nome: name,
+                email: email,
+                cpf: cpf,
+                celular: '',
+                password: password,
+                
+
             });
             if (!result.token) {
                 setError('Falha no login. Tente novamente.');

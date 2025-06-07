@@ -6,11 +6,11 @@ interface LoginCredentials {
 }
 
 interface SignupData extends LoginCredentials {
-    Nome: string;
-    Email: string;
-    CPF: string;
-    Celular: string;
-    Password: string;
+    nome: string;
+    email: string;
+    cpf: string;
+    celular: string;
+    password: string;
 }
 
 interface SignupResponse {
@@ -55,8 +55,8 @@ export const signupUser = async (data: SignupData): Promise<AuthResponse> => {
         }
 
         const responseLogin = await apiClient.post<AuthResponse>('/auth/login', {
-            login: data.Email,
-            senha: data.Password
+            login: data.email,
+            senha: data.password
         });
 
         if (responseLogin.data.token) {
