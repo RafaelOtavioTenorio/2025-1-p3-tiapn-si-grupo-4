@@ -8,11 +8,9 @@ Definição de como o software é estruturado em termos dos componentes que faze
 
 ## Diagrama de classes
 
-O diagrama de classes ilustra graficamente a estrutura do software e como cada uma das classes estará interligada. Essas classes servem de modelo para materializar os objetos que serão executados na memória.
+![Diagrama de Classes](images/routixClasse.png "Diagrama de Classes")
 
-> **Links úteis**:
-> - [Diagramas de classes - documentação da IBM](https://www.ibm.com/docs/pt-br/rational-soft-arch/9.7.0?topic=diagrams-class)
-> - [O que é um diagrama de classe UML?](https://www.lucidchart.com/pages/pt/o-que-e-diagrama-de-classe-uml)
+O diagrama de classes ilustra graficamente a estrutura do software e como cada uma das classes estará interligada. Essas classes servem de modelo para materializar os objetos que serão executados na memória.
 
 ##  Modelo de dados
 
@@ -28,9 +26,6 @@ O Modelo ER representa, por meio de um diagrama, como as entidades (coisas, obje
 
 ![Modelo Relacional Peter Chen](images/DB_PeterChenPNG.png "ER Peter Chen")
 
-> **Links úteis**:
-> - [Como fazer um diagrama entidade relacionamento](https://www.lucidchart.com/pages/pt/como-fazer-um-diagrama-entidade-relacionamento)
-
 ### Esquema relacional
 
 O Esquema Relacional corresponde à representação dos dados em tabelas juntamente com as restrições de integridade e chave primária.
@@ -38,9 +33,6 @@ O Esquema Relacional corresponde à representação dos dados em tabelas juntame
 
 ![Modelo Relacional Pé de Galinha](images/DB_PeDeGalinhaPNG.png "ER Pé de Galinha")
 ---
-
-> **Links úteis**:
-> - [Criando um modelo relacional - documentação da IBM](https://www.ibm.com/docs/pt-br/cognos-analytics/12.0.0?topic=designer-creating-relational-model)
 
 ### Modelo físico
 

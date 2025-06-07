@@ -21,6 +21,10 @@ Achamos uma fonte clássica e boa para o mercado
 ## Iconografia
 
 - [SearchIcon](https://mui.com/material-ui/material-icons/?query=search&selected=Search) - Indicar input para pesquisa de artigos e recursos da aplicação
-- [PersonIcon](https://mui.com/material-ui/material-icons/?query=person&selected=Person) - Indicar botão que exibe o menu de usuário
-- [CalculateIcon](https://mui.com/material-ui/material-icons/?query=calcul&selected=Calculate) - Indicar botão para a tela de cálculo de insulina
-- [LocalDiningIcon](https://mui.com/material-ui/material-icons/?query=food&selected=LocalDining) - Indicar botão que exibe o menu de refeições cadastradas do usuário
+- [AccessTimeIcon](https://mui.com/material-ui/material-icons/?query=clock&selected=AccessTime) - Indicar botão que exibe o histórico
+- [AddCircleIcon](https://mui.com/material-ui/material-icons/?query=plus&selected=AddCircleOutline) - Indicar botão para criação de tarefa
+- [AccountCircleIcon](https://mui.com/material-ui/material-icons/?query=user&theme=Outlined&selected=AccountCircleOutlined) - Indicar botão que exibe os grupos
+- [TrashIcon](https://mui.com/material-ui/material-icons/?query=trash&selected=DeleteOutline) - Indicar botão de excluir rotina
+- [AddIcon](https://mui.com/material-ui/material-icons/?query=add&selected=Add) - Indicar botão para criação de rotina
+- [CheckBoxIcon](https://mui.com/material-ui/material-icons/?theme=Outlined&selected=CheckBoxOutlined) - Indicar botão de expandir tarefa
+- [DashBoardIcon](https://mui.com/material-ui/material-icons/?query=dash&theme=Outlined&selected=SpaceDashboardOutlined) - Indicar botão para exibir rotinas 

@@ -1,0 +1,10 @@
+@back_HostAddress = http://localhost:3000
+
+GET {{back_HostAddress}}/logs/
+Accept: application/json
+
+###
+
+
+GET {{back_HostAddress}}/
+Accept: application/json

@@ -120,7 +120,29 @@ Legenda:
 
 ### Processo
 
-Coloque informações sobre detalhes da implementação do Scrum seguido pelo grupo. O grupo deverá fazer uso do recurso de gerenciamento de projeto oferecido pelo GitHub, que permite acompanhar o andamento do projeto, a execução das tarefas e o status de desenvolvimento da solução.
+Para gerenciar o desenvolvimento do projeto seguindo a metodologia Scrum, foi usado o **GitHub Projects**. Esta ferramenta integrada ao GitHub oferece um ambiente robusto e flexível para acompanhar o progresso, a execução das tarefas e o status de desenvolvimento da solução, alinhando-se perfeitamente aos princípios do Scrum.
+
+#### Gestão Visual e Transparente com Boards Kanban
+
+O GitHub Projects foi configurado para atuar como um **board Kanban**, proporcionando uma visão clara e em tempo real do fluxo de trabalho. As colunas do board representam as diferentes fases do ciclo de desenvolvimento Scrum, como:
+
+* **To Do:** Itens que estão prontos para serem iniciados na Sprint atual.
+* **In Progress:** Tarefas que estão sendo ativamente desenvolvidas pelos membros do grupo.
+* **Review/Test:** Tarefas que foram concluídas e estão aguardando revisão de código, testes ou validação.
+* **Done:** Tarefas finalizadas e aprovadas, prontas para serem entregues.
+
+Cada **Requisito** e suas respectivas **tarefas** serão representadas como *issues* dentro do GitHub. Essas *issues* serão vinculadas aos *cards* no GitHub Projects, permitindo que o grupo mova os *cards* entre as colunas conforme o avanço do trabalho. Essa abordagem garante a **transparência** do progresso e facilita a **comunicação** entre os membros da equipe.
+
+#### Rastreamento de Tarefas e Histórico
+
+O GitHub Projects permite que cada *issue* (tarefa) seja detalhada com informações como:
+
+* **Responsável:** Indicação clara de quem está encarregado da tarefa.
+* **Prazos (Milestones):** Definição de marcos e prazos para a conclusão de conjuntos de tarefas ou Sprints.
+* **Labels:** Categorização das tarefas (ex: "bug", "feature", "refatoração", "UI/UX"), auxiliando na organização e filtragem.
+* **Comentários:** Registro de discussões, decisões e atualizações sobre a tarefa, mantendo um histórico detalhado.
+
+Além disso, as *issues* podem ser vinculadas diretamente a *pull requests*, garantindo que as modificações no código estejam diretamente associadas às tarefas que as originaram. Isso proporciona um **histórico completo e auditável** do desenvolvimento, desde a concepção da tarefa até sua implementação e merge.
 
 ## Relação de ambientes de trabalho
 
@@ -128,14 +150,16 @@ Os artefatos do projeto são desenvolvidos a partir de diversas plataformas. Tod
 
 ### Ferramentas
 
-Liste todas as ferramentas que foram empregadas no projeto, justificando a escolha delas, sempre que possível.
+* **GitHub e suas ferramentas:** O GitHub foi escolhido como a plataforma principal para controle de versão e colaboração no desenvolvimento por já estar sendo usado de hospedagem de código-fonte e documentação. Ele permite ao grupo gerenciar todas as alterações no código de forma eficiente, criando um histórico completo e facilitando o trabalho em equipe através de pull requests, issues e branches. Além disso, o GitHub Projects se integra nativamente, permitindo que a equipe acompanhe o progresso do projeto e as tarefas de forma visual e transparente via Kanban.
 
-Exemplo: os artefatos do projeto são desenvolvidos a partir de diversas plataformas e a relação dos ambientes com seu respectivo propósito é apresentada na tabela que se segue.
+* **Figma:** Para o design de interface (UI) e experiência do usuário (UX), o Figma foi selecionado como a ferramenta principal. Sua escolha se justifica por ser uma plataforma de design baseada em nuvem, que oferece colaboração em tempo real. No Figma, vários membros podem trabalhar simultaneamente no mesmo arquivo de design, agilizando o processo e o feedback. Ele permite criar protótipos interativos para testar a usabilidade e facilita a criação de bibliotecas de componentes reutilizáveis, garantindo consistência visual. Por ser web-based, elimina a necessidade de instalações complexas e garante acesso fácil a todos.
+
+Os artefatos do projeto são desenvolvidos a partir de diversas plataformas e a relação dos ambientes com seu respectivo propósito é apresentada na tabela que se segue.
 
 | Ambiente                            | Plataforma                         | Link de acesso                         |
 |-------------------------------------|------------------------------------|----------------------------------------|
 | Repositório de código fonte         | GitHub                             | [http://2025-1-p3-tiapn-si-grupo-4](https://github.com/ICEI-PUC-Minas-PCO-SI/2025-1-p3-tiapn-si-grupo-4)|
 | Documentos do projeto               | GitHub                             | [http://2025-1-p3-tiapn-si-grupo-4/docs](https://github.com/ICEI-PUC-Minas-PCO-SI/2025-1-p3-tiapn-si-grupo-4/tree/main/docs)|
 | Projeto de interface                | Figma                              | [http://Routix](https://www.figma.com/design/sbwNsvIbSnB5KKWx21rz6X/ROUTIX-Web?node-id=0-1&p=f&t=ImtvVMEpjvRD3)  |
-| Gerenciamento do projeto            | GitHub Projects                    | [http://Kanban](https://github.com/orgs/ICEI-PUC-Minas-PCO-SI/projects/81/views/1)   |
+| Gerenciamento do projeto            | GitHub Projects                    | [http://github.projects/Kanban](https://github.com/orgs/ICEI-PUC-Minas-PCO-SI/projects/81/views/1)   |
 | Hospedagem                          | Vercel                             | http://....                            |

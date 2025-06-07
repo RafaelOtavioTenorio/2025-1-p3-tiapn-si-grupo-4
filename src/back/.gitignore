@@ -1,0 +1,16 @@
+.env
+.db/
+
+../../.vs/
+bin/
+.idea/
+.db/
+obj/
+
+
+.env
+
+.vs/
+.vs
+
+../.vs
