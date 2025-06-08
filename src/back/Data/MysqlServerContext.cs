@@ -14,8 +14,10 @@ public partial class MyDbContext : DbContext
     public DbSet<LoginModel> Login { get; set; } 
     public DbSet<TarefaTemplateModel> TarefaTemplates { get; set; } 
     public DbSet<TarefaModel> Tarefas { get; set; }
+    public DbSet<FuncionarioModel> Funcionarios { get; set; }
 
-    public MyDbContext(DbContextOptions<MyDbContext> options) : base(options) {}
+
+    public MyDbContext(DbContextOptions<MyDbContext> options) : base(options) { }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

@@ -1,14 +1,17 @@
-﻿namespace back.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace back.Models
 {
     public class FuncionarioModel
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; init; }
         public int UsuarioId { get; set; }
+        public UserModel Usuario { get; set; } = null!;
+
         public int EmpresaId { get; set; }
-
-        //Métodos Set
-        public void UpdateUser(int usuarioId) => UsuarioId = usuarioId;
-        public void UpdateEmpresa(int empresaId) => EmpresaId = empresaId; 
-
+        public EmpresaModel Empresa { get; set; } = null!;
     }
 }

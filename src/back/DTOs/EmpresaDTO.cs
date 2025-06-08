@@ -9,4 +9,6 @@ public class EmpresaDTO
     public string CNPJ { get; set; }
 
     public bool Ativo { get; set; }
+    
+    public List<FuncionarioDTO> Funcionarios { get; set; } = new();
 }
