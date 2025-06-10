@@ -82,6 +82,7 @@ app.TarefaRoutes();
 app.TarefaTemplateRoutes();
 app.RotinaTemplateRoutes();
 app.EmpresaRoutes();
+app.InsumoRoutes();
 
  app.LogRoutes(); // Uncomment if you have this defined as well
 

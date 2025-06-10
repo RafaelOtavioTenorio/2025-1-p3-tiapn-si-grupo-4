@@ -32,35 +32,38 @@ public class TarefaModel
   [Column(TypeName = "date")]
   public DateTime? DataFim { get; set; }
 
-//   //Métodos Set
-//   public void SetDataInicio(DateTime? dataInicio) => DataInicio = dataInicio;
-//   public void SetDataFim(DateTime? dataFim) => DataFim = dataFim;
-//   public void UpdateName(string nome)
-//   {
-//     if (string.IsNullOrWhiteSpace(nome))
-//     {
-//       throw new ArgumentException("O nome da tarefa não pode ser vazio ou nulo.", nameof(nome));
-//     }
-//     Nome = nome;
-//   }
+public ICollection<InsumoModel> Insumos { get; set; } = new List<InsumoModel>();
 
-//   public void UpdateDescricao(string descricao)
-//   {
-//     if (descricao == null)
-//     {
-//       throw new ArgumentNullException(nameof(descricao), "A descrição não pode ser nula.");
-//     }
-//     Descricao = descricao;
-//   }
-//   public void SetExecutada()
-//   {
-//     FoiExecutada = true;
-//     DataFim = DateTime.Now; // Ou DateTime.UtcNow, não sei o que funciona
-//   }
 
-//   public void SetNaoExecutada()
-//   {
-//     FoiExecutada = false;
-//     DataFim = null;
-//   }
+  //   //Métodos Set
+  //   public void SetDataInicio(DateTime? dataInicio) => DataInicio = dataInicio;
+  //   public void SetDataFim(DateTime? dataFim) => DataFim = dataFim;
+  //   public void UpdateName(string nome)
+  //   {
+  //     if (string.IsNullOrWhiteSpace(nome))
+  //     {
+  //       throw new ArgumentException("O nome da tarefa não pode ser vazio ou nulo.", nameof(nome));
+  //     }
+  //     Nome = nome;
+  //   }
+
+  //   public void UpdateDescricao(string descricao)
+  //   {
+  //     if (descricao == null)
+  //     {
+  //       throw new ArgumentNullException(nameof(descricao), "A descrição não pode ser nula.");
+  //     }
+  //     Descricao = descricao;
+  //   }
+  //   public void SetExecutada()
+  //   {
+  //     FoiExecutada = true;
+  //     DataFim = DateTime.Now; // Ou DateTime.UtcNow, não sei o que funciona
+  //   }
+
+  //   public void SetNaoExecutada()
+  //   {
+  //     FoiExecutada = false;
+  //     DataFim = null;
+  //   }
 }

@@ -15,7 +15,7 @@ public partial class MyDbContext : DbContext
     public DbSet<TarefaTemplateModel> TarefaTemplates { get; set; } 
     public DbSet<TarefaModel> Tarefas { get; set; }
     public DbSet<FuncionarioModel> Funcionarios { get; set; }
-
+    public DbSet<InsumoModel> Insumos { get; set; }
 
     public MyDbContext(DbContextOptions<MyDbContext> options) : base(options) { }
 
