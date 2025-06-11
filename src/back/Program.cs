@@ -81,6 +81,7 @@ app.HelloRoutes();
 app.TarefaRoutes();
 app.TarefaTemplateRoutes();
 app.RotinaTemplateRoutes();
+app.RotinaRoutes();
 
  app.LogRoutes(); // Uncomment if you have this defined as well
 

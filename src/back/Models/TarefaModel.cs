@@ -11,9 +11,14 @@ public class TarefaModel
   [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
   public int ID { get; init; }
 
-  [Required]
   [ForeignKey("TarefaID")]
-  public TarefaModel Tarefa { get; set; } = null!;
+  public int? TarefaID { get; set; }
+  
+  public int IdRotina { get; set; }
+  
+  [Required]
+  [ForeignKey("IdRotina")]
+  public virtual RotinaModel Rotina { get; set; } = null!;
 
   [Required]
   [StringLength(255)]

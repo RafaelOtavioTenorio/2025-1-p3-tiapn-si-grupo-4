@@ -50,7 +50,7 @@ public static class TarefaController
         }
     }
 
-    private static async Task<IResult> CreateTarefa(TarefaDTO req, MyDbContext context)
+    public static async Task<IResult> CreateTarefa(TarefaDTO req, MyDbContext context)
     {
         try
         {
@@ -65,7 +65,6 @@ public static class TarefaController
             };
 
             await context.Tarefas.AddAsync(tarefa);
-            await context.SaveChangesAsync();
             return Results.Created($"/tarefa/{tarefa.ID}", tarefa);
         }
         catch (ArgumentException e)
