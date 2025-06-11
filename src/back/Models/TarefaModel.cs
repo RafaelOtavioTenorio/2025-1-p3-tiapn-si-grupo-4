@@ -32,7 +32,6 @@ public class TarefaModel
   [Column(TypeName = "date")]
   public DateTime? DataFim { get; set; }
 
-public ICollection<InsumoModel> Insumos { get; set; } = new List<InsumoModel>();
 
 
   //   //Métodos Set

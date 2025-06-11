@@ -8,7 +8,7 @@ public class InsumoModel
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int Id { get; set; }
+    public int Id { get; init; }
 
     [Required]
     [StringLength(255)]
@@ -19,8 +19,6 @@ public class InsumoModel
     public string Descricao { get; set; } = "";
 
     [Required]
-    public int TarefaID { get; set; }
-
     [ForeignKey("TarefaID")]
-    public TarefaModel? Tarefa { get; set; } 
+    public int TarefaID { get; set; }
 }

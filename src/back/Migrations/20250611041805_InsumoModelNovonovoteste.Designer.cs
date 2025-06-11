@@ -12,8 +12,8 @@ using back.Entities;
 namespace back.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20250610035655_InsumoModel")]
-    partial class InsumoModel
+    [Migration("20250611041805_InsumoModelNovonovoteste")]
+    partial class InsumoModelNovonovoteste
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -94,11 +94,14 @@ namespace back.Migrations
                     b.Property<int>("TarefaID")
                         .HasColumnType("int");
 
+                    b.Property<int?>("TarefaTemplateModelID")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("TarefaID");
+                    b.HasIndex("TarefaTemplateModelID");
 
-                    b.ToTable("Insumos");
+                    b.ToTable("INSUMOS", "dbo");
                 });
 
             modelBuilder.Entity("back.Models.LogModel", b =>
@@ -341,13 +344,9 @@ namespace back.Migrations
 
             modelBuilder.Entity("back.Models.InsumoModel", b =>
                 {
-                    b.HasOne("back.Models.TarefaModel", "Tarefa")
+                    b.HasOne("back.Models.TarefaTemplateModel", null)
                         .WithMany("Insumos")
-                        .HasForeignKey("TarefaID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Tarefa");
+                        .HasForeignKey("TarefaTemplateModelID");
                 });
 
             modelBuilder.Entity("back.Models.LoginModel", b =>
@@ -404,7 +403,7 @@ namespace back.Migrations
                     b.Navigation("TarefasTemplates");
                 });
 
-            modelBuilder.Entity("back.Models.TarefaModel", b =>
+            modelBuilder.Entity("back.Models.TarefaTemplateModel", b =>
                 {
                     b.Navigation("Insumos");
                 });

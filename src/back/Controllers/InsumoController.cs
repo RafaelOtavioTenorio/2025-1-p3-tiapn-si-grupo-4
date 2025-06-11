@@ -65,7 +65,6 @@ public static class InsumoController
             };
 
             await context.Insumos.AddAsync(insumo);
-            await context.SaveChangesAsync();
 
             return Results.Created($"/insumo/{req.UniqueID}", insumo);
         }

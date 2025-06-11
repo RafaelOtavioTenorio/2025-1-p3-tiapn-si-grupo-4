@@ -93,9 +93,7 @@ namespace back.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TarefaID");
-
-                    b.ToTable("Insumos");
+                    b.ToTable("INSUMOS", "dbo");
                 });
 
             modelBuilder.Entity("back.Models.LogModel", b =>
@@ -336,17 +334,6 @@ namespace back.Migrations
                     b.Navigation("Usuario");
                 });
 
-            modelBuilder.Entity("back.Models.InsumoModel", b =>
-                {
-                    b.HasOne("back.Models.TarefaModel", "Tarefa")
-                        .WithMany("Insumos")
-                        .HasForeignKey("TarefaID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Tarefa");
-                });
-
             modelBuilder.Entity("back.Models.LoginModel", b =>
                 {
                     b.HasOne("back.Models.UserModel", "Usuario")
@@ -399,11 +386,6 @@ namespace back.Migrations
             modelBuilder.Entity("back.Models.RotinaTemplateModel", b =>
                 {
                     b.Navigation("TarefasTemplates");
-                });
-
-            modelBuilder.Entity("back.Models.TarefaModel", b =>
-                {
-                    b.Navigation("Insumos");
                 });
 #pragma warning restore 612, 618
         }

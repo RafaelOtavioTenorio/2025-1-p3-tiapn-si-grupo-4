@@ -49,6 +49,7 @@ public partial class MyDbContext : DbContext
         modelBuilder.Entity<LoginModel>().ToTable("LOGIN", "dbo");
         modelBuilder.Entity<TarefaTemplateModel>().ToTable("TAREFA_TEMPLATES", "dbo"); 
         modelBuilder.Entity<TarefaModel>().ToTable("TAREFAS", "dbo");
+        modelBuilder.Entity<InsumoModel>().ToTable("INSUMOS", "dbo");
 
         base.OnModelCreating(modelBuilder);
     }
