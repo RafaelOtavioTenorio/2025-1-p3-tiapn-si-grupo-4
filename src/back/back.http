@@ -60,9 +60,3 @@ Content-Type: application/json
 GET {{back_HostAddress}}/user
 Accept: application/json
 Authorization: Bearer {{authToken}}
-
-
-
-
-
-

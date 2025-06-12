@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace back.Migrations
 {
     /// <inheritdoc />
-    public partial class LoginModelReference : Migration
+    public partial class AutoMigration_001 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -23,7 +23,7 @@ namespace back.Migrations
                 schema: "dbo",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Nome = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -33,7 +33,7 @@ namespace back.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EMPRESAS", x => x.Id);
+                    table.PrimaryKey("PK_EMPRESAS", x => x.ID);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -56,6 +56,35 @@ namespace back.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_LOGS", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "TAREFAS",
+                schema: "dbo",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    TarefaID = table.Column<int>(type: "int", nullable: false),
+                    Nome = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Descricao = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    FoiExecutada = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DataInicio = table.Column<DateTime>(type: "date", nullable: true),
+                    DataFim = table.Column<DateTime>(type: "date", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TAREFAS", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_TAREFAS_TAREFAS_TarefaID",
+                        column: x => x.TarefaID,
+                        principalSchema: "dbo",
+                        principalTable: "TAREFAS",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -92,7 +121,7 @@ namespace back.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Nome = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    EmpresaId = table.Column<int>(type: "int", nullable: false),
+                    IdEmpresa = table.Column<int>(type: "int", nullable: false),
                     Prioridade = table.Column<int>(type: "int", nullable: false),
                     Descricao = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -102,11 +131,11 @@ namespace back.Migrations
                 {
                     table.PrimaryKey("PK_TEMPLATE_ROTINAS", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_TEMPLATE_ROTINAS_EMPRESAS_EmpresaId",
-                        column: x => x.EmpresaId,
+                        name: "FK_TEMPLATE_ROTINAS_EMPRESAS_IdEmpresa",
+                        column: x => x.IdEmpresa,
                         principalSchema: "dbo",
                         principalTable: "EMPRESAS",
-                        principalColumn: "Id",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
@@ -122,7 +151,11 @@ namespace back.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Senha = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    UsuarioID = table.Column<int>(type: "int", nullable: false)
+                    UsuarioID = table.Column<int>(type: "int", nullable: false),
+                    Token = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    DataLogin = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    DataLogout = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -137,11 +170,50 @@ namespace back.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
+            migrationBuilder.CreateTable(
+                name: "TAREFA_TEMPLATES",
+                schema: "dbo",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Nome = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    IdRotina = table.Column<int>(type: "int", nullable: false),
+                    Pai = table.Column<int>(type: "int", nullable: true),
+                    Prioridade = table.Column<int>(type: "int", nullable: false),
+                    Ativo = table.Column<bool>(type: "tinyint(1)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TAREFA_TEMPLATES", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_TAREFA_TEMPLATES_TEMPLATE_ROTINAS_IdRotina",
+                        column: x => x.IdRotina,
+                        principalSchema: "dbo",
+                        principalTable: "TEMPLATE_ROTINAS",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
             migrationBuilder.CreateIndex(
                 name: "IX_LOGIN_UsuarioID",
                 schema: "dbo",
                 table: "LOGIN",
                 column: "UsuarioID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TAREFA_TEMPLATES_IdRotina",
+                schema: "dbo",
+                table: "TAREFA_TEMPLATES",
+                column: "IdRotina");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TAREFAS_TarefaID",
+                schema: "dbo",
+                table: "TAREFAS",
+                column: "TarefaID");
 
             migrationBuilder.CreateIndex(
                 name: "idx_template_rotina_nome",
@@ -150,10 +222,10 @@ namespace back.Migrations
                 column: "Nome");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TEMPLATE_ROTINAS_EmpresaId",
+                name: "IX_TEMPLATE_ROTINAS_IdEmpresa",
                 schema: "dbo",
                 table: "TEMPLATE_ROTINAS",
-                column: "EmpresaId");
+                column: "IdEmpresa");
 
             migrationBuilder.CreateIndex(
                 name: "idx_usuario_cpf",
@@ -188,11 +260,19 @@ namespace back.Migrations
                 schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "TEMPLATE_ROTINAS",
+                name: "TAREFA_TEMPLATES",
+                schema: "dbo");
+
+            migrationBuilder.DropTable(
+                name: "TAREFAS",
                 schema: "dbo");
 
             migrationBuilder.DropTable(
                 name: "USERS",
+                schema: "dbo");
+
+            migrationBuilder.DropTable(
+                name: "TEMPLATE_ROTINAS",
                 schema: "dbo");
 
             migrationBuilder.DropTable(

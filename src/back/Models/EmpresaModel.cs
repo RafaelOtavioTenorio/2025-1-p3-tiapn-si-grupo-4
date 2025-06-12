@@ -1,7 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
-using Microsoft.EntityFrameworkCore;
 
 namespace back.Models;
 
@@ -13,9 +12,6 @@ public class EmpresaModel
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int ID { get; set; }
 
-    [Required]
-    [StringLength(255)]
-    public string Empresa { get; set; } = string.Empty;
 
     [Required]
     [StringLength(255)]

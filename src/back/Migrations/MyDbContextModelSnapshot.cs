@@ -37,11 +37,6 @@ namespace back.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(20)");
 
-                    b.Property<string>("Empresa")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("varchar(255)");
-
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(255)
