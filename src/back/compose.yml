@@ -4,8 +4,6 @@ services:
     container_name: db
     ports:
       - ${DATABASE_PORT:-3306}:3306
-    volumes:
-      - ./.db/service-core-db:/var/lib/mysql
     networks:
       - service-core-backend
     healthcheck: 

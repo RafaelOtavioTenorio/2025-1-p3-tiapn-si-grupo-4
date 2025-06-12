@@ -12,8 +12,13 @@ using back.Entities;
 namespace back.Migrations
 {
     [DbContext(typeof(MyDbContext))]
+<<<<<<<< HEAD:src/back/Migrations/20250611042001_InsumoModelNovonovoteste456.Designer.cs
     [Migration("20250611042001_InsumoModelNovonovoteste456")]
     partial class InsumoModelNovonovoteste456
+========
+    [Migration("20250612034737_AutoMigration_001")]
+    partial class AutoMigration_001
+>>>>>>>> FixMigrations:src/back/Migrations/20250612034737_AutoMigration_001.Designer.cs
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -381,11 +386,14 @@ namespace back.Migrations
                     b.Navigation("Rotina");
                 });
 
+<<<<<<<< HEAD:src/back/Migrations/20250611042001_InsumoModelNovonovoteste456.Designer.cs
             modelBuilder.Entity("back.Models.EmpresaModel", b =>
                 {
                     b.Navigation("Funcionarios");
                 });
 
+========
+>>>>>>>> FixMigrations:src/back/Migrations/20250612034737_AutoMigration_001.Designer.cs
             modelBuilder.Entity("back.Models.RotinaTemplateModel", b =>
                 {
                     b.Navigation("TarefasTemplates");

@@ -12,8 +12,13 @@ using back.Entities;
 namespace back.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20250611040729_InsumoModelNovoTeste")]
-    partial class InsumoModelNovoTeste
+<<<<<<<< HEAD:src/back/Migrations/20250611042001_InsumoModelNovonovoteste456.Designer.cs
+    [Migration("20250611042001_InsumoModelNovonovoteste456")]
+    partial class InsumoModelNovonovoteste456
+========
+    [Migration("20250612034737_AutoMigration_001")]
+    partial class AutoMigration_001
+>>>>>>>> FixMigrations:src/back/Migrations/20250612034737_AutoMigration_001.Designer.cs
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -94,14 +99,9 @@ namespace back.Migrations
                     b.Property<int>("TarefaID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TarefaModelID")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("TarefaModelID");
-
-                    b.ToTable("Insumos");
+                    b.ToTable("INSUMOS", "dbo");
                 });
 
             modelBuilder.Entity("back.Models.LogModel", b =>
@@ -342,13 +342,6 @@ namespace back.Migrations
                     b.Navigation("Usuario");
                 });
 
-            modelBuilder.Entity("back.Models.InsumoModel", b =>
-                {
-                    b.HasOne("back.Models.TarefaModel", null)
-                        .WithMany("Insumos")
-                        .HasForeignKey("TarefaModelID");
-                });
-
             modelBuilder.Entity("back.Models.LoginModel", b =>
                 {
                     b.HasOne("back.Models.UserModel", "Usuario")
@@ -393,19 +386,17 @@ namespace back.Migrations
                     b.Navigation("Rotina");
                 });
 
+<<<<<<<< HEAD:src/back/Migrations/20250611042001_InsumoModelNovonovoteste456.Designer.cs
             modelBuilder.Entity("back.Models.EmpresaModel", b =>
                 {
                     b.Navigation("Funcionarios");
                 });
 
+========
+>>>>>>>> FixMigrations:src/back/Migrations/20250612034737_AutoMigration_001.Designer.cs
             modelBuilder.Entity("back.Models.RotinaTemplateModel", b =>
                 {
                     b.Navigation("TarefasTemplates");
-                });
-
-            modelBuilder.Entity("back.Models.TarefaModel", b =>
-                {
-                    b.Navigation("Insumos");
                 });
 #pragma warning restore 612, 618
         }
