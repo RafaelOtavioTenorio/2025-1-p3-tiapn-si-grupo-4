@@ -17,8 +17,9 @@ public class InsumoModel
     [Required]
     [StringLength(1000)]
     public string Descricao { get; set; } = "";
-
+    public int TarefaID { get; set; }
+    
     [Required]
     [ForeignKey("TarefaID")]
-    public int TarefaID { get; set; }
+    public TarefaTemplateModel TarefaTemplate { get; set; }
 }

@@ -26,7 +26,7 @@ public class TarefaTemplateModel
   public int Prioridade { get; set; }
 
   public bool Ativo { get; set; } = true;
- // public ICollection<InsumoModel> Insumos { get; set; } = new List<InsumoModel>();
+  public ICollection<InsumoModel> Insumos { get; set; } = new List<InsumoModel>();
 
   //Métodos Set
   public void SetInactive() => Ativo = false;
