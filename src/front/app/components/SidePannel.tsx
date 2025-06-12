@@ -31,9 +31,6 @@ export default function SidePannel(props: props) {
     
 
 
-    
-
-
     return (<>
         <div className={`${open ? 'w-1/5' : 'w-16'} bg-[#1A4855] min-h-screen max-h-screen h-screen flex flex-col transition-all duration-300  `} onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)} >
             <div className={`flex flex-row items-center ${open ? `justify-end` : `justify-center`} m-5`}>

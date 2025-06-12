@@ -13,6 +13,8 @@ public partial class MyDbContext : DbContext
     public DbSet<UserModel> Users { get; set; } 
     public DbSet<LoginModel> Login { get; set; } 
     public DbSet<TarefaTemplateModel> TarefaTemplates { get; set; } 
+    
+    public DbSet<RotinaModel> Rotinas { get; set; }
     public DbSet<TarefaModel> Tarefas { get; set; }
 
     public MyDbContext(DbContextOptions<MyDbContext> options) : base(options) {}
@@ -47,6 +49,7 @@ public partial class MyDbContext : DbContext
         modelBuilder.Entity<LoginModel>().ToTable("LOGIN", "dbo");
         modelBuilder.Entity<TarefaTemplateModel>().ToTable("TAREFA_TEMPLATES", "dbo"); 
         modelBuilder.Entity<TarefaModel>().ToTable("TAREFAS", "dbo");
+        modelBuilder.Entity<RotinaModel>().ToTable("ROTINAS", "dbo");
 
         base.OnModelCreating(modelBuilder);
     }

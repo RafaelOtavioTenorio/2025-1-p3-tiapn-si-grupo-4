@@ -94,10 +94,7 @@ export default function ViewRoutineModal({ open, onClose, rotina }: ViewRoutineM
             />
           </div>
 
-          <div className="flex justify-between gap-2">
-            <DefaultButton onClick={onClose}>Cancelar</DefaultButton>
-            <DefaultButton onClick={handleSalvar}>Salvar</DefaultButton>
-          </div>
+          
         </div>
       )}
     </DefaultModal>

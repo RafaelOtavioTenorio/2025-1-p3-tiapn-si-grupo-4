@@ -47,7 +47,6 @@ function CreateRoutine(props: ModalProps) {
         }
     }, [props.openModal]);
 
-    // Listener para fechar ao pressionar "Esc"
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === "Escape") {
@@ -72,7 +71,7 @@ function CreateRoutine(props: ModalProps) {
             }}
             className="items-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg shadow-lg"
         >
-            <div className="bg-white p-4 m-4 rounded-lg w-md w-full overflow-auto max-h-[90vh]"
+            <div className="bg-white p-4 m-4 rounded-lg w-md overflow-auto max-h-[90vh]"
                 onClick={(e) => e.stopPropagation()}>
                 <div className="flex-1 flex items-center justify-center">
                     {props.children}
