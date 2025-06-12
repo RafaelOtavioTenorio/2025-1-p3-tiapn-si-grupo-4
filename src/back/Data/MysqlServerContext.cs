@@ -16,8 +16,10 @@ public partial class MyDbContext : DbContext
     
     public DbSet<RotinaModel> Rotinas { get; set; }
     public DbSet<TarefaModel> Tarefas { get; set; }
+    public DbSet<FuncionarioModel> Funcionarios { get; set; }
+    public DbSet<InsumoModel> Insumos { get; set; }
 
-    public MyDbContext(DbContextOptions<MyDbContext> options) : base(options) {}
+    public MyDbContext(DbContextOptions<MyDbContext> options) : base(options) { }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -49,6 +51,7 @@ public partial class MyDbContext : DbContext
         modelBuilder.Entity<LoginModel>().ToTable("LOGIN", "dbo");
         modelBuilder.Entity<TarefaTemplateModel>().ToTable("TAREFA_TEMPLATES", "dbo"); 
         modelBuilder.Entity<TarefaModel>().ToTable("TAREFAS", "dbo");
+        modelBuilder.Entity<InsumoModel>().ToTable("INSUMOS", "dbo");
         modelBuilder.Entity<RotinaModel>().ToTable("ROTINAS", "dbo");
 
         base.OnModelCreating(modelBuilder);

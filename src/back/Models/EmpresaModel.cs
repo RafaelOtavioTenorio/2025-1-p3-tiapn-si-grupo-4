@@ -23,4 +23,6 @@ public class EmpresaModel
 
     [Required]
     public bool Ativo { get; set; } = true;
+
+    public ICollection<FuncionarioModel> Funcionarios { get; set; } = new List<FuncionarioModel>();
 }

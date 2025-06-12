@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using back.Entities;
 
@@ -11,9 +12,11 @@ using back.Entities;
 namespace back.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250611041805_InsumoModelNovonovoteste")]
+    partial class InsumoModelNovonovoteste
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,7 +94,12 @@ namespace back.Migrations
                     b.Property<int>("TarefaID")
                         .HasColumnType("int");
 
+                    b.Property<int?>("TarefaTemplateModelID")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("TarefaTemplateModelID");
 
                     b.ToTable("INSUMOS", "dbo");
                 });
@@ -334,6 +342,13 @@ namespace back.Migrations
                     b.Navigation("Usuario");
                 });
 
+            modelBuilder.Entity("back.Models.InsumoModel", b =>
+                {
+                    b.HasOne("back.Models.TarefaTemplateModel", null)
+                        .WithMany("Insumos")
+                        .HasForeignKey("TarefaTemplateModelID");
+                });
+
             modelBuilder.Entity("back.Models.LoginModel", b =>
                 {
                     b.HasOne("back.Models.UserModel", "Usuario")
@@ -386,6 +401,11 @@ namespace back.Migrations
             modelBuilder.Entity("back.Models.RotinaTemplateModel", b =>
                 {
                     b.Navigation("TarefasTemplates");
+                });
+
+            modelBuilder.Entity("back.Models.TarefaTemplateModel", b =>
+                {
+                    b.Navigation("Insumos");
                 });
 #pragma warning restore 612, 618
         }
