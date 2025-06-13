@@ -12,7 +12,7 @@ using back.Entities;
 namespace back.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20250613141346_AutoMigration_001")]
+    [Migration("20250613141731_AutoMigration_001")]
     partial class AutoMigration_001
     {
         /// <inheritdoc />
@@ -70,7 +70,7 @@ namespace back.Migrations
 
                     b.HasIndex("UsuarioId");
 
-                    b.ToTable("Funcionarios");
+                    b.ToTable("FUNCIONARIOS", "dbo");
                 });
 
             modelBuilder.Entity("back.Models.InsumoModel", b =>

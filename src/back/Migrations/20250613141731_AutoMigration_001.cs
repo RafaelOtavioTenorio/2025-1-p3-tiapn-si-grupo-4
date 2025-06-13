@@ -112,7 +112,8 @@ namespace back.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Funcionarios",
+                name: "FUNCIONARIOS",
+                schema: "dbo",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -122,16 +123,16 @@ namespace back.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Funcionarios", x => x.Id);
+                    table.PrimaryKey("PK_FUNCIONARIOS", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Funcionarios_EMPRESAS_EmpresaId",
+                        name: "FK_FUNCIONARIOS_EMPRESAS_EmpresaId",
                         column: x => x.EmpresaId,
                         principalSchema: "dbo",
                         principalTable: "EMPRESAS",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Funcionarios_USERS_UsuarioId",
+                        name: "FK_FUNCIONARIOS_USERS_UsuarioId",
                         column: x => x.UsuarioId,
                         principalSchema: "dbo",
                         principalTable: "USERS",
@@ -282,13 +283,15 @@ namespace back.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Funcionarios_EmpresaId",
-                table: "Funcionarios",
+                name: "IX_FUNCIONARIOS_EmpresaId",
+                schema: "dbo",
+                table: "FUNCIONARIOS",
                 column: "EmpresaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Funcionarios_UsuarioId",
-                table: "Funcionarios",
+                name: "IX_FUNCIONARIOS_UsuarioId",
+                schema: "dbo",
+                table: "FUNCIONARIOS",
                 column: "UsuarioId");
 
             migrationBuilder.CreateIndex(
@@ -364,7 +367,8 @@ namespace back.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Funcionarios");
+                name: "FUNCIONARIOS",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
                 name: "INSUMOS",

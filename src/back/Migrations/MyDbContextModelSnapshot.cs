@@ -67,7 +67,7 @@ namespace back.Migrations
 
                     b.HasIndex("UsuarioId");
 
-                    b.ToTable("Funcionarios");
+                    b.ToTable("FUNCIONARIOS", "dbo");
                 });
 
             modelBuilder.Entity("back.Models.InsumoModel", b =>
