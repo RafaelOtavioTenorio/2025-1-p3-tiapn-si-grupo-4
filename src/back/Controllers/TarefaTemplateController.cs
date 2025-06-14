@@ -25,6 +25,7 @@ public static class TarefaTemplateController
         try
         {
             var templates = await context.TarefaTemplates
+                .Where(t => t.Ativo)
                 .Include(t => t.Rotina)
                 .Select(t => new TarefaTemplateDTO // Projeta para o DTO
                 {
@@ -53,6 +54,9 @@ public static class TarefaTemplateController
             if (template == null)
                 return Results.NotFound($"Template de tarefa com ID {id} não encontrado.");
 
+            if(!template.Ativo)
+                return Results.NotFound($"Template de tarefa com ID {id} está inativo.");
+
             return Results.Ok(template);
         }
         catch (Exception e)
@@ -66,15 +70,15 @@ public static class TarefaTemplateController
     {
         try
         {
-            if (string.IsNullOrWhiteSpace(req.Nome) || !req.IdRotina.HasValue)
+            if (string.IsNullOrWhiteSpace(req.Nome))
             {
-                return Results.BadRequest("Nome e IdRotina são obrigatórios para criar um TarefaTemplate.");
+                return Results.BadRequest("Nome é obrigatório para criar um TarefaTemplate.");
             }
 
             var template = new TarefaTemplateModel
             {
                 Nome = req.Nome,
-                IdRotina = req.IdRotina.Value,
+                IdRotina = req.IdRotina,
                 Pai = req.Pai,
                 Prioridade = req.Prioridade,
                 Ativo = req.Ativo
@@ -99,21 +103,11 @@ public static class TarefaTemplateController
     {
         try
         {
-            var template = await context.TarefaTemplates.FindAsync(id);
+            var template = await context.TarefaTemplates.Where(template => template.Ativo).FirstOrDefaultAsync(t => t.ID == id);
             if (template == null)
                 return Results.NotFound($"Template de tarefa com ID {id} não encontrado.");
 
-            template.UpdateName(req.Nome);
-
-            if (req.IdRotina.HasValue)
-            {
-                template.UpdateIdRotina(req.IdRotina.Value);
-            }
-
-            template.UpdatePai(req.Pai);
-            template.UpdatePrioridade(req.Prioridade);
-
-            template.Ativo = req.Ativo;
+            
 
             await context.SaveChangesAsync();
             return Results.Ok(template);
@@ -137,7 +131,7 @@ public static class TarefaTemplateController
             if (template == null)
                 return Results.NotFound($"Template de tarefa com ID {id} não encontrado.");
 
-            template.SetInactive();
+            template.Ativo = false;
             await context.SaveChangesAsync();
             return Results.NoContent();
         }

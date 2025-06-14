@@ -15,19 +15,16 @@ public class TarefaTemplateDTO
 public class CreateTarefaTemplateDTO
 {
     public required string Nome { get; set; }
-    public required int? IdRotina { get; set; }
-    public int Pai { get; set; }
+    public required int IdRotina { get; set; }
+    public int? Pai { get; set; }
     public int Prioridade { get; set; }
     public bool Ativo { get; set; }
 }
 
 public class UpdateTarefaTemplateDTO
 {
-    public required string Nome { get; set; }
-    public required int? IdRotina { get; set; }
-    public int Pai { get; set; }
-    public int Prioridade { get; set; }
-    public bool Ativo { get; set; }
+    public required string? Nome { get; set; }
+    public int? Prioridade { get; set; }
 }
 
 public class RotinaTemplateOnTarefaDTO

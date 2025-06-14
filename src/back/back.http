@@ -62,3 +62,41 @@ Content-Type: application/json
 GET {{back_HostAddress}}/user
 Accept: application/json
 Authorization: Bearer {{authToken}}
+
+
+### post tarefa
+POST {{back_HostAddress}}/tarefa-template
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "nome": "tesstar",
+  "idRotina": 1,
+  "pai": null,
+  "prioridade": 1,
+  "ativo": true
+}
+
+### get tarefa
+GET {{back_HostAddress}}/tarefa-template/1
+Accept: application/json
+Authorization: Bearer {{authToken}}
+
+### put tarefa
+PUT {{back_HostAddress}}/tarefa-template/1
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "id": 1,
+  "nome": "testar100",
+  "idRotina": 1,
+  "pai": null,
+  "prioridade": 1,
+  "ativo": true
+}
+
+### delete tarefa
+DELETE {{back_HostAddress}}/tarefa-template/1
+Authorization: Bearer {{authToken}}
+Accept: application/json
