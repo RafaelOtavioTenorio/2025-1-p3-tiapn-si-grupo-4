@@ -109,7 +109,17 @@ public static class RotinaTemplateController
                 Prioridade = createDto.Prioridade
             };
             await context.RotinaTemplates.AddAsync(newRotinaTemplate);
-            return Results.Created();
+            await context.SaveChangesAsync();
+
+            var newRotinaTemplateReturn = new RotinaTemplateDTO
+            {
+                Id = newRotinaTemplate.Id,
+                Nome = newRotinaTemplate.Nome,
+                Ativo = true,
+                Descricao = newRotinaTemplate.Descricao
+            };
+            
+            return Results.Created($"/rotina-template/{newRotinaTemplate.Id}", newRotinaTemplateReturn);
         }
         catch (Exception e)
         {

@@ -127,8 +127,30 @@ public static class RotinaController
                 }
             }
             
+            var tarefasOnResult = new List<TarefaOnRotinaDTO>();
+
+            foreach (var tarefa in newRotina.Tarefas)
+            {
+                var tarefaDto = new TarefaOnRotinaDTO
+                {
+                    Id = tarefa.ID,
+                    Nome = tarefa.Nome,
+                    Pai = tarefa.TarefaID
+                };
+                tarefasOnResult.Add(tarefaDto);
+            }
+
+            var newRotinaResult = new RotinaDTO
+            {
+                Id = newRotina.Id,
+                Nome = newRotina.Nome,
+                Descricao = newRotina.Descricao,
+                IdTemplate = newRotina.IdTemplate,
+                Prioridade = newRotina.RotinaTemplate.Prioridade,
+                Tarefas = tarefasOnResult
+            };
             
-            return Results.Created();
+            return Results.Created($"/rotina/{newRotinaResult.Id}", newRotinaResult);
         }
         catch (Exception e)
         {
