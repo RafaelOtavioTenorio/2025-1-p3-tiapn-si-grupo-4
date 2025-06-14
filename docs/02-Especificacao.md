@@ -97,20 +97,29 @@ As personas representam perfis fictícios baseados em usuários reais que podem 
     Ocupação: Dono de uma pequena fábrica de móveis planejados.
     
     Contexto: Roberto gerencia a produção, vendas e instalação dos móveis. Ele tem poucos funcionários e precisa de uma ferramenta simples e acessível para organizar as etapas de cada pedido (do projeto à entrega), controlar os materiais utilizados e saber o status de cada cliente sem ter que perguntar a cada funcionário.
+    
+13. Gabriel – Supervisor de Logística
 
-    13. Gabriel – Supervisor de Logística
     Idade: 40 anos
+    
     Ocupação: Supervisor de logística em uma empresa de e-commerce.
+    
     Contexto: Gabriel é responsável pela coordenação de rotas de entrega e recebimento de mercadorias. Ele enfrenta desafios para garantir que os veículos estejam com a manutenção em dia, que os insumos (combustível, peças) estejam disponíveis e que os motoristas sigam os checklists de carregamento e descarregamento, impactando a eficiência e os prazos de entrega.
 
 14. Laura – Gerente de Facilities
+    
     Idade: 37 anos
+    
     Ocupação: Gerente de Facilities em um prédio corporativo multi-empresarial.
+    
     Contexto: Laura gerencia diversas rotinas de manutenção predial, limpeza, segurança e controle de acesso. Ela precisa de uma forma de padronizar os procedimentos para as equipes de serviço, monitorar o cumprimento das tarefas e garantir que os materiais de limpeza e ferramentas de manutenção estejam sempre em estoque e prontos para uso.
 
 15. Daniel – Coordenador de Equipe de Campo
+    
     Idade: 32 anos
+    
     Ocupação: Coordenador de uma equipe de técnicos de instalação e reparo de telecomunicações.
+    
     Contexto: Daniel gerencia uma equipe que realiza visitas diárias a clientes para instalações e reparos. Ele precisa ter certeza de que cada técnico tenha as ferramentas e peças corretas para cada chamado, que os procedimentos de instalação sejam seguidos consistentemente e que o histórico de cada serviço seja registrado para referência futura e auditoria.
 
 
