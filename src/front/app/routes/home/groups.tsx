@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
-import DefaultButton, { ButtonTypes } from "~/components/DefaultButton";
-import MainPage from "~/components/MainPage";
-import DefaultModal from "~/components/DefaultModal";
+import DefaultButton from "~/components/DefaultButton";
 import Title from "~/components/Title";
 import SearchInput from "~/components/SearchInput";
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import Edit from '@mui/icons-material/EditNoteOutlined';
+import CreateEmpresaGrupo from "~/components/CreateEmpresaGrupo";
+import MainPage from "~/components/MainPage";
 
 interface GroupMember {
     nome: string;
     ocupacao: string;
-    identificador: string;
+    identificador: string; // Pode ser CPF, ID, etc.
 }
 
 interface MemberCategory {
@@ -21,9 +21,10 @@ interface MemberCategory {
 export default function GroupsPage() {
     const [memberCategories, setMemberCategories] = useState<MemberCategory[]>([]);
     const [selectedRole, setSelectedRole] = useState("CARGO");
-    const [createGroupModalOpen, setCreateGroupModalOpen] = useState(false);
-    const [deleteMemberOpen, setDeleteMemberOpen] = useState(false);
+    const [deleteMemberOpen, setDeleteMemberOpen] = useState(false); // Fazer
     const [searchText, setSearchText] = useState(""); // Estado para a barra de pesquisa
+    const [createGroupModalOpen, setCreateGroupModalOpen] = useState(false);
+    //const [novoGrupo, setNovoGrupo] = useState<NovoGrupoEmpresa | undefined>(undefined); Para resultado do modal
 
     // Mock de dados
     const handleSetMockGroupData = () => {
@@ -50,24 +51,37 @@ export default function GroupsPage() {
         setMemberCategories(mockData);
     };
 
+    const handleCreateGroup = (grupo: { nome: string; descricao?: string }) => {
+        setMemberCategories([
+            ...memberCategories,
+            {
+                title: grupo.nome,
+                members: [],
+            },
+        ]);
+        setCreateGroupModalOpen(false);
+    };
+
     useEffect(() => {
         handleSetMockGroupData();
     }, []);
 
     return (
-        <div className="flex flex-col p-8 bg-gray-200 min-h-screen">
+        <div className="flex flex-col p-8 bg-gray-200 h-screen">
             <div className="mb-6">
                 <div className="flex justify-between items-center mb-6">
                     <Title>Grupos</Title>
-                    {/*onClick={() => setModal(true)}*/}
                     <DefaultButton>+ CRIAR GRUPO</DefaultButton>
-                    {/* <DefaultModal closeModal={() => setModal(false)} openModal={createModal} onCreate={handleRotinaRegister} result={resultadoModalRegistroRotina} /> */}
-                </div>
-                <div className="mt-4 grid grid-cols-1 sm:grid-cols-6 gap-4">
+                    <CreateEmpresaGrupo
+                        openModal={createGroupModalOpen}
+                        closeModal={() => setCreateGroupModalOpen(false)}
+                        onCreate={handleCreateGroup}
+                    />
+                <div className="mt-4 grid grid-cols-1 sm:grid-cols-6 gap-4 max-h-[75vh] overflow-y-auto">
                     <div className="col-span-1 sm:col-span-4">
                         <SearchInput
                             value={searchText}
-                            onChange={(e) => setSearchText(e.target.value)}
+                            onChange={(e) => setSearchText(e.target.value)} //Fazer searchInput apropriado
                             placeholder="Pesquisar grupo..."
                            />
                     </div>
@@ -104,8 +118,10 @@ export default function GroupsPage() {
                                         <h3 className="font-semibold text-gray-800 py-2">{member.nome}</h3>
                                         <p className="text-sm text-gray-600 py-2">{member.ocupacao}</p>
                                     </div>
-                                    <p className="text-xs text-gray-500 mt-4 self-start">{member.identificador}</p>
-
+                                    <div className="mt-4 self-start justify-between">
+                                    <p className="text-xs text-gray-500">{member.identificador}</p>
+                                    <Edit/>
+                                    </div>
                                 </div>
                             ))}
                             {/* Cartão "Adicionar" */}
@@ -120,7 +136,7 @@ export default function GroupsPage() {
                     </section>
                 ))}
             </div>
-
+        </div>
             {/* Modais (placeholder para implementação futura) */}
             {/* <CreateGroupModal
         openModal={createGroupModalOpen}
