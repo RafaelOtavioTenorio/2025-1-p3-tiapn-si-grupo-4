@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type PropsWithChildren } from "react";
 import CloseIcon from '@mui/icons-material/Close';
 import DefaultButton from "./DefaultButton";
 
-export interface NovaRotina  {
+export interface NovaRotina {
     nome: string;
     prioridade?: string;
     descricao?: string;
@@ -20,28 +20,85 @@ function CreateRoutine(props: ModalProps) {
     const ref = useRef<HTMLDialogElement>(null);
     const [nome, setNome] = useState('');
     const [descricao, setDescRotina] = useState('');
-    const [prioridade, setPrioridade] = useState('');
+    const [prioridade, setPrioridade] = useState('1');
 
-    const handleSubmit = () => {
+    const baseUrl = import.meta.env.VITE_BASE_URL;
+
+    const handleSubmit = async () => {
         if (!props) return null;
         if (nome.trim() === "") return;
+
+        // Recupera idEmpresa do localStorage
+        const empresaIdRaw = localStorage.getItem("empresaId");
+        const idEmpresa = empresaIdRaw ? Number(empresaIdRaw) : 0;
 
         const novaRotina: NovaRotina = {
             nome: nome.trim(),
             prioridade: prioridade,
             descricao: descricao,
         };
-        localStorage.setItem("rotinaExtra", JSON.stringify(novaRotina));
-        props.onCreate(novaRotina);
-        setNome('');
-        setPrioridade('1');
-        setDescRotina('');
-        props.closeModal();
-    }
+
+        try {
+            const response = await fetch(`${baseUrl}/RotinaTemplate`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+                },
+                body: JSON.stringify({
+                    nome: novaRotina.nome,
+                    prioridade: Number(novaRotina.prioridade) || 0,
+                    descricao: novaRotina.descricao || '',
+                    idEmpresa: idEmpresa,
+                }),
+            });
+
+            if (!response.ok) {
+                const errorText = await response.text();
+                console.error("Erro ao criar rotina:", errorText);
+                return;
+            }
+
+            const createdRotina = await response.json();
+            localStorage.setItem("rotinaExtra", JSON.stringify(createdRotina));
+
+            setNome('');
+            setPrioridade('1');
+            setDescRotina('');
+            props.closeModal();
+        } catch (error) {
+            console.error("Erro na requisição:", error);
+        }
+    };
 
     useEffect(() => {
         if (props.openModal) {
             ref.current?.showModal();
+
+            const fetchEmpresa = async () => {
+                const userDataRaw = localStorage.getItem("userData");
+                const userId = userDataRaw ? JSON.parse(userDataRaw).id : null;
+
+                if (userId) {
+                    const empresaRes = await fetch(`${baseUrl}/user/${userId}/empresa`, {
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+                        },
+                    });
+
+                    if (empresaRes.ok) {
+                        const empresaData = await empresaRes.json();
+                        localStorage.setItem("empresaId", empresaData.empresaId.toString());
+                    } else {
+                        console.error("Erro ao buscar empresa do usuário:", await empresaRes.text());
+                    }
+                } else {
+                    console.warn("ID do usuário não encontrado no localStorage");
+                }
+            };
+
+            fetchEmpresa();
+
         } else {
             ref.current?.close();
         }
@@ -77,7 +134,7 @@ function CreateRoutine(props: ModalProps) {
                     {props.children}
                 </div>
                 <h2 className="text-xl font-bold mb-4">CADASTRAR ROTINA</h2>
-                
+
                 <div className="pt-4 grid grid-cols-5 gap-4">
                     <div className="col-span-4 mb-4">
                         <label className="block font-medium mb-1">Nome da rotina</label>

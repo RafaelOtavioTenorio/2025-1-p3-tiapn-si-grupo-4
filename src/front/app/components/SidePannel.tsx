@@ -4,7 +4,8 @@ import {
     ArrowBackIosRounded,
     Person,
     ViewKanbanOutlined,
-    LogoutRounded
+    LogoutRounded,
+    Group
 } from '@mui/icons-material';
 import { useState } from "react";
 import { Link } from "react-router";
@@ -46,7 +47,8 @@ export default function SidePannel(props: props) {
             <SidePannelRow icon={AddCircleOutlineRounded} open={open} text="Criar" pannel={Pannels.CREATE} active={props.activePannel == 'create'} setActivePannel={props.setActivePannel} />
             <SidePannelRow icon={ViewKanbanOutlined} open={open} text="Rotinas" pannel={Pannels.ROUTINES} active={props.activePannel == 'routines'} setActivePannel={props.setActivePannel} />
             <SidePannelRow icon={AccessTime} open={open} text="Historico" pannel={Pannels.HISTORIC} active={props.activePannel == 'historic'} setActivePannel={props.setActivePannel} />
-            <SidePannelRow icon={Person} open={open} text="Grupos" pannel={Pannels.GROUPS} active={props.activePannel == 'groups'} setActivePannel={props.setActivePannel} />
+            <SidePannelRow icon={Group} open={open} text="Grupos" pannel={Pannels.GROUPS} active={props.activePannel == 'groups'} setActivePannel={props.setActivePannel} />
+            <SidePannelRow icon={Person} open={open} text="Usuario" pannel={Pannels.USER} active={props.activePannel == 'user'} setActivePannel={props.setActivePannel} />
 
             <div className="mt-auto mb-12">
                 <SidePannelRow 
