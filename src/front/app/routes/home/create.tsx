@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { type NovoItem } from "~/components/ItemRegister";
-import  CreateRoutine, { type NovaRotina } from "~/components/CreateRoutine";
+import CreateRoutine, { type NovaRotina } from "~/components/CreateRoutine";
 import Title from "~/components/Title";
 import DefaultButton from "~/components/DefaultButton";
 import SearchInput from "~/components/SearchInput";
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import DeleteRotina from "~/components/DeleteRotinaPage";
 import ItemRegisterModal from "~/components/ItemRegister";
-
 
 interface Rotina {
   nome: string;
@@ -21,11 +20,11 @@ interface Item {
 }
 
 const mockData = [
-      { nome: "Auditoria Interna", tarefas: 3, insumos: 5 },
-      { nome: "Controle de inventário", tarefas: 4, insumos: 1 },
-      { nome: "Gerenciar recursos", tarefas: 3, insumos: 5 },
-      { nome: "Auditoria Interna", tarefas: 3, insumos: 5 },
-    ];
+  { nome: "Auditoria Interna", tarefas: 3, insumos: 5 },
+  { nome: "Controle de inventário", tarefas: 4, insumos: 1 },
+  { nome: "Gerenciar recursos", tarefas: 3, insumos: 5 },
+  { nome: "Auditoria Interna", tarefas: 3, insumos: 5 },
+];
 
 export default function RoutinesPage() {
   const [rotinas, setRotinas] = useState<Rotina[]>([]);
@@ -38,7 +37,6 @@ export default function RoutinesPage() {
   const [deleteRotinaOpen, setDeleteRotinaOpen] = useState(false);
   const [resultadoModalRegistroItem, setResultadoModalRegistroItem] = useState<NovoItem>();
   const [resultadoModalRegistroRotina, setResultadoModalRegistroRotina] = useState<NovaRotina>();
-
 
   const handleItemRegister = (item: NovoItem) => {
     try {
@@ -59,8 +57,7 @@ export default function RoutinesPage() {
   };
 
   const handleSetRotinas = () => {
-    
-    const extra = localStorage.getItem("rotinaExtra")
+    const extra = localStorage.getItem("rotinaExtra");
     if (extra) {
       try {
         const parsed = JSON.parse(extra);
@@ -69,7 +66,6 @@ export default function RoutinesPage() {
         console.error("Erro ao fazer parse do item salvo no localStorage", err);
       }
     }
-    console.log("Definindo rotinas mockadas:", mockData);
     setRotinas(mockData);
   };
 
@@ -80,7 +76,7 @@ export default function RoutinesPage() {
       { nome: "Gerenciar recursos", concluido: false },
       { nome: "Auditoria Interna", concluido: false },
     ];
-    const extra = localStorage.getItem("tarefaExtra")
+    const extra = localStorage.getItem("tarefaExtra");
     if (extra) {
       try {
         const parsed = JSON.parse(extra);
@@ -89,87 +85,82 @@ export default function RoutinesPage() {
         console.error("Erro ao fazer parse do item salvo no localStorage", err);
       }
     }
-    console.log("Definindo rotinas mockadas:", mockTarefas);
     setItens(mockTarefas);
   };
 
   useEffect(() => {
     if (resultadoModalRegistroRotina) {
-        const novaRotina: Rotina = {
-            nome: resultadoModalRegistroRotina.nome,
-            tarefas: 0,
-            insumos: 0,
-        };
-        setRotinas(prev => [...prev, novaRotina]);
-        setResultadoModalRegistroRotina(undefined);
+      const novaRotina: Rotina = {
+        nome: resultadoModalRegistroRotina.nome,
+        tarefas: 0,
+        insumos: 0,
+      };
+      setRotinas(prev => [...prev, novaRotina]);
+      setResultadoModalRegistroRotina(undefined);
     } else {
-        handleSetRotinas();
+      handleSetRotinas();
     }
 
     if (resultadoModalRegistroItem) {
-        const novoItem: Item = {
-            nome: resultadoModalRegistroItem.nome,
-            concluido: false,
-        };
-        setItens(prev => [...prev, novoItem]);
-        setResultadoModalRegistroRotina(undefined);
+      const novoItem: Item = {
+        nome: resultadoModalRegistroItem.nome,
+        concluido: false,
+      };
+      setItens(prev => [...prev, novoItem]);
+      setResultadoModalRegistroRotina(undefined);
     } else {
-        handleSetItens();
+      handleSetItens();
     }
-
-    
-    // apiClient.get("http://localhost:3000/rotinas")
-    //   .then(response => {
-    //     setRotinas(response.data);
-    //   })
-    //   .catch(error => {
-    //     console.error("Erro ao buscar rotinas:", error);
-    //   });
-}, [resultadoModalRegistroRotina, resultadoModalRegistroItem]);
-
-
-  useEffect(()=>{
-    
-  }, [searchText])
+  }, [resultadoModalRegistroRotina, resultadoModalRegistroItem]);
 
   return (
-    <div className="flex flex-col p-8 bg-gray-200 min-h-screen">
+    <div className="flex flex-col p-8 bg-gray-200 h-screen">
       {/* Título e botão de criar rotina */}
       <div className="flex justify-between items-center mb-6">
         <Title>Minhas Rotinas</Title>
         <DefaultButton onClick={() => setModal(true)}>+ CRIAR ROTINA</DefaultButton>
-        <CreateRoutine closeModal={() => setModal(false)} openModal={createModal} onCreate={handleRotinaRegister} result={resultadoModalRegistroRotina} />
+        <CreateRoutine
+          closeModal={() => setModal(false)}
+          openModal={createModal}
+          onCreate={handleRotinaRegister}
+          result={resultadoModalRegistroRotina}
+        />
       </div>
 
-      {/* Campo de busca */}
-      <SearchInput
-        value={searchText}
-        onChange={(e: any) => setSearchText(e.target.value)}
-        rotinas={rotinas}
-      />
-
       {/* Conteúdo principal */}
-      <div className="flex flex-row p-4 gap-6 w-full max-w-[1200px] mx-auto">
-        {/* Lista de Rotinas */}
-        <div className="flex flex-col gap-4 flex-1 max-h-[75vh] overflow-y-auto pr-2">
-          {rotinas.map((rotina, i) => (
-            <div
-              key={i}
-              onClick={() => setSelectedRotina(rotina)}
-              className={`bg-white rounded-lg p-4 shadow-md hover:bg-gray-100 cursor-pointer ${
-                selectedRotina?.nome === rotina.nome ? "bg-blue-100" : ""
-              }`}
-            >
-              <h2 className="font-semibold">{rotina.nome}</h2>
-              <p className="text-sm text-gray-600">
-                {rotina.tarefas} tarefas • {rotina.insumos} insumos
-              </p>
-            </div>
-          ))}
+      <div className="flex flex-row gap-6 w-full max-w-[1200px] mx-auto flex-1">
+        {/* Coluna esquerda: busca + lista */}
+        <div className="flex flex-col h-full flex-1 pr-2">
+          {/* Busca */}
+          <div>
+            <SearchInput
+              value={searchText}
+              onChange={(e: any) => setSearchText(e.target.value)}
+              rotinas={rotinas}
+            />
+          </div>
+
+          {/* Lista de rotinas */}
+      <div className="flex flex-col gap-4 overflow-y-auto mt-4 flex-grow">
+            {rotinas.map((rotina, i) => (
+              <div
+                key={i}
+                onClick={() => setSelectedRotina(rotina)}
+                className={`bg-white rounded-lg p-4 shadow-md hover:bg-gray-100 cursor-pointer ${
+                  selectedRotina?.nome === rotina.nome ? "bg-blue-100" : ""
+                }`}
+              >
+                <h2 className="font-semibold">{rotina.nome}</h2>
+                <p className="text-sm text-gray-600">
+                  {rotina.tarefas} tarefas • {rotina.insumos} insumos
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Detalhes da Rotina */}
-        <div className="bg-white flex-1 rounded-lg p-6 shadow-md">
+        {/* Coluna direita: detalhes da rotina */}
+      <div className="bg-white flex-1 rounded-lg p-6 shadow-md self-start">
           {selectedRotina ? (
             <>
               <div className="flex justify-between items-start">
