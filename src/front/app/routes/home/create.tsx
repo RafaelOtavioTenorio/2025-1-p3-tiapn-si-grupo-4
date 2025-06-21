@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { type NovoItem } from "~/components/ItemRegister";
 import CreateRoutine, { type NovaRotina } from "~/components/CreateRoutine";
 import Title from "~/components/Title";
 import DefaultButton from "~/components/DefaultButton";
@@ -190,14 +189,13 @@ export default function RoutinesPage() {
           </div>
 
           {/* Lista de rotinas */}
-      <div className="flex flex-col gap-4 overflow-y-auto mt-4 flex-grow">
+          <div className="flex flex-col gap-4 overflow-y-auto mt-4 flex-grow">
             {rotinas.map((rotina, i) => (
               <div
-                key={i}
+                key={rotina.id}
                 onClick={() => setSelectedRotina(rotina)}
-                className={`bg-white rounded-lg p-4 shadow-md hover:bg-gray-100 cursor-pointer ${
-                  selectedRotina?.nome === rotina.nome ? "bg-blue-100" : ""
-                }`}
+                className={`bg-white rounded-lg p-4 shadow-md hover:bg-gray-100 cursor-pointer ${selectedRotina?.id === rotina.id ? "bg-blue-100" : ""
+                  }`}
               >
                 <h2 className="font-semibold">{rotina.nome}</h2>
                 <p className="text-sm text-gray-600">
@@ -205,11 +203,12 @@ export default function RoutinesPage() {
                 </p>
               </div>
             ))}
+
           </div>
         </div>
 
         {/* Coluna direita: detalhes da rotina */}
-      <div className="bg-white flex-1 rounded-lg p-6 shadow-md self-start">
+        <div className="bg-white flex-1 rounded-lg p-6 shadow-md self-start">
           {selectedRotina ? (
             <>
               <div className="flex justify-between items-start">
