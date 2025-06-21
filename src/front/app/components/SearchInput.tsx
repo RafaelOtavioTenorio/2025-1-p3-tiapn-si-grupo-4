@@ -1,23 +1,15 @@
-import React  from 'react'
+// ~/components/SearchInput.tsx
+import React from 'react'
 import type { ChangeEvent } from "react";
-import { useState } from "react";
 import Search from '@mui/icons-material/Search';
-
-interface Rotina {
-  nome: string;
-  tarefas: number;
-  insumos: number;
-}
 
 interface SearchInputProps {
   value: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
-  rotinas?: Rotina[];
 }
 
-export default function SearchInput(props:SearchInputProps) {
-const [search, setSearch] = useState("");
+export default function SearchInput({ value, onChange, placeholder }: SearchInputProps) {
   return (
     <div className="relative w-full">
       <button
@@ -29,12 +21,11 @@ const [search, setSearch] = useState("");
         <Search />
       </button>
 
-      {/* Campo de texto */}
       <input
         type="text"
-        value={search}
-        onChange={e=>setSearch(e.target.value)}
-        placeholder= "Pesquisar rotina ..."
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder || "Pesquisar rotina..."}
         className="w-full pl-12 pr-4 py-2 rounded shadow-sm border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
       />
     </div>
