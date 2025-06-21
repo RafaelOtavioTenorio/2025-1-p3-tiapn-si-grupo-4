@@ -176,7 +176,7 @@ export default function RoutinesPage() {
       </div>
 
       {/* Conteúdo principal */}
-      <div className="flex flex-row gap-6 w-full max-w-[1200px] mx-auto flex-1">
+      <div className="flex flex-row gap-6 w-full mx-auto flex-1">
         {/* Coluna esquerda: busca + lista */}
         <div className="flex flex-col h-full flex-1 pr-2">
           {/* Busca */}
@@ -207,7 +207,7 @@ export default function RoutinesPage() {
         </div>
 
         {/* Detalhes da Rotina */}
-        <div className="bg-white flex-1 rounded-lg p-6 shadow-md">
+        <div className="h-fit bg-white flex-1 rounded-lg p-6 shadow-md">
           {selectedRotina ? (
             <>
               <div className="flex justify-between items-start">
