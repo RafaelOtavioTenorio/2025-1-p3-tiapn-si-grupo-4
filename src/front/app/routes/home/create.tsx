@@ -21,6 +21,12 @@ interface Item {
   concluido: boolean;
 }
 
+interface Empresa {
+  id: number;
+  nome: string;
+  cnpj: string;
+}
+
 export default function RoutinesPage() {
   const [rotinas, setRotinas] = useState<Rotina[]>([]);
   const [itens, setItens] = useState<Item[]>([]);
@@ -32,11 +38,61 @@ export default function RoutinesPage() {
   const [deleteRotinaOpen, setDeleteRotinaOpen] = useState(false);
   const [resultadoModalRegistroItem, setResultadoModalRegistroItem] = useState<NovoItem>();
 
+  const [empresa, setEmpresa] = useState<Empresa | null>(null);
+
   const baseUrl = import.meta.env.VITE_BASE_URL;
 
-  const fetchRotinas = async () => {
+  function getUserIdFromToken(): number | null {
+    const token = localStorage.getItem("authToken");
+    if (!token) return null;
+
     try {
-      const resRotinas = await fetch(`${baseUrl}/RotinaTemplate`, {
+      const payloadBase64 = token.split('.')[1];
+      if (!payloadBase64) return null;
+
+      const payloadBase64Padded = payloadBase64.replace(/-/g, '+').replace(/_/g, '/');
+      const jsonPayload = decodeURIComponent(
+        atob(payloadBase64Padded)
+          .split('')
+          .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+          .join('')
+      );
+
+      const payload = JSON.parse(jsonPayload);
+      return payload.id ?? null;
+    } catch {
+      return null;
+    }
+  }
+
+  // Buscar empresa do usuário
+  useEffect(() => {
+    const userId = getUserIdFromToken();
+    if (!userId) return;
+
+    fetch(`${baseUrl}/user/${userId}/empresa`, {
+      headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` }
+    })
+      .then(res => {
+        if (!res.ok) throw new Error("Erro ao buscar empresa do usuário");
+        return res.json();
+      })
+      .then(data => setEmpresa(data))
+      .catch(err => {
+        console.error(err);
+        setEmpresa(null);
+      });
+  }, []);
+
+  // Buscar rotinas da empresa do usuário
+  const fetchRotinas = async () => {
+    if (!empresa) {
+      setRotinas([]);
+      return;
+    }
+
+    try {
+      const resRotinas = await fetch(`${baseUrl}/RotinaTemplate?empresaId=${empresa.id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` }
       });
       const resTarefas = await fetch(`${baseUrl}/tarefa-template`, {
@@ -79,7 +135,7 @@ export default function RoutinesPage() {
           .map((tarefa: any) => ({
             id: tarefa.id,
             nome: tarefa.nome,
-            concluido: tarefa.ativo === false,
+            concluido: tarefa.ativo === true,
           }));
 
         setItens(tarefasFiltradas);
@@ -103,7 +159,7 @@ export default function RoutinesPage() {
 
   useEffect(() => {
     fetchRotinas();
-  }, [createModal]);
+  }, [createModal, empresa]);
 
   const handleItemRegister = async (item: NovoItem) => {
     try {
@@ -150,7 +206,7 @@ export default function RoutinesPage() {
         <CreateRoutine
           closeModal={() => setModal(false)}
           openModal={createModal}
-          onCreate={() => {}}
+          onCreate={() => { }}
           result={undefined}
         />
       </div>
@@ -194,7 +250,7 @@ export default function RoutinesPage() {
                 <DeleteRotina
                   openModal={deleteRotinaOpen}
                   closeModal={() => setDeleteRotinaOpen(false)}
-                  onDelete={() => {}}
+                  onDelete={() => { }}
                 />
               </div>
 

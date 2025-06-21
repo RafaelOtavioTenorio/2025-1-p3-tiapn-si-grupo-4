@@ -28,7 +28,6 @@ function CreateRoutine(props: ModalProps) {
         if (!props) return null;
         if (nome.trim() === "") return;
 
-        // Recupera idEmpresa do localStorage
         const empresaIdRaw = localStorage.getItem("empresaId");
         const idEmpresa = empresaIdRaw ? Number(empresaIdRaw) : 0;
 
@@ -50,6 +49,7 @@ function CreateRoutine(props: ModalProps) {
                     prioridade: Number(novaRotina.prioridade) || 0,
                     descricao: novaRotina.descricao || '',
                     idEmpresa: idEmpresa,
+                    ativo: true,  // <-- aqui!
                 }),
             });
 
@@ -70,6 +70,7 @@ function CreateRoutine(props: ModalProps) {
             console.error("Erro na requisição:", error);
         }
     };
+
 
     useEffect(() => {
         if (props.openModal) {

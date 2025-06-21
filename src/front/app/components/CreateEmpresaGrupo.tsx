@@ -4,35 +4,58 @@ import DefaultButton from "./DefaultButton";
 
 export interface NovoGrupoEmpresa {
     nome: string;
-    descricao?: string;
+    CNPJ?: string;
 }
 
 interface ModalProps extends PropsWithChildren {
     openModal: boolean;
     closeModal: () => void;
-    onCreate: (item: NovoGrupoEmpresa) => void;
+    onCreate?: (item: NovoGrupoEmpresa) => void;
     actions?: React.ReactElement[];
-    // result: NovoGrupoEmpresa | undefined;
 }
 
 function CreateEmpresaGrupo(props: ModalProps) {
     const ref = useRef<HTMLDialogElement>(null);
     const [nome, setNome] = useState('');
-    const [descricao, setDescricao] = useState('');
+    const [CNPJ, setCNPJ] = useState<string>('');
 
-    const handleSubmit = () => {
-        if (!props) return null;
-        if (nome.trim() === "") return;
+    const baseUrl = import.meta.env.VITE_BASE_URL;
 
-        const novoGrupo: NovoGrupoEmpresa = {
+    const handleSubmit = async () => {
+        if (!nome.trim()) return;
+
+        const payload = {
             nome: nome.trim(),
-            descricao: descricao,
+            cnpj: CNPJ.trim(),
+            ativo: true,
+            funcionarios: []
         };
-        props.onCreate(novoGrupo);
-        setNome('');
-        setDescricao('');
-        props.closeModal();
-    }
+
+        try {
+            const res = await fetch(`${baseUrl}/empresa`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+                },
+                body: JSON.stringify(payload)
+            });
+
+            if (res.ok) {
+                props.onCreate?.({
+                    nome: payload.nome,
+                    CNPJ: payload.cnpj
+                });
+                setNome('');
+                setCNPJ('');
+                props.closeModal();
+            } else {
+                console.error("Erro ao criar empresa:", await res.text());
+            }
+        } catch (error) {
+            console.error("Erro de rede ao criar empresa:", error);
+        }
+    };
 
     useEffect(() => {
         if (props.openModal) {
@@ -66,32 +89,39 @@ function CreateEmpresaGrupo(props: ModalProps) {
             }}
             className="items-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg shadow-lg"
         >
-            <div className="bg-white p-4 m-4 rounded-lg w-md overflow-auto max-h-[90vh]"
-                onClick={(e) => e.stopPropagation()}>
+            <div
+                className="bg-white p-4 m-4 rounded-lg w-md overflow-auto max-h-[90vh]"
+                onClick={(e) => e.stopPropagation()}
+            >
                 <div className="flex-1 flex items-center justify-center">
                     {props.children}
                 </div>
-                <h2 className="text-xl font-bold mb-4">CADASTRAR GRUPO DE EMPRESA</h2>
-                
+
+                <h2 className="text-xl font-bold mb-4">CADASTRAR EMPRESA</h2>
+
                 <div className="pt-4 grid grid-cols-5 gap-4">
                     <div className="col-span-5 mb-4">
-                        <label className="block font-medium mb-1">Nome do grupo</label>
+                        <label className="block font-medium mb-1">Nome da empresa</label>
                         <input
                             type="text"
-                            placeholder="Digite o nome do grupo"
+                            placeholder="Digite o nome da empresa"
                             value={nome}
                             onChange={e => setNome(e.target.value)}
                             className="w-full border p-2 rounded"
                         />
                     </div>
                     <div className="col-span-5 mb-4">
-                        <label className="block font-medium mb-1">Descrição do grupo</label>
-                        <textarea
-                            maxLength={255}
-                            rows={4}
-                            placeholder="Digite a descrição do grupo"
-                            value={descricao}
-                            onChange={e => setDescricao(e.target.value)}
+                        <label className="block font-medium mb-1">CNPJ da empresa</label>
+                        <input
+                            type="text"
+                            inputMode="numeric"
+                            maxLength={14}
+                            placeholder="Digite o CNPJ da empresa (somente números)"
+                            value={CNPJ}
+                            onChange={e => {
+                                const onlyNumbers = e.target.value.replace(/\D/g, "");
+                                setCNPJ(onlyNumbers.slice(0, 14));
+                            }}
                             className="w-full border p-2 rounded"
                         />
                     </div>
@@ -102,9 +132,7 @@ function CreateEmpresaGrupo(props: ModalProps) {
                         CRIAR
                     </DefaultButton>
                 </div>
-
             </div>
-
         </dialog>
     );
 }
