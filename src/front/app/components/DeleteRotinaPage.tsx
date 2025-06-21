@@ -39,7 +39,6 @@ export default function Delete({ openModal, closeModal, onDelete, nomeRotina }: 
             aria-label="Fechar"
             type="button"
           >
-            <CloseIcon />
           </button>
         </div>
         <p className="pt-5 mb-6 text-center">

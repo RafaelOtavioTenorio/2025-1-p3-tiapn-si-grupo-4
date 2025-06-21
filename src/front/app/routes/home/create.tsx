@@ -7,8 +7,10 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import DeleteRotina from "~/components/DeleteRotinaPage";
 import ItemRegisterModal from "~/components/ItemRegister";
 import { type NovoItem } from "~/components/ItemRegister";
+import { type NovoItem } from "~/components/ItemRegister";
 
 interface Rotina {
+  id: number;         // Adicionado para identificar rotina
   id: number;         // Adicionado para identificar rotina
   nome: string;
   tarefas: number;
@@ -31,6 +33,40 @@ export default function RoutinesPage() {
   const [itemRegisterOpen, setItemRegisterOpen] = useState(false);
   const [deleteRotinaOpen, setDeleteRotinaOpen] = useState(false);
   const [resultadoModalRegistroItem, setResultadoModalRegistroItem] = useState<NovoItem>();
+
+  const baseUrl = import.meta.env.VITE_BASE_URL;
+
+  const fetchRotinas = async () => {
+    try {
+      const resRotinas = await fetch(`${baseUrl}/RotinaTemplate`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`
+        }
+      });
+
+      const resTarefas = await fetch(`${baseUrl}/tarefa-template`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`
+        }
+      });
+
+      if (resRotinas.ok && resTarefas.ok) {
+        const rotinasData = await resRotinas.json();
+        const tarefasData = await resTarefas.json();
+
+        const rotinasComContagem = rotinasData.map((rotina: any) => {
+          const tarefasDaRotina = tarefasData.filter((t: any) => t.rotina?.id === rotina.id);
+          const insumos = tarefasDaRotina.reduce((total: number, t: any) => total + (t.insumos?.length || 0), 0); // depende de como insumos vêm
+          return {
+            ...rotina,
+            tarefas: tarefasDaRotina.length,
+            insumos,
+          };
+        });
+
+        setRotinas(rotinasComContagem);
+      } else {
+        console.error("Erro ao buscar rotinas/tarefas");
 
   const baseUrl = import.meta.env.VITE_BASE_URL;
 
@@ -106,7 +142,51 @@ export default function RoutinesPage() {
     } catch (error) {
       console.error("Erro de rede ao buscar tarefas:", error);
       setItens([]);
+    } catch (error) {
+      console.error("Erro de rede ao buscar rotinas/tarefas:", error);
     }
+  };
+
+
+  const fetchItens = async (rotinaId: number) => {
+    try {
+      console.log("Buscando tarefas da rotina:", rotinaId);
+
+      const res = await fetch(`${baseUrl}/tarefa-template`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`
+        }
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        console.log("Todas as tarefas retornadas:", data);
+
+
+        const tarefasFiltradas = data
+          .filter((t: any) => Number(t.rotina?.id) === Number(rotinaId))
+          .map((tarefa: any) => ({
+            id: tarefa.id,
+            nome: tarefa.nome,
+            concluido: tarefa.ativo === false ? true : false,
+          }));
+
+
+        console.log("Tarefas filtradas:", tarefasFiltradas);
+
+        setItens(tarefasFiltradas);
+      } else {
+        console.error("Erro ao buscar tarefas:", await res.text());
+        setItens([]);
+      }
+    } catch (error) {
+      console.error("Erro de rede ao buscar tarefas:", error);
+      setItens([]);
+    }
+  };
+
+
+  // Quando seleciona uma rotina, busca as tarefas dela
   };
 
 
@@ -114,9 +194,55 @@ export default function RoutinesPage() {
   useEffect(() => {
     if (selectedRotina) {
       fetchItens(selectedRotina.id);
+    if (selectedRotina) {
+      fetchItens(selectedRotina.id);
     } else {
       setItens([]);
+      setItens([]);
     }
+  }, [selectedRotina]);
+
+  useEffect(() => {
+    fetchRotinas();
+  }, [createModal]);
+
+  const handleItemRegister = async (item: NovoItem) => {
+    try {
+      setResultadoModalRegistroItem(item);
+      console.log("Item criado:", item);
+
+      if (selectedRotina) {
+        // Atualiza tarefas visíveis
+        await fetchItens(selectedRotina.id);
+
+        // Atualiza os contadores da rotina atual no array de rotinas
+        setRotinas(prev =>
+          prev.map(r => {
+            if (r.id === selectedRotina.id) {
+              return {
+                ...r,
+                tarefas: item.tipo === 'Tarefa' ? r.tarefas + 1 : r.tarefas,
+                insumos: item.tipo === 'Insumo' ? r.insumos + 1 : r.insumos,
+              };
+            }
+            return r;
+          })
+        );
+
+        // Atualiza a rotina selecionada (pra refletir a nova contagem no header)
+        setSelectedRotina(prev => {
+          if (!prev) return null;
+          return {
+            ...prev,
+            tarefas: item.tipo === 'Tarefa' ? prev.tarefas + 1 : prev.tarefas,
+            insumos: item.tipo === 'Insumo' ? prev.insumos + 1 : prev.insumos,
+          };
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   }, [selectedRotina]);
 
   useEffect(() => {
@@ -173,10 +299,16 @@ export default function RoutinesPage() {
           onCreate={() => { }}
           result={undefined}
         />
+        <CreateRoutine
+          closeModal={() => setModal(false)}
+          openModal={createModal}
+          onCreate={() => { }}
+          result={undefined}
+        />
       </div>
 
       {/* Conteúdo principal */}
-      <div className="flex flex-row gap-6 w-full max-w-[1200px] mx-auto flex-1">
+      <div className="flex flex-row gap-6 w-full mx-auto flex-1">
         {/* Coluna esquerda: busca + lista */}
         <div className="flex flex-col h-full flex-1 pr-2">
           {/* Busca */}
@@ -192,9 +324,9 @@ export default function RoutinesPage() {
           <div className="flex flex-col gap-4 overflow-y-auto mt-4 flex-grow">
             {rotinas.map((rotina, i) => (
               <div
-                key={rotina.id}
+                key={i}
                 onClick={() => setSelectedRotina(rotina)}
-                className={`bg-white rounded-lg p-4 shadow-md hover:bg-gray-100 cursor-pointer ${selectedRotina?.id === rotina.id ? "bg-blue-100" : ""
+                className={`bg-white rounded-lg p-4 shadow-md hover:bg-gray-100 cursor-pointer ${selectedRotina?.nome === rotina.nome ? "bg-blue-100" : ""
                   }`}
               >
                 <h2 className="font-semibold">{rotina.nome}</h2>
@@ -203,12 +335,11 @@ export default function RoutinesPage() {
                 </p>
               </div>
             ))}
-
           </div>
         </div>
 
-        {/* Coluna direita: detalhes da rotina */}
-        <div className="bg-white flex-1 rounded-lg p-6 shadow-md self-start">
+        {/* Detalhes da Rotina */}
+        <div className="h-fit bg-white flex-1 rounded-lg p-6 shadow-md">
           {selectedRotina ? (
             <>
               <div className="flex justify-between items-start">
@@ -223,6 +354,7 @@ export default function RoutinesPage() {
                   openModal={deleteRotinaOpen}
                   closeModal={() => setDeleteRotinaOpen(false)}
                   onDelete={() => { }}
+                  onDelete={() => { }}
                 />
               </div>
 
@@ -233,12 +365,16 @@ export default function RoutinesPage() {
                 onCreate={handleItemRegister}
                 result={resultadoModalRegistroItem}
                 idRotina={selectedRotina.id}  // <-- Passa id da rotina aqui
+                idRotina={selectedRotina.id}  // <-- Passa id da rotina aqui
               />
 
               <ul className="mt-6 space-y-3">
                 {itens.map((tarefa) => (
                   <li key={tarefa.id} className="flex justify-between items-center">
+                {itens.map((tarefa) => (
+                  <li key={tarefa.id} className="flex justify-between items-center">
                     <div className="flex items-center gap-2">
+                      <input type="checkbox" checked={tarefa.concluido} readOnly />
                       <input type="checkbox" checked={tarefa.concluido} readOnly />
                       <span>{tarefa.nome}</span>
                     </div>
