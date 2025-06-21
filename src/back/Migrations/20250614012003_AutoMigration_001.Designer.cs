@@ -12,7 +12,7 @@ using back.Entities;
 namespace back.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20250613141731_AutoMigration_001")]
+    [Migration("20250614012003_AutoMigration_001")]
     partial class AutoMigration_001
     {
         /// <inheritdoc />

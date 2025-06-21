@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import CreateRoutine from "~/components/CreateRoutine";
+import { type NovoItem } from "~/components/ItemRegister";
+import CreateRoutine, { type NovaRotina } from "~/components/CreateRoutine";
 import Title from "~/components/Title";
 import DefaultButton from "~/components/DefaultButton";
 import SearchInput from "~/components/SearchInput";
@@ -162,7 +163,7 @@ export default function RoutinesPage() {
   };
 
   return (
-    <div className="flex flex-col p-8 bg-gray-200 min-h-screen">
+    <div className="flex flex-col p-8 bg-gray-200 h-screen">
       {/* Título e botão de criar rotina */}
       <div className="flex justify-between items-center mb-6">
         <Title>Minhas Rotinas</Title>
@@ -175,34 +176,40 @@ export default function RoutinesPage() {
         />
       </div>
 
-      {/* Campo de busca */}
-      <SearchInput
-        value={searchText}
-        onChange={(e: any) => setSearchText(e.target.value)}
-        rotinas={rotinas}
-      />
-
       {/* Conteúdo principal */}
-      <div className="flex flex-row p-4 gap-6 w-full max-w-[1200px] mx-auto">
-        {/* Lista de Rotinas */}
-        <div className="flex flex-col gap-4 flex-1 max-h-[75vh] overflow-y-auto pr-2">
-          {rotinas.map((rotina, i) => (
-            <div
-              key={rotina.id}
-              onClick={() => setSelectedRotina(rotina)}
-              className={`bg-white rounded-lg p-4 shadow-md hover:bg-gray-100 cursor-pointer ${selectedRotina?.id === rotina.id ? "bg-blue-100" : ""
+      <div className="flex flex-row gap-6 w-full max-w-[1200px] mx-auto flex-1">
+        {/* Coluna esquerda: busca + lista */}
+        <div className="flex flex-col h-full flex-1 pr-2">
+          {/* Busca */}
+          <div>
+            <SearchInput
+              value={searchText}
+              onChange={(e: any) => setSearchText(e.target.value)}
+              rotinas={rotinas}
+            />
+          </div>
+
+          {/* Lista de rotinas */}
+      <div className="flex flex-col gap-4 overflow-y-auto mt-4 flex-grow">
+            {rotinas.map((rotina, i) => (
+              <div
+                key={i}
+                onClick={() => setSelectedRotina(rotina)}
+                className={`bg-white rounded-lg p-4 shadow-md hover:bg-gray-100 cursor-pointer ${
+                  selectedRotina?.nome === rotina.nome ? "bg-blue-100" : ""
                 }`}
-            >
-              <h2 className="font-semibold">{rotina.nome}</h2>
-              <p className="text-sm text-gray-600">
-                {rotina.tarefas} tarefas • {rotina.insumos} insumos
-              </p>
-            </div>
-          ))}
+              >
+                <h2 className="font-semibold">{rotina.nome}</h2>
+                <p className="text-sm text-gray-600">
+                  {rotina.tarefas} tarefas • {rotina.insumos} insumos
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Detalhes da Rotina */}
-        <div className="bg-white flex-1 rounded-lg p-6 shadow-md">
+        {/* Coluna direita: detalhes da rotina */}
+      <div className="bg-white flex-1 rounded-lg p-6 shadow-md self-start">
           {selectedRotina ? (
             <>
               <div className="flex justify-between items-start">
