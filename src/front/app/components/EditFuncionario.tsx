@@ -3,7 +3,6 @@ import DefaultButton from "./DefaultButton";
 
 export interface EditFuncionarioData {
     nome: string;
-    ocupacao: string;
     cpf: string;
     empresa: string;
 }
@@ -20,14 +19,12 @@ export default function EditFuncionario(props: EditFuncionarioProps) {
     const ref = useRef<HTMLDialogElement>(null);
     const [nome, setNome] = useState('');
     const [empresa, setEmpresa] = useState('');
-    const [ocupacao, setOcupacao] = useState('');
     const [cpf, setCpf] = useState('');
 
     useEffect(() => {
         if (props.openModal && props.funcionario) {
             setNome(props.funcionario.nome);
             setEmpresa(props.funcionario.empresa);
-            setOcupacao(props.funcionario.ocupacao);
             setCpf(props.funcionario.cpf);
             ref.current?.showModal();
         } else {
@@ -39,14 +36,12 @@ export default function EditFuncionario(props: EditFuncionarioProps) {
         if (
             nome.trim() === "" ||
             empresa.trim() === "" ||
-            ocupacao.trim() === "" ||
             cpf.trim() === ""
         ) return;
 
         props.onEdit({
             nome: nome.trim(),
             empresa: empresa.trim(),
-            ocupacao: ocupacao.trim(),
             cpf: cpf.trim(),
         });
         props.closeModal();
@@ -86,15 +81,6 @@ export default function EditFuncionario(props: EditFuncionarioProps) {
                                 <option key={idx} value={nome}>{nome}</option>
                             ))}
                         </select>
-                    </div>
-                    <div className="col-span-5 mb-4">
-                        <label className="block font-medium mb-1">Cargo</label>
-                        <input
-                            type="text"
-                            value={ocupacao}
-                            onChange={e => setOcupacao(e.target.value)}
-                            className="w-full border p-2 rounded"
-                        />
                     </div>
                     <div className="col-span-5 mb-4">
                         <label className="block font-medium mb-1">CPF</label>

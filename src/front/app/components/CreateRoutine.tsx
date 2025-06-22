@@ -49,7 +49,7 @@ function CreateRoutine(props: ModalProps) {
                     prioridade: Number(novaRotina.prioridade) || 0,
                     descricao: novaRotina.descricao || '',
                     idEmpresa: idEmpresa,
-                    ativo: true,  // <-- aqui!
+                    ativo: true,
                 }),
             });
 

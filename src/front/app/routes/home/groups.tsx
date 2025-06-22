@@ -6,36 +6,29 @@ import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import Edit from '@mui/icons-material/EditNoteOutlined';
 import CreateEmpresaGrupo from "~/components/CreateEmpresaGrupo";
 import CriarFuncionario from "~/components/CriarFuncionario";
-import EditFuncionario from "~/components/EditFuncionario";
+import EditFuncionario, { type EditFuncionarioData } from "~/components/EditFuncionario";
+
 
 interface GroupMember {
   nome: string;
-  ocupacao: string;
-  identificador: string;
+  identificador: string; // CPF
 }
 
 interface MemberCategory {
-  title: string;
+  id: number;
+  title: string; // nome da empresa
   members: GroupMember[];
-}
-
-interface EditFuncionarioData {
-  nome: string;
-  ocupacao: string;
-  cpf: string;
-  empresa: string;
 }
 
 interface NovoFuncionario {
   nome: string;
   Empresa: string;
-  ocupacao: string;
   cpf: string;
 }
 
 export default function GroupsPage() {
   const [memberCategories, setMemberCategories] = useState<MemberCategory[]>([]);
-  const [selectedRole, setSelectedRole] = useState("CARGO");
+  const [selectedRole, setSelectedRole] = useState(""); // mostra todas por padrão
   const [searchText, setSearchText] = useState("");
   const [createGroupModalOpen, setCreateGroupModalOpen] = useState(false);
   const [criarFuncionarioOpen, setCriarFuncionarioOpen] = useState(false);
@@ -44,66 +37,128 @@ export default function GroupsPage() {
   const [editFuncionarioData, setEditFuncionarioData] = useState<EditFuncionarioData | null>(null);
   const [editFuncionarioCategory, setEditFuncionarioCategory] = useState<number | null>(null);
   const [editFuncionarioIndex, setEditFuncionarioIndex] = useState<number | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   const baseUrl = import.meta.env.VITE_BASE_URL;
 
+  // Função para buscar funcionários de uma empresa pelo id
+  const fetchFuncionariosPorEmpresa = async (empresaId: number): Promise<GroupMember[]> => {
+    try {
+      const res = await fetch(`${baseUrl}/empresa/${empresaId}/funcionarios`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
+      });
+      if (!res.ok) {
+        console.error(`Erro ao buscar funcionários da empresa ${empresaId}`, await res.text());
+        return [];
+      }
+      const funcionarios = await res.json();
+      // Mapear para GroupMember
+      return funcionarios.map((f: any) => ({
+        nome: f.nome,
+        ocupacao: "", // Sem cargo atualmente
+        identificador: f.cpf,
+      }));
+    } catch (error) {
+      console.error("Erro na requisição de funcionários:", error);
+      return [];
+    }
+  };
+
+  // Busca empresas e para cada empresa busca seus funcionários
   const fetchEmpresas = async () => {
     try {
       const res = await fetch(`${baseUrl}/empresa`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
       });
-
-      if (res.ok) {
-        const data = await res.json();
-        const mapped: MemberCategory[] = data.map((empresa: any) => ({
-          title: empresa.nome,
-          members: empresa.funcionarios?.map((f: any) => ({
-            nome: f.nome,
-            ocupacao: f.ocupacao,
-            identificador: f.cpf
-          })) || []
-        }));
-        setMemberCategories(mapped);
-      } else {
+      if (!res.ok) {
         console.error("Erro ao buscar empresas:", await res.text());
+        return;
       }
+      const data = await res.json();
+
+      // Para cada empresa, pegar os funcionários
+      const empresasComFuncionarios = await Promise.all(
+        data.map(async (empresa: any) => {
+          const funcionarios = await fetchFuncionariosPorEmpresa(empresa.id);
+          return {
+            id: empresa.id,
+            title: empresa.nome,
+            members: funcionarios,
+          } as MemberCategory;
+        })
+      );
+
+      setMemberCategories(empresasComFuncionarios);
     } catch (error) {
       console.error("Erro de rede ao buscar empresas:", error);
     }
   };
 
   const handleCreateGroup = () => {
-    fetchEmpresas(); // Refaz o fetch ao criar grupo
+    fetchEmpresas();
     setCreateGroupModalOpen(false);
   };
 
-  const handleCreateFuncionario = (novoFuncionario: NovoFuncionario) => {
+  const handleCreateFuncionario = async (novoFuncionario: NovoFuncionario) => {
     if (selectedCategoryIndex === null) return;
-    setMemberCategories(prev =>
-      prev.map((cat, idx) =>
-        idx === selectedCategoryIndex
-          ? {
-              ...cat,
-              members: [
-                ...cat.members,
-                {
-                  nome: novoFuncionario.nome,
-                  ocupacao: novoFuncionario.ocupacao,
-                  identificador: novoFuncionario.cpf
-                }
-              ]
-            }
-          : cat
-      )
-    );
-    setCriarFuncionarioOpen(false);
+    const empresa = memberCategories[selectedCategoryIndex];
+    const empresaId = empresa?.id;
+    if (!empresaId) return;
+
+    try {
+      // Busca todos usuários para encontrar o id pelo cpf
+      const resUsers = await fetch(`${baseUrl}/user`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
+      });
+
+      if (!resUsers.ok) throw new Error("Erro ao buscar usuários");
+      const users = await resUsers.json();
+
+      const usuario = users.find((u: any) => u.cpf === novoFuncionario.cpf);
+      if (!usuario) {
+        alert("Usuário com este CPF não encontrado.");
+        return;
+      }
+
+      const payload = {
+        usuarioId: usuario.id,
+        empresaId: empresaId,
+        nome: novoFuncionario.nome,
+        cpf: novoFuncionario.cpf,
+        nivelAcesso: 1,
+      };
+
+      const res = await fetch(`${baseUrl}/empresa/${empresaId}/funcionarios`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (res.ok) {
+        // Atualiza a lista de empresas e funcionários
+        await fetchEmpresas();
+
+        setCriarFuncionarioOpen(false);
+        setSuccessMessage("Usuário cadastrado com sucesso!");
+        setTimeout(() => setSuccessMessage(null), 3000);
+      } else {
+        const errorText = await res.text();
+        console.error("Erro ao cadastrar funcionário:", errorText);
+        alert("Erro ao cadastrar funcionário: " + errorText);
+      }
+    } catch (error) {
+      console.error("Erro na criação de funcionário:", error);
+      alert("Erro inesperado na criação do funcionário.");
+    }
   };
 
   const handleEditFuncionarioClick = (catIdx: number, memberIdx: number) => {
     const member = memberCategories[catIdx].members[memberIdx];
     setEditFuncionarioData({
       nome: member.nome,
-      ocupacao: member.ocupacao,
       cpf: member.identificador,
       empresa: memberCategories[catIdx].title,
     });
@@ -112,28 +167,29 @@ export default function GroupsPage() {
     setEditFuncionarioOpen(true);
   };
 
+
   const handleEditFuncionario = (func: EditFuncionarioData) => {
     if (editFuncionarioCategory === null || editFuncionarioIndex === null) return;
     setMemberCategories(prev =>
       prev.map((cat, catIdx) =>
         catIdx === editFuncionarioCategory
           ? {
-              ...cat,
-              members: cat.members.map((m, mIdx) =>
-                mIdx === editFuncionarioIndex
-                  ? {
-                      nome: func.nome,
-                      ocupacao: func.ocupacao,
-                      identificador: func.cpf
-                    }
-                  : m
-              )
-            }
+            ...cat,
+            members: cat.members.map((m, mIdx) =>
+              mIdx === editFuncionarioIndex
+                ? {
+                  nome: func.nome,
+                  identificador: func.cpf,
+                }
+                : m
+            ),
+          }
           : cat
       )
     );
     setEditFuncionarioOpen(false);
   };
+
 
   useEffect(() => {
     fetchEmpresas();
@@ -168,41 +224,58 @@ export default function GroupsPage() {
             >
               <option value="">Todas as empresas</option>
               {memberCategories.map((cat) => (
-                <option key={cat.title} value={cat.title}>{cat.title}</option>
+                <option key={cat.id} value={cat.title}>
+                  {cat.title}
+                </option>
               ))}
             </select>
           </div>
         </div>
       </div>
 
+      {/* Mensagem de sucesso */}
+      {successMessage && (
+        <div className="bg-green-200 text-green-800 p-2 rounded mb-4 text-center">
+          {successMessage}
+        </div>
+      )}
+
       <div className="mb-5 pb-8 flex flex-col gap-6 w-full mx-auto overflow-y-auto hide-scrollbar">
         {memberCategories
-          .filter(category => !selectedRole || category.title === selectedRole)
+          .filter((category) => !selectedRole || category.title === selectedRole)
           .map((category, index) => {
-            const filteredMembers = category.members.filter(member =>
-              member.nome.toLowerCase().includes(searchText.toLowerCase()) ||
-              member.ocupacao.toLowerCase().includes(searchText.toLowerCase()) ||
-              member.identificador.toLowerCase().includes(searchText.toLowerCase())
+            const filteredMembers = category.members.filter(
+              (member) =>
+                member.nome.toLowerCase().includes(searchText.toLowerCase()) ||
+                member.identificador.toLowerCase().includes(searchText.toLowerCase())
             );
 
-            if (searchText.trim() !== "" && filteredMembers.length === 0) return null;
-
             return (
-              <section key={index} className="bg-white rounded-lg p-6 shadow-md transition-all duration-300">
+              <section
+                key={category.id}
+                className="bg-white rounded-lg p-6 shadow-md transition-all duration-300"
+              >
                 <h2 className="text-xl font-bold mb-4 pb-2">{category.title}</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                   {filteredMembers.map((member, i) => (
-                    <div key={i} className="bg-gray-200 rounded-lg p-4 shadow-xl border border-gray-300 flex flex-col justify-between items-start">
+                    <div
+                      key={i}
+                      className="bg-gray-200 rounded-lg p-4 shadow-xl border border-gray-300 flex flex-col justify-between items-start"
+                    >
                       <div>
                         <h3 className="font-semibold text-gray-800 py-2">{member.nome}</h3>
-                        <p className="text-sm text-gray-600 py-2">{member.ocupacao}</p>
+                        {/* <p className="text-sm text-gray-600 py-2">{member.ocupacao}</p> Remover */}
                       </div>
                       <div className="mt-4 flex justify-between w-full">
                         <p className="text-xs text-gray-500">{member.identificador}</p>
-                        <Edit className="text-gray-700 hover:text-black cursor-pointer" onClick={() => handleEditFuncionarioClick(index, i)} />
+                        <Edit
+                          className="text-gray-700 hover:text-black cursor-pointer"
+                          onClick={() => handleEditFuncionarioClick(index, i)}
+                        />
                       </div>
                     </div>
                   ))}
+
                   <div
                     className="bg-gray-200 rounded-lg p-4 flex justify-center items-center cursor-pointer hover:bg-gray-300 transition-colors h-full"
                     onClick={() => {
@@ -218,23 +291,23 @@ export default function GroupsPage() {
               </section>
             );
           })}
-
-        <CriarFuncionario
-          openModal={criarFuncionarioOpen}
-          closeModal={() => setCriarFuncionarioOpen(false)}
-          onCreate={handleCreateFuncionario}
-          result={undefined}
-          empresas={memberCategories.map(cat => cat.title)}
-        />
-
-        <EditFuncionario
-          openModal={editFuncionarioOpen}
-          closeModal={() => setEditFuncionarioOpen(false)}
-          onEdit={handleEditFuncionario}
-          funcionario={editFuncionarioData}
-          empresas={memberCategories.map(cat => cat.title)}
-        />
       </div>
+
+      <CriarFuncionario
+        openModal={criarFuncionarioOpen}
+        closeModal={() => setCriarFuncionarioOpen(false)}
+        onCreate={handleCreateFuncionario}
+        result={undefined}
+        empresas={memberCategories.map((cat) => cat.title)}
+      />
+
+      <EditFuncionario
+        openModal={editFuncionarioOpen}
+        closeModal={() => setEditFuncionarioOpen(false)}
+        onEdit={handleEditFuncionario}
+        funcionario={editFuncionarioData}
+        empresas={memberCategories.map((cat) => cat.title)}
+      />
     </div>
   );
 }

@@ -1,158 +1,76 @@
 import React, { useEffect, useState } from "react";
-import UserCard from "~/components/UserCard";
-import EditUserModal from "~/components/EditUserModal";
-import type { User } from "~/types";
 
 const BACKEND_URL = import.meta.env.VITE_BASE_URL;
 
-export default function UsersPage() {
-  const [users, setUsers] = useState<User[]>([]);
-  const [selectedUser, setSelectedUser] = useState<User | null>(null);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [userData, setUserData] = useState<{ id: number; nivelAcesso: number } | null>(null);
+interface UserData {
+  id: number;
+  nome: string;
+  email: string;
+  cpf: string;
+  celular: string;
+  nivelAcesso: number;
+}
+
+const nivelAcessoLabel = (nivel: number) => {
+  switch (nivel) {
+    case 1: return "Funcionário";
+    case 2: return "Administrador";
+    case 3: return "Coordenador";
+    default: return "Desconhecido";
+  }
+};
+
+export default function UserProfilePage() {
+  const [user, setUser] = useState<UserData | null>(null);
 
   useEffect(() => {
     const userDataRaw = localStorage.getItem("userData");
-    if (userDataRaw) {
-      const parsed = JSON.parse(userDataRaw);
-      setUserData(parsed);
-    }
+    if (!userDataRaw) return;
+
+    const parsed = JSON.parse(userDataRaw);
+    fetch(`${BACKEND_URL}/user/${parsed.id}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setUser({
+          id: data.id,
+          nome: data.nome,
+          email: data.email,
+          cpf: data.cpf,
+          celular: data.celular,
+          nivelAcesso: data.nivelAcesso,
+        });
+      })
+      .catch((err) => console.error("Erro ao carregar usuário:", err));
   }, []);
 
-  useEffect(() => {
-    if (userData) {
-      fetchUsers(userData);
-    }
-  }, [userData]);
-
-  const fetchUsers = async (parsedUser: { id: number; nivelAcesso: number }) => {
-    const { id, nivelAcesso } = parsedUser;
-
-    let url = `${BACKEND_URL}/user/${id}`; // padrão
-
-    if (nivelAcesso === 3) {
-      try {
-        const empresaRes = await fetch(`${BACKEND_URL}/user/${id}/empresa`, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-          },
-        });
-
-        if (!empresaRes.ok) {
-          console.error("Erro ao buscar empresa do usuário:", await empresaRes.text());
-          return;
-        }
-
-        const empresaData = await empresaRes.json();
-        const empresaId = empresaData.empresaId;
-
-        if (!empresaId) {
-          console.error("Usuário coordenador sem empresa vinculada.");
-          return;
-        }
-
-        url = `${BACKEND_URL}/empresa/${empresaId}/funcionarios`;
-      } catch (e) {
-        console.error("Erro ao buscar empresa:", e);
-        return;
-      }
-    }
-
-    try {
-      const response = await fetch(url, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-        },
-      });
-
-      if (!response.ok) {
-        console.error("Erro ao buscar usuários:", await response.text());
-        return;
-      }
-
-      const data = await response.json();
-
-      const normalizedData = Array.isArray(data)
-        ? data.map((f: any) => ({
-            id: f.usuarioId,
-            nome: f.nome,
-            email: "", // não vem no DTO
-            cpf: f.cpf,
-            celular: "", // não vem no DTO
-            nivelAcesso: f.nivelAcesso,
-            ativo: true,
-          }))
-        : {
-            id: data.id,
-            nome: data.nome,
-            email: data.email,
-            cpf: data.cpf,
-            celular: data.celular,
-            nivelAcesso: data.nivelAcesso,
-            ativo: data.ativo,
-          };
-
-      setUsers(Array.isArray(normalizedData) ? normalizedData : [normalizedData]);
-    } catch (err) {
-      console.error("Erro geral no fetch de usuários:", err);
-    }
-  };
-
-  const handleEdit = (user: User) => {
-    setSelectedUser(user);
-    setModalOpen(true);
-  };
-
-  const handleSave = async (updatedUser: User) => {
-    await fetch(`${BACKEND_URL}/api/usuarios/${updatedUser.id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-      },
-      body: JSON.stringify(updatedUser),
-    });
-    if (userData) fetchUsers(userData);
-  };
-
-  const handleDelete = async (userId: number) => {
-    await fetch(`${BACKEND_URL}/api/usuarios/${userId}`, {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-      },
-    });
-    if (userData) fetchUsers(userData);
-  };
-
-  if (!userData) return <p>Carregando...</p>;
+  if (!user) return <p className="text-center mt-10 text-gray-600">Carregando dados do usuário...</p>;
 
   return (
-    <div className="p-4 flex flex-col items-center gap-4 bg-gray-100">
-      <h1 className="text-2xl font-bold">Usuários</h1>
+    <div className="flex justify-center items-center h-screen bg-gray-100 px-4">
+      <div className="bg-white shadow-lg rounded-2xl p-8 max-w-md w-full">
+        <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center">Perfil do Usuário</h1>
 
-      {users.map((user) => {
-        const isOwnProfile = user.id === userData.id;
-        const isCoordinator = userData.nivelAcesso === 3;
+        <div className="space-y-4">
+          <UserInfo label="Nome" value={user.nome} />
+          <UserInfo label="E-mail" value={user.email} />
+          <UserInfo label="CPF" value={user.cpf} />
+          <UserInfo label="Celular" value={user.celular || "Não informado"} />
+          <UserInfo label="Nível de Acesso" value={nivelAcessoLabel(user.nivelAcesso)} />
+        </div>
+      </div>
+    </div>
+  );
+}
 
-        return (
-          <UserCard
-            key={user.id}
-            user={user}
-            onEdit={handleEdit}
-            onDelete={handleDelete}
-            isOwnProfile={isOwnProfile}
-            isCoordinator={isCoordinator}
-          />
-        );
-      })}
-
-      <EditUserModal
-        user={selectedUser}
-        openModal={modalOpen}
-        closeModal={() => setModalOpen(false)}
-        onSave={handleSave}
-      />
+function UserInfo({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="flex flex-col">
+      <span className="text-sm text-gray-500">{label}</span>
+      <span className="text-base text-gray-800 font-medium">{value}</span>
     </div>
   );
 }
