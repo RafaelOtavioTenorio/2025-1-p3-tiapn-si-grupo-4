@@ -1,6 +1,6 @@
 cff-version: 1.3.0
 message: Please cite this software using these metadata.
-title: Coloque aqui o título do seu trabalho
+title: Routix
 authors:
   - family-names: Garcia Marques
     given-names: Bernardo 
@@ -14,8 +14,6 @@ authors:
     given-names: Rafael Otavio
   - family-names: Zocoli Silva
     given-names: Yuri
-  - name-suffix: Professor
-    affiliation: PUC Minas
     family-names: Soares Vieira de Vasconcelos
     given-names: Amália
   - name-suffix: Professora
