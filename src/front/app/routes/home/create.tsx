@@ -7,6 +7,7 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import DeleteRotina from "~/components/DeleteRotinaPage";
 import ItemRegisterModal from "~/components/ItemRegister";
 import { type NovoItem } from "~/components/ItemRegister";
+import TarefaRegister from "~/components/TarefaRegister";
 import Gear from '@mui/icons-material/Settings';
 import Add from '@mui/icons-material/AddRounded';
 import ArrowDown from '@mui/icons-material/KeyboardArrowDownOutlined';
@@ -38,6 +39,7 @@ export default function RoutinesPage() {
   const [createModal, setModal] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [itemRegisterOpen, setItemRegisterOpen] = useState(false);
+  const [tarefaCreateOpen, setTarefaCreateOpen] = useState(false);
   const [deleteRotinaOpen, setDeleteRotinaOpen] = useState(false);
   const [resultadoModalRegistroItem, setResultadoModalRegistroItem] = useState<NovoItem>();
 
@@ -235,10 +237,12 @@ export default function RoutinesPage() {
                 />
               </div>
 
-              <DefaultButton onClick={() => setItemRegisterOpen(true)}>ADICIONAR TAREFA</DefaultButton>
-              <ItemRegisterModal
-                closeModal={() => setItemRegisterOpen(false)}
-                openModal={itemRegisterOpen}
+              <DefaultButton
+                onClick={() => setTarefaCreateOpen(true)
+                }> ADICIONAR TAREFA</DefaultButton>
+              <TarefaRegister
+                closeModal={() => setTarefaCreateOpen(false)}
+                openModal={tarefaCreateOpen}
                 onCreate={handleItemRegister}
                 result={resultadoModalRegistroItem}
                 idRotina={selectedRotina.id}
@@ -263,7 +267,7 @@ export default function RoutinesPage() {
                         }
                         aria-label={expanded[tarefa.id] ? "Recolher subitens" : "Expandir subitens"}
                       >
-                        <ArrowDown className={`transition-transform ${expanded[tarefa.id] ? "rotate-180" : ""}`}/>
+                        <ArrowDown className={`transition-transform ${expanded[tarefa.id] ? "rotate-180" : ""}`} />
                       </button>
                     )}
                     {/* Sublista expandida */}
@@ -283,7 +287,7 @@ export default function RoutinesPage() {
                       </div>
                     )}
                     <div className="flex">
-                      <Add onClick={() => setItemRegisterOpen(true)} className="border border-gray-700 hover:bg-gray-300 rounded-full mx-1" />
+                      <Add onClick={() => {setItemRegisterOpen(true) }} className="border border-gray-700 hover:bg-gray-300 rounded-full mx-1" />
                       <ItemRegisterModal
                         closeModal={() => setItemRegisterOpen(false)}
                         openModal={itemRegisterOpen}
