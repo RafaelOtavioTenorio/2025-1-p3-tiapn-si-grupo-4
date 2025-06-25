@@ -68,7 +68,7 @@ export default function Delete({ openModal, closeModal, onDelete, nomeRotina, id
           Esta ação não poderá ser desfeita.
         </p>
         <div className="flex w-full justify-center gap-4">
-          <DefaultButton buttonType='error' onClick={onDelete}>
+          <DefaultButton onClick={onDelete}>
             DELETAR
           </DefaultButton>
         </div>
