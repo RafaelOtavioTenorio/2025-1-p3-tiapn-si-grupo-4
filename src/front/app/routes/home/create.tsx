@@ -231,13 +231,7 @@ export default function RoutinesPage() {
                 <DeleteRotina
                   openModal={deleteRotinaOpen}
                   closeModal={() => setDeleteRotinaOpen(false)}
-                  onDelete={() => {
-                    setDeleteRotinaOpen(false);
-                    setRotinas(prev => prev.filter(r => r.id !== selectedRotina?.id));
-                    setSelectedRotina(null);
-                  }}
-                  idRotina={selectedRotina.id}
-                  nomeRotina={selectedRotina.nome}
+                  onDelete={() => setModal(false)} // pode atualizar lista aqui
                 />
               </div>
 
