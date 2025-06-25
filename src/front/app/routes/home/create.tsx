@@ -7,6 +7,9 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import DeleteRotina from "~/components/DeleteRotinaPage";
 import ItemRegisterModal from "~/components/ItemRegister";
 import { type NovoItem } from "~/components/ItemRegister";
+import Gear from '@mui/icons-material/Settings';
+import Add from '@mui/icons-material/AddRounded';
+import ArrowDown from '@mui/icons-material/KeyboardArrowDownOutlined';
 
 interface Rotina {
   id: number;
@@ -31,6 +34,7 @@ export default function RoutinesPage() {
   const [itens, setItens] = useState<Item[]>([]);
   const [selectedRotina, setSelectedRotina] = useState<Rotina | null>(null);
 
+  const [expanded, setExpanded] = useState<{ [id: number]: boolean }>({});
   const [createModal, setModal] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [itemRegisterOpen, setItemRegisterOpen] = useState(false);
@@ -253,7 +257,49 @@ export default function RoutinesPage() {
                       <input type="checkbox" checked={tarefa.concluido} readOnly />
                       <span>{tarefa.nome}</span>
                     </div>
-                    <span>⚙️</span>
+                    {/* Botão de expandir/recolher se houver subitens */}
+                    {tarefa.subitens && tarefa.subitens.length > 0 && (
+                      <button
+                        className="ml-2"
+                        onClick={() =>
+                          setExpanded((prev) => ({
+                            ...prev,
+                            [tarefa.id]: !prev[tarefa.id],
+                          }))
+                        }
+                        aria-label={expanded[tarefa.id] ? "Recolher subitens" : "Expandir subitens"}
+                      >
+                        <ArrowDown className={`transition-transform ${expanded[tarefa.id] ? "rotate-180" : ""}`}/>
+                      </button>
+                    )}
+                    {/* Sublista expandida */}
+                    {tarefa.subitens && tarefa.subitens.length > 0 && expanded[tarefa.id] && ( //Adicione referencia correta de subtarefa aqui
+                      <div className="flex items-start">
+                        <div className="flex flex-col items-center mr-2">
+                          <div className="w-px bg-black h-full min-h-[40px]" />
+                        </div>
+                        <ul className="flex flex-col gap-1">
+                          {tarefa.subitens.map((sub, idx) => (
+                            <li key={idx} className="flex items-center text-xs text-gray-600 pl-2">
+                              <input type="checkbox" checked={sub.concluido} readOnly className="mr-2" />
+                              {sub.nome}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                    <div className="flex">
+                      <Add onClick={() => setItemRegisterOpen(true)} className="border border-gray-700 hover:bg-gray-300 rounded-full mx-1" />
+                      <ItemRegisterModal
+                        closeModal={() => setItemRegisterOpen(false)}
+                        openModal={itemRegisterOpen}
+                        onCreate={handleItemRegister}
+                        result={resultadoModalRegistroItem}
+                        idRotina={selectedRotina.id}
+                      />
+                      <Gear className="border border-gray-700 hover:bg-gray-300 rounded-sm mx-1" />
+                      {/*Adicionar modal de editar Tarefa ou insumo*/}
+                    </div>
                   </li>
                 ))}
               </ul>
