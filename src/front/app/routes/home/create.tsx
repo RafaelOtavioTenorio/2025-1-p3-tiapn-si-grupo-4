@@ -201,9 +201,8 @@ export default function RoutinesPage() {
               <div
                 key={i}
                 onClick={() => setSelectedRotina(rotina)}
-                className={`bg-white rounded-lg p-4 shadow-md hover:bg-gray-100 cursor-pointer ${
-                  selectedRotina?.nome === rotina.nome ? "bg-blue-100" : ""
-                }`}
+                className={`bg-white rounded-lg p-4 shadow-md hover:bg-gray-100 cursor-pointer ${selectedRotina?.nome === rotina.nome ? "bg-blue-100" : ""
+                  }`}
               >
                 <h2 className="font-semibold">{rotina.nome}</h2>
                 <p className="text-sm text-gray-600">
@@ -228,7 +227,13 @@ export default function RoutinesPage() {
                 <DeleteRotina
                   openModal={deleteRotinaOpen}
                   closeModal={() => setDeleteRotinaOpen(false)}
-                  onDelete={() => setModal(false)} // pode atualizar lista aqui
+                  onDelete={() => {
+                    setDeleteRotinaOpen(false);
+                    setRotinas(prev => prev.filter(r => r.id !== selectedRotina?.id));
+                    setSelectedRotina(null);
+                  }}
+                  idRotina={selectedRotina.id}
+                  nomeRotina={selectedRotina.nome}
                 />
               </div>
 

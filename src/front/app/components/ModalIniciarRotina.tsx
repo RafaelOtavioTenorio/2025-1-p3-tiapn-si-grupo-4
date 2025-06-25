@@ -7,6 +7,7 @@ interface RotinaTemplate {
   id: number;
   nome: string;
   descricao: string;
+  prioridade: number;
 }
 
 interface ModalIniciarRotinaProps {
@@ -57,6 +58,7 @@ export default function ModalIniciarRotina({
         idRotinaTemplate: selecionada.id,
         nome: selecionada.nome,
         descricao: selecionada.descricao,
+        prioridade: selecionada.prioridade,
       }),
     });
 

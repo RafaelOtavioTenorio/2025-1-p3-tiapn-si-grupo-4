@@ -110,21 +110,7 @@ export default function RoutinesPage() {
               />
             </div>
 
-            <select
-              value={categoria1}
-              onChange={(e) => setCategoria1(e.target.value)}
-              className="w-2/5 border ml-8 p-2 rounded"
-            >
-              <option value="">Selecione Categoria 1</option>
-            </select>
-
-            <select
-              value={categoria2}
-              onChange={(e) => setCategoria2(e.target.value)}
-              className="w-2/5 border ml-8 p-2 rounded"
-            >
-              <option value="">Selecione Categoria 2</option>
-            </select>
+            
           </div>
 
           <div className="flex justify-end h-16">
