@@ -21,7 +21,7 @@ A fonte tipográfica adotada foi Inter, selecionada por sua legibilidade, estét
 
 ## Logo
 
-![Logo](images/routixLogo.png "Logo Routix")
+![Logo](images/routixLogo.jpeg "Logo Routix")
 
 O ícone foi desenhado para refletir o objetivo da aplicação, tendo um aspecto mais minimalista e simples representando o nome e o foco do sistema em gerenciar rotinas. Ademais, junto a representção do lápis na logo, ela representa a funcionalidade principal da aplicação: organizar, padronizar e otimizar rotinas empresariais.
 
