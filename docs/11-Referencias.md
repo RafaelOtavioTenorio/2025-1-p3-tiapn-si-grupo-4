@@ -1,22 +1,13 @@
 # Referências
 
-Associação Diabetes Brasil. Diabetes Brasil, Acesso em: https://diabetes.org.br/, Acesso em: 12 mar. 2025
+* BENYON, D. **Interação humano-computador**. 2. ed. São Paulo: Pearson Prentice Hall, 2011.
 
-Benyon, D. Interac¸ao humano-computador , 2ª edição, Pearson Prentice Hall, 2011
+* BOULIC, R.; RENAULT, O. 3D hierarchies for animation. *In*: MAGNENAT-THALMANN, N.; THALMANN, D. (Org.). **New Trends in Animation and Visualization**. [S. l.]: John Wiley & Sons, 1991. p. [não informado].
 
-Boulic, R., Renault, O. 3D hierarchies for animation, In: N. Magnenat-Thalmann, D. Thalmann (Eds.), New Trends in Animation and Visualization, John Wiley & Sons Ltd, 1991
+* CORMEN, T. H. et al. **Algoritmos**: teoria e prática. 4. ed. Rio de Janeiro: GEN LTC, 2024.
 
-Canal de vídeo. Como calcular a dose de insulina, Acesso em: https://youtu.be/Dwuwkg9crc?si=f7MAYRS-CIi7kqJO, Acesso em: 12 mar. 2025
+* ELMASRI, R.; NAVATHE, S. **Sistemas de banco de dados**. 7. ed. São Paulo: Pearson, 2019.
 
-Cormen, T.H., Leiserson, C.E., Rivest, R.L., Stein, C. Algoritmos: teoria e prática , 4ª edic¸ao,GEN LTC, 2024
+* ORACLE BRASIL. **10 Riscos e Soluções Comuns da Planilha para as Empresas**. Disponível em: <https://www.oracle.com/br/business-analytics/spreadsheet-risks/>. Acesso em: 4 jun. 2025.
 
-Elmasri, R., Navathe, S. Sistemas de banco de dados, 7ª edic¸ao, Pearson, 2019 
-
-International Diabetes Federation. Diabetes Atlas, 10ª edic¸ao, Acesso em: https://diabetesatlas.org, Acesso em: 12 mar. 2025
-
-Oracle Brasil, 10 Riscos e Soluções Comuns da Planilha para as Empresas, Acesso em: https://www.oracle.com/br/business-analytics/spreadsheet-risks/, Acesso em: 4 jun. 2025
-
-Sutherland, J.V., Sutherland, J.J. Scrum: a arte de fazer o dobro do trabalho na metade do
-tempo, Sextante, 2019, p. 254
-
-Varella, D. Website, Acesso em: https://drauziovarella.uol.com.br, Acesso em: 12 mar. 2025
+* SUTHERLAND, J. V.; SUTHERLAND, J. J. **Scrum: a arte de fazer o dobro do trabalho na metade do tempo.** Rio de Janeiro: Sextante, 2019.
