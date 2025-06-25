@@ -16,7 +16,7 @@ Nossa paleta de cores foi usada por um padrão de cores usadas na área industri
 ## Tipografia
 
 Fontes utilizadas: [Inter](https://fonts.google.com/specimen/Inter?query=inter)
-Achamos uma fonte clássica e boa para o mercado 
+A fonte tipográfica adotada foi Inter, selecionada por sua legibilidade, estética neutra e ampla aceitação no mercado corporativo e digital. Trata-se de uma fonte sans-serif moderna, que oferece boa leitura em diferentes tamanhos e dispositivos, sendo amplamente utilizada em interfaces de usuário (UI) e materiais profissionais devido à sua clareza e versatilidade.
 
 ## Iconografia
 
