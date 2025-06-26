@@ -52,12 +52,12 @@ export default function CardCargoRotinas({ rotina }: CardCargoRotinasProps) {
   if (deleted) return null;
 
   return (
-    <div className="flex flex-col w-96 p-5 mb-4 bg-white rounded-2xl shadow-md">
+    <div className="flex flex-col w-96 p-5 mb-4 bg-white rounded-2xl shadow-md ">
       <label className="text-xl font-bold text-left mb-1">{rotina.nome}</label>
       <label className="text-sm text-left text-gray-600 mb-2">{/* empresa, se quiser */}</label>
       <p className="text-sm text-left mb-4">{rotina.descricao}</p>
 
-      <div className="bg-gray-100 flex flex-col rounded-lg p-3 mb-3">
+      <div className="bg-gray-100 flex flex-col rounded-lg p-3 mb-3 max-h-[40vh] overflow-y-auto">
         {rotina.tarefas && rotina.tarefas.length > 0 ? (
           rotina.tarefas.map((tarefa) => (
             <CardRotinaDescricao
@@ -74,8 +74,7 @@ export default function CardCargoRotinas({ rotina }: CardCargoRotinasProps) {
       <DefaultButton
         onClick={handleConcluir}
         disabled={loading}
-        texto={loading ? "Concluindo..." : "Concluir"}
-        cor="vermelho">
+        texto={loading ? "Concluindo..." : "Concluir"}>
           CONCLUIR
       </DefaultButton>
     </div>

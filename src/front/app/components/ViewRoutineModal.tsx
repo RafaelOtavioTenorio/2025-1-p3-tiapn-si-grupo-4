@@ -34,7 +34,6 @@ export default function ViewRoutineModal({ open, onClose, rotina }: ViewRoutineM
       descricao
     };
 
-    console.log("Rotina atualizada:", dadosAtualizados);
     // Aqui no futuro você pode chamar:
     // apiClient.put(`/rotinas/${rotina.id}`, dadosAtualizados)
 

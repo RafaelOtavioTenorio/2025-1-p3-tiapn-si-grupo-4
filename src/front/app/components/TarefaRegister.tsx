@@ -14,7 +14,7 @@ interface ModalProps extends PropsWithChildren {
   closeModal: () => void;
   onCreate: (item: NovoItem) => void;
   actions?: React.ReactElement[];
-  result: NovoItem | undefined;
+  result: NovoItem | undefined | null;
   idRotina?: number;
 }
 
@@ -50,7 +50,7 @@ function TarefaRegister(props: ModalProps) {
         body: JSON.stringify({
           nome: nome.trim(),
           idRotina: props.idRotina || 0,
-          pai: 0,
+          pai: null,
           prioridade: Number(prioridade) || 1,
           ativo: true,
         }),

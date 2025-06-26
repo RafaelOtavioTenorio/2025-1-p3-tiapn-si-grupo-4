@@ -23,19 +23,6 @@ interface Rotina {
   tarefas?: Tarefa[];
 }
 
-// Função para filtrar rotinas por nome único
-function filterUniqueByName(rotinas: Rotina[]) {
-  const seen = new Set<string>();
-  return rotinas.filter((rotina) => {
-    if (seen.has(rotina.nome)) {
-      return false;
-    } else {
-      seen.add(rotina.nome);
-      return true;
-    }
-  });
-}
-
 export default function RoutinesPage() {
   const [searchText, setSearchText] = useState("");
   const [categoria1, setCategoria1] = useState("");
@@ -61,8 +48,7 @@ export default function RoutinesPage() {
         }
 
         const data: Rotina[] = await res.json();
-        const rotinasFiltradas = filterUniqueByName(data);
-        setRotinasIniciadas(rotinasFiltradas);
+        setRotinasIniciadas(data);
       } catch (error) {
         console.error("Erro ao buscar rotinas:", error);
       }
@@ -88,8 +74,7 @@ export default function RoutinesPage() {
           return;
         }
         const data: Rotina[] = await res.json();
-        const rotinasFiltradas = filterUniqueByName(data);
-        setRotinasIniciadas(rotinasFiltradas);
+        setRotinasIniciadas(data);
       })
       .catch((err) => console.error("Erro ao buscar rotinas:", err));
   };
@@ -122,7 +107,7 @@ export default function RoutinesPage() {
 
         {/* Fundo branco com rotinas lado a lado */}
         <div className="bg-white w-full min-h-[90vh] mt-4 rounded-xl shadow-lg p-6">
-          <div className="flex flex-wrap gap-6">
+          <div className="flex flex-wrap gap-6 ">
             {rotinasIniciadas.length === 0 ? (
               <p className="text-gray-600">Nenhuma rotina iniciada.</p>
             ) : (

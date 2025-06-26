@@ -12,6 +12,16 @@ public class TarefaTemplateDTO
     public bool Ativo { get; set; }
     
     public List<SubtarefaTemplateDTO> Subtarefas { get; set; }
+    
+    public List<InsumoDTO> Insumos { get; set; }
+}
+
+public class SimpleTarefaTemplateDTO
+{
+    public int ID { get; set; }
+    public required string Nome { get; set; }
+    public int? Pai { get; set; }
+    public int Prioridade { get; set; }
 }
 
 public class CreateTarefaTemplateDTO

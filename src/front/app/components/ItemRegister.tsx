@@ -14,9 +14,9 @@ interface ModalProps extends PropsWithChildren {
   closeModal: () => void;
   onCreate: (item: NovoItem) => void;
   actions?: React.ReactElement[];
-  result: NovoItem | undefined;
+  result: NovoItem | undefined | null;
   idRotina?: number;  // NOVO: id da rotina para enviar no POST
-  idPai?: number
+  idPai?: number | null
 }
 
 function ItemRegister(props: ModalProps) {
@@ -82,9 +82,6 @@ function ItemRegister(props: ModalProps) {
         });
 
       } else if (tipo === 'Insumo') {
-        const tarefaIdRaw = localStorage.getItem("lastTarefaId");
-        const tarefaID = tarefaIdRaw ? Number(tarefaIdRaw) : 0;
-
         const response = await fetch(`${baseUrl}/insumo`, {
           method: 'POST',
           headers: {
@@ -92,10 +89,9 @@ function ItemRegister(props: ModalProps) {
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({
-            uniqueID: 0,
             nome: nome.trim(),
-            descricao: descricao || '',
-            tarefaID: tarefaID,
+            descricao: descricao || '',  // Usa o id da rotina passado via prop
+            tarefaID: props.idPai
           }),
         });
 

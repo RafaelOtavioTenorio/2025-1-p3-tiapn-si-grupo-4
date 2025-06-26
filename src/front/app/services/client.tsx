@@ -8,20 +8,8 @@ const apiClient = axios.create({
   withCredentials: true
 });
 
-// Logs para debug
-console.log('Configuração do cliente API:');
-console.log('Base URL:', import.meta.env.VITE_BASE_URL);
-console.log('Headers padrão:', apiClient.defaults.headers);
-
 apiClient.interceptors.request.use(
   (config) => {
-    console.log('Requisição sendo enviada:', {
-      url: config.url,
-      method: config.method,
-      headers: config.headers,
-      data: config.data
-    });
-    
     const token = localStorage.getItem('authToken');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;

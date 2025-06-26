@@ -1,7 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Diagnostics.CodeAnalysis;
-using Microsoft.EntityFrameworkCore;
 namespace back.Models;
 
 public class TarefaTemplateModel
@@ -23,7 +21,7 @@ public class TarefaTemplateModel
   public int? Pai { get; set; }
   
   [ForeignKey("Pai")]
-  public TarefaTemplateModel? TarefaPai { get; set; }
+  public virtual TarefaTemplateModel? TarefaPai { get; set; }
 
   public int Prioridade { get; set; }
 

@@ -19,7 +19,6 @@ interface props {
 export default function SidePannel(props: props) {
 
     if (props.activePannel == undefined) {
-        console.log('undefined')
         props.setActivePannel(Pannels.CREATE)
         props.activePannel = 'create';
     }

@@ -28,6 +28,7 @@ public static class TarefaTemplateController
             var templates = await context.TarefaTemplates
                 .Where(t => t.Ativo)
                 .Include(t => t.Rotina)
+                .Include(t => t.Insumos)
                 .Select(t => new TarefaTemplateDTO // Projeta para o DTO
                 {
                     ID = t.ID,
@@ -42,6 +43,13 @@ public static class TarefaTemplateController
                         Nome = subtarefa.Nome,
                         Prioridade = subtarefa.Prioridade,
                         Ativo = subtarefa.Ativo
+                    }).ToList(),
+                    Insumos = t.Insumos.Select(insumo => new InsumoDTO
+                    {
+                        UniqueID = insumo.Id,
+                        Nome = insumo.Nome,
+                        Descricao = insumo.Descricao,
+                        TarefaID = insumo.TarefaID
                     }).ToList()
                 })
                 .ToListAsync();
@@ -83,6 +91,13 @@ public static class TarefaTemplateController
                 return Results.BadRequest("Nome é obrigatório para criar um TarefaTemplate.");
             }
 
+            if (req.Pai.HasValue)
+            {
+                var pai = await context.TarefaTemplates.FindAsync(req.Pai);
+                if (pai == null)
+                    return Results.NotFound("Pai não encontrado.");
+            }
+
             var template = new TarefaTemplateModel
             {
                 Nome = req.Nome,
@@ -94,7 +109,15 @@ public static class TarefaTemplateController
 
             await context.TarefaTemplates.AddAsync(template);
             await context.SaveChangesAsync();
-            return Results.Created($"/tarefa-template/{template.ID}", template);
+
+            var tarefaDto = new SimpleTarefaTemplateDTO
+            {
+                Nome = template.Nome,
+                Pai = template.Pai,
+                Prioridade = template.Prioridade,
+                ID = template.ID,
+            };
+            return Results.Created($"/tarefa-template/{template.ID}", tarefaDto);
         }
         catch (ArgumentException e)
         {

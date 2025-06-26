@@ -53,9 +53,6 @@ function CreateRoutine(props: ModalProps) {
                 return;
             }
 
-            const createdRotina = await response.data;
-            localStorage.setItem("rotinaExtra", JSON.stringify(createdRotina));
-
             setNome('');
             setPrioridade('1');
             setDescRotina('');
