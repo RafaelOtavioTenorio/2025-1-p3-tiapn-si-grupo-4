@@ -58,9 +58,63 @@ Por exemplo:
 | Critério de êxito | - A tarefa é inserida na rotina e exibida corretamente na interface. |
 | Responsável pela elaboração do caso de teste | Nome do integrante da equipe. |
 
+| **Caso de teste**  | **CT-006 – Adicionar sub-rotinas a uma rotina**  |
+|:---: |:---: |
+| Requisito associado | RF-005 - Alterar, Adicionar e Remover sub-rotinas/sub-processos a sua rotina ou processo. |
+| Objetivo do teste | Verificar se sub-rotinas podem ser gerenciadas dentro de uma rotina. |
+| Passos | - Acessar rotina <br> - Clicar em “Adicionar sub-rotina” <br> - Preencher dados e salvar |
+| Critério de êxito | - Sub-rotina visível e associada corretamente à rotina principal. |
+| Responsável pela elaboração do caso de teste | Nome do integrante da equipe. |
 
+<br>
 
+| **Caso de teste**  | **CT-007 – Iniciar rotina cadastrada**  |
+|:---: |:---: |
+| Requisito associado | RF-006 - Iniciar uma rotina ou processo cadastrado. |
+| Objetivo do teste | Validar se o usuário consegue iniciar uma rotina existente. |
+| Passos | - Acessar lista de rotinas <br> - Clicar em “Iniciar” na rotina desejada |
+| Critério de êxito | - Status da rotina altera para “Em andamento”. |
+| Responsável pela elaboração do caso de teste | Nome do integrante da equipe. |
 
+<br>
+
+| **Caso de teste**  | **CT-008 – Comentar tarefas e sub-rotinas**  |
+|:---: |:---: |
+| Requisito associado | RF-008 - Adicionar comentários às tarefas e sub-rotinas/sub-processos. |
+| Objetivo do teste | Verificar se é possível comentar em tarefas ou sub-processos. |
+| Passos | - Acessar tarefa ou sub-rotina <br> - Digitar comentário <br> - Enviar |
+| Critério de êxito | - Comentário salvo e exibido corretamente. |
+| Responsável pela elaboração do caso de teste | Nome do integrante da equipe. |
+
+<br>
+
+| **Caso de teste**  | **CT-009 – Visualizar histórico de rotina em andamento**  |
+|:---: |:---: |
+| Requisito associado | RF-009 - Visualizar o histórico de uma rotina ou processo em andamento. |
+| Objetivo do teste | Confirmar se o sistema exibe corretamente as alterações realizadas em rotinas ativas. |
+| Passos | - Acessar rotina ativa <br> - Abrir aba ou botão de histórico |
+| Critério de êxito | - Histórico mostra modificações com data, hora e responsável. |
+| Responsável pela elaboração do caso de teste | Nome do integrante da equipe. |
+
+<br>
+
+| **Caso de teste**  | **CT-010 – Visualizar histórico de rotinas finalizadas**  |
+|:---: |:---: |
+| Requisito associado | RF-010 - Visualizar o histórico de rotinas e processos finalizados. |
+| Objetivo do teste | Verificar se o histórico permanece disponível após a finalização. |
+| Passos | - Acessar rotina finalizada <br> - Clicar em “Histórico” |
+| Critério de êxito | - Histórico exibido de forma íntegra. |
+| Responsável pela elaboração do caso de teste | Nome do integrante da equipe. |
+
+<br>
+
+| **Caso de teste**  | **CT-011 – Relatório de tempo de execução**  |
+|:---: |:---: |
+| Requisito associado | RF-020 - Gerar relatório de tempo. |
+| Objetivo do teste | Verificar se o relatório de tempo da rotina é gerado corretamente. |
+| Passos | - Acessar rotina concluída <br> - Clicar em “Gerar Relatório de Tempo” |
+| Critério de êxito | - Relatório é exibido com tempos parciais e totais corretamente. |
+| Responsável pela elaboração do caso de teste | Nome do integrante da equipe. |
 
 
 
