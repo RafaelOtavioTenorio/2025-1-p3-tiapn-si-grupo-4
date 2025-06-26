@@ -42,7 +42,7 @@ export default function RoutinesPage() {
   const [itemRegisterOpen, setItemRegisterOpen] = useState(false);
   const [tarefaCreateOpen, setTarefaCreateOpen] = useState(false);
   const [deleteRotinaOpen, setDeleteRotinaOpen] = useState(false);
-  const [resultadoModalRegistroItem, setResultadoModalRegistroItem] = useState<NovoItem>();
+  const [resultadoModalRegistroItem, setResultadoModalRegistroItem] = useState<NovoItem | null>();
 
   const [empresaId, setEmpresaId] = useState<number | null>(null);
   const [idTarefaPai, setIdTarefaPai] = useState<number | null>(null);
@@ -58,59 +58,68 @@ export default function RoutinesPage() {
     }
   }, []);
 
-  // Buscar rotinas quando empresaId ou createModal mudarem
-  useEffect(() => {
-    const fetchRotinas = async () => {
-      if (!empresaId) {
+  
+  const fetchRotinas = async () => {
+    if (!empresaId) {
+      setRotinas([]);
+      return;
+    }
+
+    try {
+      const resRotinas = await fetch(`${baseUrl}/RotinaTemplate`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` }
+      });
+
+      if (!resRotinas.ok) {
+        console.error("Erro ao buscar rotinas:", await resRotinas.text());
         setRotinas([]);
         return;
       }
 
-      try {
-        const resRotinas = await fetch(`${baseUrl}/RotinaTemplate`, {
-          headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` }
-        });
+      const rotinasData: Rotina[] = await resRotinas.json();
 
-        if (!resRotinas.ok) {
-          console.error("Erro ao buscar rotinas:", await resRotinas.text());
-          setRotinas([]);
-          return;
-        }
+      const rotinasDaEmpresa = rotinasData.filter(rotina => rotina.empresa?.id === empresaId);
 
-        const rotinasData: Rotina[] = await resRotinas.json();
+      const resTarefas = await fetch(`${baseUrl}/tarefa-template`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` }
+      });
 
-        const rotinasDaEmpresa = rotinasData.filter(rotina => rotina.empresa?.id === empresaId);
-
-        const resTarefas = await fetch(`${baseUrl}/tarefa-template`, {
-          headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` }
-        });
-
-        let tarefasData: any[] = [];
-        if (resTarefas.ok) {
-          tarefasData = await resTarefas.json();
-        } else {
-          console.warn("Não foi possível buscar tarefas para contagem.");
-        }
-
-        const rotinasComContagem = rotinasDaEmpresa.map((rotina) => {
-          const tarefasDaRotina = tarefasData.filter(t => t.rotina?.id === rotina.id);
-          const insumos = tarefasDaRotina.reduce((total, t) => total + (t.insumos?.length || 0), 0);
-          return {
-            ...rotina,
-            tarefas: tarefasDaRotina.length,
-            insumos,
-          };
-        });
-
-        setRotinas(rotinasComContagem);
-      } catch (error) {
-        console.error("Erro ao buscar rotinas/tarefas:", error);
-        setRotinas([]);
+      let tarefasData: any[] = [];
+      if (resTarefas.ok) {
+        tarefasData = await resTarefas.json();
+      } else {
+        console.warn("Não foi possível buscar tarefas para contagem.");
       }
-    };
+
+      const rotinasComContagem = rotinasDaEmpresa.map((rotina) => {
+        const tarefasDaRotina = tarefasData.filter(t => t.rotina?.id === rotina.id);
+        const insumos = tarefasDaRotina.reduce((total, t) => total + (t.insumos?.length || 0), 0);
+        return {
+          ...rotina,
+          tarefas: tarefasDaRotina.length,
+          insumos,
+        };
+      });
+
+      setRotinas(rotinasComContagem);
+    } catch (error) {
+      console.error("Erro ao buscar rotinas/tarefas:", error);
+      setRotinas([]);
+    }
+  };
+  
+  // Buscar rotinas quando empresaId ou createModal mudarem
+  useEffect(() => {
 
     fetchRotinas();
   }, [empresaId, createModal]);
+
+  useEffect(() =>{
+    if (!deleteRotinaOpen){
+      fetchRotinas();
+      setSelectedRotina(null);
+    }
+  }, [deleteRotinaOpen])
 
   const fetchItens = async (rotinaId: number) => {
     try {
@@ -148,10 +157,10 @@ export default function RoutinesPage() {
     }
   }, [selectedRotina]);
 
-  const handleItemRegister = async (item: NovoItem) => {
+  const handleItemRegister = async (item: NovoItem | null) => {
     try {
       setResultadoModalRegistroItem(item);
-      if (selectedRotina) {
+      if (selectedRotina && item) {
         await fetchItens(selectedRotina.id);
 
         setRotinas(prev =>
@@ -236,7 +245,6 @@ export default function RoutinesPage() {
                 <DeleteRotina
                   openModal={deleteRotinaOpen}
                   closeModal={() => setDeleteRotinaOpen(false)}
-                  //onDelete={() => setModal(false)}
                   idRotina={selectedRotina.id}
                 />
               </div>

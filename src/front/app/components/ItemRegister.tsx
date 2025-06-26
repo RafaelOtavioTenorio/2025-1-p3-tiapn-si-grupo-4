@@ -14,7 +14,7 @@ interface ModalProps extends PropsWithChildren {
   closeModal: () => void;
   onCreate: (item: NovoItem) => void;
   actions?: React.ReactElement[];
-  result: NovoItem | undefined;
+  result: NovoItem | undefined | null;
   idRotina?: number;  // NOVO: id da rotina para enviar no POST
   idPai?: number | null
 }

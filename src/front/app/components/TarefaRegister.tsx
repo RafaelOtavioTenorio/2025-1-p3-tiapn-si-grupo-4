@@ -14,7 +14,7 @@ interface ModalProps extends PropsWithChildren {
   closeModal: () => void;
   onCreate: (item: NovoItem) => void;
   actions?: React.ReactElement[];
-  result: NovoItem | undefined;
+  result: NovoItem | undefined | null;
   idRotina?: number;
 }
 

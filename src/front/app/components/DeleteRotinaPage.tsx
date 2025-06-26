@@ -5,7 +5,6 @@ import DefaultButton from "./DefaultButton";
 interface DeleteProps {
   openModal: boolean;
   closeModal: () => void;
-  //onDelete: () => void;
   nomeRotina?: string;
   idRotina: number;
 }
