@@ -119,7 +119,85 @@ Por exemplo:
 
 
 
+<br>
 
+| **Caso de teste**  | **CT-013 – Gerenciar recursos de tarefas (rotina criada)**  |
+|:---: |:---: |
+| Requisito associado | RF-013 - Adicionar e Remover recursos a uma tarefa de uma rotina ou processo. |
+| Objetivo do teste | Verificar se é possível atribuir recursos à tarefa ao criar a rotina. |
+| Passos | - Criar uma nova rotina com tarefa <br> - Acessar a tarefa <br> - Clicar em “Adicionar recursos” <br> - Selecionar e salvar |
+| Critério de êxito | - Recursos são corretamente atribuídos à tarefa e listados. |
+| Responsável pela elaboração do caso de teste | Nome do integrante da equipe. |
+
+<br>
+
+| **Caso de teste**  | **CT-014 – Gerenciar recursos de tarefa (rotina em andamento)**  |
+|:---: |:---: |
+| Requisito associado | RF-014 - Adicionar e Remover recursos a uma tarefa de uma rotina ou processo em andamento. |
+| Objetivo do teste | Verificar se o usuário pode alterar recursos após a rotina estar em execução. |
+| Passos | - Acessar rotina em andamento <br> - Acessar a tarefa desejada <br> - Adicionar/remover recurso <br> - Confirmar |
+| Critério de êxito | - Alterações são refletidas e salvas corretamente. |
+| Responsável pela elaboração do caso de teste | Nome do integrante da equipe. |
+
+<br>
+
+| **Caso de teste**  | **CT-015 – Gerenciar lista de insumos/recurso do sistema**  |
+|:---: |:---: |
+| Requisito associado | RF-015 - Alterar, Adicionar e Remover recursos/insumos. |
+| Objetivo do teste | Verificar se é possível administrar os recursos disponíveis no sistema. |
+| Passos | - Acessar menu de recursos/insumos <br> - Clicar em “Adicionar”, “Editar” ou “Excluir” <br> - Salvar |
+| Critério de êxito | - Ações refletem corretamente na lista de recursos disponíveis para tarefas. |
+| Responsável pela elaboração do caso de teste | Nome do integrante da equipe. |
+
+<br>
+
+| **Caso de teste**  | **CT-016 – Verificar recursos disponíveis ao iniciar tarefa**  |
+|:---: |:---: |
+| Requisito associado | RF-016 - Alterar quantidade de recursos/insumos disponíveis ao iniciar uma tarefa. |
+| Objetivo do teste | Verificar se ao iniciar a tarefa os insumos são atualizados. |
+| Passos | - Atribuir recurso à tarefa <br> - Iniciar tarefa <br> - Verificar saldo no sistema |
+| Critério de êxito | - Quantidade do recurso diminui corretamente no estoque. |
+| Responsável pela elaboração do caso de teste | Nome do integrante da equipe. |
+
+<br>
+
+| **Caso de teste**  | **CT-017 – Verificar recursos liberados ao finalizar tarefa**  |
+|:---: |:---: |
+| Requisito associado | RF-017 - Alterar quantidade de recursos/insumos ao finalizar uma tarefa. |
+| Objetivo do teste | Validar se os recursos são liberados (ou atualizados) corretamente ao final da tarefa. |
+| Passos | - Finalizar tarefa <br> - Verificar atualização do recurso no estoque |
+| Critério de êxito | - Quantidade do recurso alterada corretamente conforme lógica definida. |
+| Responsável pela elaboração do caso de teste | Nome do integrante da equipe. |
+
+<br>
+
+| **Caso de teste**  | **CT-018 – Bloquear tarefa por falta de recursos**  |
+|:---: |:---: |
+| Requisito associado | RF-018 - Bloquear tarefa por falta de recursos/insumos. |
+| Objetivo do teste | Garantir que o sistema impeça execução de tarefas sem insumos disponíveis. |
+| Passos | - Criar tarefa com insumo indisponível <br> - Tentar iniciar execução |
+| Critério de êxito | - Sistema bloqueia a tarefa e exibe mensagem de erro. |
+| Responsável pela elaboração do caso de teste | Nome do integrante da equipe. |
+
+<br>
+
+| **Caso de teste**  | **CT-019 – Visualizar rotinas com filtros**  |
+|:---: |:---: |
+| Requisito associado | RF-019 - Visualizar rotinas em execução com filtros por responsável, status, tipo e datas. |
+| Objetivo do teste | Verificar se a filtragem de rotinas funciona conforme critérios. |
+| Passos | - Acessar lista de rotinas <br> - Aplicar filtros por status/responsável/tipo/data <br> - Observar os resultados |
+| Critério de êxito | - A listagem exibe apenas rotinas que atendem aos critérios de filtro. |
+| Responsável pela elaboração do caso de teste | Nome do integrante da equipe. |
+
+<br>
+
+| **Caso de teste**  | **CT-020 – Gerar relatório de insumos**  |
+|:---: |:---: |
+| Requisito associado | RF-021 - Gerar relatório de insumos. |
+| Objetivo do teste | Validar se o sistema gera relatórios com consumo, saldo e movimentação de insumos. |
+| Passos | - Acessar módulo de relatórios <br> - Selecionar “Relatório de Insumos” <br> - Definir período ou filtros <br> - Gerar |
+| Critério de êxito | - Relatório exibido com informações corretas e exportáveis. |
+| Responsável pela elaboração do caso de teste | Nome do integrante da equipe. |
 
 
 
