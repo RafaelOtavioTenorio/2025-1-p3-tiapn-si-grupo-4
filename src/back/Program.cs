@@ -52,8 +52,6 @@ if (app.Environment.IsDevelopment())
 }
 
 
-app.UseCors("front-origin");
-
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
