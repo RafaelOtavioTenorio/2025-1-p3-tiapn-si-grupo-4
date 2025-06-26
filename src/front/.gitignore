@@ -1,0 +1,10 @@
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+package-lock.json
+
+node_modules/
+.react-router/

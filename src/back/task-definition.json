@@ -1,0 +1,29 @@
+{
+"environment": [
+    {
+        "name": "ASPNETCORE_URLS",
+        "value": "http://+:8080"
+    },
+    {
+        "name": "DATABASE_HOST",
+        "value": "COLE_AQUI_O_HOSTNAME_DO_SEU_RDS"
+    },
+    {
+        "name": "DATABASE_PORT",
+        "value": "3306"
+    },
+    {
+        "name": "DATABASE_USER",
+        "value": "admin"
+    },
+    {
+        "name": "DATABASE_PASSWORD",
+        "value": "SuaSenhaSuperForte123"
+    },
+    {
+        "name": "DATABASE_NAME",
+        "value": "routix"
+    }
+]
+}
+
