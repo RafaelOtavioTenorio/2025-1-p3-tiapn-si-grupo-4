@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using back.Helpers;
+using service;
 
 DotNetEnv.Env.Load();
 
@@ -12,7 +13,22 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MyDbContext>();
-builder.Services.AddScoped<service.AuthService>();
+builder.Services.AddScoped<AuthService>();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "front-origin",
+                      policy =>
+                      {
+                          policy.WithOrigins(
+                              "https://two025-1-p3-tiapn-si-grupo-4-2.onrender.com", 
+                              "http://localhost:5173", 
+                              "http://localhost:3000"
+                          )
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                      });
+});
 
 var jwtKey = Environment.GetEnvironmentVariable("JWT_KEY") ?? "A_VERY_LONG_AND_SECURE_KEY_FOR_PRODUCTION_MINIMUM_32_BYTES";
 var jwtIssuer = Environment.GetEnvironmentVariable("JWT_ISSUER") ?? "yourdomain.com";
@@ -51,6 +67,7 @@ if (app.Environment.IsDevelopment())
     MigrationManager.ManageAndApplyMigrations(app);
 }
 
+app.UseCors("front-origin");
 
 if (app.Environment.IsDevelopment())
 {
@@ -72,6 +89,5 @@ app.InsumoRoutes();
 app.RotinaRoutes();
 app.LogRoutes();
 
-app.Run("http://0.0.0.0:3000");
-
+app.Run("http://0.0.0.0:8080");
 
