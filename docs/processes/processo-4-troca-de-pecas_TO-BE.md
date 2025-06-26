@@ -1,14 +1,10 @@
-### 3.3.2 Processo 2 – Troca de peças
+### 3.3.4 Processo 4 TO-BE – Troca de peças
 
 #### Oportunidades de melhoria:
 
 - Reduzir o tempo de máquina parada durante manutenções.
 - Delegar a compra de peças ao almoxarifado, liberando o mecânico para atividades técnicas.
 - Aumentar o controle sobre o estoque de peças.
- 
-Modelo AS-IS:
-
-![image](https://github.com/user-attachments/assets/690f7e6e-496a-44c1-8fb9-9a012e4c5545)
 
 Modelo TO-BE:
 

@@ -1,18 +1,8 @@
-### 3.3.1 Processo 1 – Aluguel de Máquinas
-
-#### Oportunidades de melhoria:
-
-- Paralelização de atividades para reduzir tempo de espera.
-- Implementação de comunicação com clientes não aprovados.
-- Melhor alocação de reunião para garantir melhor tomada de decisões.
+### 3.3.1 Processo 1 AS-IS – Aluguel de Máquinas
  
 Modelo AS-IS:
 
 ![image](https://github.com/user-attachments/assets/23e768d0-e995-417e-bfe4-8dd06cd7abbd)
-
-Modelo TO-BE:
-
-![image](https://github.com/user-attachments/assets/4bd5bbfc-dfdc-4fef-a621-d7c96b1bc16b)
 
 #### Detalhamento das atividades
 
