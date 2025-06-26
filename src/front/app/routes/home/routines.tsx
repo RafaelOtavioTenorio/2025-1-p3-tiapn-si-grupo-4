@@ -122,7 +122,7 @@ export default function RoutinesPage() {
 
         {/* Fundo branco com rotinas lado a lado */}
         <div className="bg-white w-full min-h-[90vh] mt-4 rounded-xl shadow-lg p-6">
-          <div className="flex flex-wrap gap-6">
+          <div className="flex flex-wrap gap-6 ">
             {rotinasIniciadas.length === 0 ? (
               <p className="text-gray-600">Nenhuma rotina iniciada.</p>
             ) : (

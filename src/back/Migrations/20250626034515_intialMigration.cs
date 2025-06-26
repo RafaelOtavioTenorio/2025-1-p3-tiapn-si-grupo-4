@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace back.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class intialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -96,7 +96,7 @@ namespace back.Migrations
                     Prioridade = table.Column<int>(type: "int", nullable: false),
                     Descricao = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Ativo = table.Column<bool>(type: "tinyint(1)", nullable: false, defaultValue: true)
+                    Ativo = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -217,6 +217,12 @@ namespace back.Migrations
                 {
                     table.PrimaryKey("PK_TAREFA_TEMPLATES", x => x.ID);
                     table.ForeignKey(
+                        name: "FK_TAREFA_TEMPLATES_TAREFA_TEMPLATES_Pai",
+                        column: x => x.Pai,
+                        principalSchema: "dbo",
+                        principalTable: "TAREFA_TEMPLATES",
+                        principalColumn: "ID");
+                    table.ForeignKey(
                         name: "FK_TAREFA_TEMPLATES_TEMPLATE_ROTINAS_IdRotina",
                         column: x => x.IdRotina,
                         principalSchema: "dbo",
@@ -323,6 +329,12 @@ namespace back.Migrations
                 schema: "dbo",
                 table: "TAREFA_TEMPLATES",
                 column: "IdRotina");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TAREFA_TEMPLATES_Pai",
+                schema: "dbo",
+                table: "TAREFA_TEMPLATES",
+                column: "Pai");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TAREFAS_IdRotina",

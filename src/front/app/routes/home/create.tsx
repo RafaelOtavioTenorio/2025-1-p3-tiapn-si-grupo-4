@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import React from 'react'
 import CreateRoutine from "~/components/CreateRoutine";
 import Title from "~/components/Title";
 import DefaultButton from "~/components/DefaultButton";
@@ -11,6 +12,7 @@ import TarefaRegister from "~/components/TarefaRegister";
 import Gear from '@mui/icons-material/Settings';
 import Add from '@mui/icons-material/AddRounded';
 import ArrowDown from '@mui/icons-material/KeyboardArrowDownOutlined';
+import Box from '@mui/icons-material/AllInboxRounded';
 
 interface Rotina {
   id: number;
@@ -22,6 +24,13 @@ interface Rotina {
     nome: string;
     cnpj: string;
   } | null;
+}
+
+interface Insumo {
+  id: number;
+  nome: string;
+  descricao: string;
+  tarefaID: number;
 }
 
 interface Item {
@@ -58,7 +67,7 @@ export default function RoutinesPage() {
     }
   }, []);
 
-  
+
   const fetchRotinas = async () => {
     if (!empresaId) {
       setRotinas([]);
@@ -107,15 +116,15 @@ export default function RoutinesPage() {
       setRotinas([]);
     }
   };
-  
+
   // Buscar rotinas quando empresaId ou createModal mudarem
   useEffect(() => {
 
     fetchRotinas();
   }, [empresaId, createModal]);
 
-  useEffect(() =>{
-    if (!deleteRotinaOpen){
+  useEffect(() => {
+    if (!deleteRotinaOpen) {
       fetchRotinas();
       setSelectedRotina(null);
     }
@@ -130,13 +139,8 @@ export default function RoutinesPage() {
       if (res.ok) {
         const data = await res.json();
         const tarefasFiltradas = data
-          .filter(t => (Number(t.rotina?.id) === rotinaId) && (t.pai == 0))
-          .map(tarefa => ({
-            id: tarefa.id,
-            nome: tarefa.nome,
-            concluido: tarefa.ativo === true,
-            subItens: tarefa.subtarefas
-          }));
+          .filter(t => (Number(t.rotina?.id) === rotinaId) && (t.pai == null))
+          .map(tarefa =>(buildMap(tarefa)));
 
         setItens(tarefasFiltradas);
       } else {
@@ -148,6 +152,16 @@ export default function RoutinesPage() {
       setItens([]);
     }
   };
+  const buildMap = (tarefa: any) => {
+    var subitens = tarefa.subtarefas
+    subitens.push(...tarefa.insumos.map(insumo => ({nome: insumo.nome, type: "insumo"})))
+    return {
+      id: tarefa.id,
+      nome: tarefa.nome,
+      concluido: tarefa.ativo === true,
+      subItens: subitens
+    }
+  }
 
   useEffect(() => {
     if (selectedRotina) {
@@ -250,7 +264,7 @@ export default function RoutinesPage() {
               </div>
 
               <DefaultButton
-                onClick={() => {setTarefaCreateOpen(true); setIdTarefaPai(null)}
+                onClick={() => { setTarefaCreateOpen(true); setIdTarefaPai(null) }
                 }> ADICIONAR TAREFA</DefaultButton>
               <TarefaRegister
                 closeModal={() => setTarefaCreateOpen(false)}
@@ -262,48 +276,78 @@ export default function RoutinesPage() {
 
               <ul className="mt-6 space-y-3">
                 {itens.map((tarefa) => (
-                  <li key={tarefa.id} className="flex justify-between items-center">
-                    <div className="flex items-center gap-2">
-                      <input type="checkbox" checked={tarefa.concluido} readOnly />
-                      <span>{tarefa.nome}</span>
-                    </div>
-                    {/* Sublista expandida */}
-                    {tarefa.subItens && tarefa.subItens.length > 0 && expanded[tarefa.id] && ( //Adicione referencia correta de subtarefa aqui
-                      <div className="flex items-start">
-                        <div className="flex flex-col items-center mr-2">
-                          <div className="w-px bg-black h-full min-h-[40px]" />
-                        </div>
-                        <ul className="flex flex-col gap-1">
-                          {tarefa.subItens.map((sub, idx) => (
-                            <li key={idx} className="flex items-center text-xs text-gray-600 pl-2">
-                              <input type="checkbox" checked={sub.ativo} readOnly className="mr-2" />
-                              {sub.nome}
-                            </li>
-                          ))}
-                        </ul>
+                  <React.Fragment key={tarefa.id}>
+                    {/* Item da Tarefa Principal */}
+                    <li className="flex justify-between items-center bg-gray-50 p-2 rounded-md">
+                      <div className="flex items-center gap-2">
+                        <input type="checkbox" checked={tarefa.concluido} readOnly />
+                        <span>{tarefa.nome}</span>
                       </div>
-                    )}
-                    <div className="flex">
-                      {/* Botão de expandir/recolher se houver subitens */}
-                      {tarefa.subItens && tarefa.subItens.length > 0 && (
-                        <button
-                          className="ml-2"
-                          onClick={() =>
-                            setExpanded((prev) => ({
-                              ...prev,
-                              [tarefa.id]: !prev[tarefa.id],
-                            }))
-                          }
-                          aria-label={expanded[tarefa.id] ? "Recolher subitens" : "Expandir subitens"}
-                        >
-                          <ArrowDown className={`transition-transform ${expanded[tarefa.id] ? "rotate-180" : ""}`} />
-                        </button>
+                      <div className="flex items-center">
+                        <Add
+                          onClick={() => {
+                            setItemRegisterOpen(true);
+                            setIdTarefaPai(tarefa.id);
+                          }}
+                          className="border border-gray-700 hover:bg-gray-300 rounded-full mx-1 cursor-pointer"
+                          aria-label="Adicionar subitem"
+                        />
+                        <Gear
+                          className="border border-gray-700 hover:bg-gray-300 rounded-sm mx-1 cursor-pointer"
+                          aria-label="Configurar item"
+                        />
+                        {tarefa.subItens && tarefa.subItens.length > 0 && (
+                          <button
+                            className="ml-2"
+                            onClick={() =>
+                              setExpanded((prev) => ({
+                                ...prev,
+                                [tarefa.id]: !prev[tarefa.id],
+                              }))
+                            }
+                            aria-label={
+                              expanded[tarefa.id] ? "Recolher subitens" : "Expandir subitens"
+                            }
+                          >
+                            <ArrowDown
+                              className={`transition-transform duration-300 ${expanded[tarefa.id] ? "rotate-180" : ""
+                                }`}
+                            />
+                          </button>
+                        )}
+                      </div>
+                    </li>
+
+                    {/* Sublista: Renderizada abaixo do 'li' da tarefa principal e somente se estiver expandida */}
+                    {tarefa.subItens &&
+                      tarefa.subItens.length > 0 &&
+                      expanded[tarefa.id] && (
+                        <li className="pl-8 pr-2 pb-2">
+                          <div className="flex items-start border-l-2 border-gray-300 pl-4">
+                            <ul className="flex w-full flex-col gap-2 pt-2">
+                              {tarefa.subItens.map((sub, idx) => (
+                                <li
+                                  key={idx}
+                                  className="flex items-center text-sm text-gray-700"
+                                >
+                                  {sub.type === 'insumo' ? 
+                                  <Box fontSize="small"/>
+                                  : <input
+                                    type="checkbox"
+                                    checked={sub.ativo}
+                                    readOnly
+                                    className="mr-2"
+                                  />
+                                  }
+                                  {sub.nome}
+                                </li>
+                              ))}
+
+                            </ul>
+                          </div>
+                        </li>
                       )}
-                      <Add onClick={() => {setItemRegisterOpen(true); setIdTarefaPai(tarefa.id)}} className="border border-gray-700 hover:bg-gray-300 rounded-full mx-1" />
-                      <Gear className="border border-gray-700 hover:bg-gray-300 rounded-sm mx-1" />
-                      {/*Adicionar modal de editar Tarefa ou insumo*/}
-                    </div>
-                  </li>
+                  </React.Fragment>
                 ))}
               </ul>
               <ItemRegisterModal

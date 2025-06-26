@@ -209,9 +209,7 @@ namespace back.Migrations
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("Ativo")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("tinyint(1)")
-                        .HasDefaultValue(true);
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
@@ -304,6 +302,8 @@ namespace back.Migrations
                     b.HasKey("ID");
 
                     b.HasIndex("IdRotina");
+
+                    b.HasIndex("Pai");
 
                     b.ToTable("TAREFA_TEMPLATES", "dbo");
                 });
@@ -437,7 +437,13 @@ namespace back.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("back.Models.TarefaTemplateModel", "TarefaPai")
+                        .WithMany("Subtarefas")
+                        .HasForeignKey("Pai");
+
                     b.Navigation("Rotina");
+
+                    b.Navigation("TarefaPai");
                 });
 
             modelBuilder.Entity("back.Models.EmpresaModel", b =>
@@ -458,6 +464,8 @@ namespace back.Migrations
             modelBuilder.Entity("back.Models.TarefaTemplateModel", b =>
                 {
                     b.Navigation("Insumos");
+
+                    b.Navigation("Subtarefas");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,6 +1,4 @@
-// ModalIniciarRotina.tsx
-import { useEffect, useState } from "react";
-import DefaultModal from "./DefaultModal";
+import React, { useEffect, useRef, useState } from "react";
 import DefaultButton from "./DefaultButton";
 
 interface RotinaTemplate {
@@ -13,7 +11,7 @@ interface RotinaTemplate {
 interface ModalIniciarRotinaProps {
   openModal: boolean;
   closeModal: () => void;
-  onRotinaIniciada: () => void; // callback para avisar criação concluída
+  onRotinaIniciada: () => void;
 }
 
 export default function ModalIniciarRotina({
@@ -23,6 +21,8 @@ export default function ModalIniciarRotina({
 }: ModalIniciarRotinaProps) {
   const [rotinas, setRotinas] = useState<RotinaTemplate[]>([]);
   const [selecionada, setSelecionada] = useState<RotinaTemplate | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const ref = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
     const fetchRotinas = async () => {
@@ -34,13 +34,18 @@ export default function ModalIniciarRotina({
         const data = await res.json();
         setRotinas(data);
       } else {
+        setErrorMessage("Erro ao buscar rotinas.");
         console.error("Erro ao buscar rotinas:", await res.text());
       }
     };
 
     if (openModal) {
       fetchRotinas();
-      setSelecionada(null); // limpa seleção ao abrir modal
+      setSelecionada(null);
+      setErrorMessage(null);
+      ref.current?.showModal();
+    } else {
+      ref.current?.close();
     }
   }, [openModal]);
 
@@ -66,42 +71,51 @@ export default function ModalIniciarRotina({
       closeModal();
       onRotinaIniciada();
     } else {
+      setErrorMessage("Erro ao iniciar rotina.");
       console.error("Erro ao iniciar rotina:", await res.text());
     }
   };
 
   return (
-    <DefaultModal
-      openModal={openModal}
-      closeModal={closeModal}
-      actions={[
-        <DefaultButton
-          key="iniciar"
-          onClick={iniciarRotina}
-          disabled={!selecionada}
-        >
-          Iniciar
-        </DefaultButton>,
-      ]}
+    <dialog
+      ref={ref}
+      onCancel={closeModal}
+      onClick={(e) => {
+        if (e.target === ref.current) {
+          closeModal();
+        }
+      }}
+    className="items-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg shadow-lg"
     >
-      <div className="flex flex-col gap-2">
-        <h2 className="text-xl font-bold">Selecionar Rotina</h2>
-        <select
-          className="p-2 border rounded"
-          value={selecionada?.id ?? ""}
-          onChange={(e) => {
-            const found = rotinas.find((r) => r.id === Number(e.target.value));
-            setSelecionada(found ?? null);
-          }}
-        >
-          <option value="">Selecione uma rotina</option>
-          {rotinas.map((r) => (
-            <option key={r.id} value={r.id}>
-              {r.nome} - {r.descricao}
-            </option>
-          ))}
-        </select>
+      <div className="bg-white p-4 m-4 rounded-lg max-h-[90vh]">
+        <h2 className="text-xl font-bold mb-4">Selecionar Rotina</h2>
+        {errorMessage && (
+          <div className="mb-4 text-red-600 font-semibold">{errorMessage}</div>
+        )}
+        <div className="flex flex-col gap-4">
+          <select
+            className="p-2 border rounded"
+            value={selecionada?.id ?? ""}
+            onChange={(e) => {
+              const found = rotinas.find((r) => r.id === Number(e.target.value));
+              setSelecionada(found ?? null);
+            }}
+          >
+            <option value="">Selecione uma rotina</option>
+            {rotinas.map((r) => (
+              <option key={r.id} value={r.id}>
+                {r.nome} - {r.descricao}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="flex w-full p-4 justify-center gap-2">
+          <DefaultButton onClick={closeModal}>CANCELAR</DefaultButton>
+          <DefaultButton onClick={iniciarRotina} disabled={!selecionada}>
+            INICIAR
+          </DefaultButton>
+        </div>
       </div>
-    </DefaultModal>
+    </dialog>
   );
 }
