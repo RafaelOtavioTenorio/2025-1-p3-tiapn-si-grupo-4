@@ -38,32 +38,48 @@ São protótipos usados no design de interface para sugerir a estrutura de um si
 
 ## Interface do sistema
 
-Visão geral da interação do usuário por meio das telas do sistema. Apresente as principais interfaces da plataforma em sua versão final.
+A interface do Routix foi desenvolvida com foco na simplicidade e na fluidez da experiência do usuário. A plataforma oferece uma navegação intuitiva por meio de telas organizadas, permitindo o gerenciamento eficiente de rotinas e tarefas. As principais interfaces incluem visualização e criação de rotinas, cadastro de tarefas e confirmação de exclusão, todas pensadas para tornar o uso do sistema direto e funcional.
 
 ### Tela principal do sistema
 
 Descrição da tela principal do sistema.
 
-> Insira aqui a tela principal do sistema
+> ![Tela Principal](images/BACKGROUND.png)
 
 
-###  Telas do processo 1
+###  Telas do processo 1 - Cadastro de Usuários
 
 Descrição da tela relativa à atividade 1 do processo 1.
 
-> Insira aqui a tela da atividade 1
+> ![Tela Login](images/BACKGROUND.png)
 
 Descrição da tela relativa à atividade 2 do processo 1.
 
-> Insira aqui a tela da atividade 2
+> ![Tela SIGNUP](images/BACKGROUND.png)
 
 
-### Telas do processo 2
+### Telas do processo 2 - Cadastro de Rotinas
+
+> ![Tela HOME](images/HOME.png)
 
 Descrição da tela relativa à atividade 1 do processo 2.
 
-> Insira aqui a tela da atividade 1
+> ![Tela CRIAR ROTINA](images/BACKGROUND.png)
 
 Descrição da tela relativa à atividade 2 do processo 2.
 
-> Insira aqui a tela da atividade 2
+> ![Tela DELETAR ROTINA](images/BACKGROUND.png)
+
+
+### Telas do processo 3 - Rotinas
+
+Descrição da tela relativa à atividade 1 do processo 2.
+
+> ![Tela Rotinas](images/ROTINAS.png)
+
+
+### Telas do processo 4 - Histórico
+
+Descrição da tela relativa à atividade 2 do processo 2.
+
+> ![Tela Histórico](images/HISTÓRICO.png)
