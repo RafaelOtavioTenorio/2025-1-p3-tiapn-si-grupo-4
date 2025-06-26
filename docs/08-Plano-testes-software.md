@@ -8,7 +8,7 @@ Enumere quais cenários de testes foram selecionados para teste. Neste tópico, 
 
 Não deixe de enumerar os casos de teste de forma sequencial e garantir que o(s) requisito(s) associado(s) a cada um deles esteja(m) correto(s) — de acordo com o que foi definido na <a href="02-Especificacao.md">Especificação do projeto</a>.
 
-Por exemplo:
+---
 
 | **Caso de teste**  | **CT-001 – Cadastrar usuário na plataforma**  |
 |:---: |:---: |
@@ -16,7 +16,7 @@ Por exemplo:
 | Objetivo do teste | Verificar se o usuário consegue realizar seu cadastro na plataforma. |
 | Passos | - Acessar o sistema pela URL definida <br> - Clicar em “Cadastrar” ou “Criar Conta” <br> - Preencher os campos obrigatórios (nome, CPF, RG, data de nascimento, e-mail, senha etc.) <br> - Confirmar o cadastro |
 | Critério de êxito | - O cadastro é finalizado com sucesso e o sistema redireciona o usuário para a tela de login ou dashboard. |
-| Responsável pela elaboração do caso de teste | Nome do integrante da equipe. |              
+| Responsável pela elaboração do caso de teste | Nome do integrante da equipe. |
 
 <br>
 
@@ -40,25 +40,17 @@ Por exemplo:
 
 <br>
 
-| **Caso de teste**  | **CT-004 – Iniciar uma rotina cadastrada**  |
+| **Caso de teste**  | **CT-004 – Gerenciar tarefas de uma rotina**  |
 |:---: |:---: |
-| Requisito associado | RF-006 - Iniciar uma rotina ou processo cadastrado. |
-| Objetivo do teste | Validar se o usuário consegue iniciar a execução de uma rotina. |
-| Passos | - Acessar a lista de rotinas <br> - Selecionar uma rotina cadastrada <br> - Clicar em “Iniciar” ou equivalente |
-| Critério de êxito | - A rotina passa para o status “Em andamento” e é exibida na área de rotinas em execução. |
+| Requisito associado | RF-004 - Alterar, Adicionar e Remover tarefas de sua rotina ou processo. |
+| Objetivo do teste | Verificar se o usuário consegue gerenciar tarefas em sua rotina. |
+| Passos | - Acessar rotina <br> - Adicionar, editar ou remover tarefa <br> - Salvar |
+| Critério de êxito | - Tarefa adicionada, editada ou removida corretamente. |
 | Responsável pela elaboração do caso de teste | Nome do integrante da equipe. |
 
 <br>
 
-| **Caso de teste**  | **CT-005 – Adicionar tarefa à rotina em andamento**  |
-|:---: |:---: |
-| Requisito associado | RF-011 - Alterar, Adicionar e Remover uma tarefa de uma rotina ou processo em andamento. |
-| Objetivo do teste | Verificar se o usuário consegue adicionar uma nova tarefa a uma rotina em execução. |
-| Passos | - Acessar a rotina em execução <br> - Clicar em “Adicionar tarefa” <br> - Preencher os dados da tarefa <br> - Salvar |
-| Critério de êxito | - A tarefa é inserida na rotina e exibida corretamente na interface. |
-| Responsável pela elaboração do caso de teste | Nome do integrante da equipe. |
-
-| **Caso de teste**  | **CT-006 – Adicionar sub-rotinas a uma rotina**  |
+| **Caso de teste**  | **CT-005 – Adicionar sub-rotinas a uma rotina**  |
 |:---: |:---: |
 | Requisito associado | RF-005 - Alterar, Adicionar e Remover sub-rotinas/sub-processos a sua rotina ou processo. |
 | Objetivo do teste | Verificar se sub-rotinas podem ser gerenciadas dentro de uma rotina. |
@@ -68,12 +60,22 @@ Por exemplo:
 
 <br>
 
-| **Caso de teste**  | **CT-007 – Iniciar rotina cadastrada**  |
+| **Caso de teste**  | **CT-006 – Iniciar rotina cadastrada**  |
 |:---: |:---: |
 | Requisito associado | RF-006 - Iniciar uma rotina ou processo cadastrado. |
 | Objetivo do teste | Validar se o usuário consegue iniciar uma rotina existente. |
 | Passos | - Acessar lista de rotinas <br> - Clicar em “Iniciar” na rotina desejada |
 | Critério de êxito | - Status da rotina altera para “Em andamento”. |
+| Responsável pela elaboração do caso de teste | Nome do integrante da equipe. |
+
+<br>
+
+| **Caso de teste**  | **CT-007 – Editar rotina em andamento**  |
+|:---: |:---: |
+| Requisito associado | RF-007 - Alterar uma rotina ou processo em andamento. |
+| Objetivo do teste | Verificar se é possível editar dados de uma rotina em execução. |
+| Passos | - Acessar rotina em andamento <br> - Clicar em “Editar” <br> - Alterar campos <br> - Salvar alterações |
+| Critério de êxito | - Alterações são refletidas corretamente. |
 | Responsável pela elaboração do caso de teste | Nome do integrante da equipe. |
 
 <br>
@@ -106,18 +108,26 @@ Por exemplo:
 | Critério de êxito | - Histórico exibido de forma íntegra. |
 | Responsável pela elaboração do caso de teste | Nome do integrante da equipe. |
 
+
 <br>
 
-| **Caso de teste**  | **CT-011 – Relatório de tempo de execução**  |
+| **Caso de teste**  | **CT-011 – Gerenciar tarefas em rotina em andamento**  |
 |:---: |:---: |
-| Requisito associado | RF-020 - Gerar relatório de tempo. |
-| Objetivo do teste | Verificar se o relatório de tempo da rotina é gerado corretamente. |
-| Passos | - Acessar rotina concluída <br> - Clicar em “Gerar Relatório de Tempo” |
-| Critério de êxito | - Relatório é exibido com tempos parciais e totais corretamente. |
+| Requisito associado | RF-011 - Alterar, Adicionar e Remover uma tarefa de uma rotina ou processo em andamento. |
+| Objetivo do teste | Verificar se o usuário consegue adicionar, editar ou remover uma tarefa enquanto a rotina está em execução. |
+| Passos | - Acessar rotina em andamento <br> - Adicionar ou editar uma tarefa <br> - Salvar alterações |
+| Critério de êxito | - A tarefa é atualizada ou inserida corretamente na interface e no banco de dados. |
 | Responsável pela elaboração do caso de teste | Nome do integrante da equipe. |
 
+<br>
 
-
+| **Caso de teste**  | **CT-012 – Adicionar sub-rotina em rotina em andamento**  |
+|:---: |:---: |
+| Requisito associado | RF-012 - Alterar, Adicionar e Remover uma sub-rotina/sub-processo de uma rotina ou processo em andamento. |
+| Objetivo do teste | Verificar se é possível gerenciar sub-rotinas mesmo após início da rotina. |
+| Passos | - Acessar rotina em andamento <br> - Clicar em “Adicionar sub-rotina” <br> - Preencher dados <br> - Salvar |
+| Critério de êxito | - Sub-rotina salva corretamente e refletida na tela da rotina principal. |
+| Responsável pela elaboração do caso de teste | Nome do integrante da equipe. |
 
 <br>
 
@@ -185,23 +195,26 @@ Por exemplo:
 |:---: |:---: |
 | Requisito associado | RF-019 - Visualizar rotinas em execução com filtros por responsável, status, tipo e datas. |
 | Objetivo do teste | Verificar se a filtragem de rotinas funciona conforme critérios. |
-| Passos | - Acessar lista de rotinas <br> - Aplicar filtros por status/responsável/tipo/data <br> - Observar os resultados |
+| Passos | - Acessar lista de rotinas <br> - Aplicar filtros por status, responsável, tipo e datas <br> - Observar os resultados |
 | Critério de êxito | - A listagem exibe apenas rotinas que atendem aos critérios de filtro. |
 | Responsável pela elaboração do caso de teste | Nome do integrante da equipe. |
 
 <br>
 
-| **Caso de teste**  | **CT-020 – Gerar relatório de insumos**  |
+| **Caso de teste**  | **CT-020 – Gerar relatório de tempo**  |
+|:---: |:---: |
+| Requisito associado | RF-020 - Gerar relatório de tempo. |
+| Objetivo do teste | Verificar se o relatório de tempo da rotina é gerado corretamente. |
+| Passos | - Acessar rotina concluída <br> - Clicar em “Gerar Relatório de Tempo” |
+| Critério de êxito | - Relatório é exibido com tempos parciais e totais corretamente. |
+| Responsável pela elaboração do caso de teste | Nome do integrante da equipe. |
+
+<br>
+
+| **Caso de teste**  | **CT-021 – Gerar relatório de insumos**  |
 |:---: |:---: |
 | Requisito associado | RF-021 - Gerar relatório de insumos. |
 | Objetivo do teste | Validar se o sistema gera relatórios com consumo, saldo e movimentação de insumos. |
 | Passos | - Acessar módulo de relatórios <br> - Selecionar “Relatório de Insumos” <br> - Definir período ou filtros <br> - Gerar |
 | Critério de êxito | - Relatório exibido com informações corretas e exportáveis. |
 | Responsável pela elaboração do caso de teste | Nome do integrante da equipe. |
-
-
-
-
-
-
-
