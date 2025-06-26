@@ -1,5 +1,4 @@
-// Em seu arquivo task-definition.json
-
+{
 "environment": [
     {
         "name": "ASPNETCORE_URLS",
@@ -25,4 +24,6 @@
         "name": "DATABASE_NAME",
         "value": "routix"
     }
-],
+]
+}
+
