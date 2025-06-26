@@ -91,6 +91,13 @@ public static class TarefaTemplateController
                 return Results.BadRequest("Nome é obrigatório para criar um TarefaTemplate.");
             }
 
+            if (req.Pai.HasValue)
+            {
+                var pai = await context.TarefaTemplates.FindAsync(req.Pai);
+                if (pai == null)
+                    return Results.NotFound("Pai não encontrado.");
+            }
+
             var template = new TarefaTemplateModel
             {
                 Nome = req.Nome,
@@ -102,7 +109,15 @@ public static class TarefaTemplateController
 
             await context.TarefaTemplates.AddAsync(template);
             await context.SaveChangesAsync();
-            return Results.Created($"/tarefa-template/{template.ID}", template);
+
+            var tarefaDto = new SimpleTarefaTemplateDTO
+            {
+                Nome = template.Nome,
+                Pai = template.Pai,
+                Prioridade = template.Prioridade,
+                ID = template.ID,
+            };
+            return Results.Created($"/tarefa-template/{template.ID}", tarefaDto);
         }
         catch (ArgumentException e)
         {

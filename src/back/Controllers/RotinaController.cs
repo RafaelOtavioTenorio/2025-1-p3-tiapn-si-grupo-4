@@ -40,7 +40,7 @@ public static class RotinaController
                         Id = tarefa.ID,
                         Nome = tarefa.Nome,
                         Pai = tarefa.TarefaID,
-                        //Prioridade = tarefa.Tarefa.Prioridade,
+                        Prioridade = tarefa.Prioridade,
                     }).ToList()
                 })
                 .ToListAsync();
@@ -71,7 +71,7 @@ public static class RotinaController
                         Id = tarefa.ID,
                         Nome = tarefa.Nome,
                         Pai = tarefa.TarefaID,
-                        //Prioridade = tarefa.Prioridade,
+                        Prioridade = tarefa.Prioridade,
                     }).ToList()
                 }).FirstOrDefaultAsync(t => t.Id == id);
 
@@ -111,12 +111,12 @@ public static class RotinaController
                 {
                     var tarefa = new TarefaModel
                     {
-                        // IdTarefa = req.IdTarefa,
                         Nome = tarefasTemplate.Nome,
                         Descricao = "Descricao",
                         FoiExecutada = false,
                         IdRotina = newRotina.Id,
-                        Rotina = newRotina
+                        Rotina = newRotina,
+                        Prioridade = tarefasTemplate.Prioridade
                     };
 
                     await context.Tarefas.AddAsync(tarefa);
