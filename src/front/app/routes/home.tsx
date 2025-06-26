@@ -3,8 +3,6 @@ import SidePannel from "~/components/SidePannel";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import type { Route as r } from "../../types/app/+types/root";
-import CreatePage from "~/components/CreatePage";
-import RoutinesPage from "~/components/CreatePage";
 import HistoricPage from "~/components/HistoricPage";
 import GroupsPage from "~/components/GroupsPage";
 import { isAuthenticated } from "~/services/auth";
@@ -14,6 +12,7 @@ export const Pannels = {
   ROUTINES: 'routines',
   HISTORIC: 'historic',
   GROUPS: 'groups',
+  USER: 'user'
 } as const;
 
 export function meta({ }: r.MetaArgs) {
@@ -36,7 +35,6 @@ export default function Home() {
   useEffect(() => {
     if(isAuthenticated()){
 
-      console.log(activePannel);
       navigate(`/${activePannel}`);
     }
   }, [activePannel, navigate]);

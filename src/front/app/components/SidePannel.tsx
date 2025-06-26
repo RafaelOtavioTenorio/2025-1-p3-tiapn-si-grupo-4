@@ -4,7 +4,8 @@ import {
     ArrowBackIosRounded,
     Person,
     ViewKanbanOutlined,
-    LogoutRounded
+    LogoutRounded,
+    Group
 } from '@mui/icons-material';
 import { useState } from "react";
 import { Link } from "react-router";
@@ -18,7 +19,6 @@ interface props {
 export default function SidePannel(props: props) {
 
     if (props.activePannel == undefined) {
-        console.log('undefined')
         props.setActivePannel(Pannels.CREATE)
         props.activePannel = 'create';
     }
@@ -28,7 +28,7 @@ export default function SidePannel(props: props) {
     const handleClickPannelItem = () => {
         setOpen(!open);
     }
-    
+
 
 
     return (<>
@@ -46,13 +46,14 @@ export default function SidePannel(props: props) {
             <SidePannelRow icon={AddCircleOutlineRounded} open={open} text="Criar" pannel={Pannels.CREATE} active={props.activePannel == 'create'} setActivePannel={props.setActivePannel} />
             <SidePannelRow icon={ViewKanbanOutlined} open={open} text="Rotinas" pannel={Pannels.ROUTINES} active={props.activePannel == 'routines'} setActivePannel={props.setActivePannel} />
             <SidePannelRow icon={AccessTime} open={open} text="Historico" pannel={Pannels.HISTORIC} active={props.activePannel == 'historic'} setActivePannel={props.setActivePannel} />
-            <SidePannelRow icon={Person} open={open} text="Grupos" pannel={Pannels.GROUPS} active={props.activePannel == 'groups'} setActivePannel={props.setActivePannel} />
+            <SidePannelRow icon={Group} open={open} text="Grupos" pannel={Pannels.GROUPS} active={props.activePannel == 'groups'} setActivePannel={props.setActivePannel} />
+            <SidePannelRow icon={Person} open={open} text="Usuario" pannel={Pannels.USER} active={props.activePannel == 'user'} setActivePannel={props.setActivePannel} />
 
             <div className="mt-auto mb-12">
-                <SidePannelRow 
-                    icon={LogoutRounded} 
-                    open={open} 
-                    text="Sair" 
+                <SidePannelRow
+                    icon={LogoutRounded}
+                    open={open}
+                    text="Sair"
                     pannel="logout"
                     active={false}
                     setActivePannel={() => {
@@ -79,12 +80,17 @@ function SidePannelRow(
 ) {
 
     return (
-        <Link to={"/" + props.pannel} onClick={() => { props.setActivePannel(props.pannel) }} className={`flex flex-row items-center ${props.open ? `justify-start` : `justify-center`} m-5 p-3 ${props.open && props.active ? 'border border-[#235563]  rounded-lg bg-[#235563]' : ''}`}>
-            <span className={`${!props.open && 'mx-auto'}`}>
-                < span color="#0A2C35" className="bg-[#F5F5F5] p-2 rounded-[100px] "  >
-                    <props.icon className="fontSizeLarge" /></span>
-            </span>
-            <span className={`text-white text-xl p-3 ${props.open ? 'block' : 'hidden'}`}>{props.text[0].toUpperCase() + props.text.substring(1)}</span>
+        <Link to={"/" + props.pannel} onClick={() => { props.setActivePannel(props.pannel) }} className={`flex flex-row items-center cursor-pointer 
+                ${props.open ? `justify-start` : `justify-center`}
+                mx-4 my-1 p-4 transition-colors duration-200 h-20
+                ${props.open && props.active ? 'border border-[#235563]  rounded-lg bg-[#235563]' : ''}`}>
+            <div className="flex justify-center">
+                <span className={`${!props.open && 'mx-auto'}`}>
+                    <span color="#0A2C35" className="bg-[#F5F5F5] p-2 rounded-[100px] "  >
+                        <props.icon className="fontSizeLarge" /></span>
+                </span>
+            </div>
+            <span className={`text-white text-xl ml-2 ${props.open ? 'block' : 'hidden'}`}>{props.text[0].toUpperCase() + props.text.substring(1)}</span>
         </Link>
     )
 }

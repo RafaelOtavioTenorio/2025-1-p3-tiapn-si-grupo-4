@@ -35,8 +35,8 @@ public class RotinaTemplateModel
     public int Prioridade { get; set; }
     
     public string Descricao { get; set; }
-    
-    public bool Ativo { get; set; }
+
+    public bool Ativo { get; set; } = true;
     
     public ICollection<TarefaTemplateModel> TarefasTemplates { get; private set; } =  new List<TarefaTemplateModel>();
 }

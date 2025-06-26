@@ -7,7 +7,7 @@ Layout padrão da aplicação que será utilizado em todas as páginas com a def
 ![Template Padrão](images/template_padrao.png "Template Padrão")
 
 ## Cores
-Nossa paleta de cores foi usada por um padrão de cores usadas na área industrial
+Observa-se que a paleta de cores foi usada por um padrão de cores usadas na área industrial
 
 ### Paleta de cores da aplicação
 
@@ -18,6 +18,12 @@ Nossa paleta de cores foi usada por um padrão de cores usadas na área industri
 Fontes utilizadas: [Inter](https://fonts.google.com/specimen/Inter?query=inter)
 
 A fonte tipográfica adotada foi Inter, selecionada por sua legibilidade, estética neutra e ampla aceitação no mercado corporativo e digital. Trata-se de uma fonte sans-serif moderna, que oferece boa leitura em diferentes tamanhos e dispositivos, sendo amplamente utilizada em interfaces de usuário (UI) e materiais profissionais devido à sua clareza e versatilidade.
+
+## Logo
+
+![Logo](images/routixLogo.jpg "Logo Routix")
+
+O ícone foi desenhado para refletir o objetivo da aplicação, tendo um aspecto mais minimalista e simples representando o nome e o foco do sistema em gerenciar rotinas. Ademais, junto a representção do lápis na logo, ela representa a funcionalidade principal da aplicação: organizar, padronizar e otimizar rotinas empresariais.
 
 ## Iconografia
 

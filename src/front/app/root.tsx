@@ -46,6 +46,7 @@ export const Pannels = {
   ROUTINES: 'routines',
   HISTORIC: 'historic',
   GROUPS: 'groups',
+  USER: 'user'
 } as const;
 
 export default function App() {

@@ -11,7 +11,8 @@ public static class TarefaTemplateController
     public static void TarefaTemplateRoutes(this WebApplication app)
     {
         var route = app.MapGroup("tarefa-template")
-        .RequireAuthorization("AuthenticatedUser");
+        //.RequireAuthorization("AuthenticatedUser")
+        ;
 
         route.MapGet("", GetAllTarefaTemplates);
         route.MapGet("{id:int}", GetTarefaTemplateById);
@@ -27,6 +28,7 @@ public static class TarefaTemplateController
             var templates = await context.TarefaTemplates
                 .Where(t => t.Ativo)
                 .Include(t => t.Rotina)
+                .Include(t => t.Insumos)
                 .Select(t => new TarefaTemplateDTO // Projeta para o DTO
                 {
                     ID = t.ID,
@@ -34,7 +36,21 @@ public static class TarefaTemplateController
                     Rotina = t.Rotina != null ? new RotinaTemplateOnTarefaDTO { Id = t.Rotina.Id, Nome = t.Rotina.Nome, Descricao = t.Rotina.Descricao, EmpresaId = t.Rotina.IdEmpresa} : null,
                     Pai = t.Pai,
                     Prioridade = t.Prioridade,
-                    Ativo = t.Ativo
+                    Ativo = t.Ativo,
+                    Subtarefas = t.Subtarefas.Select(subtarefa => new SubtarefaTemplateDTO
+                    {
+                        ID = subtarefa.ID,
+                        Nome = subtarefa.Nome,
+                        Prioridade = subtarefa.Prioridade,
+                        Ativo = subtarefa.Ativo
+                    }).ToList(),
+                    Insumos = t.Insumos.Select(insumo => new InsumoDTO
+                    {
+                        UniqueID = insumo.Id,
+                        Nome = insumo.Nome,
+                        Descricao = insumo.Descricao,
+                        TarefaID = insumo.TarefaID
+                    }).ToList()
                 })
                 .ToListAsync();
             return Results.Ok(templates);

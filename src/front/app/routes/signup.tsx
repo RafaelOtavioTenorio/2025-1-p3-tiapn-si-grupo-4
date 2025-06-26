@@ -17,7 +17,6 @@ interface CompleteSignUpActionData {
 }
 
 function maskCPF(value: string): string {
-    console.log(value)
     const cleanValue = value.replace(/\D/g, "");
 
     let maskedValue = cleanValue;
@@ -31,7 +30,6 @@ function maskCPF(value: string): string {
         maskedValue = maskedValue.replace(/(\d{3})\.(\d{3})\.(\d{3})(\d{1,2})$/, "$1.$2.$3-$4");
     }
 
-    console.log(maskedValue)
     return maskedValue.slice(0, 14);
 }
 function validateCPF(cpf: string): boolean {
@@ -68,8 +66,6 @@ export async function completeSignUpAction({ request }: ActionFunctionArgs) {
     if (Object.keys(fieldErrors).length > 0) {
         return { fieldErrors } as CompleteSignUpActionData;
     }
-
-    console.log('Dados para completar cadastro:', { name, email, password, cpf });
 
     return redirect('/');
 }

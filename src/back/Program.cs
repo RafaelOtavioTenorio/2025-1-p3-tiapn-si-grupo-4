@@ -86,6 +86,6 @@ app.InsumoRoutes();
 app.RotinaRoutes();
 app.LogRoutes();
 
-app.Run("http://localhost:3000");
+app.Run("http://0.0.0.0:3000");
 
 

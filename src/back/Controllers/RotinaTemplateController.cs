@@ -10,17 +10,19 @@ public static class RotinaTemplateController
     public static void RotinaTemplateRoutes(this WebApplication app)
     {
         var routes = app.MapGroup("RotinaTemplate");
-        
+
         routes.MapGet("", FindAllRotinaTemplates);
-        
+
         routes.MapGet("{id:int}", FindRotinaTemplateById);
-        
+
         routes.MapPost("", CreateRotinaTemplate);
-        
+
         routes.MapPut("{id:int}", UpdateRotinaTemplateById);
+
+        routes.MapDelete("{id:int}", DeleteRotinaTemplate);
     }
-    
-    private static async Task<IResult> FindAllRotinaTemplates (MyDbContext context)
+
+    private static async Task<IResult> FindAllRotinaTemplates(MyDbContext context)
     {
         try
         {
@@ -57,8 +59,8 @@ public static class RotinaTemplateController
             return Results.Problem(e.Message);
         }
     }
-    
-    private static async Task<IResult> FindRotinaTemplateById (int id, MyDbContext context)
+
+    private static async Task<IResult> FindRotinaTemplateById(int id, MyDbContext context)
     {
         try
         {
@@ -92,8 +94,8 @@ public static class RotinaTemplateController
             return Results.Problem(e.Message);
         }
     }
-    
-    private static async Task<IResult> CreateRotinaTemplate (RotinaTemplateCreateDto createDto, MyDbContext context)
+
+    private static async Task<IResult> CreateRotinaTemplate(RotinaTemplateCreateDto createDto, MyDbContext context)
     {
         try
         {
@@ -118,7 +120,7 @@ public static class RotinaTemplateController
                 Ativo = true,
                 Descricao = newRotinaTemplate.Descricao
             };
-            
+
             return Results.Created($"/rotina-template/{newRotinaTemplate.Id}", newRotinaTemplateReturn);
         }
         catch (Exception e)
@@ -127,8 +129,8 @@ public static class RotinaTemplateController
             return Results.Problem(e.Message);
         }
     }
-    
-    private static async Task<IResult> UpdateRotinaTemplateById (int id, UpdateRotinaTemplateDTO dtOs, MyDbContext context)
+
+    private static async Task<IResult> UpdateRotinaTemplateById(int id, UpdateRotinaTemplateDTO dtOs, MyDbContext context)
     {
         try
         {
@@ -146,6 +148,24 @@ public static class RotinaTemplateController
         {
             Console.WriteLine(e);
             return Results.Problem(e.Message);
+        }
+    }
+    
+    private static async Task<IResult> DeleteRotinaTemplate(int id, MyDbContext context)
+    {
+        try
+        {
+            var template = await context.RotinaTemplates.FindAsync(id);
+            if (template is null) return Results.NotFound();
+
+            context.RotinaTemplates.Remove(template);
+            await context.SaveChangesAsync();
+            return Results.NoContent();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Erro ao deletar rotina: {e.Message}");
+            return Results.Problem("Erro ao deletar rotina.", statusCode: StatusCodes.Status500InternalServerError);
         }
     }
 }
