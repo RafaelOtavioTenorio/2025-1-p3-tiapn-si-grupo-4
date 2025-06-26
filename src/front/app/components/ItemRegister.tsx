@@ -16,6 +16,7 @@ interface ModalProps extends PropsWithChildren {
   actions?: React.ReactElement[];
   result: NovoItem | undefined;
   idRotina?: number;  // NOVO: id da rotina para enviar no POST
+  idPai?: number
 }
 
 function ItemRegister(props: ModalProps) {
@@ -52,7 +53,7 @@ function ItemRegister(props: ModalProps) {
           body: JSON.stringify({
             nome: nome.trim(),
             idRotina: props.idRotina || 0,  // Usa o id da rotina passado via prop
-            pai: 0,
+            pai: props.idPai,
             prioridade: Number(prioridade) || 1,
             ativo: true,
           }),

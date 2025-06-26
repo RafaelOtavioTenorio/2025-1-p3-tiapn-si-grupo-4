@@ -35,7 +35,14 @@ public static class TarefaTemplateController
                     Rotina = t.Rotina != null ? new RotinaTemplateOnTarefaDTO { Id = t.Rotina.Id, Nome = t.Rotina.Nome, Descricao = t.Rotina.Descricao, EmpresaId = t.Rotina.IdEmpresa} : null,
                     Pai = t.Pai,
                     Prioridade = t.Prioridade,
-                    Ativo = t.Ativo
+                    Ativo = t.Ativo,
+                    Subtarefas = t.Subtarefas.Select(subtarefa => new SubtarefaTemplateDTO
+                    {
+                        ID = subtarefa.ID,
+                        Nome = subtarefa.Nome,
+                        Prioridade = subtarefa.Prioridade,
+                        Ativo = subtarefa.Ativo
+                    }).ToList()
                 })
                 .ToListAsync();
             return Results.Ok(templates);

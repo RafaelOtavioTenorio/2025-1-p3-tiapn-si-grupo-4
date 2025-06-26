@@ -28,6 +28,7 @@ interface Item {
   id: number;
   nome: string;
   concluido: boolean;
+  subItens: any;
 }
 
 export default function RoutinesPage() {
@@ -119,11 +120,12 @@ export default function RoutinesPage() {
       if (res.ok) {
         const data = await res.json();
         const tarefasFiltradas = data
-          .filter(t => Number(t.rotina?.id) === rotinaId)
+          .filter(t => (Number(t.rotina?.id) === rotinaId) && (t.pai == 0))
           .map(tarefa => ({
             id: tarefa.id,
             nome: tarefa.nome,
             concluido: tarefa.ativo === true,
+            subItens: tarefa.subtarefas
           }));
 
         setItens(tarefasFiltradas);
@@ -256,31 +258,16 @@ export default function RoutinesPage() {
                       <input type="checkbox" checked={tarefa.concluido} readOnly />
                       <span>{tarefa.nome}</span>
                     </div>
-                    {/* Botão de expandir/recolher se houver subitens */}
-                    {tarefa.subitens && tarefa.subitens.length > 0 && (
-                      <button
-                        className="ml-2"
-                        onClick={() =>
-                          setExpanded((prev) => ({
-                            ...prev,
-                            [tarefa.id]: !prev[tarefa.id],
-                          }))
-                        }
-                        aria-label={expanded[tarefa.id] ? "Recolher subitens" : "Expandir subitens"}
-                      >
-                        <ArrowDown className={`transition-transform ${expanded[tarefa.id] ? "rotate-180" : ""}`} />
-                      </button>
-                    )}
                     {/* Sublista expandida */}
-                    {tarefa.subitens && tarefa.subitens.length > 0 && expanded[tarefa.id] && ( //Adicione referencia correta de subtarefa aqui
+                    {tarefa.subItens && tarefa.subItens.length > 0 && expanded[tarefa.id] && ( //Adicione referencia correta de subtarefa aqui
                       <div className="flex items-start">
                         <div className="flex flex-col items-center mr-2">
                           <div className="w-px bg-black h-full min-h-[40px]" />
                         </div>
                         <ul className="flex flex-col gap-1">
-                          {tarefa.subitens.map((sub, idx) => (
+                          {tarefa.subItens.map((sub, idx) => (
                             <li key={idx} className="flex items-center text-xs text-gray-600 pl-2">
-                              <input type="checkbox" checked={sub.concluido} readOnly className="mr-2" />
+                              <input type="checkbox" checked={sub.ativo} readOnly className="mr-2" />
                               {sub.nome}
                             </li>
                           ))}
@@ -288,6 +275,21 @@ export default function RoutinesPage() {
                       </div>
                     )}
                     <div className="flex">
+                      {/* Botão de expandir/recolher se houver subitens */}
+                      {tarefa.subItens && tarefa.subItens.length > 0 && (
+                        <button
+                          className="ml-2"
+                          onClick={() =>
+                            setExpanded((prev) => ({
+                              ...prev,
+                              [tarefa.id]: !prev[tarefa.id],
+                            }))
+                          }
+                          aria-label={expanded[tarefa.id] ? "Recolher subitens" : "Expandir subitens"}
+                        >
+                          <ArrowDown className={`transition-transform ${expanded[tarefa.id] ? "rotate-180" : ""}`} />
+                        </button>
+                      )}
                       <Add onClick={() => {setItemRegisterOpen(true) }} className="border border-gray-700 hover:bg-gray-300 rounded-full mx-1" />
                       <ItemRegisterModal
                         closeModal={() => setItemRegisterOpen(false)}
@@ -295,6 +297,7 @@ export default function RoutinesPage() {
                         onCreate={handleItemRegister}
                         result={resultadoModalRegistroItem}
                         idRotina={selectedRotina.id}
+                        idPai={tarefa.id}
                       />
                       <Gear className="border border-gray-700 hover:bg-gray-300 rounded-sm mx-1" />
                       {/*Adicionar modal de editar Tarefa ou insumo*/}

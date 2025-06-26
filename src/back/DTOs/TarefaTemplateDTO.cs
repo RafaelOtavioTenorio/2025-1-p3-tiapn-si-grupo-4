@@ -10,6 +10,8 @@ public class TarefaTemplateDTO
     public int? Pai { get; set; }
     public int Prioridade { get; set; }
     public bool Ativo { get; set; }
+    
+    public List<SubtarefaTemplateDTO> Subtarefas { get; set; }
 }
 
 public class CreateTarefaTemplateDTO
@@ -37,4 +39,12 @@ public class RotinaTemplateOnTarefaDTO
     public int Prioridade { get; set; }
     
     public string Descricao { get; set; }
+}
+
+public class SubtarefaTemplateDTO
+{
+    public int ID { get; set; }
+    public required string Nome { get; set; }
+    public int Prioridade { get; set; }
+    public bool Ativo { get; set; }
 }

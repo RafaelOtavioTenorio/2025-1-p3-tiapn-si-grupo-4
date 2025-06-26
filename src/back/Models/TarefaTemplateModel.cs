@@ -20,12 +20,14 @@ public class TarefaTemplateModel
   [ForeignKey("IdRotina")]
   public virtual RotinaTemplateModel Rotina { get; set; } = null!;
 
-  [ForeignKey("Tarefa")]
   public int? Pai { get; set; }
+  
+  [ForeignKey("Pai")]
+  public TarefaTemplateModel? TarefaPai { get; set; }
 
   public int Prioridade { get; set; }
 
   public bool Ativo { get; set; } = true;
   public ICollection<InsumoModel> Insumos { get; set; } = new List<InsumoModel>();
-
+  public ICollection<TarefaTemplateModel> Subtarefas { get; set; } = new List<TarefaTemplateModel>();
 }
