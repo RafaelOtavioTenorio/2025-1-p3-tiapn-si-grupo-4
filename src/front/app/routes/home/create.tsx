@@ -45,6 +45,7 @@ export default function RoutinesPage() {
   const [resultadoModalRegistroItem, setResultadoModalRegistroItem] = useState<NovoItem>();
 
   const [empresaId, setEmpresaId] = useState<number | null>(null);
+  const [idTarefaPai, setIdTarefaPai] = useState<number | null>(null);
 
   const baseUrl = import.meta.env.VITE_BASE_URL;
 
@@ -241,7 +242,7 @@ export default function RoutinesPage() {
               </div>
 
               <DefaultButton
-                onClick={() => setTarefaCreateOpen(true)
+                onClick={() => {setTarefaCreateOpen(true); setIdTarefaPai(null)}
                 }> ADICIONAR TAREFA</DefaultButton>
               <TarefaRegister
                 closeModal={() => setTarefaCreateOpen(false)}
@@ -290,21 +291,21 @@ export default function RoutinesPage() {
                           <ArrowDown className={`transition-transform ${expanded[tarefa.id] ? "rotate-180" : ""}`} />
                         </button>
                       )}
-                      <Add onClick={() => {setItemRegisterOpen(true) }} className="border border-gray-700 hover:bg-gray-300 rounded-full mx-1" />
-                      <ItemRegisterModal
-                        closeModal={() => setItemRegisterOpen(false)}
-                        openModal={itemRegisterOpen}
-                        onCreate={handleItemRegister}
-                        result={resultadoModalRegistroItem}
-                        idRotina={selectedRotina.id}
-                        idPai={tarefa.id}
-                      />
+                      <Add onClick={() => {setItemRegisterOpen(true); setIdTarefaPai(tarefa.id)}} className="border border-gray-700 hover:bg-gray-300 rounded-full mx-1" />
                       <Gear className="border border-gray-700 hover:bg-gray-300 rounded-sm mx-1" />
                       {/*Adicionar modal de editar Tarefa ou insumo*/}
                     </div>
                   </li>
                 ))}
               </ul>
+              <ItemRegisterModal
+                closeModal={() => setItemRegisterOpen(false)}
+                openModal={itemRegisterOpen}
+                onCreate={handleItemRegister}
+                result={resultadoModalRegistroItem}
+                idRotina={selectedRotina.id}
+                idPai={idTarefaPai}
+              />
             </>
           ) : (
             <div className="text-gray-400 italic">Selecione uma rotina para visualizar detalhes.</div>

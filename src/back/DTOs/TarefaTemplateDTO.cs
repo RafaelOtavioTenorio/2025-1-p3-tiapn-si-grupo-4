@@ -12,6 +12,8 @@ public class TarefaTemplateDTO
     public bool Ativo { get; set; }
     
     public List<SubtarefaTemplateDTO> Subtarefas { get; set; }
+    
+    public List<InsumoDTO> Insumos { get; set; }
 }
 
 public class CreateTarefaTemplateDTO

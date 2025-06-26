@@ -53,7 +53,7 @@ public static class InsumoController
     {
         try
         {
-            var tarefa = await context.Tarefas.FindAsync(req.TarefaID);
+            var tarefa = await context.TarefaTemplates.FindAsync(req.TarefaID);
             if (tarefa == null)
                 return Results.BadRequest($"Tarefa com ID {req.TarefaID} não existe.");
 
@@ -66,7 +66,16 @@ public static class InsumoController
 
             await context.Insumos.AddAsync(insumo);
             await context.SaveChangesAsync(); 
-            return Results.Created($"/insumo/{req.UniqueID}", insumo);
+            
+            var insumoDto = new InsumoDTO
+            {
+                UniqueID = insumo.Id,
+                Nome = insumo.Nome,
+                Descricao = insumo.Descricao,
+                TarefaID = insumo.TarefaID
+            };
+            
+            return Results.Created($"/insumo/{req.UniqueID}", insumoDto);
         }
         catch (ArgumentException e)
         {

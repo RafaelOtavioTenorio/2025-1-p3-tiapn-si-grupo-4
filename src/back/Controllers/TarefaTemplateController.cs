@@ -28,6 +28,7 @@ public static class TarefaTemplateController
             var templates = await context.TarefaTemplates
                 .Where(t => t.Ativo)
                 .Include(t => t.Rotina)
+                .Include(t => t.Insumos)
                 .Select(t => new TarefaTemplateDTO // Projeta para o DTO
                 {
                     ID = t.ID,
@@ -42,6 +43,13 @@ public static class TarefaTemplateController
                         Nome = subtarefa.Nome,
                         Prioridade = subtarefa.Prioridade,
                         Ativo = subtarefa.Ativo
+                    }).ToList(),
+                    Insumos = t.Insumos.Select(insumo => new InsumoDTO
+                    {
+                        UniqueID = insumo.Id,
+                        Nome = insumo.Nome,
+                        Descricao = insumo.Descricao,
+                        TarefaID = insumo.TarefaID
                     }).ToList()
                 })
                 .ToListAsync();
