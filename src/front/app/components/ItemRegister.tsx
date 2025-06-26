@@ -148,7 +148,6 @@ function ItemRegister(props: ModalProps) {
     };
   }, [props.closeModal]);
 
-  console.log("idPai: ",props.idPai)
   return (
     <dialog
       ref={ref}

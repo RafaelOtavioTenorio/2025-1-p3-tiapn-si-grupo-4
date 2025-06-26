@@ -35,7 +35,6 @@ export default function Home() {
   useEffect(() => {
     if(isAuthenticated()){
 
-      console.log(activePannel);
       navigate(`/${activePannel}`);
     }
   }, [activePannel, navigate]);

@@ -5,17 +5,17 @@ import DefaultButton from "./DefaultButton";
 interface DeleteProps {
   openModal: boolean;
   closeModal: () => void;
-  onDelete: () => void;
+  //onDelete: () => void;
   nomeRotina?: string;
   idRotina: number;
 }
 
-export default function Delete({ openModal, closeModal, onDelete, nomeRotina, idRotina }: DeleteProps) {
+export default function Delete({ openModal, closeModal, nomeRotina, idRotina }: DeleteProps) {
   const ref = useRef<HTMLDialogElement>(null);
 
   const baseUrl = import.meta.env.VITE_BASE_URL;
 
-  const deleteRotina = async (idRotina: number) => {
+  const deleteRotina = async () => {
     try {
       const response = await fetch(`${baseUrl}/RotinaTemplate/${idRotina}`, {
         method: "DELETE",
@@ -33,7 +33,6 @@ export default function Delete({ openModal, closeModal, onDelete, nomeRotina, id
         return;
       }
 
-      onDelete(); // Atualiza a lista ou faz outras ações
       closeModal(); // Fecha o modal
     } catch (error) {
       console.error("Erro na requisição de delete:", error);
@@ -68,7 +67,7 @@ export default function Delete({ openModal, closeModal, onDelete, nomeRotina, id
           Esta ação não poderá ser desfeita.
         </p>
         <div className="flex w-full justify-center gap-4">
-          <DefaultButton onClick={onDelete}>
+          <DefaultButton onClick={deleteRotina}>
             DELETAR
           </DefaultButton>
         </div>
