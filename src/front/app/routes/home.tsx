@@ -14,6 +14,7 @@ export const Pannels = {
   ROUTINES: 'routines',
   HISTORIC: 'historic',
   GROUPS: 'groups',
+  USER: 'user'
 } as const;
 
 export function meta({ }: r.MetaArgs) {
