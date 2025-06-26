@@ -42,18 +42,6 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("AuthenticatedUser", policy => policy.RequireAuthenticatedUser());
     options.AddPolicy("AdminRole", policy => policy.RequireRole("Admin"));
 });
-Console.WriteLine("FRONT_URL: "+Environment.GetEnvironmentVariable("FRONT_URL"));
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(name: "front-origin", policy =>
-    {
-        policy.WithOrigins(Environment.GetEnvironmentVariable("FRONT_URL") ?? "http://localhost:5173")
-              .AllowAnyHeader()
-              .AllowAnyMethod()
-              .AllowCredentials();
-    });
-});
-
 
 var app = builder.Build();
 

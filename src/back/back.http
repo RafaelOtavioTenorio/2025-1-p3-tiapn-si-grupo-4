@@ -55,9 +55,6 @@ Content-Type: application/json
     "senha": "123456"
 }
 
-
-
-
 ### get all users
 GET {{back_HostAddress}}/user
 Accept: application/json
