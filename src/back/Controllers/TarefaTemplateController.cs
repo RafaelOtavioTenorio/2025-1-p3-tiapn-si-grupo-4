@@ -109,7 +109,15 @@ public static class TarefaTemplateController
 
             await context.TarefaTemplates.AddAsync(template);
             await context.SaveChangesAsync();
-            return Results.Created($"/tarefa-template/{template.ID}", template);
+
+            var tarefaDto = new SimpleTarefaTemplateDTO
+            {
+                Nome = template.Nome,
+                Pai = template.Pai,
+                Prioridade = template.Prioridade,
+                ID = template.ID,
+            };
+            return Results.Created($"/tarefa-template/{template.ID}", tarefaDto);
         }
         catch (ArgumentException e)
         {

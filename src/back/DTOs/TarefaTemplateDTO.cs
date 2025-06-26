@@ -16,6 +16,14 @@ public class TarefaTemplateDTO
     public List<InsumoDTO> Insumos { get; set; }
 }
 
+public class SimpleTarefaTemplateDTO
+{
+    public int ID { get; set; }
+    public required string Nome { get; set; }
+    public int? Pai { get; set; }
+    public int Prioridade { get; set; }
+}
+
 public class CreateTarefaTemplateDTO
 {
     public required string Nome { get; set; }
