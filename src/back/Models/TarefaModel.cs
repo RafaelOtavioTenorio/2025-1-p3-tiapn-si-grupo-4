@@ -36,6 +36,8 @@ public class TarefaModel
 
   [Column(TypeName = "date")]
   public DateTime? DataFim { get; set; }
+  
+  public int Prioridade { get; set; }
 
 
 

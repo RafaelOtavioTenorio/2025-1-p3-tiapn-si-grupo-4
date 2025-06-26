@@ -130,7 +130,7 @@ export default function RoutinesPage() {
       if (res.ok) {
         const data = await res.json();
         const tarefasFiltradas = data
-          .filter(t => (Number(t.rotina?.id) === rotinaId) && (t.pai == 0))
+          .filter(t => (Number(t.rotina?.id) === rotinaId) && (t.pai == null))
           .map(tarefa => ({
             id: tarefa.id,
             nome: tarefa.nome,

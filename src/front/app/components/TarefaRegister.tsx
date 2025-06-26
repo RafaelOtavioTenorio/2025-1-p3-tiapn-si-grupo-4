@@ -50,7 +50,7 @@ function TarefaRegister(props: ModalProps) {
         body: JSON.stringify({
           nome: nome.trim(),
           idRotina: props.idRotina || 0,
-          pai: 0,
+          pai: null,
           prioridade: Number(prioridade) || 1,
           ativo: true,
         }),

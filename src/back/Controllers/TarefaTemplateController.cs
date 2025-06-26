@@ -91,6 +91,13 @@ public static class TarefaTemplateController
                 return Results.BadRequest("Nome é obrigatório para criar um TarefaTemplate.");
             }
 
+            if (req.Pai.HasValue)
+            {
+                var pai = await context.TarefaTemplates.FindAsync(req.Pai);
+                if (pai == null)
+                    return Results.NotFound("Pai não encontrado.");
+            }
+
             var template = new TarefaTemplateModel
             {
                 Nome = req.Nome,
