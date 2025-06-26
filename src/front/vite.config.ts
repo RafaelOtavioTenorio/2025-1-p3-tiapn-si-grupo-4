@@ -21,7 +21,7 @@ export default defineConfig({
       '@assets': path.resolve(__dirname, './assets')
     }
   },
-  ssr: {
-    noExternal: true,
-  },
+  // ssr: {
+  //   noExternal: true,
+  // },
 });

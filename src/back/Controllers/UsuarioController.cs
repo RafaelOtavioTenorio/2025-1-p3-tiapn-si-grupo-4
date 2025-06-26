@@ -10,7 +10,7 @@ public static class UsuarioController
 {
     public static void UsuarioRoutes(this WebApplication app)
     {
-        var route = app.MapGroup("user"); //adicionar .RequireAuthorization("AuthenticatedUser")
+        var route = app.MapGroup("user").RequireAuthorization("AuthenticatedUser");
 
         // GET all users
         route.MapGet("", async (MyDbContext context) =>

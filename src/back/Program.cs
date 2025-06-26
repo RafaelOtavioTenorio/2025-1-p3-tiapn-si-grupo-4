@@ -21,12 +21,13 @@ builder.Services.AddCors(options =>
                       policy =>
                       {
                           policy.WithOrigins(
-                              "https://two025-1-p3-tiapn-si-grupo-4-2.onrender.com", 
-                              "http://localhost:5173", 
+                              "https://two025-1-p3-tiapn-si-grupo-4-2.onrender.com",
+                              "http://localhost:5173",
                               "http://localhost:3000"
                           )
                           .AllowAnyHeader()
-                          .AllowAnyMethod();
+                          .AllowAnyMethod()
+                          .AllowCredentials();
                       });
 });
 

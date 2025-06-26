@@ -53,8 +53,19 @@ public static class EmpresaController
     {
         try
         {
-            await context.Empresas.AddAsync(req);
+
+            var newEmpresa = new EmpresaModel
+            {
+                Ativo = true,
+                CNPJ = req.CNPJ,
+                Funcionarios = [],
+                Nome = req.Nome,
+            };
+            
+            await context.Empresas.AddAsync(newEmpresa);
+
             await context.SaveChangesAsync();
+            var empresa = await context.Empresas.FindAsync(req.ID);
             return Results.Created($"/empresa/{req.ID}", req);
         }
         catch (Exception e)

@@ -27,18 +27,14 @@ export default function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && !isAuthenticated()) {
-      navigate("/login");
-    }
-  }, [navigate]);
-
-  useEffect(() => {
-    if(isAuthenticated()){
-
+    isAuthenticated().then((response)=>{
       console.log(activePannel);
       navigate(`/${activePannel}`);
-    }
-  }, [activePannel, navigate]);
+
+    }).catch((ew)=>{
+      navigate("/login");
+    });
+  }, [activePannel,navigate]);
 
   return (
     <div className='h-screen overflow-hidden'>

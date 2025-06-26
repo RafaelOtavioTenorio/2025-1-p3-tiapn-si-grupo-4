@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type PropsWithChildren } from "react";
 import CloseIcon from '@mui/icons-material/Close';
 import DefaultButton from "./DefaultButton";
+import apiClient from "~/services/client";
 
 export interface NovaRotina {
     nome: string;
@@ -38,28 +39,21 @@ function CreateRoutine(props: ModalProps) {
         };
 
         try {
-            const response = await fetch(`${baseUrl}/RotinaTemplate`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-                },
-                body: JSON.stringify({
+            const response = await apiClient.post(`/RotinaTemplate`, {
                     nome: novaRotina.nome,
                     prioridade: Number(novaRotina.prioridade) || 0,
                     descricao: novaRotina.descricao || '',
                     idEmpresa: idEmpresa,
                     ativo: true,
-                }),
             });
 
-            if (!response.ok) {
-                const errorText = await response.text();
+            if (response.status != 200 ) {
+                const errorText = await response.statusText;
                 console.error("Erro ao criar rotina:", errorText);
                 return;
             }
 
-            const createdRotina = await response.json();
+            const createdRotina = await response.data;
             localStorage.setItem("rotinaExtra", JSON.stringify(createdRotina));
 
             setNome('');

@@ -30,8 +30,6 @@ interface AuthResponse {
 }
 
 export const  loginUser = async (credentials: LoginCredentials): Promise<AuthResponse> => {
-    console.log('Dados do login:', credentials);
-    console.log('URL base:', import.meta.env.VITE_BASE_URL);
    
     try {
         const response = await apiClient.post<AuthResponse>('/auth/login', credentials);
@@ -64,9 +62,12 @@ export const signupUser = async (data: SignupData): Promise<AuthResponse> => {
             localStorage.setItem('userData', JSON.stringify(responseLogin.data.user));
         }
         return responseLogin.data;
-    } catch (error) {
+    } catch (error: any) {
+        if (error.response && error.response.status === 409) {
+            throw new Error(error.response.data || 'Já existe um usuário com este CPF ou e-mail.');
+        }
         console.error('Erro no cadastro:', error);
-        throw console.error('Erro no cadastro:', error);;
+        throw error;
     }
 };
 
@@ -91,6 +92,26 @@ export const getCurrentUser = () => {
     return null;
 };
 
-export const isAuthenticated = (): boolean => {
-    return !!localStorage.getItem('authToken');
+interface AuthCheckResponse  {
+    Valid :boolean;
+    Error? :string;
+    StatusCode?: Number;
+}
+
+export const isAuthenticated = async (): Promise<boolean> => {
+    const token = localStorage.getItem('authToken');
+
+    if (!token) {
+        return false;
+    }
+
+    try {
+        const response = await apiClient.post<AuthCheckResponse>("/auth/check", { "authToken": token });
+        
+        return response.data?.Valid || false;
+
+    } catch (error) {
+        console.error("Falha na verificação de autenticação:", error);
+        return false;
+    }
 };
