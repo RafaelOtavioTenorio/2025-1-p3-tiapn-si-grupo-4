@@ -3,8 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "react-router build",
-    "dev": "react-router dev",
+    "build": "vite build",
+    "dev": "vite",
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc"
   },
@@ -32,6 +32,8 @@
     "tailwindcss": "^4.1.4",
     "typescript": "^5.8.3",
     "vite": "^6.3.3",
+    "vite-plugin-transform-imports": "^1.0.0",
+    "vite-plugin-vercel": "^9.0.7",
     "vite-tsconfig-paths": "^5.1.4"
   }
 }
