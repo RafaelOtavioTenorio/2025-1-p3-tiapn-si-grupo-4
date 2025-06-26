@@ -11,7 +11,8 @@ public static class TarefaTemplateController
     public static void TarefaTemplateRoutes(this WebApplication app)
     {
         var route = app.MapGroup("tarefa-template")
-        .RequireAuthorization("AuthenticatedUser");
+        //.RequireAuthorization("AuthenticatedUser")
+        ;
 
         route.MapGet("", GetAllTarefaTemplates);
         route.MapGet("{id:int}", GetTarefaTemplateById);

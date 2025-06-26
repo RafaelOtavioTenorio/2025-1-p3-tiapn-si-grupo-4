@@ -9,6 +9,8 @@ Visão geral da interação do usuário pelas telas do sistema e protótipo inte
 
  ## User flow
 
+A imagem apresenta o fluxo de navegação da interface do sistema Routix, especificamente relacionado à gestão de rotinas e tarefas. O diagrama mostra, de forma estruturada, as telas pelas quais o usuário pode transitar ao criar, editar, deletar ou associar itens a uma rotina. As setas vermelhas indicam o caminho entre as diferentes funcionalidades, permitindo visualizar como as ações se encadeiam dentro da aplicação. Essa representação é fundamental para entender a lógica de interação do usuário com o sistema, auxiliando tanto no desenvolvimento quanto na validação da usabilidade.
+
 ![Userflow Routix](images/Userflow_Routix.png)
 
 ### Diagrama de fluxo

@@ -1,15 +1,21 @@
-// ~/components/SearchInput.tsx
 import React from 'react'
 import type { ChangeEvent } from "react";
 import Search from '@mui/icons-material/Search';
 
-interface SearchInputProps {
+interface Rotina {
+  nome: string;
+  tarefas: number;
+  insumos: number;
+}
+
+interface SearchFuncionarioProps {
   value: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
+  rotinas?: Rotina[];
 }
 
-export default function SearchInput({ value, onChange, placeholder }: SearchInputProps) {
+export default function SearchFuncionario(props: SearchFuncionarioProps) {
   return (
     <div className="relative w-full">
       <button
@@ -20,12 +26,11 @@ export default function SearchInput({ value, onChange, placeholder }: SearchInpu
       >
         <Search />
       </button>
-
       <input
         type="text"
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder || "Pesquisar rotina..."}
+        value={props.value}
+        onChange={props.onChange}
+        placeholder={props.placeholder ?? "Pesquisar funcionário..."}
         className="w-full pl-12 pr-4 py-2 rounded shadow-sm border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
       />
     </div>

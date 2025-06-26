@@ -17,26 +17,16 @@ export default function DefaultButton({ buttonType: type, onClick, children, ...
 
     return (
         <div className="">
-            <button 
+            <button
                 {...props}
                 className={
-                    `${buttonType == ButtonTypes.PRIMARY ? `bg-[#0A2C35]` :
-                    buttonType == ButtonTypes.SECONDARY ? `bg-amber-50` :
-                    buttonType == ButtonTypes.ACTION ? `bg-[#00161C]` :
-                        `bg-red-500`}
-                    ${buttonType == ButtonTypes.SECONDARY ? 'text-slate-800' : 
-                    buttonType == ButtonTypes.ACTION ? 'text-[#F5F5F5]' : 'text-white'} 
-                    ${buttonType == ButtonTypes.ACTION ? 'w-64 px-4 py-2' : 'h-16 w-48'} 
-                    text-xl font-bold rounded-lg
-                    transition-colors
-                    ${buttonType == ButtonTypes.PRIMARY ? `hover:bg-amber-50` :
-                    buttonType == ButtonTypes.SECONDARY ? `hover:bg-[#0A2C35] hover:text-white` :
-                    buttonType == ButtonTypes.ACTION ? `hover:bg-gray-300` :
-                        `hover:bg-red-700`} 
-                    hover:text-slate-800
-                    px-4 py-4 shadow-md
+                    `${buttonType === ButtonTypes.PRIMARY ? 'bg-[#0A2C35] text-white hover:bg-amber-50 hover:text-slate-800' : ''}
+                    ${buttonType === ButtonTypes.SECONDARY ? 'bg-amber-50 text-slate-800 hover:bg-[#0A2C35] hover:text-white' : ''}
+                    ${buttonType === ButtonTypes.ACTION ? 'bg-[#00161C] text-[#F5F5F5] hover:bg-gray-300 hover:text-slate-800' : ''}
+                    ${buttonType === ButtonTypes.ERROR ? 'px-11 text-white bg-red-600 hover:bg-red-700' : 'w-fit'}
+                    text-xl font-bold rounded-lg transition-colors shadow-md
+                    px-4 py-4 
                     ${children === 'CRIAR' ? 'px-15 w-35' : 'w-fit'}
-                    ${children === 'DELETAR' ? 'px-11 bg-red-600 hover:bg-red-700' : 'w-fit'}
                     ${children === 'CANCELAR' ? 'px-9 bg-gray-400 hover:bg-gray-300' : 'w-fit'}
                     shadow-md
                     `}

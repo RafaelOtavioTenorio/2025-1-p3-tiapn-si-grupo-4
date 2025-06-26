@@ -23,7 +23,7 @@ function DefaultModal(props: ModalProps) {
         <dialog
             ref={ref}
             onCancel={props.closeModal}
-            className="items-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-4/5"
+            className="items-center top-1/2 left-1/2 rounded-lg -translate-x-1/2 -translate-y-1/2 w-1/2 h-4/5"
         >
             <div className="h-full flex flex-col">
                 <div className="flex-1 flex items-center justify-center">

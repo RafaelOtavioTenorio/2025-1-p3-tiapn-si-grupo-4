@@ -12,8 +12,9 @@ export default function RoutinesPage(props: any) {
     return (
         <div className='flex flex-row m-5 p-4 mb-16'>
             <div className='flex-1 bg-gray-100'>
-                <div className="flex flex-row justify-between items-center">
+                <div className="flex justify-between items-center mb-6">
                     <Title>Rotinas em Andamento</Title>
+                    <DefaultButton> INICIAR ROTINA</DefaultButton>
                 </div>
                 <div className="flex flex-row justify-between items-center">
                     <div className="justify-start flex flex-row items center">
@@ -38,12 +39,6 @@ export default function RoutinesPage(props: any) {
                         >
                             <option value="Categoria">Categoria</option>
                         </select>
-                    </div>
-
-                    <div className="flex justify-end h-16">
-                        <DefaultButton>
-                            INICIAR ROTINA
-                        </DefaultButton>
                     </div>
                 </div>
 

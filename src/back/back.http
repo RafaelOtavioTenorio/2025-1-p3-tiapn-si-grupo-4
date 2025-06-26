@@ -63,6 +63,21 @@ GET {{back_HostAddress}}/user
 Accept: application/json
 Authorization: Bearer {{authToken}}
 
+### 
+# @name createEmpresa
+
+POST {{back_HostAddress}}/empresa
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "id": "1",
+    "nome": "Empresa Teste",
+    "cnpj": "12345678000195",
+    "ativo": true,
+    "funcionarios": []
+}
+
 
 ### post tarefa
 POST {{back_HostAddress}}/tarefa-template

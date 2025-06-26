@@ -1,16 +1,18 @@
 import React from "react";
-import { useState } from "react";
 
-export default function CardRotinaDescricao() {
-    const [nomeRotina, setNomeCargo] = useState("AUDITORIA INTERNA");
-    const [nomeTarefa, setNomeTarefa] = useState("Notas fiscais");
-    const [descricaoTarefa, setDescricaoTarefa] = useState("Pegar notas fiscais das datas informadas");
+interface CardRotinaDescricaoProps {
+  nomeTarefa: string;
+  descricaoTarefa: string;
+}
 
-    return (
-        <div className="flex flex-col w-6/7 p-3  mt-5 bg-white rounded-lg shadow-md">
-            <label className="md:text-2xl font-bold justify-start">{nomeRotina}</label>
-            <label className="md:text-xl mt-1 justify-start">{nomeTarefa}</label>
-            <label className="md:text-l mt-1 justify-start">{descricaoTarefa}</label>
-        </div>
-    )
+export default function CardRotinaDescricao({
+  nomeTarefa,
+  descricaoTarefa,
+}: CardRotinaDescricaoProps) {
+  return (
+    <div className="flex flex-col w-full p-2 mb-2 bg-white rounded-xl shadow-sm">
+      <label className="text-base font-semibold">{nomeTarefa}</label>
+      <label className="text-sm text-gray-600">{descricaoTarefa}</label>
+    </div>
+  );
 }

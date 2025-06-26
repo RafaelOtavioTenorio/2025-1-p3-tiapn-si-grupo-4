@@ -35,3 +35,8 @@ public class TarefaOnRotinaDTO
     public int Prioridade { get; set; }
     public int? Pai { get; set; }
 }
+
+public class RotinaDeleteDTO
+{
+    public int Id { get; set; }
+}
