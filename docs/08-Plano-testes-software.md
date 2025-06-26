@@ -20,23 +20,56 @@ Por exemplo:
 
 <br>
 
-| **Caso de teste**  | **CT-002 – Efetuar login**  |
+| **Caso de teste**  | **CT-002 – Realizar login na plataforma**  |
 |:---: |:---: |
-| Requisito associado | RF-00Y - A aplicação deve possuir opção de fazer login, sendo o login o endereço de e-mail. |
-| Objetivo do teste | Verificar se o usuário consegue realizar login. |
-| Passos | - Acessar o navegador <br> - Informar o endereço do site https://adota-pet.herokuapp.com/src/index.html <br> - Clicar no botão "Entrar" <br> - Preencher o campo de e-mail <br> - Preencher o campo de senha <br> - Clicar em "Login" |
-| Critério de êxito | - O login foi realizado com sucesso. |
+| Requisito associado | RF-002 - Permitir que o usuário faça login na plataforma. |
+| Objetivo do teste | Verificar se o usuário consegue efetuar login após se cadastrar. |
+| Passos | - Acessar a tela de login <br> - Preencher os campos de CPF ou e-mail e senha <br> - Clicar em “Entrar” |
+| Critério de êxito | - O sistema autentica o usuário e redireciona para o painel da plataforma. |
+| Responsável pela elaboração do caso de teste | Nome do integrante da equipe. |
+
+<br>
+
+| **Caso de teste**  | **CT-003 – Cadastrar rotina ou processo**  |
+|:---: |:---: |
+| Requisito associado | RF-003 - Os usuários podem cadastrar uma rotina ou processo. |
+| Objetivo do teste | Verificar se é possível criar uma nova rotina ou processo no sistema. |
+| Passos | - Acessar a dashboard <br> - Selecionar a opção “Nova rotina” ou “Novo processo” <br> - Preencher os campos obrigatórios (nome, descrição etc.) <br> - Confirmar o cadastro |
+| Critério de êxito | - A rotina ou processo é exibido na lista de rotinas/processos do usuário. |
+| Responsável pela elaboração do caso de teste | Nome do integrante da equipe. |
+
+<br>
+
+| **Caso de teste**  | **CT-004 – Iniciar uma rotina cadastrada**  |
+|:---: |:---: |
+| Requisito associado | RF-006 - Iniciar uma rotina ou processo cadastrado. |
+| Objetivo do teste | Validar se o usuário consegue iniciar a execução de uma rotina. |
+| Passos | - Acessar a lista de rotinas <br> - Selecionar uma rotina cadastrada <br> - Clicar em “Iniciar” ou equivalente |
+| Critério de êxito | - A rotina passa para o status “Em andamento” e é exibida na área de rotinas em execução. |
+| Responsável pela elaboração do caso de teste | Nome do integrante da equipe. |
+
+<br>
+
+| **Caso de teste**  | **CT-005 – Adicionar tarefa à rotina em andamento**  |
+|:---: |:---: |
+| Requisito associado | RF-011 - Alterar, Adicionar e Remover uma tarefa de uma rotina ou processo em andamento. |
+| Objetivo do teste | Verificar se o usuário consegue adicionar uma nova tarefa a uma rotina em execução. |
+| Passos | - Acessar a rotina em execução <br> - Clicar em “Adicionar tarefa” <br> - Preencher os dados da tarefa <br> - Salvar |
+| Critério de êxito | - A tarefa é inserida na rotina e exibida corretamente na interface. |
 | Responsável pela elaboração do caso de teste | Nome do integrante da equipe. |
 
 
-## Ferramentas de testes (opcional)
 
-Comente sobre as ferramentas de testes utilizadas.
- 
-> **Links úteis**:
-> - [IBM - criação e geração de planos de teste](https://www.ibm.com/developerworks/br/local/rational/criacao_geracao_planos_testes_software/index.html)
-> - [Práticas e técnicas de testes ágeis](http://assiste.serpro.gov.br/serproagil/Apresenta/slides.pdf)
-> - [Teste de software: conceitos e tipos de testes](https://blog.onedaytesting.com.br/teste-de-software/)
-> - [Criação e geração de planos de teste de software](https://www.ibm.com/developerworks/br/local/rational/criacao_geracao_planos_testes_software/index.html)
-> - [Ferramentas de teste para JavaScript](https://geekflare.com/javascript-unit-testing/)
-> - [UX Tools](https://uxdesign.cc/ux-user-research-and-user-testing-tools-2d339d379dc7)
+
+
+
+
+
+
+
+
+
+
+
+
+
