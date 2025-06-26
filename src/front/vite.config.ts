@@ -20,5 +20,8 @@ export default defineConfig({
     alias: {
       '@assets': path.resolve(__dirname, './assets')
     }
-  }
+  },
+  ssr: {
+    noExternal: true,
+  },
 });
