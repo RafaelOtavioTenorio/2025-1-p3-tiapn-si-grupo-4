@@ -15,6 +15,8 @@ A imagem apresenta o fluxo de navegação da interface do sistema Routix, especi
 
 ### Diagrama de fluxo
 
+A imagem ilustra um fluxograma de navegação funcional do sistema Routix, demonstrando as principais ações disponíveis ao usuário relacionadas à criação, visualização e exclusão de rotinas e tarefas. O diagrama segue um fluxo lógico, partindo da tela inicial até os diferentes caminhos possíveis, como cadastrar uma nova tarefa, criar uma rotina ou excluir uma existente. Cada decisão e etapa do processo está representada por diferentes formas geométricas, facilitando a compreensão da sequência de interações dentro do sistema. Este fluxo é essencial para o mapeamento da lógica de uso e para orientar tanto o desenvolvimento quanto a experiência do usuário.
+
 ![Fluxograma Routix](images/Fluxograma_Routix.png)
 
 ## Wireframes
