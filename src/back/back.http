@@ -1,4 +1,4 @@
-@back_HostAddress = http://localhost:3000
+@back_HostAddress = https://two025-1-p3-tiapn-si-grupo-4.onrender.com
 
 GET {{back_HostAddress}}/logs/
 Accept: application/json
