@@ -47,23 +47,23 @@ A tela principal do Routix apresenta, de forma clara e visual, as principais fun
 > ![Tela Principal](images/BACKGROUND.png)
 
 
-###  Telas do processo 1 - Cadastro de Usuários
+##  Telas do processo 1 - Cadastro de Usuários
 
-##  Tela de Login
+###  Tela de Login
 
 A tela de login do Routix oferece uma entrada segura e direta ao sistema, solicitando as credenciais do usuário por meio de e-mail e senha. Seu objetivo principal é autenticar usuários já cadastrados, garantindo acesso personalizado às funcionalidades da plataforma.
 > ![Tela Login](images/LOGIN.png)
 
 
-##  Tela de SignUp
+###  Tela de SignUp
 
 Coleta informações iniciais do usuário, como parte do processo de criação de conta. A interface é simples e objetiva, com campos básicos que marcam o início da jornada do usuário na plataforma. A ação principal da tela é permitir que o usuário avance para a próxima etapa do cadastro, por meio de um botão de navegação que direciona para a coleta de dados completos. Na segunda etapa, o sistema solicita informações mais detalhadas, como nome completo, e-mail, CPF, senha e confirmação de senha. O foco desta tela é finalizar o cadastro com segurança e precisão, garantindo que todos os dados fornecidos estejam corretos antes de liberar o acesso ao sistema.
 > ![Tela SIGNUP](images/SIGNUP.png)
 
 
-### Telas do processo 2 - Cadastro de Rotinas
+## Telas do processo 2 - Cadastro de Rotinas
 
-##  Tela Home
+###  Tela Home
 
 A tela Home do Routix é o ponto central da navegação do sistema, projetada para oferecer uma visão ampla e clara do gerenciamento de rotinas e equipes. Cada rotina é apresentada em formato de cartão, contendo botões de ação para editar, executar ou excluir, permitindo uma gestão rápida e eficiente.
 Os cartões destacam informações essenciais como o responsável pela rotina, seu status atual e um indicador visual de progresso, que mostra de forma clara as etapas concluídas, pendentes e em execução. Isso facilita o acompanhamento e a tomada de decisão pelo usuário.
@@ -72,7 +72,7 @@ Toda a interface foi desenhada para reforçar a navegação intuitiva, mantendo 
 > ![Tela HOME](images/HOME.png)
 
 
-##  Tela de Criação de Rotina
+###  Tela de Criação de Rotina
 
 O processo de criação de rotina no Routix orienta o usuário por etapas bem definidas até a finalização. Durante o preenchimento, o sistema exibe uma visão geral das tarefas criadas, permitindo organizar o fluxo da rotina de forma estruturada.
 Cada subtarefa pode ser marcada com checkboxes, facilitando o controle visual de quais etapas já foram concluídas. Também é possível inserir insumos ou recursos necessários diretamente nos campos apropriados.
@@ -81,14 +81,14 @@ A interface conta com botões de “Salvar” ou “Cancelar”, permitindo ao u
 > ![Tela CRIAR ROTINA](images/CRIAR_ROTINA.png)
 
 
-##  Tela de Deletar de Rotina
+###  Tela de Deletar de Rotina
 
 Ao solicitar a exclusão de uma rotina, o sistema exibe um modal de alerta com o objetivo de confirmar a ação do usuário antes de prosseguir. Essa abordagem evita exclusões acidentais e reforça a segurança no gerenciamento de dados.
 O modal apresenta uma mensagem clara, perguntando se o usuário realmente deseja excluir a rotina selecionada. Abaixo, são disponibilizados dois botões: “Cancelar”, para interromper a ação e fechar o modal, e “Deletar”, para confirmar a exclusão da rotina de forma definitiva.
 > ![Tela DELETAR ROTINA](images/DELETAR_ROTINA.png)
 
 
-### Telas do processo 3 - Rotinas
+## Telas do processo 3 - Rotinas
 
 A tela de Rotinas apresenta uma visualização organizada e categorizada das rotinas registradas no sistema, separadas por cargos específicos, como Gestor, Funcionário, Administrador e Almoxarifado. Essa estrutura facilita o acompanhamento e a distribuição de responsabilidades de acordo com o perfil de cada usuário.
 Cada rotina é exibida em cards individuais, contendo informações essenciais como o título da rotina, uma subtarefa em destaque e a data prevista para execução.
@@ -97,7 +97,7 @@ No canto superior direito, há um botão de ação destacado: “Iniciar Rotina�
 > ![Tela Rotinas](images/ROTINAS.png)
 
 
-### Telas do processo 4 - Histórico
+## Telas do processo 4 - Histórico
 
 A tela de Histórico é dedicada à consulta de rotinas já executadas, funcionando como um repositório organizado das atividades concluídas na plataforma. Ela é especialmente útil para auditorias, controle de execução e análises gerenciais, oferecendo uma visão retrospectiva das operações realizadas pelos usuários.
 A interface foi pensada para permitir uma navegação eficiente, com integração esperada de filtros por data, usuário e categoria, facilitando a localização de informações específicas conforme a necessidade de quem consulta. Essa tela reforça o compromisso do Routix com a transparência, rastreabilidade e controle das rotinas operacionais.
