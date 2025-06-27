@@ -14,15 +14,7 @@
 
 ## Vídeo
 
-O grupo também deverá gravar um vídeo de até cinco minutos apresentando a solução. O vídeo deve incluir uma demonstração da aplicação hospedada, mostrando seu funcionamento.
-
-Podem utilizar quaisquer recursos na produção do vídeo, mas certifiquem-se de destacar as funcionalidades da aplicação.
-
-A seguir, estão as especificações técnicas que devem ser seguidas na criação do vídeo:
-
-> - tamanho do arquivo limitado a 90Mb
-> - taxa de FPS limitada a 30 quadros por segundo
-> - resolução HD (720p) ou Full HD (1080p)
-> - formato mp4.
+Neste vídeo, apresentamos o funcionamento da nossa aplicação Routix, destacando suas principais funcionalidades e a interface desenvolvida para facilitar o gerenciamento de rotinas, tarefas e equipes. A demonstração mostra, de forma prática, como o sistema foi estruturado para oferecer uma experiência intuitiva, eficiente e alinhada às necessidades do usuário.
 
 
+> [VideoROUTIX.mp4](https://github.com/user-attachments/assets/5272074a-c622-4575-8f42-003569362a18)
