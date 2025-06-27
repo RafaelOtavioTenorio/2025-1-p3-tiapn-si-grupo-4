@@ -91,5 +91,12 @@ No canto superior direito, há um botão de ação destacado: “Iniciar Rotina�
 
 ## Telas do processo 4 - Grupos
 
+### Tela de Grupos
+
 A tela de Grupos permite a visualização organizada dos usuários agrupados por cargo, facilitando a gestão e o controle de equipes dentro do sistema. Cada membro é apresentado em cards individuais, que exibem informações essenciais como nome, função e CPF. Há um botão “+” que possibilita a inclusão rápida de novos membros, além de um campo de pesquisa e filtros por cargo, que ajudam a localizar usuários de forma ágil. A interface também conta com o botão “+ Criar Grupo”, permitindo ao gestor formar novas equipes e estruturar melhor a distribuição de tarefas.
 > ![Tela Grupo](images/GROUPS.png)
+
+
+### Tela de cadastro de funcionários
+A tela de cadastro de funcionários permite registrar informações básicas como nome completo, CPF e empresa vinculada. Essa etapa é fundamental para identificar e associar corretamente cada colaborador ao seu local de atuação.
+>> ![Tela Grupo](images/Funcionario.PNG)
