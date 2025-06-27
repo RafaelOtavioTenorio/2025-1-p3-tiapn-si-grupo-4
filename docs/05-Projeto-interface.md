@@ -99,4 +99,4 @@ A tela de Grupos permite a visualização organizada dos usuários agrupados por
 
 ### Tela de cadastro de funcionários
 A tela de cadastro de funcionários permite registrar informações básicas como nome completo, CPF e empresa vinculada. Essa etapa é fundamental para identificar e associar corretamente cada colaborador ao seu local de atuação.
->> ![Tela Grupo](images/Funcionario.PNG)
+>> ![Tela Grupo](images/Funcionario.jpeg)
