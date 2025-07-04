@@ -5,7 +5,7 @@
       "src": "src/front/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "src/front/dist"
+        "distDir": "dist"
       }
     }
   ],
