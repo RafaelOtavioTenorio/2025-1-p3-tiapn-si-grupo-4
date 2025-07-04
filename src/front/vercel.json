@@ -2,13 +2,6 @@
   "version": 2,
   "builds": [
     {
-      "src": "package.json",
-      "use": "@vercel/node-build",
-      "config": {
-        "distDir": "build"
-      }
-    },
-    {
       "src": "build/server/index.js",
       "use": "@vercel/node"
     },
