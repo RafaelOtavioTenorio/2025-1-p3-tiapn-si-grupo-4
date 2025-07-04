@@ -13,11 +13,11 @@
   "routes": [
     {
       "src": "/assets/(.*)",
-      "dest": "/build/client/assets/$1"
+      "dest": "/src/front/build/client/assets/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "/build/server/index.js"
+      "dest": "/src/front/build/server/index.js"
     }
   ]
 }
